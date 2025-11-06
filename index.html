@@ -42,7 +42,7 @@
     ]
   }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bee-navy: #0A1D37;
@@ -91,7 +91,7 @@
     }
     
     .logo {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 900;
       color: white;
       text-decoration: none;
@@ -563,13 +563,15 @@
       .grid { grid-template-columns: 1fr; gap: 16px; }
       .card { padding: 24px; }
       .cta-btn { padding: 16px 32px; font-size: 1rem; }
-      nav { padding: 20px 0; }
-      .nav-right { gap: 25px; }
-      .nav-menu { gap: 20px; }
-      .nav-menu a { font-size: 0.8rem; }
+      nav { padding: 16px 0; }
+      .logo { font-size: 1.75rem; }
+      .nav-right { gap: 12px; }
+      .nav-menu { gap: 12px; }
+      .nav-menu a { font-size: 0.75rem; }
+      .nav-cta { padding: 10px 20px; font-size: 0.75rem; }
       .hero h1 .highlight { display: block; margin-top: 8px; }
       .dropdown-content {
-        min-width: 200px;
+        min-width: 160px;
       }
     }
   </style>
@@ -825,7 +827,7 @@ YwfojrqoM8ZscOpUIQ43XwjWX4gfg+p/FPr6His01THtSU1VYdJC4BQpw9AznyB9AxWhNXhvtubn
 0F2Kn9Tjzau/+f73DUUVFNH+WG+VO+ldg2O3BJuekQvlFb4pshkiZLTpKVeT2YAka5R/u11wXwqz
 HnZqVuCC4bp0Vb/fK796go7P99V3mWYzv25aL+SCrMkioATkDjtTo4HAOhtTiuxHKvwElWYrOx+9
 aiHSWGarrEk8VM0RlIFhriVaxzU8V6xwbjW3l9BAYjyZCtxV3+jGqD6UeYRoXbG2f8TaedXVD3ik
-Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Center Infrastructure Consulting and Cooling Solutions Provider" style="height: 60px; width: auto;">
+Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Center Infrastructure Consulting and Cooling Solutions Provider" style="height: 75px; width: auto;">
       </a>
       <div class="nav-right">
         <ul class="nav-menu">
@@ -834,7 +836,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             <a class="dropdown-toggle nav-link">Services</a>
             <div class="dropdown-content">
               <a onclick="showPage('services-tech')">Technology Consulting</a>
-              <a onclick="showPage('services-cooling')">Cooling Infrastructure</a>
+              <a onclick="showPage('services-cooling')">Infrastructure Sourcing</a>
             </div>
           </li>
           <li><a onclick="showPage('contact')" class="nav-link">Contact</a></li>
@@ -868,7 +870,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             <div style="margin-top: 16px; color: var(--bee-gold); font-weight: 600;">Learn More →</div>
           </div>
           <div style="background: rgba(255,215,0,0.1); padding: 24px; border-radius: 12px; border-left: 4px solid var(--bee-gold); cursor: pointer; transition: all 0.3s;" onclick="showPage('services-cooling')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-            <h3 style="color: var(--bee-gold); margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Cooling Infrastructure</h3>
+            <h3 style="color: var(--bee-gold); margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Infrastructure Sourcing</h3>
             <p style="color: rgba(255,255,255,0.8);">Purpose-built cooling infrastructure products and peripherals for next-generation data centers. Specialized thermal solutions for high-density deployments.</p>
             <div style="margin-top: 16px; color: var(--bee-gold); font-weight: 600;">Learn More →</div>
           </div>
@@ -880,7 +882,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       <div class="container">
         <div class="cta-content">
           <h2>Ready to Get Started?</h2>
-          <p>Whether you need technology advisory guidance, cooling product sourcing, or end-to-end infrastructure support—BeeTech brings independent expertise and hands-on execution to make your project successful.</p>
+          <p>Whether you need technology advisory guidance, infrastructure sourcing, or end-to-end infrastructure support—BeeTech brings independent expertise and hands-on execution to make your project successful.</p>
           <button class="cta-btn" onclick="showPage('contact')">Schedule Your Consultation →</button>
         </div>
       </div>
@@ -973,7 +975,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     <section class="hero">
       <div class="container">
         <div class="hero-badge">High-Density Cooling</div>
-        <h1>Cooling <span class="highlight">Infrastructure</span></h1>
+        <h1>Infrastructure <span class="highlight">Sourcing</span></h1>
         <p class="subhead">
           Purpose-built cooling infrastructure products and peripherals for next-generation data centers. Access to specialized thermal solutions through our vetted supplier network—sourced, tracked, and delivered with full program coordination from factory to installation.
         </p>
@@ -1057,7 +1059,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     <section class="services">
       <div class="container">
         <div style="max-width: 600px; margin: 0 auto;">
-          <h2 class="section-title" style="text-align: left; display: block; margin-bottom: 32px; margin-top: 0;">Contact BeeTech</h2>
+          <h1><span style="color: var(--bee-gold); text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);">Contact</span> <span style="color: white;">Bee</span><span style="color: var(--bee-gold); text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);">Tech</span></h1>
           
           <form onsubmit="handleContactForm(event)" style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 32px; border-radius: 20px; border: 1px solid rgba(255, 215, 0, 0.2);">
             <div style="margin-bottom: 20px;">
@@ -1079,7 +1081,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               <label style="display: block; margin-bottom: 8px; font-weight: 600; color: white;">Inquiry Type</label>
               <select name="inquiry_type" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.3); background: rgba(0,0,0,0.5); color: white; font-family: Inter; font-size: 1rem;">
                 <option style="background: #000; color: white;">Technology Consulting</option>
-                <option style="background: #000; color: white;">Cooling Infrastructure</option>
+                <option style="background: #000; color: white;">Infrastructure Sourcing</option>
                 <option style="background: #000; color: white;">General Inquiry</option>
               </select>
             </div>
