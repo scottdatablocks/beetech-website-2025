@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeeTech | Data Center Infrastructure Consulting & Cooling Solutions</title>
+  <meta name="description" content="BeeTech provides operational technology consulting and specialized cooling infrastructure products for data centers. Advisory, procurement, and execution services for critical infrastructure including liquid cooling components, quick-connect couplings, precision hoses, and thermal management solutions."/>
+  <meta name="keywords" content="data center consulting, operational technology platforms, cooling infrastructure, liquid cooling, quick connect couplings, precision hoses, thermal management, DCIM, BMS, data center infrastructure, procurement advisory"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://beetech.ai"/>
+  <meta name="author" content="BeeTech"/>
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="BeeTech - Data Center Infrastructure Solutions"/>
+  <meta property="og:description" content="Expert OT platform consulting and specialized cooling infrastructure products for next-generation data centers."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://beetech.ai"/>
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BeeTech",
+    "description": "Data center infrastructure consulting and cooling solutions provider",
+    "url": "https://beetech.ai",
+    "email": "hello@beetech.ai",
+    "areaServed": "Global",
+    "serviceType": ["Technology Consulting", "Cooling Infrastructure Products"],
+    "knowsAbout": ["quick-connect couplings", "precision hoses", "liquid cooling", "thermal management", "DCIM platforms", "BMS integration"],
+    "offers": [
+      {
+        "@type": "Service",
+        "name": "OT Platform Consulting",
+        "description": "Advisory, procurement, and execution for operational technology platforms"
+      },
+      {
+        "@type": "Product", 
+        "name": "Cooling Infrastructure Components",
+        "description": "Specialized thermal solutions including couplings, hoses, manifolds, and custom assemblies for liquid cooling systems"
+      }
+    ]
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bee-navy: #0A1D37;
+      --bee-gold: #FFD700;
+      --bee-red: #FF3B5C;
+      --text: #2D3748;
+      --success: #00FF88;
+    }
+    
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      color: var(--text); 
+      background: #000;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 0 20px; 
+    }
+
+    /* NAV */
+    nav {
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--bee-gold);
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+    }
+    
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: white;
+      text-decoration: none;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      cursor: pointer;
+    }
+    
+    .logo span { 
+      color: var(--bee-gold);
+      text-shadow: 0 0 30px var(--bee-gold);
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--bee-gold);
+      border-bottom-color: var(--bee-gold);
+    }
+
+    .dropdown-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle::after {
+      content: ' ▼';
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.98);
+      min-width: 280px;
+      box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .dropdown-content a {
+      color: rgba(255,255,255,0.8);
+      padding: 12px 20px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+      text-transform: none;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--bee-gold);
+      padding-left: 28px;
+    }
+
+    .dropdown-menu:hover .dropdown-content {
+      display: block;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      color: black;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .nav-cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+    }
+
+    /* PAGE CONTAINER */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #000 0%, var(--bee-navy) 50%, #000 100%);
+      color: white;
+      padding: 60px 0 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    
+    .hero .container { 
+      position: relative; 
+      z-index: 1; 
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--bee-gold);
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      border: 2px solid var(--bee-gold);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+      text-transform: uppercase;
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+    }
+    
+    .hero h1 {
+      font-size: 2.75rem; 
+      font-weight: 900; 
+      line-height: 1.1; 
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, var(--bee-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      background-size: 200% auto;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    .hero h1 .highlight {
+      color: var(--bee-gold);
+      display: inline;
+      text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+    }
+    
+    .hero .subhead {
+      font-size: 1.05rem; 
+      max-width: 850px; 
+      margin: 0 auto 30px;
+      opacity: 0.95; 
+      line-height: 1.8;
+    }
+    
+    .hero .subhead strong { 
+      color: var(--bee-gold);
+      font-weight: 800;
+    }
+    
+    .cta-btn {
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      color: black;
+      font-weight: 900;
+      padding: 18px 40px; 
+      border-radius: 50px; 
+      font-size: 1.1rem; 
+      text-decoration: none;
+      display: inline-block; 
+      transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+    
+    .cta-btn:hover::before {
+      left: 100%;
+    }
+    
+    .cta-btn:hover { 
+      transform: translateY(-4px) scale(1.05); 
+      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.7); 
+    }
+
+    /* SECTIONS */
+    .services, .cooling {
+      padding: 60px 0;
+      background: linear-gradient(180deg, #000 0%, #0A1D37 100%);
+    }
+    
+    .cooling {
+      background: linear-gradient(180deg, #0A1D37 0%, #000 100%);
+    }
+    
+    .cta-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--bee-navy) 0%, #000 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,215,0,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .section-title {
+      text-align: center; 
+      font-size: 2.25rem; 
+      font-weight: 900; 
+      margin-bottom: 12px; 
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+    
+    .grid {
+      display: grid; 
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-flow: row; 
+      gap: 25px;
+    }
+    
+    .card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px; 
+      padding: 35px 40px;
+      line-height: 1.8; 
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    
+    .card:hover::before {
+      opacity: 1;
+    }
+    
+    .card:hover { 
+      transform: translateY(-12px) scale(1.02); 
+      box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+      border-color: var(--bee-gold);
+    }
+    
+    .icon { 
+      font-size: 2.5rem; 
+      display: none;
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    }
+    
+    .service-tag {
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      color: black;
+      font-weight: 800; 
+      font-size: 0.85rem;
+      padding: 10px 20px; 
+      border-radius: 20px; 
+      display: inline-block; 
+      margin-bottom: 18px;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .card h3 {
+      font-size: 1.6rem;
+       
+      font-weight: 800; 
+      margin-bottom: 16px; 
+      color: white;
+      line-height: 1.3;
+    }
+    
+    .card p {
+      font-size: 0.95rem; 
+      line-height: 1.6; 
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .spec-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .spec-list li {
+      padding: 6px 0 6px 16px;
+      position: relative;
+    }
+    
+    .spec-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--bee-gold);
+      font-weight: 700;
+    }
+
+    /* CTA SECTION */
+    .cta-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-content h2 {
+      font-size: 2.25rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .cta-content p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 32px;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #000;
+      padding: 24px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,215,0,0.3);
+    }
+    
+    footer p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      margin: 4px 0;
+    }
+
+    /* HOME PAGE SPECIFIC */
+    .home-section {
+      padding: 60px 0;
+      background: linear-gradient(180deg, #000 0%, #0A1D37 100%);
+    }
+
+    .home-section h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .home-section p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero .subhead { font-size: 1rem; }
+      .hero { padding: 40px 0 35px; }
+      .services, .cooling, .cta-section, .home-section { padding: 40px 0; }
+      .section-title { font-size: 1.75rem; }
+      .grid { grid-template-columns: 1fr; gap: 16px; }
+      .card { padding: 24px; }
+      .cta-btn { padding: 16px 32px; font-size: 1rem; }
+      nav { padding: 20px 0; }
+      .nav-right { gap: 25px; }
+      .nav-menu { gap: 20px; }
+      .nav-menu a { font-size: 0.8rem; }
+      .hero h1 .highlight { display: block; margin-top: 8px; }
+      .dropdown-content {
+        min-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a onclick="showPage('home')" class="logo" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+        <img src="data:image/png;base64,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" alt="BeeTech - Data Center Infrastructure Consulting and Cooling Solutions Provider" style="height: 60px; width: auto;">
+      </a>
+      <div class="nav-right">
+        <ul class="nav-menu">
+          <li><a onclick="showPage('home')" class="nav-link active">Home</a></li>
+          <li class="dropdown-menu">
+            <a class="dropdown-toggle nav-link">Services</a>
+            <div class="dropdown-content">
+              <a onclick="showPage('services-tech')">Technology Consulting</a>
+              <a onclick="showPage('services-cooling')">Cooling Infrastructure</a>
+            </div>
+          </li>
+          <li><a onclick="showPage('contact')" class="nav-link">Contact</a></li>
+        </ul>
+        <button onclick="showPage('contact')" class="nav-cta">Schedule Advisory</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div id="home" class="page active">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">Data Center Procurement</div>
+        <h1><span class="highlight">Control Costs.</span> Ensure Uptime.</h1>
+        <p class="subhead">
+          Managing 1,000+ SKUs across expanding AI and power demands is complex. Achieving 10–20% year-over-year savings requires precision—without compromising performance. BeeTech delivers independent, on-site oversight: mapping components, optimizing sourcing, and securing multi-year efficiencies. Your targets. Zero surprises.
+        </p>
+        <button class="cta-btn" onclick="showPage('contact')">OPTIMIZE →</button>
+      </div>
+    </section>
+    <section class="home-section">
+      <div class="container">
+        <h2>Our Services</h2>
+        <p>BeeTech offers two specialized service lines to support your critical infrastructure needs:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; min-height: 300px;">
+          <div style="background: rgba(255,215,0,0.1); padding: 24px; border-radius: 12px; border-left: 4px solid var(--bee-gold); cursor: pointer; transition: all 0.3s;" onclick="showPage('services-tech')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <h3 style="color: var(--bee-gold); margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Technology Consulting</h3>
+            <p style="color: rgba(255,255,255,0.8);">Advisory, Procurement & Execution for Operational Technology Platforms. End-to-end OT platform selection and vendor management for critical infrastructure.</p>
+            <div style="margin-top: 16px; color: var(--bee-gold); font-weight: 600;">Learn More →</div>
+          </div>
+          <div style="background: rgba(255,215,0,0.1); padding: 24px; border-radius: 12px; border-left: 4px solid var(--bee-gold); cursor: pointer; transition: all 0.3s;" onclick="showPage('services-cooling')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <h3 style="color: var(--bee-gold); margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Cooling Infrastructure</h3>
+            <p style="color: rgba(255,255,255,0.8);">Purpose-built cooling infrastructure products and peripherals for next-generation data centers. Specialized thermal solutions for high-density deployments.</p>
+            <div style="margin-top: 16px; color: var(--bee-gold); font-weight: 600;">Learn More →</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Get Started?</h2>
+          <p>Whether you need technology advisory guidance, cooling product sourcing, or end-to-end infrastructure support—BeeTech brings independent expertise and hands-on execution to make your project successful.</p>
+          <button class="cta-btn" onclick="showPage('contact')">Schedule Your Consultation →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- TECHNOLOGY CONSULTING PAGE -->
+  <div id="services-tech" class="page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">OT Platform Advisory</div>
+        <h1>Operational Technology <span class="highlight">Consulting</span></h1>
+        <p class="subhead">
+          Advisory, Procurement & Execution for Operational Technology Platforms. We align OT platform decisions, vendor performance, and site execution so your critical infrastructure moves from design intent to reliable operations—<strong>without surprises.</strong>
+        </p>
+        <button class="cta-btn" onclick="document.querySelector('.services').scrollIntoView({behavior: 'smooth'})">View Services ↓</button>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <h2 class="section-title">Core Consulting Services</h2>
+        <p class="section-subtitle">Full-lifecycle support for OT platforms and critical infrastructure</p>
+        
+        <div class="grid">
+          <div class="card">
+            <div class="service-tag">01 Advisory</div>
+            <h3>OT Platform Selection</h3>
+            <p>Independent evaluation of OT platforms, DCIM systems, BMS, and monitoring solutions aligned with operational and financial objectives.</p>
+            <ul class="spec-list">
+              <li>Platform architecture review</li>
+              <li>Vendor evaluation & scoring</li>
+              <li>Integration assessment</li>
+              <li>Risk & compliance validation</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="service-tag">02 Procurement</div>
+            <h3>Vendor Negotiation</h3>
+            <p>Structured sourcing for OT platforms that locks in performance commitments and favorable terms through comprehensive RFP management.</p>
+            <ul class="spec-list">
+              <li>RFP development & release</li>
+              <li>Technical evaluation</li>
+              <li>Commercial negotiation</li>
+              <li>Contract alignment</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="service-tag">03 Execution</div>
+            <h3>Platform Deployment</h3>
+            <p>On-site ownership representation throughout OT platform installation, integration, and commissioning to ensure specification compliance.</p>
+            <ul class="spec-list">
+              <li>Pre-deployment verification</li>
+              <li>Platform integration testing</li>
+              <li>Installation oversight</li>
+              <li>Commissioning validation</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="service-tag">04 Supply Chain</div>
+            <h3>Risk Management</h3>
+            <p>Proactive coordination of OT platform components and contingency planning to ensure timeline ownership and outcome certainty.</p>
+            <ul class="spec-list">
+              <li>Lead time management</li>
+              <li>Component coordination</li>
+              <li>Contingency planning</li>
+              <li>Milestone tracking</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Let's Optimize Your OT Infrastructure</h2>
+          <p>Whether you need DCIM selection, BMS integration, or comprehensive OT platform deployment—BeeTech brings independent expertise and hands-on execution to your critical infrastructure.</p>
+          <button class="cta-btn" onclick="showPage('contact')">Schedule Advisory →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- COOLING INFRASTRUCTURE PAGE -->
+  <div id="services-cooling" class="page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">High-Density Cooling</div>
+        <h1>Cooling <span class="highlight">Infrastructure</span></h1>
+        <p class="subhead">
+          Purpose-built cooling infrastructure products and peripherals for next-generation data centers. Access to specialized thermal solutions through our vetted supplier network—sourced, tracked, and delivered with full program coordination from factory to installation.
+        </p>
+        <button class="cta-btn" onclick="document.querySelector('.cooling').scrollIntoView({behavior: 'smooth'})">How We Deliver ↓</button>
+      </div>
+    </section>
+
+    <section class="cooling">
+      <div class="container">
+        <h2 class="section-title">How We Deliver</h2>
+        <p class="section-subtitle">Sourcing + Tracking + Coordination = Complete Thermal Solutions</p>
+        
+        <div class="grid">
+          <div class="card">
+            <div class="service-tag">Supplier Network</div>
+            <h3>Vetted Sourcing</h3>
+            <p>Access to specialized cooling infrastructure products and peripherals through our established network of enterprise-grade suppliers worldwide.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-tag">Real-Time Visibility</div>
+            <h3>Automated Tracking</h3>
+            <p>Enterprise-grade supply chain software provides complete visibility from procurement through factory delivery—status updates, milestones, and delivery confirmation.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-tag">Expert Coordination</div>
+            <h3>Program Management</h3>
+            <p>Dedicated technical coordination ensures components meet your specifications, arrive on schedule, and integrate seamlessly into your infrastructure project.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-tag">Installation Support</div>
+            <h3>Factory to Data Hall</h3>
+            <p>From supplier quality verification through installation oversight and testing—we manage every step to ensure successful deployment with zero surprises.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" style="padding: 40px 0; background: rgba(10,29,55,0.3);">
+      <div class="container">
+        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 20px;">Technical Specifications</h2>
+        <p style="text-align: center; color: rgba(255,255,255,0.7); max-width: 900px; margin: 0 auto 32px; font-size: 0.9rem;">
+          Our cooling infrastructure portfolio encompasses enterprise-grade components engineered for mission-critical deployments. 
+          Products include specialized quick-connect coupling systems, precision-engineered flexible hose assemblies, custom manifold solutions, 
+          and integrated thermal management accessories. All components meet stringent data center specifications for pressure ratings, 
+          flow rates, and material compatibility with various cooling media including glycol blends and dielectric fluids.
+        </p>
+        <div style="text-align: center; margin-top: 24px;">
+          <p style="color: rgba(255,215,0,0.8); font-size: 0.85rem; font-weight: 600;">
+            ISO 9001 Certified Suppliers | 10-500 GPM Flow Rates | 25-350 PSI Operating Pressure | -40°F to +180°F Temperature Range
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Complete Thermal Solution Management</h2>
+          <p>Whether you need standard components or fully custom thermal solutions—BeeTech sources, tracks, and coordinates delivery with expert program management from procurement to installation.</p>
+          <button class="cta-btn" onclick="showPage('contact')">Discuss Your Project →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div id="contact" class="page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">Get in Touch</div>
+        <h1>Let's Talk <span class="highlight">Infrastructure</span></h1>
+        <p class="subhead">
+          Schedule a free consultation to discuss your critical infrastructure project, technology challenges, or cooling solution needs.
+        </p>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <div style="max-width: 600px; margin: 0 auto;">
+          <h2 class="section-title" style="text-align: left; display: block; margin-bottom: 32px; margin-top: 0;">Contact BeeTech</h2>
+          
+          <form onsubmit="handleContactForm(event)" style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 32px; border-radius: 20px; border: 1px solid rgba(255, 215, 0, 0.2);">
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 600; color: white;">Name *</label>
+              <input type="text" name="name" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.3); background: rgba(0,0,0,0.5); color: white; font-family: Inter; font-size: 1rem;">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 600; color: white;">Email *</label>
+              <input type="email" name="email" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.3); background: rgba(0,0,0,0.5); color: white; font-family: Inter; font-size: 1rem;">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 600; color: white;">Company</label>
+              <input type="text" name="company" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.3); background: rgba(0,0,0,0.5); color: white; font-family: Inter; font-size: 1rem;">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 600; color: white;">Inquiry Type</label>
+              <select name="inquiry_type" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.3); background: rgba(0,0,0,0.5); color: white; font-family: Inter; font-size: 1rem;">
+                <option style="background: #000; color: white;">Technology Consulting</option>
+                <option style="background: #000; color: white;">Cooling Infrastructure</option>
+                <option style="background: #000; color: white;">General Inquiry</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 600; color: white;">Message *</label>
+              <textarea name="message" required style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.3); background: rgba(0,0,0,0.5); color: white; font-family: Inter; font-size: 1rem; min-height: 150px; resize: vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="cta-btn" style="width: 100%;">Send Message →</button>
+          </form>
+
+          <div id="contactSuccess" style="display: none; margin-top: 24px; background: rgba(0,255,136,0.15); padding: 20px; border-radius: 12px; border-left: 4px solid var(--success); color: var(--success); text-align: center; font-weight: 600;">
+            ✓ Thank you! We'll be in touch soon to schedule your consultation.
+          </div>
+
+          <div style="margin-top: 40px; text-align: center;">
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px;">Or reach us directly:</p>
+            <a href="mailto:hello@beetech.ai" style="color: var(--bee-gold); text-decoration: none; font-weight: 600; font-size: 1.1rem;">hello@beetech.ai</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 BeeTech | Data Center Infrastructure Solutions</p>
+      <p>Operational Technology Consulting • Cooling Infrastructure Products • Thermal Management Solutions</p>
+      <p style="font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 8px;">
+        Specializing in liquid cooling components, thermal infrastructure, and OT platform deployment for mission-critical data centers
+      </p>
+      <p>Advisory. Procurement. Execution. | hello@beetech.ai</p>
+    </div>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      // Hide all pages
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      
+      // Show selected page
+      document.getElementById(pageId).classList.add('active');
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    function handleContactForm(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const data = {
+        name: form.querySelector('input[name="name"]').value,
+        email: form.querySelector('input[name="email"]').value,
+        company: form.querySelector('input[name="company"]').value,
+        inquiry_type: form.querySelector('select[name="inquiry_type"]').value,
+        message: form.querySelector('textarea[name="message"]').value
+      };
+      
+      console.log('Contact form submitted:', data);
+      
+      // Show success message
+      document.getElementById('contactSuccess').style.display = 'block';
+      form.style.display = 'none';
+      
+      // Reset after 4 seconds
+      setTimeout(() => {
+        form.reset();
+        form.style.display = 'block';
+        document.getElementById('contactSuccess').style.display = 'none';
+      }, 4000);
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.style.scrollBehavior = 'auto';
+    }
+  </script>
+
+</body>
+</html>
