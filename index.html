@@ -165,10 +165,25 @@
       display: inline-block;
     }
 
+    /* Add padding below to bridge gap to dropdown */
+    .dropdown-menu::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      right: 0;
+      height: 15px;
+    }
+
     .dropdown-toggle::after {
       content: ' ▼';
       font-size: 0.65rem;
       color: rgba(255,255,255,0.8);
+    }
+
+    .dropdown-toggle {
+      cursor: pointer;
+      user-select: none;
     }
 
     .dropdown-content {
@@ -182,7 +197,7 @@
       top: 100%;
       left: 0;
       border-radius: 8px;
-      margin-top: 10px;
+      margin-top: 5px;
       max-width: calc(100vw - 24px);
     }
 
@@ -207,7 +222,8 @@
       padding-left: 28px;
     }
 
-    .dropdown-menu:hover .dropdown-content {
+    .dropdown-menu:hover .dropdown-content,
+    .dropdown-menu.active .dropdown-content {
       display: block;
     }
 
@@ -616,7 +632,26 @@
       }
       .nav-menu li:last-child { border-bottom: none; }
       
-      .dropdown-menu { width: 100%; }
+      .dropdown-menu {
+        width: 100%;
+        display: block;
+      }
+
+      .dropdown-toggle {
+        width: 100%;
+        display: block;
+      }
+
+      .dropdown-toggle::after {
+        font-size: 0.85rem;
+        float: right;
+        transition: transform 0.3s;
+      }
+
+      .dropdown-menu.active .dropdown-toggle::after {
+        transform: rotate(180deg);
+      }
+
       .dropdown-content {
         position: static;
         display: none;
@@ -627,9 +662,13 @@
         margin: 0;
         border-radius: 0;
       }
-      
+
       .dropdown-menu.active .dropdown-content { display: flex; flex-direction: column; }
-      .dropdown-content a { border: none; padding: 12px 40px; }
+      .dropdown-content a {
+        border: none;
+        padding: 12px 40px;
+        font-size: 0.9rem;
+      }
       
       .nav-right {
         position: relative;
@@ -955,6 +994,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               <a onclick="showPage('services-cooling'); closeMenu();">Infrastructure Sourcing</a>
             </div>
           </li>
+          <li><a onclick="showPage('resources'); closeMenu();" class="nav-link">Resources</a></li>
           <li><a onclick="showPage('contact'); closeMenu();" class="nav-link">Contact</a></li>
         </ul>
         <button onclick="showPage('contact')" class="nav-cta">Schedule Advisory</button>
@@ -1155,6 +1195,188 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           <h2>Complete Thermal Solution Management</h2>
           <p>Whether you need standard components or fully custom thermal solutions—BeeTech sources, tracks, and coordinates delivery with expert program management from procurement to installation.</p>
           <button class="cta-btn" onclick="showPage('contact')">Discuss Your Project →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- RESOURCES PAGE -->
+  <div id="resources" class="page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">Knowledge Center</div>
+        <h1><span class="highlight">Resources</span> & Insights</h1>
+        <p class="subhead">
+          Expert guidance, industry insights, and practical tools to optimize your data center infrastructure investments.
+        </p>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: 48px;">Explore Our Knowledge Base</h2>
+
+        <!-- Blog & News -->
+        <div style="margin-bottom: 60px;">
+          <h3 style="color: var(--bee-gold); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
+            📰 Latest News & Insights
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2);">
+              <div style="color: var(--bee-gold); font-size: 0.85rem; margin-bottom: 8px;">Coming Soon</div>
+              <h4 style="color: white; margin-bottom: 12px;">AI Infrastructure Trends 2025</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Stay ahead of the curve with insights on emerging AI data center technologies and cooling requirements.</p>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2);">
+              <div style="color: var(--bee-gold); font-size: 0.85rem; margin-bottom: 8px;">Coming Soon</div>
+              <h4 style="color: white; margin-bottom: 12px;">Liquid Cooling Best Practices</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Essential guidelines for implementing and maintaining liquid cooling systems in high-density environments.</p>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2);">
+              <div style="color: var(--bee-gold); font-size: 0.85rem; margin-bottom: 8px;">Coming Soon</div>
+              <h4 style="color: white; margin-bottom: 12px;">OT Platform Selection Guide</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Navigate the complex landscape of operational technology platforms with our expert framework.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Studies -->
+        <div style="margin-bottom: 60px;">
+          <h3 style="color: var(--bee-gold); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
+            ✅ Success Stories & Case Studies
+          </h3>
+          <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 32px; border-radius: 12px; border-left: 4px solid var(--bee-gold);">
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 16px;">
+              Discover how BeeTech has helped organizations achieve significant cost savings, improve operational efficiency, and successfully deploy critical infrastructure projects.
+            </p>
+            <p style="color: rgba(255,255,255,0.6); font-style: italic;">
+              Case studies coming soon. Contact us to learn about our recent project successes and how we can support your infrastructure needs.
+            </p>
+            <button class="cta-btn" onclick="showPage('contact')" style="margin-top: 20px;">Request Case Studies →</button>
+          </div>
+        </div>
+
+        <!-- Whitepapers & eBooks -->
+        <div style="margin-bottom: 60px;">
+          <h3 style="color: var(--bee-gold); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
+            📚 Whitepapers & In-Depth Guides
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 16px;">📖</div>
+              <h4 style="color: white; margin-bottom: 12px;">Data Center Procurement Strategies</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Comprehensive guide to optimizing your infrastructure procurement process.</p>
+              <div style="color: var(--bee-gold); font-weight: 600;">Coming Soon</div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 16px;">📄</div>
+              <h4 style="color: white; margin-bottom: 12px;">Thermal Management in AI Workloads</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Technical whitepaper on cooling solutions for high-performance computing.</p>
+              <div style="color: var(--bee-gold); font-weight: 600;">Coming Soon</div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 16px;">💡</div>
+              <h4 style="color: white; margin-bottom: 12px;">OT Platform Implementation</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Best practices for deploying operational technology platforms in mission-critical facilities.</p>
+              <div style="color: var(--bee-gold); font-weight: 600;">Coming Soon</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Webinars & Videos -->
+        <div style="margin-bottom: 60px;">
+          <h3 style="color: var(--bee-gold); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
+            🎥 Webinars & Video Content
+          </h3>
+          <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 32px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2);">
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 16px;">
+              Join our upcoming webinars and watch on-demand content covering the latest in data center infrastructure, cooling technologies, and operational best practices.
+            </p>
+            <div style="color: rgba(255,255,255,0.6);">
+              <p>📅 Upcoming webinar schedule and video library coming soon.</p>
+              <p style="margin-top: 12px;">Subscribe to our mailing list to be notified when new content is available.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guides & FAQs -->
+        <div style="margin-bottom: 60px;">
+          <h3 style="color: var(--bee-gold); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
+            📋 Guides & FAQs
+          </h3>
+          <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 32px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2);">
+            <h4 style="color: white; margin-bottom: 20px;">Frequently Asked Questions</h4>
+
+            <div style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,215,0,0.1);">
+              <h5 style="color: var(--bee-gold); margin-bottom: 8px;">What types of cooling infrastructure do you source?</h5>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+                We source a comprehensive range of cooling infrastructure including liquid cooling components, rear-door heat exchangers, in-row cooling units, CRAC/CRAH systems, CDUs, manifolds, and all associated peripherals for modern data center deployments.
+              </p>
+            </div>
+
+            <div style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,215,0,0.1);">
+              <h5 style="color: var(--bee-gold); margin-bottom: 8px;">How do you help with OT platform selection?</h5>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+                Our technology consulting practice provides independent advisory services to evaluate, select, and implement operational technology platforms. We manage the entire process from requirements gathering through vendor selection, negotiation, and deployment oversight.
+              </p>
+            </div>
+
+            <div style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,215,0,0.1);">
+              <h5 style="color: var(--bee-gold); margin-bottom: 8px;">What makes BeeTech different from other consultants?</h5>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+                We combine deep technical expertise with hands-on execution. Unlike traditional consultants who deliver reports, we provide on-site program management, procurement support, and ongoing oversight to ensure successful project delivery and measurable cost savings.
+              </p>
+            </div>
+
+            <div>
+              <h5 style="color: var(--bee-gold); margin-bottom: 8px;">How quickly can you start on a new project?</h5>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+                We can typically begin engagement within 1-2 weeks of initial consultation. For urgent infrastructure needs or time-sensitive procurement, we can mobilize even faster.
+              </p>
+            </div>
+
+            <div style="margin-top: 28px; padding-top: 28px; border-top: 2px solid rgba(255,215,0,0.2);">
+              <p style="color: rgba(255,255,255,0.7);">Have more questions? <a href="#" onclick="showPage('contact'); return false;" style="color: var(--bee-gold); text-decoration: underline;">Contact us</a> for detailed answers specific to your situation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & Calculators -->
+        <div style="margin-bottom: 40px;">
+          <h3 style="color: var(--bee-gold); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
+            🔧 Tools & Calculators
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
+              <div style="font-size: 2.5rem; margin-bottom: 12px;">⚡</div>
+              <h4 style="color: white; margin-bottom: 12px; font-size: 1.1rem;">Cooling Capacity Calculator</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Estimate your cooling requirements based on rack density and heat load.</p>
+              <div style="color: var(--bee-gold); font-weight: 600; font-size: 0.9rem;">Coming Soon</div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
+              <div style="font-size: 2.5rem; margin-bottom: 12px;">💰</div>
+              <h4 style="color: white; margin-bottom: 12px; font-size: 1.1rem;">TCO Savings Estimator</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Calculate potential cost savings through optimized procurement strategies.</p>
+              <div style="color: var(--bee-gold); font-weight: 600; font-size: 0.9rem;">Coming Soon</div>
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
+              <div style="font-size: 2.5rem; margin-bottom: 12px;">📊</div>
+              <h4 style="color: white; margin-bottom: 12px; font-size: 1.1rem;">Infrastructure Assessment</h4>
+              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Quick assessment tool to identify optimization opportunities in your facility.</p>
+              <div style="color: var(--bee-gold); font-weight: 600; font-size: 0.9rem;">Coming Soon</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Optimize Your Infrastructure?</h2>
+          <p>Let's discuss how BeeTech can help you reduce costs, improve efficiency, and successfully deploy your next critical infrastructure project.</p>
+          <button class="cta-btn" onclick="showPage('contact')">Schedule Consultation →</button>
         </div>
       </div>
     </section>
