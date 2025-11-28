@@ -2231,6 +2231,127 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             .wp-section-item:hover {
               background: rgba(255,255,255,0.06) !important;
             }
+
+            /* Prevent text hyphenation on mobile */
+            @media (max-width: 768px) {
+              p, span, h1, h2, h3, h4, h5, h6, li, td, th, label, a {
+                word-break: normal !important;
+                overflow-wrap: break-word !important;
+                hyphens: none !important;
+                -webkit-hyphens: none !important;
+                -ms-hyphens: none !important;
+              }
+            }
+
+            /* Sticky TOC for third whitepaper */
+            .wp3-sticky-toc {
+              position: sticky;
+              top: 80px;
+              max-height: calc(100vh - 100px);
+              overflow-y: auto;
+              padding: 20px;
+              background: rgba(0,0,0,0.4);
+              border-radius: 12px;
+              border: 1px solid rgba(0,255,136,0.2);
+            }
+            .wp3-sticky-toc::-webkit-scrollbar {
+              width: 4px;
+            }
+            .wp3-sticky-toc::-webkit-scrollbar-track {
+              background: rgba(255,255,255,0.05);
+              border-radius: 2px;
+            }
+            .wp3-sticky-toc::-webkit-scrollbar-thumb {
+              background: rgba(0,255,136,0.3);
+              border-radius: 2px;
+            }
+            .wp3-toc-link {
+              display: block;
+              padding: 8px 12px;
+              color: rgba(255,255,255,0.7);
+              text-decoration: none;
+              font-size: 0.85rem;
+              border-radius: 6px;
+              transition: all 0.2s;
+              margin-bottom: 4px;
+              border-left: 2px solid transparent;
+            }
+            .wp3-toc-link:hover {
+              background: rgba(0,255,136,0.1);
+              color: #00FF88;
+              border-left-color: #00FF88;
+            }
+            .wp3-toc-link.active {
+              background: rgba(0,255,136,0.15);
+              color: #00FF88;
+              border-left-color: #00FF88;
+            }
+            .wp3-content-wrapper {
+              display: grid;
+              grid-template-columns: 220px 1fr;
+              gap: 24px;
+            }
+            @media (max-width: 1100px) {
+              .wp3-content-wrapper {
+                grid-template-columns: 1fr;
+              }
+              .wp3-sticky-toc {
+                position: relative;
+                top: 0;
+                max-height: none;
+                margin-bottom: 24px;
+              }
+            }
+
+            /* Back to top button */
+            .back-to-top-btn {
+              position: fixed;
+              bottom: 30px;
+              right: 30px;
+              width: 50px;
+              height: 50px;
+              background: linear-gradient(135deg, #00FF88 0%, #00CC6A 100%);
+              border: none;
+              border-radius: 50%;
+              color: #000;
+              font-size: 1.5rem;
+              cursor: pointer;
+              opacity: 0;
+              visibility: hidden;
+              transition: all 0.3s;
+              z-index: 1000;
+              box-shadow: 0 4px 15px rgba(0,255,136,0.3);
+            }
+            .back-to-top-btn.visible {
+              opacity: 1;
+              visibility: visible;
+            }
+            .back-to-top-btn:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 6px 20px rgba(0,255,136,0.4);
+            }
+
+            /* Fix card grid for even display */
+            .resource-cards-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 16px;
+            }
+            @media (max-width: 900px) {
+              .resource-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (max-width: 600px) {
+              .resource-cards-grid {
+                grid-template-columns: 1fr;
+              }
+            }
+
+            /* Smooth scroll behavior */
+            html {
+              scroll-behavior: smooth;
+            }
           </style>
         </div>
 
@@ -2499,9 +2620,26 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
 
             <!-- Full Content Article -->
             <div style="padding: 32px; max-width: 100%;">
+              <div class="wp3-content-wrapper">
+                <!-- Sticky Table of Contents -->
+                <nav class="wp3-sticky-toc">
+                  <h5 style="color: #00FF88; font-size: 0.8rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">Contents</h5>
+                  <a href="#wp3-exec-summary" class="wp3-toc-link">Executive Summary</a>
+                  <a href="#wp3-section-1" class="wp3-toc-link">1. Foundational Mandate</a>
+                  <a href="#wp3-section-2" class="wp3-toc-link">2. BMS Architecture</a>
+                  <a href="#wp3-section-3" class="wp3-toc-link">3. Efficiency & AI Control</a>
+                  <a href="#wp3-section-4" class="wp3-toc-link">4. Integration Layer</a>
+                  <a href="#wp3-section-5" class="wp3-toc-link">5. Cybersecurity</a>
+                  <a href="#wp3-section-6" class="wp3-toc-link">6. Governance</a>
+                  <a href="#wp3-section-7" class="wp3-toc-link">7. Lifecycle Management</a>
+                  <a href="#wp3-conclusion" class="wp3-toc-link">Conclusion</a>
+                </nav>
+
+                <!-- Main Content -->
+                <div>
 
               <!-- Executive Summary -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+              <div id="wp3-exec-summary" style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15); scroll-margin-top: 80px;">
                 <h4 style="color: #00FF88; font-size: 1.2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
                   <span style="background: rgba(0,255,136,0.2); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">EXECUTIVE SUMMARY</span>
                 </h4>
@@ -2522,7 +2660,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
 
               <!-- Section 1 -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+              <div id="wp3-section-1" style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15); scroll-margin-top: 80px;">
                 <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #00FF88;">
                   Section 1: The Foundational Mandate: Defining the Highest Standard
                 </h4>
@@ -2555,7 +2693,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
 
               <!-- Section 2 -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+              <div id="wp3-section-2" style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15); scroll-margin-top: 80px;">
                 <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #60A5FA;">
                   Section 2: Engineering Reliability: BMS Architecture for Tier IV Fault Tolerance
                 </h4>
@@ -2617,7 +2755,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
 
               <!-- Section 3 -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+              <div id="wp3-section-3" style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15); scroll-margin-top: 80px;">
                 <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #FFA500;">
                   Section 3: Efficiency and Optimization: ASHRAE Guideline 36 and AI-Driven Control
                 </h4>
@@ -2685,7 +2823,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
 
               <!-- Section 4 -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+              <div id="wp3-section-4" style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15); scroll-margin-top: 80px;">
                 <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid var(--bee-gold);">
                   Section 4: The Integration Layer: DCIM, EPMS, and Open System Architecture
                 </h4>
@@ -2721,7 +2859,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
 
               <!-- Section 5 -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+              <div id="wp3-section-5" style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15); scroll-margin-top: 80px;">
                 <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #FF3B5C;">
                   Section 5: Cybersecurity as an Engineered Standard: Compliance with IEC 62443
                 </h4>
@@ -2785,7 +2923,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
 
               <!-- Section 6 -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+              <div id="wp3-section-6" style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15); scroll-margin-top: 80px;">
                 <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #60A5FA;">
                   Section 6: Sustained Excellence: Governance, Standardization, and Personnel
                 </h4>
@@ -2818,7 +2956,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
 
               <!-- Section 7 -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+              <div id="wp3-section-7" style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(0,255,136,0.15); scroll-margin-top: 80px;">
                 <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #00FF88;">
                   Section 7: Strategic Lifecycle Management (12-16+ Year Horizon)
                 </h4>
@@ -2860,7 +2998,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
 
               <!-- Conclusion -->
-              <div style="margin-bottom: 24px;">
+              <div id="wp3-conclusion" style="margin-bottom: 24px; scroll-margin-top: 80px;">
                 <h4 style="color: #00FF88; font-size: 1.2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
                   <span style="background: rgba(0,255,136,0.2); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">CONCLUSION</span>
                   Investing in Control Automation as Strategic Infrastructure
@@ -2881,6 +3019,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 </p>
               </div>
 
+                </div><!-- End Main Content -->
+              </div><!-- End wp3-content-wrapper -->
             </div>
 
             <!-- Key Highlights Footer -->
@@ -2902,7 +3042,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             Coming Soon: Additional Resources
           </h2>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div class="resource-cards-grid">
             <!-- News & Insights -->
             <div style="background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%); padding: 20px; border-radius: 10px; border: 1px solid rgba(255, 215, 0, 0.15);">
               <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
@@ -3453,6 +3593,81 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       // Initial setup
       handleRegionChange();
       switchTool(currentTool);
+    })();
+  </script>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top-btn" onclick="scrollToTop()" aria-label="Back to top">
+    &#8593;
+  </button>
+
+  <script>
+    // Back to top button functionality
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Show/hide back to top button on scroll
+    window.addEventListener('scroll', function() {
+      const backToTopBtn = document.getElementById('backToTop');
+      if (window.scrollY > 500) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // TOC active link highlighting for whitepaper 3
+    (function() {
+      const tocLinks = document.querySelectorAll('.wp3-toc-link');
+      const sections = [];
+
+      // Collect all sections
+      tocLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const section = document.querySelector(href);
+          if (section) {
+            sections.push({ element: section, link: link });
+          }
+        }
+      });
+
+      // Update active link on scroll
+      function updateActiveLink() {
+        let currentSection = null;
+        const scrollPos = window.scrollY + 120; // Offset for sticky header
+
+        sections.forEach(({ element, link }) => {
+          const sectionTop = element.offsetTop;
+          const sectionBottom = sectionTop + element.offsetHeight;
+
+          if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+            currentSection = link;
+          }
+        });
+
+        // Update active class
+        tocLinks.forEach(link => link.classList.remove('active'));
+        if (currentSection) {
+          currentSection.classList.add('active');
+        }
+      }
+
+      // Throttle scroll events
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            updateActiveLink();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // Initial check
+      updateActiveLink();
     })();
   </script>
 
