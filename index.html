@@ -4,19 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BeeTech | Data Center Infrastructure Consulting & Cooling Solutions</title>
-  <meta name="description" content="BeeTech provides technology consulting and specialized cooling infrastructure solutions for data centers. Advisory, procurement, and execution services for critical infrastructure including liquid cooling systems and thermal management solutions."/>
-  <meta name="keywords" content="data center consulting, cooling infrastructure, liquid cooling systems, thermal management, data center infrastructure, procurement advisory, infrastructure sourcing"/>
+  <meta name="description" content="BeeTech provides data center consulting, cooling infrastructure solutions, and free engineering calculators. Use our PUE calculator, WUE calculator, cooling ROI benchmarker, and power redundancy CAPEX tools. Advisory, procurement, and execution services for critical infrastructure."/>
+  <meta name="keywords" content="PUE calculator, WUE calculator, data center efficiency calculator, cooling ROI calculator, power redundancy calculator, CAPEX estimator, data center consulting, cooling infrastructure, liquid cooling systems, thermal management, embodied carbon calculator, data center sustainability tools, free cooling hours calculator"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://beetech.ai"/>
   <meta name="author" content="BeeTech"/>
   
   <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="BeeTech - Data Center Infrastructure Solutions"/>
-  <meta property="og:description" content="Expert OT platform consulting and specialized cooling infrastructure products for next-generation data centers."/>
+  <meta property="og:title" content="BeeTech - Data Center Infrastructure Solutions & Engineering Calculators"/>
+  <meta property="og:description" content="Free PUE, WUE, cooling ROI, and power CAPEX calculators. Expert data center consulting and cooling infrastructure solutions."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://beetech.ai"/>
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="application-name" content="BeeTech DC Engineering Tools"/>
+  <meta name="subject" content="Data Center Engineering Calculators and Consulting"/>
+  <meta name="rating" content="General"/>
+  <meta name="referrer" content="origin-when-cross-origin"/>
   
-  <!-- Schema.org Structured Data -->
+  <!-- Schema.org Structured Data - Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,7 +33,7 @@
     "email": "hello@beetech.ai",
     "areaServed": "Global",
     "serviceType": ["Technology Consulting", "Cooling Infrastructure Products"],
-    "knowsAbout": ["liquid cooling", "thermal management", "infrastructure sourcing", "cooling systems"],
+    "knowsAbout": ["liquid cooling", "thermal management", "infrastructure sourcing", "cooling systems", "PUE optimization", "WUE reduction", "data center sustainability"],
     "offers": [
       {
         "@type": "Service",
@@ -35,9 +41,131 @@
         "description": "Advisory, procurement, and execution for operational technology platforms"
       },
       {
-        "@type": "Product", 
+        "@type": "Product",
         "name": "Cooling Infrastructure Components",
         "description": "Enterprise-grade cooling infrastructure solutions for mission-critical data center deployments"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Structured Data - Software Tools -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BeeTech DC Engineering Calculator Suite",
+    "description": "Free online data center engineering calculators for PUE, WUE, embodied carbon, cooling system ROI, and power redundancy CAPEX estimation",
+    "url": "https://beetech.ai/#resources",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "BeeTech"
+    },
+    "featureList": [
+      "PUE (Power Usage Effectiveness) Calculator",
+      "WUE (Water Usage Effectiveness) Calculator",
+      "Embodied Carbon Impact Calculator",
+      "Cooling System ROI Benchmarker",
+      "Free Cooling Hours Estimator by Region",
+      "Power Redundancy CAPEX Multiplier",
+      "Tier I/II/III Infrastructure Cost Estimator"
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Structured Data - How-To for Calculator Usage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Calculate Data Center PUE Savings",
+    "description": "Use BeeTech's free PUE calculator to estimate annual operational cost savings and CO2 reduction from improving your data center's Power Usage Effectiveness",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Enter IT Load Capacity",
+        "text": "Input your total critical IT power capacity in kilowatts (kW)"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Set Load Factor",
+        "text": "Enter your average annual utilization percentage (typically 70-90%)"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Input Energy Cost",
+        "text": "Enter your energy cost per kilowatt-hour ($/kWh)"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Compare PUE Values",
+        "text": "Enter your current baseline PUE and target PUE to calculate potential savings"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Review Results",
+        "text": "View calculated annual OpEx savings, CO2e reduction, and water savings"
+      }
+    ],
+    "tool": {
+      "@type": "HowToTool",
+      "name": "BeeTech PUE Calculator"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQ for Calculator Tools -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is PUE and how do I calculate it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PUE (Power Usage Effectiveness) is the ratio of total facility energy to IT equipment energy. A PUE of 1.0 means all power goes to computing. Use our free PUE calculator to estimate savings from improving your data center's efficiency from a baseline PUE to a target PUE."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much can I save by reducing my data center's PUE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Savings depend on your IT load, energy cost, and PUE improvement. For a 10MW facility at $0.10/kWh, reducing PUE from 1.5 to 1.2 can save over $2.6 million annually in energy costs and reduce CO2 emissions by over 10,000 tonnes per year."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is WUE and why does it matter for data centers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WUE (Water Usage Effectiveness) measures how efficiently a data center uses water for cooling, expressed in liters per kilowatt-hour. Lower WUE means less water consumption. Our WUE calculator helps you estimate water savings from implementing more efficient cooling strategies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I estimate cooling system ROI for my data center?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use our Cooling System ROI Benchmarker to compare chiller-only operation versus free cooling strategies. Enter your IT load, chiller efficiency, and regional climate to calculate annual energy savings from economizer or free cooling hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the cost difference between Tier I, II, and III data center power infrastructure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tier I (N) requires 1x capacity, Tier II (N+1) requires 1.5x capacity, and Tier III (2N) requires 2x capacity for UPS and generator systems. Use our Power Redundancy CAPEX calculator to estimate infrastructure costs based on your power load and redundancy requirements."
+        }
       }
     ]
   }
@@ -729,6 +857,341 @@
       .cta-btn { font-size: 0.9rem; }
       .home-section > div > div { grid-template-columns: 1fr !important; }
     }
+
+    /* DC ENGINEERING TOOL SUITE STYLES */
+    .tool-suite-container {
+      background: linear-gradient(135deg, rgba(10,29,55,0.95) 0%, rgba(0,0,0,0.98) 100%);
+      border-radius: 16px;
+      padding: 32px;
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+    }
+
+    .tool-suite-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .tool-suite-header h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--bee-gold);
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .tool-suite-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+    }
+
+    /* Tool Navigation Tabs */
+    .tool-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+      padding-bottom: 16px;
+    }
+
+    .tab-button {
+      padding: 12px 20px;
+      border-radius: 8px 8px 0 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .tab-button:hover {
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--bee-gold);
+    }
+
+    .tab-button.active {
+      background: var(--bee-gold);
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* Tool Panels */
+    .tool-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .tool-content-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tool-input-panel, .tool-result-panel {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .tool-panel-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--bee-gold);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    /* Input Styling */
+    .dc-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .dc-input:focus {
+      outline: none;
+      border-color: var(--bee-gold);
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+    }
+
+    .dc-input::placeholder {
+      color: rgba(255,255,255,0.4);
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 8px;
+    }
+
+    .input-group .input-help {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 6px;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .input-section {
+      border-top: 1px solid rgba(255, 215, 0, 0.15);
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+
+    .input-section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .input-section-title.green { color: #00FF88; }
+    .input-section-title.gold { color: var(--bee-gold); }
+    .input-section-title.orange { color: #FFA500; }
+
+    /* Execute Button */
+    .execute-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      color: #000;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+      transition: all 0.3s;
+      margin-top: 24px;
+    }
+
+    .execute-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+    }
+
+    /* Result Boxes */
+    .result-section {
+      margin-bottom: 20px;
+    }
+
+    .result-section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .result-section-title.green { color: #00FF88; }
+    .result-section-title.gold { color: var(--bee-gold); }
+    .result-section-title.orange { color: #FFA500; }
+
+    .result-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.3);
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 4px solid;
+    }
+
+    .result-box.green { border-color: #00FF88; }
+    .result-box.gold { border-color: var(--bee-gold); }
+    .result-box.orange { border-color: #FFA500; }
+    .result-box.blue { border-color: #60A5FA; }
+
+    .result-box .label {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+
+    .result-box .value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      font-family: 'SFMono-Regular', Consolas, monospace;
+    }
+
+    .result-box.green .value { color: #00FF88; }
+    .result-box.gold .value { color: var(--bee-gold); }
+    .result-box.orange .value { color: #FFA500; }
+    .result-box.blue .value { color: #60A5FA; }
+
+    .result-highlight {
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
+    .result-highlight .label {
+      color: rgba(0,0,0,0.7);
+      font-weight: 600;
+    }
+
+    .result-highlight .value {
+      color: #000;
+      font-size: 1.5rem;
+    }
+
+    /* Tool Content Areas */
+    .tool-content {
+      display: none;
+    }
+
+    .tool-content.active {
+      display: block;
+    }
+
+    .result-content {
+      display: none;
+    }
+
+    .result-content.active {
+      display: block;
+    }
+
+    /* Redundancy Selection */
+    .redundancy-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .redundancy-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.05);
+      padding: 12px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+
+    .redundancy-option:hover {
+      background: rgba(255, 215, 0, 0.1);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .redundancy-option input {
+      accent-color: var(--bee-gold);
+    }
+
+    .redundancy-option span {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    /* Description boxes for cooling tool */
+    .desc-box {
+      background: rgba(255,255,255,0.03);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      margin-top: 12px;
+    }
+
+    .desc-box p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    /* Error Message */
+    .tool-error {
+      display: none;
+      background: rgba(255, 59, 92, 0.2);
+      border: 1px solid var(--bee-red);
+      color: #FF6B8A;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .tool-error.show {
+      display: block;
+    }
+
+    /* Annual Energy Display */
+    .energy-display {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 16px;
+    }
+
+    .energy-display .value {
+      color: var(--bee-gold);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
@@ -1341,29 +1804,327 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           </div>
         </div>
 
-        <!-- Tools & Calculators -->
-        <div style="margin-bottom: 40px;">
-          <h3 style="color: var(--bee-gold); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
-            🔧 Tools & Calculators
-          </h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
-            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
-              <div style="font-size: 2.5rem; margin-bottom: 12px;">⚡</div>
-              <h4 style="color: white; margin-bottom: 12px; font-size: 1.1rem;">Cooling Capacity Calculator</h4>
-              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Estimate your cooling requirements based on rack density and heat load.</p>
-              <div style="color: var(--bee-gold); font-weight: 600; font-size: 0.9rem;">Coming Soon</div>
+        <!-- DC Engineering Tool Suite -->
+        <div style="margin-bottom: 40px;" id="calculators">
+          <h2 style="color: var(--bee-gold); margin-bottom: 24px; font-size: 1.8rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
+            Free Data Center Engineering Calculators
+          </h2>
+
+          <!-- SEO Content Block -->
+          <div style="background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 1px solid rgba(255, 215, 0, 0.1);">
+            <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; line-height: 1.7; margin-bottom: 16px;">
+              <strong style="color: var(--bee-gold);">Calculate your data center efficiency savings</strong> with our free online engineering tools. Whether you're optimizing <strong>PUE (Power Usage Effectiveness)</strong>, reducing <strong>WUE (Water Usage Effectiveness)</strong>, evaluating <strong>cooling system ROI</strong>, or estimating <strong>power infrastructure CAPEX</strong>, our calculators provide instant results for critical infrastructure planning.
+            </p>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6;">
+              Used by data center engineers, facility managers, and infrastructure planners worldwide to model energy savings, carbon reduction, and capital expenditure for Tier I, II, and III facilities. No signup required - start calculating immediately.
+            </p>
+          </div>
+
+          <div class="tool-suite-container">
+            <div class="tool-suite-header">
+              <h3>Mission Control Calculator Suite</h3>
+              <p>Rapid modeling for efficiency, cost, and critical infrastructure planning.</p>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
-              <div style="font-size: 2.5rem; margin-bottom: 12px;">💰</div>
-              <h4 style="color: white; margin-bottom: 12px; font-size: 1.1rem;">TCO Savings Estimator</h4>
-              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Calculate potential cost savings through optimized procurement strategies.</p>
-              <div style="color: var(--bee-gold); font-weight: 600; font-size: 0.9rem;">Coming Soon</div>
+
+            <!-- Tool Navigation Tabs -->
+            <div class="tool-tabs">
+              <button data-tool="sustainability" class="tab-button active">
+                1. PUE, WUE & Embodied Carbon
+              </button>
+              <button data-tool="cooling-roi" class="tab-button">
+                2. Cooling System ROI
+              </button>
+              <button data-tool="power-capex" class="tab-button">
+                3. Power Redundancy CAPEX
+              </button>
             </div>
-            <div style="background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.2); text-align: center;">
-              <div style="font-size: 2.5rem; margin-bottom: 12px;">📊</div>
-              <h4 style="color: white; margin-bottom: 12px; font-size: 1.1rem;">Infrastructure Assessment</h4>
-              <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px;">Quick assessment tool to identify optimization opportunities in your facility.</p>
-              <div style="color: var(--bee-gold); font-weight: 600; font-size: 0.9rem;">Coming Soon</div>
+
+            <div class="tool-content-wrapper">
+              <!-- Input Panel -->
+              <div class="tool-input-panel">
+                <h4 id="toolTitle" class="tool-panel-title">1. PUE, WUE & Embodied Carbon Impact</h4>
+
+                <form id="toolForm">
+                  <!-- Tool 1: Sustainability Impact -->
+                  <div id="tool-sustainability" class="tool-content active">
+                    <div class="input-grid">
+                      <div class="input-group">
+                        <label for="itLoadKW">IT Load Capacity (kW)</label>
+                        <input type="number" id="itLoadKW" value="11415" min="0" step="100" class="dc-input" placeholder="e.g., 10,000 kW">
+                        <p class="input-help">Total critical IT power capacity (P_IT).</p>
+                      </div>
+                      <div class="input-group">
+                        <label for="loadFactor">Annual Load Factor (%)</label>
+                        <input type="number" id="loadFactor" value="90" min="1" max="100" step="1" class="dc-input" placeholder="e.g., 90">
+                        <p class="input-help">Average annual utilization.</p>
+                      </div>
+                    </div>
+
+                    <div class="input-section">
+                      <div class="input-grid">
+                        <div class="input-group">
+                          <label for="costPerKWh">Energy Cost ($/kWh)</label>
+                          <input type="number" id="costPerKWh" value="0.10" min="0.01" step="0.01" class="dc-input">
+                        </div>
+                        <div class="input-group">
+                          <label for="baselinePUE">Baseline PUE</label>
+                          <input type="number" id="baselinePUE" value="1.50" min="1.00" step="0.01" class="dc-input">
+                        </div>
+                        <div class="input-group">
+                          <label for="targetPUE">Target PUE</label>
+                          <input type="number" id="targetPUE" value="1.20" min="1.00" step="0.01" class="dc-input">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="input-section">
+                      <h5 class="input-section-title gold">WUE (Water Usage Effectiveness)</h5>
+                      <div class="input-grid">
+                        <div class="input-group">
+                          <label for="baselineWUE">Baseline WUE (L/kWh)</label>
+                          <input type="number" id="baselineWUE" value="1.5" min="0" step="0.1" class="dc-input">
+                        </div>
+                        <div class="input-group">
+                          <label for="targetWUE">Target WUE (L/kWh)</label>
+                          <input type="number" id="targetWUE" value="0.2" min="0" step="0.1" class="dc-input">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="input-section">
+                      <h5 class="input-section-title orange">Embodied Carbon (Materials)</h5>
+                      <div class="input-grid">
+                        <div class="input-group">
+                          <label for="materialVolume">Total Material Volume (m3)</label>
+                          <input type="number" id="materialVolume" value="5000" min="0" step="100" class="dc-input">
+                          <p class="input-help">Volume of high-impact material for substitution.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="baselineEC">Baseline EC Factor (kg CO2e/m3)</label>
+                          <input type="number" id="baselineEC" value="400" min="0" step="10" class="dc-input">
+                          <p class="input-help">Standard ready-mix concrete factor.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="targetEC">Target EC Factor (kg CO2e/m3)</label>
+                          <input type="number" id="targetEC" value="250" min="0" step="10" class="dc-input">
+                          <p class="input-help">Low-carbon/fly-ash concrete factor.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Tool 2: Cooling System ROI -->
+                  <div id="tool-cooling-roi" class="tool-content">
+                    <div class="input-grid">
+                      <div class="input-group">
+                        <label for="totalITLoadMW">Total IT Load Capacity (MW)</label>
+                        <input type="number" id="totalITLoadMW" value="10" min="1" step="1" class="dc-input">
+                        <p class="input-help">IT power capacity for cooling calculations.</p>
+                      </div>
+                      <div class="input-group">
+                        <label for="coolingLoadFactor">Annual Load Factor (%)</label>
+                        <input type="number" id="coolingLoadFactor" value="90" min="1" max="100" step="1" class="dc-input">
+                      </div>
+                    </div>
+
+                    <div class="input-section">
+                      <div class="input-group">
+                        <label for="pueFactor">DC PUE Factor</label>
+                        <input type="number" id="pueFactor" value="1.20" min="1.00" step="0.01" class="dc-input">
+                        <p class="input-help">Used to calculate total site power consumption.</p>
+                      </div>
+                    </div>
+
+                    <div class="input-section">
+                      <h5 class="input-section-title green">Cooling System Parameters</h5>
+                      <div class="input-grid">
+                        <div class="input-group">
+                          <label for="chillerEfficiency">Chiller Efficiency (kW/Ton)</label>
+                          <input type="number" id="chillerEfficiency" value="0.55" min="0.3" step="0.01" class="dc-input">
+                          <div class="desc-box">
+                            <p>Lower is better. Typical: Air-cooled (0.60-0.70). High-efficiency water-cooled (0.40-0.50).</p>
+                          </div>
+                        </div>
+                        <div class="input-group">
+                          <label for="coolingRegion">Regional Climate Profile</label>
+                          <select id="coolingRegion" class="dc-input">
+                            <option value="custom">-- Custom Hours --</option>
+                            <option value="northern_europe">Northern Europe (London, FRA)</option>
+                            <option value="mid_atlantic_us">Mid-Atlantic US (Virginia)</option>
+                            <option value="us_midwest">US Midwest (Chicago)</option>
+                            <option value="us_southwest">US Southwest (Phoenix)</option>
+                            <option value="southeast_asia">Southeast Asia (Singapore)</option>
+                          </select>
+                          <div class="desc-box">
+                            <p>Colder climates provide more hours for free cooling, maximizing OpEx savings.</p>
+                          </div>
+                        </div>
+                        <div class="input-group">
+                          <label for="freeCoolingHours">Annual Free Cooling Hours</label>
+                          <input type="number" id="freeCoolingHours" value="5000" min="0" max="8760" step="100" class="dc-input">
+                          <div class="desc-box">
+                            <p>Hours/year ambient air can handle heat load without main chiller system.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Tool 3: Power Redundancy CAPEX -->
+                  <div id="tool-power-capex" class="tool-content">
+                    <div class="input-grid">
+                      <div class="input-group">
+                        <label for="estimatedPowerLoad">Estimated Critical Power Load (kW)</label>
+                        <input type="number" id="estimatedPowerLoad" value="8000" min="100" step="100" class="dc-input">
+                        <p class="input-help">Total required IT + support power capacity.</p>
+                      </div>
+                      <div class="input-group">
+                        <label for="baseCostPerKW">Baseline Equipment Cost ($/kW)</label>
+                        <input type="number" id="baseCostPerKW" value="800" min="100" step="50" class="dc-input">
+                        <p class="input-help">Baseline cost for N capacity of UPS/Generator hardware.</p>
+                      </div>
+                    </div>
+
+                    <div class="input-section">
+                      <h5 class="input-section-title orange">Redundancy Selection (Tier Level)</h5>
+                      <div class="redundancy-options">
+                        <label class="redundancy-option">
+                          <input type="radio" name="redundancy" value="1.0" checked>
+                          <span>Tier I / N (1.0x)</span>
+                        </label>
+                        <label class="redundancy-option">
+                          <input type="radio" name="redundancy" value="1.5">
+                          <span>Tier II / N+1 (1.5x)</span>
+                        </label>
+                        <label class="redundancy-option">
+                          <input type="radio" name="redundancy" value="2.0">
+                          <span>Tier III / 2N (2.0x)</span>
+                        </label>
+                      </div>
+                      <p class="input-help" style="margin-top: 12px;">Multiplier accounts for redundant equipment capacity for maintenance and fault tolerance.</p>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="execute-btn">Execute Calculation</button>
+                </form>
+
+                <div id="toolError" class="tool-error">
+                  Please ensure all inputs are valid positive numbers, PUE >= 1.00, and Target values are less than Baseline where applicable.
+                </div>
+              </div>
+
+              <!-- Result Panel -->
+              <div class="tool-result-panel">
+                <h4 class="tool-panel-title">Results Summary</h4>
+
+                <!-- Tool 1 Results -->
+                <div id="result-sustainability" class="result-content active">
+                  <div class="result-section">
+                    <h5 class="result-section-title green">PUE Operational Savings</h5>
+                    <p class="energy-display">Annual IT Energy: <span id="annualEnergyKWhDisplay" class="value">0 kWh/yr</span></p>
+                    <div class="result-box green">
+                      <span class="label">ANNUAL OPEX SAVINGS</span>
+                      <span id="pueDollarSavings" class="value">$0</span>
+                    </div>
+                    <div class="result-box green">
+                      <span class="label">ANNUAL CO2e REDUCTION</span>
+                      <span id="pueCarbonSavings" class="value">0 Tonnes</span>
+                    </div>
+                  </div>
+
+                  <div class="result-section">
+                    <h5 class="result-section-title gold">WUE & Embodied Carbon</h5>
+                    <div class="result-box gold">
+                      <span class="label">ANNUAL WATER SAVINGS</span>
+                      <span id="wueWaterSavings" class="value">0 Liters</span>
+                    </div>
+                    <div class="result-box orange">
+                      <span class="label">EMBODIED CARBON AVOIDED</span>
+                      <span id="ecCarbonSavings" class="value">0 Tonnes</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tool 2 Results -->
+                <div id="result-cooling-roi" class="result-content">
+                  <div class="result-section">
+                    <h5 class="result-section-title green">Cooling System OpEx Comparison</h5>
+                    <p class="energy-display">Annual energy consumption based on cooling strategy:</p>
+                    <div class="result-box green">
+                      <span class="label">CHILLER-ONLY (MWh)</span>
+                      <span id="chillerEnergyAnnual" class="value">0</span>
+                    </div>
+                    <div class="result-box green">
+                      <span class="label">FREE COOLING OPTIMIZED (MWh)</span>
+                      <span id="optimizedEnergyAnnual" class="value">0</span>
+                    </div>
+                    <div class="result-highlight">
+                      <span class="label">ANNUAL ENERGY SAVINGS</span>
+                      <span id="coolingSavingsDollar" class="value">$0</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tool 3 Results -->
+                <div id="result-power-capex" class="result-content">
+                  <div class="result-section">
+                    <h5 class="result-section-title orange">Critical Power CAPEX Estimate</h5>
+                    <p class="energy-display">Estimated cost for UPS & Generator systems based on redundancy tier.</p>
+                    <div class="result-box orange">
+                      <span class="label">CALCULATED CAPACITY NEEDED</span>
+                      <span id="calculatedCapacity" class="value">0 kW</span>
+                    </div>
+                    <div class="result-box orange">
+                      <span class="label">BASELINE COST (N CAPACITY)</span>
+                      <span id="baseCostTotal" class="value">$0</span>
+                    </div>
+                    <div class="result-highlight">
+                      <span class="label">TOTAL ESTIMATED CAPEX</span>
+                      <span id="capexTotal" class="value">$0</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calculator FAQ Section for SEO -->
+          <div style="margin-top: 32px; background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); padding: 28px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.1);">
+            <h3 style="color: var(--bee-gold); margin-bottom: 20px; font-size: 1.4rem;">Frequently Asked Questions About Data Center Efficiency Calculators</h3>
+
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,215,0,0.1);">
+              <h4 style="color: white; margin-bottom: 10px; font-size: 1.1rem;">What is PUE and how do I calculate data center PUE savings?</h4>
+              <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.6;">
+                PUE (Power Usage Effectiveness) is the ratio of total facility energy to IT equipment energy. A PUE of 1.0 means 100% of power goes to computing with zero overhead. Industry average PUE is around 1.58, while best-in-class facilities achieve 1.1-1.2. Use our free PUE calculator above to estimate annual OpEx savings and CO2 reduction from improving your data center's efficiency.
+              </p>
+            </div>
+
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,215,0,0.1);">
+              <h4 style="color: white; margin-bottom: 10px; font-size: 1.1rem;">How much money can I save by reducing my data center's PUE?</h4>
+              <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.6;">
+                Savings scale with your IT load and energy costs. For example, a 10MW data center at $0.10/kWh reducing PUE from 1.5 to 1.2 can save over $2.6 million annually in energy costs alone, while reducing carbon emissions by more than 10,000 tonnes CO2e per year. Enter your specific values in our calculator to get personalized results.
+              </p>
+            </div>
+
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,215,0,0.1);">
+              <h4 style="color: white; margin-bottom: 10px; font-size: 1.1rem;">What is WUE and why does water efficiency matter for data centers?</h4>
+              <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.6;">
+                WUE (Water Usage Effectiveness) measures cooling water consumption in liters per kilowatt-hour of IT load. With increasing focus on sustainability and water scarcity concerns, reducing WUE is critical for ESG compliance and operational resilience. Our WUE calculator helps you quantify water savings from transitioning to more efficient cooling systems.
+              </p>
+            </div>
+
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,215,0,0.1);">
+              <h4 style="color: white; margin-bottom: 10px; font-size: 1.1rem;">How do I calculate cooling system ROI and free cooling potential?</h4>
+              <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.6;">
+                Free cooling (economizer) hours vary dramatically by climate region - from 500 hours/year in Singapore to 6,500+ hours in Northern Europe. Our Cooling System ROI Benchmarker calculates annual energy savings by comparing year-round chiller operation versus optimized free cooling strategies based on your location and chiller efficiency.
+              </p>
+            </div>
+
+            <div>
+              <h4 style="color: white; margin-bottom: 10px; font-size: 1.1rem;">What's the CAPEX difference between Tier I, II, and III data center power infrastructure?</h4>
+              <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.6;">
+                Data center tier levels determine redundancy requirements: Tier I (N) has no redundancy, Tier II (N+1) adds 50% spare capacity, and Tier III (2N) doubles all critical power infrastructure. Use our Power Redundancy CAPEX calculator to estimate UPS and generator costs based on your power requirements and uptime SLA needs.
+              </p>
             </div>
           </div>
         </div>
@@ -1533,6 +2294,252 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         closeMenu();
       }
     });
+
+    // ============================================
+    // DC ENGINEERING TOOL SUITE FUNCTIONALITY
+    // ============================================
+    (function() {
+      // Only initialize if tool suite exists on page
+      const toolForm = document.getElementById('toolForm');
+      if (!toolForm) return;
+
+      const tabs = document.querySelectorAll('.tool-tabs .tab-button');
+      const toolContents = document.querySelectorAll('.tool-content');
+      const resultContents = document.querySelectorAll('.result-content');
+      const toolTitle = document.getElementById('toolTitle');
+      const errorElement = document.getElementById('toolError');
+      const coolingRegionSelect = document.getElementById('coolingRegion');
+      const freeCoolingHoursInput = document.getElementById('freeCoolingHours');
+
+      // Constants
+      const KWH_PER_MWH = 1000;
+      const HOURS_PER_YEAR = 8760;
+      const GRID_EMISSION_FACTOR_KG_PER_KWH = 0.4;
+      const KG_PER_TONNE = 1000;
+      const TONS_PER_KW = 0.2843;
+
+      // Regional Free Cooling Hours Data
+      const freeCoolingData = new Map([
+        ['custom', 5000],
+        ['northern_europe', 6500],
+        ['mid_atlantic_us', 3500],
+        ['us_midwest', 4500],
+        ['us_southwest', 1500],
+        ['southeast_asia', 500]
+      ]);
+
+      let currentTool = 'sustainability';
+
+      // Format numbers
+      const formatNumber = (value, type = 'number', decimals = 0) => {
+        if (isNaN(value)) return type === 'currency' ? '$0' : '0';
+        if (type === 'currency') {
+          return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: decimals }).format(value);
+        }
+        return value.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      };
+
+      // Switch between tools
+      const switchTool = (toolName) => {
+        currentTool = toolName;
+
+        // Update tabs
+        tabs.forEach(tab => {
+          tab.classList.remove('active');
+          if (tab.dataset.tool === toolName) {
+            tab.classList.add('active');
+            toolTitle.textContent = tab.textContent.trim();
+          }
+        });
+
+        // Update input content
+        toolContents.forEach(content => {
+          content.classList.remove('active');
+          if (content.id === `tool-${toolName}`) {
+            content.classList.add('active');
+          }
+        });
+
+        // Update result content
+        resultContents.forEach(content => {
+          content.classList.remove('active');
+          if (content.id === `result-${toolName}`) {
+            content.classList.add('active');
+          }
+        });
+
+        calculateImpact();
+      };
+
+      // Main calculation dispatcher
+      const calculateImpact = () => {
+        errorElement.classList.remove('show');
+
+        if (currentTool === 'sustainability') {
+          calculateSustainability();
+        } else if (currentTool === 'cooling-roi') {
+          calculateCoolingROI();
+        } else if (currentTool === 'power-capex') {
+          calculatePowerCAPEX();
+        }
+      };
+
+      // Handle region selection
+      const handleRegionChange = () => {
+        const selectedRegion = coolingRegionSelect.value;
+        const hours = freeCoolingData.get(selectedRegion);
+
+        if (selectedRegion === 'custom') {
+          freeCoolingHoursInput.removeAttribute('readonly');
+          freeCoolingHoursInput.value = hours;
+        } else {
+          freeCoolingHoursInput.value = hours;
+          freeCoolingHoursInput.setAttribute('readonly', 'readonly');
+        }
+        calculateImpact();
+      };
+
+      // Tool 1: Sustainability Impact Calculator
+      const calculateSustainability = () => {
+        const itLoadKW = parseFloat(document.getElementById('itLoadKW').value) || 0;
+        const loadFactorPercent = parseFloat(document.getElementById('loadFactor').value) || 0;
+        const costPerKWh = parseFloat(document.getElementById('costPerKWh').value) || 0;
+        const baselinePUE = parseFloat(document.getElementById('baselinePUE').value) || 0;
+        const targetPUE = parseFloat(document.getElementById('targetPUE').value) || 0;
+        const baselineWUE = parseFloat(document.getElementById('baselineWUE').value) || 0;
+        const targetWUE = parseFloat(document.getElementById('targetWUE').value) || 0;
+        const materialVolume = parseFloat(document.getElementById('materialVolume').value) || 0;
+        const baselineEC = parseFloat(document.getElementById('baselineEC').value) || 0;
+        const targetEC = parseFloat(document.getElementById('targetEC').value) || 0;
+
+        const loadFactor = loadFactorPercent / 100;
+
+        // Validation
+        if (itLoadKW <= 0 || loadFactor <= 0 || costPerKWh <= 0 || baselinePUE < 1.0 || targetPUE < 1.0 || targetPUE >= baselinePUE) {
+          errorElement.classList.add('show');
+          return;
+        }
+
+        // Calculate Annual IT Energy Consumption (kWh)
+        const itLoadKWh = itLoadKW * HOURS_PER_YEAR * loadFactor;
+
+        // Display calculated annual energy
+        document.getElementById('annualEnergyKWhDisplay').textContent = `${formatNumber(itLoadKWh, 'number', 0)} kWh/yr`;
+
+        // PUE Impact
+        const baselineOverheadKWh = itLoadKWh * (baselinePUE - 1);
+        const targetOverheadKWh = itLoadKWh * (targetPUE - 1);
+
+        const annualEnergySavingsKWh = baselineOverheadKWh - targetOverheadKWh;
+        const annualCarbonSavingsTonnes = (annualEnergySavingsKWh * GRID_EMISSION_FACTOR_KG_PER_KWH) / KG_PER_TONNE;
+        const annualDollarSavings = annualEnergySavingsKWh * costPerKWh;
+
+        document.getElementById('pueDollarSavings').textContent = formatNumber(annualDollarSavings, 'currency', 0);
+        document.getElementById('pueCarbonSavings').textContent = `${formatNumber(annualCarbonSavingsTonnes, 'number', 1)} Tonnes`;
+
+        // WUE Impact
+        const baselineWaterLiters = itLoadKWh * baselineWUE;
+        const targetWaterLiters = itLoadKWh * targetWUE;
+        const annualWaterSavingsLiters = baselineWaterLiters - targetWaterLiters;
+
+        document.getElementById('wueWaterSavings').textContent = `${formatNumber(annualWaterSavingsLiters, 'number', 0)} Liters`;
+
+        // Embodied Carbon Impact
+        const ecReductionFactor = baselineEC - targetEC;
+        const totalCarbonAvoidedKg = materialVolume * ecReductionFactor;
+        const totalCarbonAvoidedTonnes = totalCarbonAvoidedKg / KG_PER_TONNE;
+
+        document.getElementById('ecCarbonSavings').textContent = `${formatNumber(totalCarbonAvoidedTonnes, 'number', 1)} Tonnes`;
+      };
+
+      // Tool 2: Cooling System ROI Benchmarker
+      const calculateCoolingROI = () => {
+        const totalITLoadMW = parseFloat(document.getElementById('totalITLoadMW').value) || 0;
+        const coolingLoadFactorPercent = parseFloat(document.getElementById('coolingLoadFactor').value) || 0;
+        const pueFactor = parseFloat(document.getElementById('pueFactor').value) || 0;
+        const costPerKWh = parseFloat(document.getElementById('costPerKWh').value) || 0;
+        const chillerEfficiency = parseFloat(document.getElementById('chillerEfficiency').value) || 0;
+        const freeCoolingHours = parseFloat(freeCoolingHoursInput.value) || 0;
+
+        const coolingLoadFactor = coolingLoadFactorPercent / 100;
+        const totalITLoadKW = totalITLoadMW * KWH_PER_MWH;
+
+        // Validation
+        if (totalITLoadMW <= 0 || coolingLoadFactor <= 0 || pueFactor < 1.0 || costPerKWh <= 0 || chillerEfficiency <= 0 || freeCoolingHours < 0) {
+          errorElement.classList.add('show');
+          return;
+        }
+
+        // Calculate annual IT energy
+        const annualITEnergyKWh = totalITLoadKW * HOURS_PER_YEAR * coolingLoadFactor;
+
+        // Cooling Load (Tons) calculation based on capacity
+        const coolingLoadTonsCapacity = totalITLoadKW * TONS_PER_KW;
+
+        // Chiller Power
+        const chillerPowerKWCapacity = coolingLoadTonsCapacity * chillerEfficiency;
+
+        // Chiller-Only Strategy
+        const chillerAnnualEnergyKWh = chillerPowerKWCapacity * HOURS_PER_YEAR * coolingLoadFactor;
+
+        // Optimized Strategy
+        const chillerOperatingHours = HOURS_PER_YEAR - freeCoolingHours;
+        const optimizedAnnualEnergyKWh = chillerPowerKWCapacity * chillerOperatingHours * coolingLoadFactor;
+
+        // Savings
+        const annualEnergySavingsKWh = chillerAnnualEnergyKWh - optimizedAnnualEnergyKWh;
+        const annualDollarSavings = annualEnergySavingsKWh * costPerKWh;
+
+        document.getElementById('chillerEnergyAnnual').textContent = `${formatNumber(chillerAnnualEnergyKWh / KWH_PER_MWH, 'number', 0)} MWh`;
+        document.getElementById('optimizedEnergyAnnual').textContent = `${formatNumber(optimizedAnnualEnergyKWh / KWH_PER_MWH, 'number', 0)} MWh`;
+        document.getElementById('coolingSavingsDollar').textContent = formatNumber(annualDollarSavings, 'currency', 0);
+      };
+
+      // Tool 3: Power Redundancy CAPEX Multiplier
+      const calculatePowerCAPEX = () => {
+        const estimatedPowerLoad = parseFloat(document.getElementById('estimatedPowerLoad').value) || 0;
+        const baseCostPerKW = parseFloat(document.getElementById('baseCostPerKW').value) || 0;
+        const redundancyMultiplier = parseFloat(document.querySelector('input[name="redundancy"]:checked').value) || 1.0;
+
+        // Validation
+        if (estimatedPowerLoad <= 0 || baseCostPerKW <= 0 || redundancyMultiplier < 1.0) {
+          errorElement.classList.add('show');
+          return;
+        }
+
+        // Base Cost
+        const baseCostTotal = estimatedPowerLoad * baseCostPerKW;
+
+        // Capacity Needed
+        const calculatedCapacityNeeded = estimatedPowerLoad * redundancyMultiplier;
+
+        // Total CAPEX
+        const capexTotal = calculatedCapacityNeeded * baseCostPerKW;
+
+        document.getElementById('calculatedCapacity').textContent = `${formatNumber(calculatedCapacityNeeded, 'number', 0)} kW`;
+        document.getElementById('baseCostTotal').textContent = formatNumber(baseCostTotal, 'currency', 0);
+        document.getElementById('capexTotal').textContent = formatNumber(capexTotal, 'currency', 0);
+      };
+
+      // Event Listeners
+      toolForm.addEventListener('input', calculateImpact);
+      toolForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        calculateImpact();
+      });
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => switchTool(tab.dataset.tool));
+      });
+
+      if (coolingRegionSelect) {
+        coolingRegionSelect.addEventListener('change', handleRegionChange);
+      }
+
+      // Initial setup
+      handleRegionChange();
+      switchTool(currentTool);
+    })();
   </script>
 
 </body>
