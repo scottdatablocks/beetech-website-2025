@@ -2218,7 +2218,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               #whitepaper2-toc + div,
               #whitepaper2-form-container,
               #whitepaper3-toc + div,
-              #whitepaper3-form-container {
+              #whitepaper3-form-container,
+              #whitepaper4-toc + div,
+              #whitepaper4-form-container {
                 border-right: none !important;
               }
               [style*="grid-template-columns: 1fr 1fr"] {
@@ -2226,7 +2228,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               }
               #whitepaper-toc,
               #whitepaper2-toc,
-              #whitepaper3-toc {
+              #whitepaper3-toc,
+              #whitepaper4-toc {
                 border-right: none !important;
                 border-bottom: 1px solid rgba(255,215,0,0.15);
               }
@@ -2856,13 +2859,13 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             </div>
           </div>
 
-          <!-- FOURTH WHITEPAPER: Edge-to-Cloud Data Ecosystem - FULL CONTENT VISIBLE -->
+          <!-- FOURTH WHITEPAPER: Edge-to-Cloud Data Ecosystem - WITH ACCORDION NAVIGATION -->
           <div style="background: linear-gradient(135deg, rgba(168,85,247,0.08) 0%, rgba(168,85,247,0.02) 100%); border-radius: 16px; border: 1px solid rgba(168, 85, 247, 0.25); overflow: hidden; margin-top: 32px;">
 
             <!-- Whitepaper 4 Header -->
             <div style="padding: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
               <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span style="background: #A855F7; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Full Article</span>
+                <span style="background: #A855F7; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
                 <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Architecture Document</span>
               </div>
               <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
@@ -2889,422 +2892,219 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
             </div>
 
-            <!-- Full Content Article -->
-            <div style="padding: 32px; max-width: 100%;">
+            <!-- Content Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
 
-              <!-- Executive Overview -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
-                <h4 style="color: #A855F7; font-size: 1.2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
-                  <span style="background: rgba(168,85,247,0.2); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">SECTION I</span>
-                  Executive Overview: Architecting for Industry 4.0
-                </h4>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  The increasing digitization of industrial operations, often referred to as Industry 4.0, mandates a fundamental shift in how data is processed, managed, and acted upon. The strategic imperative for adopting a distributed computing architecture stems directly from the critical need for <strong style="color: #A855F7;">real-time visibility</strong>, <strong style="color: #A855F7;">fine-grained control</strong>, and <strong style="color: #A855F7;">rapid analytical response</strong> within physical operational environments.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Traditional, centralized cloud models introduce inherent latencies that are incompatible with the strict timing requirements of modern industrial processes, such as robotic control or autonomous systems. Historically, industrial operations relied upon the Operational Technology (OT) pyramid model, characterized by proprietary solutions and significant barriers to information flow between hierarchical levels. This structure imposed severe restrictions on data movement and prevented the integration necessary for smart manufacturing.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  The prevailing architectural shift seeks to realize <strong style="color: white;">IT/OT convergence</strong> by adopting distributed models. This convergence, realized through architectures such as Fog Computing, moves computation, storage, and networking closer to the data source. By doing so, the architecture directly addresses the critical challenge of optimizing time-critical industrial processes, where a delayed response—even by milliseconds—can lead to dangerously unstable or compromised systems.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8;">
-                  The resulting infrastructure is best understood as an <strong style="color: #A855F7;">Edge-to-Cloud Continuum</strong>. This is defined as a system-level architecture that intentionally distributes resources and services—including computing, storage, control, and networking—anywhere along the spectrum from the centralized Cloud to the interconnected Things (IoT devices). This strategic distribution fundamentally alters the control paradigm, shifting it from a slow, centralized model to a highly agile, localized model where latency constraints are met at the network edge. Therefore, the physical constraints and performance demands of the operational environment become the primary drivers for the selection and design of the technological architecture.
-                </p>
-              </div>
+              <!-- Left: Table of Contents -->
+              <div style="padding: 28px 32px; border-right: 1px solid rgba(168,85,247,0.15);" id="whitepaper4-toc">
+                <h4 style="color: #A855F7; font-size: 0.9rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">What's Inside</h4>
 
-              <!-- Section II: Foundational Architecture -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
-                <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #A855F7;">
-                  Section II: Foundational Architecture: The Three-Tiered Continuum Model
-                </h4>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The Edge-to-Cloud Data Ecosystem is structured into three distinct yet interconnected tiers, each carrying specific responsibilities related to data generation, processing, and long-term analysis.
-                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <!-- Section 1: Executive Overview -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-1')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #A855F7; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">1. Executive Overview</span>
+                      <span style="color: #A855F7; font-size: 0.8rem;" id="wp4-sec-1-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-1" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        Industry 4.0 mandates a fundamental shift in data processing. The <strong style="color: #A855F7;">Edge-to-Cloud Continuum</strong> distributes computing, storage, and control from centralized cloud to IoT devices, enabling <strong style="color: #A855F7;">real-time visibility</strong>, <strong style="color: #A855F7;">fine-grained control</strong>, and IT/OT convergence through Fog Computing architectures.
+                      </p>
+                    </div>
+                  </div>
 
-                <h5 style="color: #A855F7; font-size: 1rem; margin-bottom: 12px;">A. Tier 1: The Device Layer (Physical Edge)</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  The Device Layer comprises the foundational hardware components that interact directly with the physical world. This includes sensors, actuators, Programmable Logic Controllers (PLCs), and other specialized equipment. Crucially, many modern devices integrate compute capacity directly, marking the true beginning of the distributed ecosystem.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  A critical consideration in the Industrial Internet of Things (IIoT) is <strong style="color: white;">hardware resilience</strong>. Industrial settings, such as factory floors, warehouses, and remote energy sites, are harsh environments characterized by significant environmental challenges. Edge devices deployed here must utilize <strong style="color: #A855F7;">ruggedized and fanless systems</strong>. A fanless design is essential to prevent contaminants like dust and debris from being drawn into the server, which significantly improves long-term reliability and longevity. Furthermore, ruggedization ensures systems can withstand vibration, shock, and temperature extremes, thereby minimizing costly downtime and maintenance requirements.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  Connectivity requirements at this layer are highly specific. The architecture must include locking connections or rugged connectors, such as M12, to ensure reliable communication in extreme environments, preventing inadvertent disconnections. Devices require a mixture of traditional serial ports (COM) to interface with legacy industrial equipment, alongside high-bandwidth LAN ports (1 GbE or 10 GbE) to support modern, data-intensive machinery.
-                </p>
+                  <!-- Section 2: Foundational Architecture -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-2')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #60A5FA; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">2. Three-Tiered Continuum Model</span>
+                      <span style="color: #60A5FA; font-size: 0.8rem;" id="wp4-sec-2-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-2" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 1 - Device Layer:</strong> Ruggedized sensors, PLCs, and actuators with M12 connectors for harsh industrial environments.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 2 - Fog/Gateway Layer:</strong> Distributed computing for real-time analytics, protocol translation, and security proxy functions.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 3 - Cloud Layer:</strong> Centralized storage, global ML models, and NOC-based system management.
+                      </p>
+                    </div>
+                  </div>
 
-                <h5 style="color: #60A5FA; font-size: 1rem; margin-bottom: 12px;">B. Tier 2: The Fog/Gateway Layer (Compute Edge)</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  The Fog/Gateway layer is the intermediate, distributed computing tier responsible for managing data flow, executing real-time analytics, and maintaining low-latency control. This tier operates based on the <strong style="color: #60A5FA;">Fog Computing model</strong>, a decentralized architecture situated between the IoT device layer and the centralized Cloud layer.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  <strong style="color: white;">The Fog Computing Paradigm:</strong> The function of Fog nodes is to host monitoring and control services that enable real-time data processing and analytics closer to the source. This location is crucial for providing low-latency control, essential for time-critical applications such as predictive maintenance, fault estimation, and real-time process adjustments. Fog nodes possess sufficient processing power to generate real-time data analytics with high availability.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Beyond mere data crunching, Fog nodes absorb raw data, perform local analytics, and actively communicate with neighboring nodes about their learning, ensuring all fog nodes can maintain a common, synchronized view of the system as a whole. They also transmit pre-processed local insights and decisions to the centralized cloud layer in the background.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  <strong style="color: white;">The Edge Gateway's Crucial Role:</strong> The Edge Gateway serves as the architectural chokepoint and the crucial link connecting resource-constrained IoT devices to the broader edge infrastructure. One of its primary technical functions is <strong style="color: #60A5FA;">protocol translation</strong>, converting the diverse array of proprietary and standard IoT protocols used by devices into aggregated data formats suitable for processing by the edge infrastructure.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The gateway also plays a significant role as a <strong style="color: #60A5FA;">security proxy</strong>. It is capable of distributing security services across multiple edge nodes, acting as a defense line that identifies trusted access through robust authentication. By pre-processing and aggregating data locally, the gateway reduces the overall volume of data transmission required, which minimizes the likelihood of confidential information being intercepted by third parties during transmission to the cloud.
-                </p>
+                  <!-- Section 3: Protocol Selection -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-3')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--bee-gold); transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">3. Industrial Protocol Selection</span>
+                      <span style="color: var(--bee-gold); font-size: 0.8rem;" id="wp4-sec-3-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-3" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">MQTT/Sparkplug:</strong> Broker-centric pub/sub for millions of devices with minimal bandwidth overhead.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">OPC UA:</strong> Client-server architecture with strong semantic data models for SCADA/MES interoperability.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">DDS:</strong> Peer-to-peer, ultra-low latency for deterministic real-time robotics and autonomous systems.
+                      </p>
+                    </div>
+                  </div>
 
-                <h5 style="color: #00FF88; font-size: 1rem; margin-bottom: 12px;">C. Tier 3: The Cloud Layer (Global Intelligence)</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  The Cloud Layer forms the top tier, offering massive data storage and centralized computing capabilities. This tier serves as the repository for container-based workloads, including applications, data services, and global machine learning models.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  The primary responsibilities of the cloud layer include <strong style="color: #00FF88;">persistent storage</strong> of all pre-processed data and executing <strong style="color: #00FF88;">complex global analysis</strong>. This higher-level processing derives heuristic insights from the aggregated data collected across the entire distributed fleet of fog nodes. This global intelligence generation contrasts with the real-time, local control executed at the Fog layer.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8;">
-                  Critically, the cloud environment is the preferred hosting location for <strong style="color: white;">centralized system management</strong>. It handles system provisioning, centralized configuration, and the management of the distributed edge ecosystem. This includes the implementation of system-level security policies, security analytics, and crypto key management. Although execution occurs at the edge, the overall control plane originates and distributes its directives from the centralized Network Operations Center (NOC) hosted in the cloud.
-                </p>
-              </div>
+                  <!-- Section 4: Scalability & Resilience -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-4')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #00FF88; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">4. Scalability & Resilience Patterns</span>
+                      <span style="color: #00FF88; font-size: 0.8rem;" id="wp4-sec-4-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-4" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Microservices & Containers:</strong> Docker-packaged services orchestrated by Kubernetes for independent scaling and resilience.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Fault Isolation:</strong> Circuit Breaker and Bulkhead patterns prevent cascading failures across services.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Offline Continuity:</strong> Local storage and processing ensure operations continue during network outages.
+                      </p>
+                    </div>
+                  </div>
 
-              <!-- Section III: Data Movement and Industrial Protocol Selection -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
-                <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #FFA500;">
-                  Section III: Data Movement and Industrial Protocol Selection
-                </h4>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The adoption of modern, scalable communication protocols is a core requirement for successful digital transformation in industrial environments, necessitating a strategy that moves and shares standardized OT data effectively. Architectural choice must be based on a careful analysis of the specific performance and scalability needs of each tier.
-                </p>
+                  <!-- Section 5: Data Management -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-5')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #FFA500; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">5. Data Management & Governance</span>
+                      <span style="color: #FFA500; font-size: 0.8rem;" id="wp4-sec-5-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-5" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Edge Filtering:</strong> Configurable traceability filters reduce upstream data volume for bandwidth/cost savings.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Lakehouse Model:</strong> Combines Data Warehouse structure with Data Lake flexibility for AI training and BI reporting.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Privacy Plugins:</strong> Differential privacy conceals sensitive identities while preserving analytics value.
+                      </p>
+                    </div>
+                  </div>
 
-                <h5 style="color: #FFA500; font-size: 1rem; margin-bottom: 12px;">A. Comparative Architectural Framework: Client-Server vs. Pub/Sub vs. Peer-to-Peer</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  Modern IIoT necessitates the use of advanced protocols such as OPC UA, MQTT, and Data Distribution Service (DDS), each suited for different segments of the Edge-to-Cloud continuum. Selection criteria must carefully balance performance metrics—such as low latency (e.g., Modbus), precise synchronization (e.g., EtherCAT), or deterministic communication (e.g., PROFINET)—against operational and security needs.
-                </p>
+                  <!-- Section 6: Security -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-6')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #FF3B5C; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">6. Security & Threat Mitigation</span>
+                      <span style="color: #FF3B5C; font-size: 0.8rem;" id="wp4-sec-6-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-6" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Zero Trust Model:</strong> Strict verification for every access request regardless of network location.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">PKI & MFA:</strong> Secure device identity with crypto authentication and phishing-resistant admin access.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Micro-Segmentation:</strong> Isolated zones prevent lateral threat movement; TLS/SSL for data in transit, TPM for data at rest.
+                      </p>
+                    </div>
+                  </div>
 
-                <h5 style="color: var(--bee-gold); font-size: 1rem; margin-bottom: 12px;">B. MQTT and Sparkplug for Massive Scalability</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  MQTT is architecturally optimized for large-scale, distributed environments. Its design relies on a <strong style="color: var(--bee-gold);">broker-centric Publish/Subscribe model</strong>, ensuring all clients are loosely coupled and communicate only with the central MQTT broker. This decoupling significantly lowers the configuration overhead compared to client-server models.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  <strong style="color: white;">Scalability and Efficiency:</strong> MQTT's broker-based architecture enables extreme scalability, capable of supporting thousands or even millions of devices efficiently. The protocol is lightweight and optimized for minimal overhead, requiring very low bandwidth, making it ideal for low-bandwidth, unreliable, or high-latency network segments.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  <strong style="color: white;">Data Structure (Sparkplug):</strong> While MQTT is data-agnostic, the <strong style="color: var(--bee-gold);">Sparkplug extension</strong> provides the critical semantic context required for IIoT. Sparkplug defines a rigid topic structure and data objects, enabling centralized components in the IT network to know precisely what information is being retrieved and from where. Furthermore, Sparkplug leverages MQTT's stateful session capabilities, using BIRTH and DEATH certificates, along with Last Will and RETAINED messages, to communicate the online/offline status of nodes.
-                </p>
+                  <!-- Section 7: Edge Intelligence -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-7')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #60A5FA; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">7. Edge Intelligence & Future Trends</span>
+                      <span style="color: #60A5FA; font-size: 0.8rem;" id="wp4-sec-7-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-7" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">AI/ML at Edge:</strong> Reduced latency, bandwidth savings, and improved privacy through localized inference.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Predictive Maintenance:</strong> Real-time anomaly detection minimizes downtime and extends equipment lifespan.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">5G/6G Networks:</strong> Ultra-low latency wireless backbone enables complex AI models at the edge.
+                      </p>
+                    </div>
+                  </div>
 
-                <h5 style="color: #60A5FA; font-size: 1rem; margin-bottom: 12px;">C. OPC UA for Operational Technology (OT) Interoperability</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  OPC UA is built on a strictly enforced <strong style="color: #60A5FA;">Client-Server, request-response architecture</strong>. Its principal utility in the Edge-to-Cloud ecosystem is its native capability for machine-to-machine communication on the factory floor.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  <strong style="color: white;">Data Model and Interoperability:</strong> OPC UA's key strength is its strong, built-in semantic and contextual data model. It defines a complete data type system where resources are structured as individually addressable nodes, which can be grouped into complex data objects. This rich hierarchical data model ensures robust interoperability across heterogeneous OT and enterprise systems, including PLCs, SCADA, Manufacturing Execution Systems (MES), and Enterprise Resource Planning (ERP).
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  <strong style="color: white;">Trade-offs:</strong> The rich semantic data and contextual information carried by OPC UA result in higher bandwidth usage compared to MQTT. Furthermore, its complex client-server structure increases development and support costs when attempting to network many heterogeneous applications and devices at mass scale.
-                </p>
-
-                <h5 style="color: #00FF88; font-size: 1rem; margin-bottom: 12px;">D. Data Distribution Service (DDS) for Deterministic Real-Time Systems</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  DDS is specifically designed for applications requiring the highest level of performance and <strong style="color: #00FF88;">deterministic, real-time data exchange</strong>.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  <strong style="color: white;">Peer-to-Peer Design:</strong> DDS operates on a data-centric, peer-to-peer communication model, which eliminates the latency and single-point-of-failure concerns associated with centralized message brokers or servers. The elimination of intermediate servers simplifies deployment, minimizes latency, maximizes scalability, and reduces complexity.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  <strong style="color: white;">Performance and Application:</strong> This makes DDS the preferred protocol for mission-critical systems that require ultra-low latency, lasting reliability, and high performance, such as complex robotics, autonomous vehicular networks, or certain time-sensitive control applications.
-                </p>
-
-                <h5 style="color: #A855F7; font-size: 1rem; margin-bottom: 12px;">E. Protocol Integration Strategy</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  An effective Edge-to-Cloud architecture utilizes a <strong style="color: #A855F7;">layered protocol strategy</strong>, exploiting the unique strengths of each standard. The ideal scalable design mandates using OPC UA and DDS where deterministic, structured, or secure local control is mandatory, and using MQTT/Sparkplug for mass-scale data collection and reliable, efficient cloud ingress. The Edge Gateway is crucial for bridging these environments, integrating devices using protocols like OPC UA into a scalable Publish/Subscribe infrastructure (MQTT/Sparkplug), normalizing the data structure and making the data centrally available for IT systems.
-                </p>
-
-                <!-- Protocol Comparison Table -->
-                <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; margin-top: 24px; overflow-x: auto;">
-                  <h6 style="color: var(--bee-gold); font-size: 0.9rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Table 1: Industrial Protocol Comparison - Selection Criteria for Edge-to-Cloud IIoT</h6>
-                  <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-                    <thead>
-                      <tr style="border-bottom: 2px solid rgba(168,85,247,0.3);">
-                        <th style="text-align: left; padding: 12px 8px; color: #A855F7; font-weight: 600;">Feature</th>
-                        <th style="text-align: left; padding: 12px 8px; color: var(--bee-gold); font-weight: 600;">MQTT (with Sparkplug)</th>
-                        <th style="text-align: left; padding: 12px 8px; color: #60A5FA; font-weight: 600;">OPC UA</th>
-                        <th style="text-align: left; padding: 12px 8px; color: #00FF88; font-weight: 600;">DDS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Architecture</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Publish/Subscribe (Broker-centric)</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Client/Server</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Peer-to-Peer (Data-Centric)</td>
-                      </tr>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Primary Use Case</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Scalable Messaging, Cloud Connectivity, Large-scale IIoT</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Factory Floor Interoperability, SCADA/MES</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Real-time Control, Robotics, Deterministic Systems</td>
-                      </tr>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Scalability</td>
-                        <td style="padding: 12px 8px; color: #00FF88; font-weight: 500;">Extremely High (Millions of devices)</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Moderate (Higher overhead)</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">High (Broker-less)</td>
-                      </tr>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Data Model</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Data-Agnostic, Sparkplug enforced</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Strong, Hierarchical, Built-in semantic</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Data-Centric, QoS defined upfront</td>
-                      </tr>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Bandwidth Usage</td>
-                        <td style="padding: 12px 8px; color: #00FF88; font-weight: 500;">Very Low (Minimal overhead)</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Higher (Includes semantic data)</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Variable, optimized P2P</td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Latency</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Medium (Broker dependent)</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Medium/Low</td>
-                        <td style="padding: 12px 8px; color: #00FF88; font-weight: 500;">Ultra-Low (Real-time)</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <!-- Section 8: Conclusion -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-8')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #A855F7; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">8. Conclusion: Roadmap to Edge Maturity</span>
+                      <span style="color: #A855F7; font-size: 0.8rem;" id="wp4-sec-8-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-8" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        Success requires integrated strategies: <strong style="color: #A855F7;">Layered Computing</strong> via Fog model, <strong style="color: var(--bee-gold);">Protocol Optimization</strong> with MQTT/OPC UA/DDS, <strong style="color: #00FF88;">Cloud-Native Adoption</strong> using K8s microservices, and <strong style="color: #FF3B5C;">Zero Trust Security</strong>. Ruggedized infrastructure and unified orchestration enable real-time data to drive operational efficiency and competitive advantage.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <!-- Section IV: Design Principles for Scalability and Resilience -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
-                <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #00FF88;">
-                  Section IV: Design Principles for Scalability and Resilience
-                </h4>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  Achieving a scalable and resilient Edge-to-Cloud ecosystem relies fundamentally on adopting cloud-native architectural patterns, particularly <strong style="color: #00FF88;">Microservices</strong> and <strong style="color: #00FF88;">Container Orchestration</strong>, adapted for the distributed and often resource-constrained nature of the edge.
-                </p>
+              <!-- Right: Download Request Form -->
+              <div style="padding: 28px 32px; background: rgba(0,0,0,0.2);" id="whitepaper4-form-container">
+                <h4 style="color: #A855F7; font-size: 0.9rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Request Your Copy</h4>
 
-                <h5 style="color: #00FF88; font-size: 1rem; margin-bottom: 12px;">A. Microservices and Containerization at the Edge</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Microservices architecture breaks down applications into small, independent, loosely coupled services that communicate via standard interfaces. This design choice is critical for industrial applications, promoting:
-                </p>
-                <ul style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-left: 24px; margin-bottom: 16px;">
-                  <li style="margin-bottom: 8px;"><strong style="color: white;">Decentralization and Resilience:</strong> Each service operates autonomously, which enhances the overall resilience of the application; a failure in one isolated service does not compromise the entire system.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: white;">Independent Scalability:</strong> Services can be scaled independently based on localized demand. An organization can deploy more instances of a specific processing service near a particular set of high-volume sensors without affecting other network components.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: white;">Interoperability and Agility:</strong> Microservices communicate using standard protocols (HTTP, REST, message queues), ensuring seamless integration across various devices and platforms. The decoupling inherent in this architecture allows development teams to build, test, and deploy new code much more frequently than with traditional monolithic systems.</li>
-                </ul>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  To ensure consistent deployment across heterogeneous edge hardware—which can range from ruggedized gateway HMIs to specialized servers—microservices are packaged in containers using technologies like <strong style="color: #00FF88;">Docker</strong>. Orchestration tools, primarily <strong style="color: #00FF88;">Kubernetes (K8s)</strong> or similar platforms, are essential for managing this distributed fleet. K8s automates the deployment, scaling, and maintenance of the containerized microservices across all edge nodes, simplifying the management of a geographically disparate environment.
-                </p>
+                <form id="whitepaper4Form" onsubmit="handleWhitepaper4Request(event)">
+                  <div style="margin-bottom: 16px;">
+                    <label style="color: rgba(255,255,255,0.8); font-size: 0.85rem; display: block; margin-bottom: 6px;">Full Name *</label>
+                    <input type="text" name="wp4_name" required style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(168,85,247,0.2); border-radius: 8px; color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#A855F7'" onblur="this.style.borderColor='rgba(168,85,247,0.2)'" placeholder="John Smith">
+                  </div>
 
-                <h5 style="color: #60A5FA; font-size: 1rem; margin-bottom: 12px;">B. Resilience Patterns and Offline Functionality</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Edge environments are inherently prone to intermittent network connectivity and resource constraints, necessitating robust resilience strategies.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 12px;">
-                  <strong style="color: white;">Fault Isolation:</strong> Beyond inherent service isolation, specific design patterns enhance fault tolerance:
-                </p>
-                <ul style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-left: 24px; margin-bottom: 16px;">
-                  <li style="margin-bottom: 8px;"><strong style="color: #60A5FA;">Circuit Breaker Pattern:</strong> This prevents cascading failures by halting repeated attempts to connect to a service that is likely to fail (perhaps due to a temporary network lapse), enabling the system to gracefully switch to a predefined fallback mechanism.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #60A5FA;">Bulkhead Pattern:</strong> This pattern isolates resource consumption by partitioning resources (e.g., using separate CPU or memory pools for different services). This ensures that a high load or failure in one service does not exhaust the resources required by other critical application components, maintaining overall system availability.</li>
-                </ul>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  <strong style="color: white;">Data Locality and Continuity:</strong> A vital requirement for distributed computing is maintaining operational continuity during network failures. Edge devices and gateways must support <strong style="color: #60A5FA;">offline processing</strong> and <strong style="color: #60A5FA;">local data storage</strong>. By processing and analyzing data locally before syncing with the cloud when the connection is restored, the architecture ensures that real-time decisions and control actions are executed without interruption, even when the internet is unavailable.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8;">
-                  The challenges of distributed orchestration extend beyond application stability. The orchestration layer itself must be designed for <strong style="color: white;">eventual consistency</strong>. If a physical network connection drops, the centralized control plane (K8s manager in the Cloud) loses contact with the edge node. The local microservices must continue to operate autonomously, and the orchestration system must be ready to efficiently handle reconciliation and resynchronization once the network link is re-established.
-                </p>
-              </div>
+                  <div style="margin-bottom: 16px;">
+                    <label style="color: rgba(255,255,255,0.8); font-size: 0.85rem; display: block; margin-bottom: 6px;">Work Email *</label>
+                    <input type="email" name="wp4_email" required style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(168,85,247,0.2); border-radius: 8px; color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#A855F7'" onblur="this.style.borderColor='rgba(168,85,247,0.2)'" placeholder="john@company.com">
+                  </div>
 
-              <!-- Section V: Data Management, Filtering, and Governance -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
-                <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid var(--bee-gold);">
-                  Section V: Data Management, Filtering, and Governance
-                </h4>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  Managing the sheer volume and high velocity of IIoT data requires strategic data management and governance frameworks deployed across the continuum. This involves prioritizing efficiency, ensuring regulatory compliance, and setting appropriate data persistence strategies.
-                </p>
+                  <div style="margin-bottom: 16px;">
+                    <label style="color: rgba(255,255,255,0.8); font-size: 0.85rem; display: block; margin-bottom: 6px;">Company *</label>
+                    <input type="text" name="wp4_company" required style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(168,85,247,0.2); border-radius: 8px; color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#A855F7'" onblur="this.style.borderColor='rgba(168,85,247,0.2)'" placeholder="Your Company">
+                  </div>
 
-                <h5 style="color: var(--bee-gold); font-size: 1rem; margin-bottom: 12px;">A. Edge Data Filtering and Pre-processing Logic</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Data processing performed locally at or near the sensor is essential for maximizing efficiency. By filtering and processing data at the edge, the volume of data transmitted upstream to the centralized cloud is significantly reduced, yielding substantial savings in bandwidth and storage costs.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  Data management frameworks must incorporate tools to simplify governance and ensure accountability. This involves implementing a <strong style="color: var(--bee-gold);">configurable traceability filter</strong> that utilizes include and exclude lists, which can be defined based on specific message topics, client identifiers, or data payloads. This precise filtering ensures that only necessary and relevant data travels across the network, optimizing resource utilization.
-                </p>
+                  <div style="margin-bottom: 16px;">
+                    <label style="color: rgba(255,255,255,0.8); font-size: 0.85rem; display: block; margin-bottom: 6px;">Role / Title</label>
+                    <select name="wp4_role" style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(168,85,247,0.2); border-radius: 8px; color: white; font-size: 0.95rem; outline: none; cursor: pointer;">
+                      <option value="" style="background: #1a1a2e;">Select your role</option>
+                      <option value="executive" style="background: #1a1a2e;">Executive / C-Level</option>
+                      <option value="director" style="background: #1a1a2e;">Director / VP</option>
+                      <option value="manager" style="background: #1a1a2e;">Manager</option>
+                      <option value="engineer" style="background: #1a1a2e;">Engineer / Technical</option>
+                      <option value="consultant" style="background: #1a1a2e;">Consultant</option>
+                      <option value="other" style="background: #1a1a2e;">Other</option>
+                    </select>
+                  </div>
 
-                <h5 style="color: #A855F7; font-size: 1rem; margin-bottom: 12px;">B. Central Data Persistence Strategies</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  The centralized Cloud Layer must employ flexible and robust storage models to accommodate the vast and diverse datasets generated by the edge fleet. The rise of AI and real-time analytics drives the demand for solutions that unify structured and unstructured data management.
-                </p>
-                <ul style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-left: 24px; margin-bottom: 16px;">
-                  <li style="margin-bottom: 8px;"><strong style="color: #A855F7;">Data Warehouse (DW):</strong> Data Warehouses are designed for structured data that has been cleaned and organized according to a predefined schema (Schema-on-Write). DWs are optimized for relational datasets, reporting, and business intelligence, making them ideal for high-trust, regulated environments where consistency is paramount.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #A855F7;">Data Lake (DL):</strong> Data Lakes store raw data in its native format, regardless of structure (unstructured or semi-structured), applying a schema only when the data is queried (Schema-on-Read). Data Lakes are highly cost-effective for storing large, diverse datasets and are primarily used for exploratory analytics and machine learning model training.</li>
-                </ul>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The modern solution for IIoT data persistence is the <strong style="color: #A855F7;">Lakehouse model</strong>, which blends the schema flexibility and cost efficiency of the Data Lake for AI training with the structured reliability of the Data Warehouse for regulated reporting and structured queries.
-                </p>
+                  <div style="margin-bottom: 20px;">
+                    <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                      <input type="checkbox" name="wp4_subscribe" checked style="margin-top: 3px; accent-color: #A855F7;">
+                      <span style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.4;">Keep me updated on BeeTech insights, industry news, and upcoming resources</span>
+                    </label>
+                  </div>
 
-                <!-- Data Persistence Table -->
-                <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; margin-top: 24px; margin-bottom: 24px; overflow-x: auto;">
-                  <h6 style="color: var(--bee-gold); font-size: 0.9rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Table 2: Data Persistence Strategies in the Cloud Layer</h6>
-                  <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
-                    <thead>
-                      <tr style="border-bottom: 2px solid rgba(168,85,247,0.3);">
-                        <th style="text-align: left; padding: 12px 8px; color: #A855F7; font-weight: 600;">Characteristic</th>
-                        <th style="text-align: left; padding: 12px 8px; color: var(--bee-gold); font-weight: 600;">Data Warehouse</th>
-                        <th style="text-align: left; padding: 12px 8px; color: #60A5FA; font-weight: 600;">Data Lake</th>
-                        <th style="text-align: left; padding: 12px 8px; color: #00FF88; font-weight: 600;">Rationale for Edge-to-Cloud</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Data Format</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Structured, Pre-processed, Cleaned</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Raw, Unstructured, Semi-structured</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Handles both filtered edge insights (DW) and full sensor archives (DL)</td>
-                      </tr>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Schema Approach</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Schema-on-Write (Predefined)</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Schema-on-Read (Upon query)</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Quick reporting (DW) while preserving data fidelity for AI (DL)</td>
-                      </tr>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Primary Use</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Reporting, BI, Structured Analytics</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Exploratory Analytics, ML, AI Training</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Supports traditional BI and evolving real-time AI demands</td>
-                      </tr>
-                      <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Governance</td>
-                        <td style="padding: 12px 8px; color: #00FF88; font-weight: 500;">High, Regulated environments</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Requires robust governance</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Governance tools essential for managing raw data influx</td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 12px 8px; color: white; font-weight: 500;">Cost Efficiency</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Maximizes ROI for structured queries</td>
-                        <td style="padding: 12px 8px; color: #00FF88; font-weight: 500;">Cost-effective for massive datasets</td>
-                        <td style="padding: 12px 8px; color: rgba(255,255,255,0.8);">Enables cost-effective storage for high-volume IIoT data</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <button type="submit" style="width: 100%; padding: 14px 24px; background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%); border: none; border-radius: 8px; color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(168,85,247,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    Request Whitepaper Download
+                  </button>
+
+                  <p style="color: rgba(255,255,255,0.4); font-size: 0.75rem; margin-top: 12px; text-align: center;">
+                    By submitting, you agree to receive communications from BeeTech. We respect your privacy.
+                  </p>
+                </form>
+
+                <!-- Success Message -->
+                <div id="whitepaper4Success" style="display: none; text-align: center; padding: 24px;">
+                  <div style="width: 60px; height: 60px; background: rgba(168,85,247,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                    <span style="color: #A855F7; font-size: 1.8rem;">&#10003;</span>
+                  </div>
+                  <h4 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Request Received!</h4>
+                  <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5; margin-bottom: 16px;">
+                    Thank you for your interest. We'll send the complete whitepaper to your email shortly.
+                  </p>
+                  <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+                    In the meantime, explore our <a href="#" onclick="showPage('services-tech'); return false;" style="color: #A855F7;">Technology Consulting</a> services.
+                  </p>
                 </div>
-
-                <h5 style="color: #FFA500; font-size: 1rem; margin-bottom: 12px;">C. Implementing Governance and Privacy</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Robust data governance is essential, especially given the influx of raw data into the Data Lake, which must be managed to avoid disorganization.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Governance frameworks must include measures for transparency and data protection. Specialized plugins, such as a <strong style="color: #FFA500;">Differential Privacy Plugin</strong>, should be integrated to conceal the private identity or sensitive details of the initial dataset owners while preserving the generalized information necessary for aggregated analytics and model training.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8;">
-                  Furthermore, tools that dynamically visualize the data flows participating in the system are needed to verify the system's validity and ensure accountability regarding applied filters and privacy enforcement. For energy-constrained IoT devices, governance extends to operational metrics; the framework should include integrated tools for monitoring real-time power consumption and estimating battery life, allowing data processing decisions to incorporate energy preservation goals alongside bandwidth and latency optimization.
-                </p>
               </div>
-
-              <!-- Section VI: Architectural Security and Threat Mitigation -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
-                <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #FF3B5C;">
-                  Section VI: Architectural Security and Threat Mitigation
-                </h4>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The distributed nature of the Edge-to-Cloud continuum, combined with the integration of potentially vulnerable legacy equipment, necessitates a rigorous, multi-layered security architecture.
-                </p>
-
-                <h5 style="color: #FF3B5C; font-size: 1rem; margin-bottom: 12px;">A. Zero Trust Model Implementation</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  Security must be anchored in a <strong style="color: #FF3B5C;">Zero Trust security model</strong>. This approach mandates strict verification for every access request, whether from a device, a user, or an application, regardless of whether it originates inside or outside the defined network perimeter.
-                </p>
-
-                <h5 style="color: #A855F7; font-size: 1rem; margin-bottom: 12px;">B. Device Identity and Authentication (PKI)</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Establishing secure identities for every component is foundational. <strong style="color: #A855F7;">Public Key Infrastructure (PKI)</strong> and other secure forms of authentication must be leveraged to ensure that only authorized and verified devices are permitted to access the network. For human administrators, strong, phishing-resistant <strong style="color: #A855F7;">Multi-Factor Authentication (MFA)</strong> is mandated for all administrative access to edge devices. Device integrity must be maintained through secure boot mechanisms and robust, monitored firmware updates.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The Edge Gateway is positioned as the architectural chokepoint for security policies. Because the gateway enforces crypto authentication and tamper detection, it becomes the critical component for maintaining the security integrity of legacy OT devices that cannot inherently protect themselves.
-                </p>
-
-                <h5 style="color: #60A5FA; font-size: 1rem; margin-bottom: 12px;">C. Network Segmentation and Micro-Segmentation</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Network segmentation is crucial for limiting potential damage and containing security breaches, especially in environments where thousands of IIoT devices operate simultaneously.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  <strong style="color: white;">Isolation Strategy:</strong> Key architectural components include isolating edge networks from the core infrastructure and implementing <strong style="color: #60A5FA;">micro-segmentation</strong>. Micro-segmentation involves creating secure, isolated zones for different applications and data types, which prevents threats from moving laterally across the infrastructure if one segment is compromised. This strategy is particularly valuable where varying applications require different levels of security clearance.
-                </p>
-
-                <h5 style="color: #00FF88; font-size: 1rem; margin-bottom: 12px;">D. End-to-End Encryption and Data Protection</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Data protection must cover both states of data: transit and rest. Strong data encryption is the most effective way to protect sensitive information.
-                </p>
-                <ul style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-left: 24px; margin-bottom: 16px;">
-                  <li style="margin-bottom: 8px;"><strong style="color: #00FF88;">Data in Transit:</strong> Communications between edge devices, gateways, and centralized cloud servers must employ end-to-end encryption using secure protocols such as TLS/SSL (Transport Layer Security). This verifies both the server and the client and ensures that data remains unreadable even if intercepted.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #00FF88;">Data at Rest:</strong> Sensitive data and proprietary information stored on edge devices must be secured using strong encryption algorithms. Hardware-based security features, such as Trusted Platform Modules (TPM), should be utilized for secure data storage, and all backups must also be encrypted and securely stored.</li>
-                </ul>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8;">
-                  Finally, operational security requires <strong style="color: white;">centralized (off-device) logging</strong> to be enabled. This centralized logging must track administrative log-ons, configuration changes, and hardware changes, which is critical for effective security incident monitoring and response. Furthermore, security policies must govern operational practices; all configuration changes must follow industry-standard change management processes, requiring review by multiple personnel before implementation.
-                </p>
-              </div>
-
-              <!-- Section VII: Edge Intelligence (EI) and Future Trends -->
-              <div style="margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
-                <h4 style="color: white; font-size: 1.15rem; margin-bottom: 20px; padding-left: 16px; border-left: 4px solid #60A5FA;">
-                  Section VII: Edge Intelligence (EI) and Future Trends
-                </h4>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The architecture's distributed nature culminates in its ability to support sophisticated Edge Intelligence (EI), transforming raw data into real-time, autonomous decisions.
-                </p>
-
-                <h5 style="color: #60A5FA; font-size: 1rem; margin-bottom: 12px;">A. Integrating AI/ML Inference at the Edge</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  Edge Intelligence involves deploying Artificial Intelligence algorithms directly onto the network's edge infrastructure. By performing localized data processing and decision-making, EI provides three core strategic benefits:
-                </p>
-                <ul style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-left: 24px; margin-bottom: 20px;">
-                  <li style="margin-bottom: 8px;"><strong style="color: #60A5FA;">Reduced Latency:</strong> Enables real-time control and immediate responsiveness, which is essential for industrial automation.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #60A5FA;">Reduced Bandwidth Consumption:</strong> Eliminates the need to transmit large volumes of raw data to the cloud for processing.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #60A5FA;">Improved Privacy:</strong> Keeps sensitive raw data local, increasing privacy security.</li>
-                </ul>
-
-                <h5 style="color: var(--bee-gold); font-size: 1rem; margin-bottom: 12px;">Case Study: Predictive Maintenance</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  EI transforms traditional maintenance models (reactive or time-based) into proactive strategies. Machine learning models are deployed onto rugged industrial computers, often configured with AI accelerators to streamline applications. These systems analyze sensor data in real-time, detecting subtle anomalies and deviations from normal operating conditions based on historical data. By preemptively alerting factory technicians of potential equipment failure, EI minimizes unplanned downtime, optimizes maintenance schedules, and significantly extends equipment lifespan.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The architecture enables a critical feedback loop: while real-time inference occurs at the edge, the raw data, collected and filtered locally, is archived in the cloud Data Lake. This stored data is essential for retraining and updating the AI models, which are then deployed back to the edge using the K8s orchestration system. The cloud maintains global intelligence, while the edge executes local intelligence.
-                </p>
-
-                <h5 style="color: #A855F7; font-size: 1rem; margin-bottom: 12px;">B. The Role of 5G/6G in the Edge Continuum</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 20px;">
-                  The increasing volume of IoT devices and the growing demand for fast, efficient, and low-latency data processing drive the necessity for next-generation communication technologies. Modern standards, such as <strong style="color: #A855F7;">5G</strong> and future <strong style="color: #A855F7;">6G networks</strong>, provide the necessary robust, high-throughput, and ultra-low latency wireless backbone required to seamlessly connect devices to edge nodes and edge nodes to the cloud. This higher capacity and lower latency connectivity allows for the deployment of more complex, data-heavy AI models directly at the edge, shifting the focus from merely scaling device count to scaling computational complexity across the entire environment.
-                </p>
-
-                <h5 style="color: #00FF88; font-size: 1rem; margin-bottom: 12px;">C. Industrial Case Studies and ROI</h5>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 12px;">
-                  The implementation of a robust Edge-to-Cloud architecture delivers verifiable improvements across diverse industries:
-                </p>
-                <ul style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-left: 24px;">
-                  <li style="margin-bottom: 8px;"><strong style="color: #00FF88;">Energy Optimization:</strong> In manufacturing, edge-based data collection and analytics allow for the creation of dynamic Energy Efficiency Indices (EEI). These indices forecast energy consumption and efficiency through scenario planning, leading to measurable results, such as an 8% annual energy reduction per furnace in large tableware manufacturing operations.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #00FF88;">Remote Asset Monitoring:</strong> For remote assets, such as oil and gas infrastructure, local processing reduces reliance on intermittent centralized connectivity, enabling real-time operational analytics closer to the asset for faster decision-making.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #00FF88;">Autonomous Systems:</strong> Edge computing provides the necessary low latency to support time-critical applications, including autonomous vehicle platooning and advanced city traffic management that optimizes lane usage and bus frequency.</li>
-                </ul>
-              </div>
-
-              <!-- Section VIII: Conclusion -->
-              <div style="margin-bottom: 24px;">
-                <h4 style="color: #A855F7; font-size: 1.2rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
-                  <span style="background: rgba(168,85,247,0.2); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">SECTION VIII</span>
-                  Conclusion: The Roadmap to Edge Maturity
-                </h4>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px;">
-                  The Edge-to-Cloud Data Ecosystem, when architected using these principles, provides the necessary framework for achieving true Industry 4.0 capabilities. The system moves beyond simple data collection to establish a flexible, resilient, and intelligent operational platform.
-                </p>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 12px;">
-                  The architectural success is predicated on several integrated strategies:
-                </p>
-                <ul style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-left: 24px; margin-bottom: 16px;">
-                  <li style="margin-bottom: 8px;"><strong style="color: #A855F7;">Layered Computing:</strong> Utilizing the Fog Computing model to place processing capability closer to the source, thereby meeting the strict low-latency requirements of physical control systems.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: var(--bee-gold);">Protocol Optimization:</strong> Strategically selecting communication protocols, leveraging the high scalability and low overhead of MQTT/Sparkplug for mass data distribution and the deterministic reliability of OPC UA and DDS for real-time local control and interoperability.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #00FF88;">Cloud-Native Adoption:</strong> Implementing Microservices architecture, packaged in containers and managed by Kubernetes, to ensure scalable deployment, operational agility, and resilience across resource-constrained edge hardware.</li>
-                  <li style="margin-bottom: 8px;"><strong style="color: #FF3B5C;">Security Integration:</strong> Enforcing a Zero Trust model with end-to-end encryption, network segmentation, and secure device identity management, treating the Edge Gateway as the critical security proxy.</li>
-                </ul>
-                <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8;">
-                  Organizations embarking on this migration must prioritize the investment in ruggedized infrastructure and unified orchestration tools that seamlessly manage the "fuzzy boundary" between local edge operations and central cloud control. By adopting these mature technical designs, enterprises can fully capitalize on real-time data to drive measurable operational efficiency, safety improvements, and competitive advantage.
-                </p>
-              </div>
-
             </div>
 
             <!-- Key Highlights Footer -->
@@ -3612,6 +3412,34 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         form.reset();
         form.style.display = 'block';
         document.getElementById('whitepaper3Success').style.display = 'none';
+      }, 8000);
+    }
+
+    function handleWhitepaper4Request(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = {
+        name: form.querySelector('input[name="wp4_name"]').value,
+        email: form.querySelector('input[name="wp4_email"]').value,
+        company: form.querySelector('input[name="wp4_company"]').value,
+        role: form.querySelector('select[name="wp4_role"]').value,
+        subscribe: form.querySelector('input[name="wp4_subscribe"]').checked,
+        whitepaper: 'The Edge-to-Cloud Data Ecosystem: Technical Architecture for Industrial Scalability',
+        requested_at: new Date().toISOString()
+      };
+
+      console.log('Whitepaper download requested:', data);
+
+      // Show success message
+      document.getElementById('whitepaper4Success').style.display = 'block';
+      form.style.display = 'none';
+
+      // Reset after 8 seconds (longer to give user time to read)
+      setTimeout(() => {
+        form.reset();
+        form.style.display = 'block';
+        document.getElementById('whitepaper4Success').style.display = 'none';
       }, 8000);
     }
 
