@@ -2290,6 +2290,10 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               display: grid;
               grid-template-columns: 220px 1fr;
               gap: 24px;
+              hyphens: none;
+              -webkit-hyphens: none;
+              word-break: normal;
+              overflow-wrap: break-word;
             }
             @media (max-width: 1100px) {
               .wp3-content-wrapper {
@@ -2334,18 +2338,21 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             /* Fix card grid for even display */
             .resource-cards-grid {
               display: grid;
-              grid-template-columns: repeat(3, 1fr);
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
               gap: 16px;
             }
-            @media (max-width: 900px) {
-              .resource-cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-              }
+            .resource-cards-grid > div {
+              display: flex;
+              flex-direction: column;
+              hyphens: none;
+              -webkit-hyphens: none;
+              word-break: normal;
+              overflow-wrap: break-word;
             }
-            @media (max-width: 600px) {
-              .resource-cards-grid {
-                grid-template-columns: 1fr;
-              }
+            .resource-cards-grid p {
+              hyphens: none;
+              -webkit-hyphens: none;
+              word-break: normal;
             }
 
             /* Smooth scroll behavior */
