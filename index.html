@@ -3402,20 +3402,12 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       }, 8000);
     }
 
-    // Handle Whitepaper 4 Request (Edge-to-Cloud Data Ecosystem)
-    function handleWhitepaper4Request(e) {
     // Handle Whitepaper 3 Request (Engineering Definitive Excellence)
     function handleWhitepaper3Request(e) {
       e.preventDefault();
 
       const form = e.target;
       const data = {
-        name: form.querySelector('input[name="wp4_name"]').value,
-        email: form.querySelector('input[name="wp4_email"]').value,
-        company: form.querySelector('input[name="wp4_company"]').value,
-        role: form.querySelector('select[name="wp4_role"]').value,
-        subscribe: form.querySelector('input[name="wp4_subscribe"]').checked,
-        whitepaper: 'The Edge-to-Cloud Data Ecosystem: Technical Architecture for Industrial Scalability',
         name: form.querySelector('input[name="wp3_name"]').value,
         email: form.querySelector('input[name="wp3_email"]').value,
         company: form.querySelector('input[name="wp3_company"]').value,
@@ -3428,7 +3420,6 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       console.log('Whitepaper download requested:', data);
 
       // Show success message
-      document.getElementById('whitepaper4Success').style.display = 'block';
       document.getElementById('whitepaper3Success').style.display = 'block';
       form.style.display = 'none';
 
@@ -3436,8 +3427,36 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       setTimeout(() => {
         form.reset();
         form.style.display = 'block';
-        document.getElementById('whitepaper4Success').style.display = 'none';
         document.getElementById('whitepaper3Success').style.display = 'none';
+      }, 8000);
+    }
+
+    // Handle Whitepaper 4 Request (Edge-to-Cloud Data Ecosystem)
+    function handleWhitepaper4Request(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = {
+        name: form.querySelector('input[name="wp4_name"]').value,
+        email: form.querySelector('input[name="wp4_email"]').value,
+        company: form.querySelector('input[name="wp4_company"]').value,
+        role: form.querySelector('select[name="wp4_role"]').value,
+        subscribe: form.querySelector('input[name="wp4_subscribe"]').checked,
+        whitepaper: 'The Edge-to-Cloud Data Ecosystem: Technical Architecture for Industrial Scalability',
+        requested_at: new Date().toISOString()
+      };
+
+      console.log('Whitepaper download requested:', data);
+
+      // Show success message
+      document.getElementById('whitepaper4Success').style.display = 'block';
+      form.style.display = 'none';
+
+      // Reset after 8 seconds (longer to give user time to read)
+      setTimeout(() => {
+        form.reset();
+        form.style.display = 'block';
+        document.getElementById('whitepaper4Success').style.display = 'none';
       }, 8000);
     }
 
