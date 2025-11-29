@@ -10116,154 +10116,453 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       'pg30': { Cp: 3.8, Density: 1.04, SG: 1.04, Viscosity_k: 0.0018 }
     };
 
-    // CDU Database - Enhanced with engineering specifications from ASHRAE standards
-    // Fields: model, vendor, capacity_kW, flow_LPM, head_Bar, price_k, type (L2L/L2A),
-    //         atd_C (Approach Temp Difference), filtration_um (microns), redundancy,
-    //         protocols (communication), footprint, dimensions
+    // CDU Database - Enhanced with comprehensive engineering specifications
+    // Based on ASHRAE standards and manufacturer datasheets (2024-2025)
+    //
+    // FIELD DEFINITIONS:
+    // - model: Product model name/number
+    // - vendor: Manufacturer name
+    // - capacity_kW: Maximum cooling capacity in kilowatts
+    // - flow_LPM: Maximum secondary loop flow rate (liters per minute)
+    // - head_Bar: Pump head pressure capability (Bar) - critical for long pipe runs
+    // - price_k: Estimated price in thousands USD (for budgeting only)
+    // - type: Heat exchange architecture - 'L2L' (Liquid-to-Liquid) or 'L2A' (Liquid-to-Air)
+    // - atd_C: Approach Temperature Difference in °C (lower = more efficient heat transfer)
+    // - filtration_um: Particulate filter grade in microns (25µ recommended for cold plate protection)
+    // - redundancy: Pump redundancy scheme (N+1, 2N, Dual VSD, Triple Pump, etc.)
+    // - protocols: Communication protocols array [Redfish, SNMP, Modbus, BACnet, TCP/IP, etc.]
+    // - footprint: Deployment form factor (In-Rack, In-Row, Floor-Mount, Mechanical Gallery)
+    // - dimensions: Physical size specifications
+    //
+    // NEW ENHANCED FIELDS (from CDU Engineering Analysis):
+    // - wetted_material: Internal piping/PHE material for corrosion resistance
+    // - ashrae_class: ASHRAE liquid cooling temperature class (W1-W5, W+)
+    // - power_kW: CDU power consumption (enables PUE calculation)
+    // - connection: Piping connection type/size (Victaulic, DN100, sanitary flanges)
+    // - flow_density: LPM/kW ratio (benchmark: >1.5 for high-TDP chips)
+    // - maintainability: Hot-swap capability for pumps/filters/sensors
+    // - use_case: Target deployment scenario
+    // - phe_type: Plate Heat Exchanger type (Brazed, Gasketed, Shell-and-Tube)
+    // - max_tcs_temp_C: Maximum Technology Cooling System return temperature
+    // - fws_inlet_range_C: Facility Water System inlet temperature range
+    //
     const FP_CDU_DATABASE = [
       // ============================================================================
       // HYPERSCALE & FACILITY-SCALE UNITS (1 MW - 10 MW)
       // ============================================================================
 
       // Trane - High-capacity, Compact footprint (up to 10 MW modular)
-      // Per spec: >50 psi head (3.45 bar), 1500 LPM @ 1004 kW @ 4°C ATD
+      // Per spec: >50 psi head (3.45 bar), 1500 LPM @ 1004 kW @ 4°C ATD, 25µ filtration
+      // Features: ATS with supercapacitors for ride-through, dual/front access options
+      // Optimized for direct-to-chip liquid cooling in hyperscale environments
       { model: 'CDU Series 500', vendor: 'Trane', capacity_kW: 500, flow_LPM: 750, head_Bar: 3.5, price_k: 92,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web'], footprint: 'Floor-Mount Compact', dimensions: '900mm W' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web', 'Modbus'],
+        footprint: 'Floor-Mount Compact', dimensions: '900mm W',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 4.5, connection: '2" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters', use_case: 'Enterprise HPC',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-45' },
       { model: 'CDU Series 1000', vendor: 'Trane', capacity_kW: 1004, flow_LPM: 1500, head_Bar: 3.5, price_k: 155,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web'], footprint: 'Floor-Mount Compact', dimensions: '900mm W' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web', 'Modbus'],
+        footprint: 'Floor-Mount Compact', dimensions: '900mm W',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 8.2, connection: '3" Victaulic',
+        flow_density: 1.49, maintainability: 'Hot-swap pumps/filters', use_case: 'HPC/AI Clusters',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-45' },
       { model: 'CDU Series 2000', vendor: 'Trane', capacity_kW: 2000, flow_LPM: 3000, head_Bar: 3.5, price_k: 280,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web'], footprint: 'Floor-Mount Compact', dimensions: '900mm W' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web', 'Modbus', 'BACnet'],
+        footprint: 'Floor-Mount Compact', dimensions: '900mm W',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 15.5, connection: '4" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters', use_case: 'Hyperscale AI',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'CDU Series 5000', vendor: 'Trane', capacity_kW: 5000, flow_LPM: 7500, head_Bar: 3.5, price_k: 520,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web'], footprint: 'Floor-Mount Compact', dimensions: '1200mm W' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD + ATS', protocols: ['SNMP', 'Web', 'Modbus', 'BACnet'],
+        footprint: 'Floor-Mount Compact', dimensions: '1200mm W',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W+', power_kW: 38, connection: '6" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters/sensors', use_case: 'Hyperscale Colocation',
+        phe_type: 'Gasketed Plate', max_tcs_temp_C: 60, fws_inlet_range_C: '7-45' },
       { model: 'CDU Series 10000', vendor: 'Trane', capacity_kW: 10000, flow_LPM: 15000, head_Bar: 3.5, price_k: 950,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web'], footprint: 'Floor-Mount Compact', dimensions: '1800mm W' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD + ATS Supercap', protocols: ['SNMP', 'Web', 'Modbus', 'BACnet'],
+        footprint: 'Floor-Mount Compact', dimensions: '1800mm W',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W+', power_kW: 72, connection: '8" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters/sensors', use_case: 'Hyperscale 10MW POD',
+        phe_type: 'Gasketed Plate', max_tcs_temp_C: 60, fws_inlet_range_C: '7-45' },
 
       // CoolIT Systems - High-density CDUs for AI/HPC (ASHRAE W+ compliant)
-      // CHx2000: 2000 kW, 2400 LPM max, 40 psi (2.75 bar) external DP, 25µ filtration
+      // CHx2000: 2000 kW, 2400 LPM max, 40 psi (2.75 bar) external DP @ dual pump, 25µ filtration
+      // Supports 12 NVIDIA GB200 NVL72 racks or 74 high-density enterprise racks
+      // All stainless steel construction, hot-swappable pumps/filters for six-nines availability
+      // AHx series: L2A, no facility water connection required - ideal for air-cooled DC retrofit
       { model: 'AHx180', vendor: 'CoolIT Systems', capacity_kW: 180, flow_LPM: 400, head_Bar: 2.75, price_k: 45,
-        type: 'L2A', atd_C: null, filtration_um: null, redundancy: '2N Pumps', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'], footprint: 'Floor-Mount', dimensions: 'Two-Rack' },
+        type: 'L2A', atd_C: null, filtration_um: null, redundancy: '2N Pumps', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'],
+        footprint: 'Floor-Mount', dimensions: 'Two-Rack (1500mm W)',
+        wetted_material: 'Stainless Steel', ashrae_class: null, power_kW: 5.5, connection: '2" NPT',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps', use_case: 'Air-Cooled DC Retrofit',
+        phe_type: 'Air-to-Liquid Coil', max_tcs_temp_C: 45, fws_inlet_range_C: null },
       { model: 'AHx240', vendor: 'CoolIT Systems', capacity_kW: 240, flow_LPM: 270, head_Bar: 2.75, price_k: 55,
-        type: 'L2A', atd_C: null, filtration_um: null, redundancy: '2N Pumps', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'], footprint: 'Floor-Mount', dimensions: 'Two-Rack' },
+        type: 'L2A', atd_C: null, filtration_um: null, redundancy: '2N Pumps', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'],
+        footprint: 'Floor-Mount', dimensions: 'Two-Rack (1500mm W)',
+        wetted_material: 'Stainless Steel', ashrae_class: null, power_kW: 6.8, connection: '2" NPT',
+        flow_density: 1.13, maintainability: 'Hot-swap pumps', use_case: 'Non-FWS Liquid Cooling',
+        phe_type: 'Air-to-Liquid Coil', max_tcs_temp_C: 45, fws_inlet_range_C: null },
       { model: 'CHx500', vendor: 'CoolIT Systems', capacity_kW: 500, flow_LPM: 750, head_Bar: 2.75, price_k: 95,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'], footprint: 'Single Rack', dimensions: '750mm W x 1200mm D' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'],
+        footprint: 'Single Rack', dimensions: '750mm W x 1200mm D',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 4.2, connection: '2" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters', use_case: 'Enterprise AI/HPC',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-45' },
       { model: 'CHx1000', vendor: 'CoolIT Systems', capacity_kW: 1000, flow_LPM: 1500, head_Bar: 2.75, price_k: 165,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'], footprint: 'Single Rack', dimensions: '750mm W x 1200mm D' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'],
+        footprint: 'Single Rack', dimensions: '750mm W x 1200mm D',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 7.8, connection: '3" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters', use_case: 'High-Density AI Clusters',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'CHx2000', vendor: 'CoolIT Systems', capacity_kW: 2000, flow_LPM: 2400, head_Bar: 2.75, price_k: 295,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'], footprint: 'Single Rack', dimensions: '750mm W x 1200mm D' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'],
+        footprint: 'Single Rack', dimensions: '750mm W x 1200mm D',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W+', power_kW: 14.5, connection: '4" Victaulic',
+        flow_density: 1.2, maintainability: 'Hot-swap pumps/filters/sensors', use_case: 'GB200 NVL72 Racks (12x)',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 60, fws_inlet_range_C: '7-45' },
 
       // Motivair - Floor-mount Series (up to 2.3 MW), stainless steel PHE, ASHRAE W1-W5
+      // Supports secondary coolant loop temperatures up to 113°F (45°C) or higher
+      // Six models standardized, plus custom OEM configurations available
+      // Exascale-class cooling for AI/HPC infrastructure
       { model: 'ChilledDoor CDU-102', vendor: 'Motivair', capacity_kW: 102, flow_LPM: 235, head_Bar: 3.2, price_k: 32,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet'], footprint: 'Floor-Mount', dimensions: 'Compact' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet'],
+        footprint: 'Floor-Mount', dimensions: 'Compact (24" W)',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W3', power_kW: 1.8, connection: '1.5" NPT',
+        flow_density: 2.3, maintainability: 'Field-serviceable pumps', use_case: 'RDHx Support',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 45, fws_inlet_range_C: '7-35' },
       { model: 'Dynamic CDU-250', vendor: 'Motivair', capacity_kW: 250, flow_LPM: 560, head_Bar: 4.0, price_k: 55,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet'], footprint: 'Floor-Mount', dimensions: 'Standard' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet'],
+        footprint: 'Floor-Mount', dimensions: 'Standard (30" W)',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 3.2, connection: '2" Victaulic',
+        flow_density: 2.24, maintainability: 'Field-serviceable pumps', use_case: 'Mid-Density AI',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
       { model: 'Dynamic CDU-500', vendor: 'Motivair', capacity_kW: 500, flow_LPM: 1100, head_Bar: 5.2, price_k: 90,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet'], footprint: 'Floor-Mount', dimensions: 'Standard' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet', 'SNMP'],
+        footprint: 'Floor-Mount', dimensions: 'Standard (36" W)',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 5.5, connection: '3" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps', use_case: 'High-Density AI/HPC',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'Dynamic CDU-1200', vendor: 'Motivair', capacity_kW: 1200, flow_LPM: 2600, head_Bar: 6.5, price_k: 175,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet'], footprint: 'Floor-Mount', dimensions: 'Large' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet', 'SNMP'],
+        footprint: 'Floor-Mount', dimensions: 'Large (48" W)',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 11.2, connection: '4" Victaulic',
+        flow_density: 2.17, maintainability: 'Hot-swap pumps/filters', use_case: 'Exascale AI Clusters',
+        phe_type: 'Gasketed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'Dynamic CDU-2300', vendor: 'Motivair', capacity_kW: 2300, flow_LPM: 5000, head_Bar: 7.0, price_k: 320,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet'], footprint: 'Floor-Mount', dimensions: 'Large' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet', 'SNMP'],
+        footprint: 'Floor-Mount', dimensions: 'Large (60" W)',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W+', power_kW: 21.5, connection: '6" Victaulic',
+        flow_density: 2.17, maintainability: 'Hot-swap pumps/filters', use_case: 'Exascale Hyperscale',
+        phe_type: 'Gasketed Plate', max_tcs_temp_C: 60, fws_inlet_range_C: '7-45' },
 
       // Vertiv Liebert XDU Series - High-capacity enterprise/HPC
-      // XDU1350: 1368 kW, 1200 l/m, 35.4 psi (2.44 bar), 4" DN100 sanitary flanges, triple pumps
+      // XDU1350: 1368 kW nominal, 1200 l/m (320 gpm), 4°C ATD, 7.2°F ATD
+      // 4" DN100 sanitary style flanges for high-flow primary/secondary piping
+      // Triple pumps and inverters for N+2 redundancy, 50µ triple redundant filters
+      // External isolation valves required immediately adjacent to CDU
+      // Low DP design optimized for reduced pumping energy
       { model: 'Liebert XDU800', vendor: 'Vertiv', capacity_kW: 800, flow_LPM: 720, head_Bar: 2.44, price_k: 125,
-        type: 'L2L', atd_C: 4, filtration_um: 50, redundancy: 'Triple Pump', protocols: ['Modbus RTU', 'TCP/IP'], footprint: 'Floor-Mount', dimensions: '35.4 in W, DN100 Flanges' },
+        type: 'L2L', atd_C: 4, filtration_um: 50, redundancy: 'Triple Pump/Inverter', protocols: ['Modbus RTU', 'TCP/IP'],
+        footprint: 'Floor-Mount', dimensions: '35.4 in W, DN100 Flanges',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 6.8, connection: '4" DN100 Sanitary',
+        flow_density: 0.9, maintainability: 'Concurrent maintainability', use_case: 'Large Enterprise/HPC',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '5-45' },
       { model: 'Liebert XDU1350', vendor: 'Vertiv', capacity_kW: 1368, flow_LPM: 1200, head_Bar: 2.44, price_k: 195,
-        type: 'L2L', atd_C: 4, filtration_um: 50, redundancy: 'Triple Pump', protocols: ['Modbus RTU', 'TCP/IP'], footprint: 'Floor-Mount', dimensions: '35.4 in W, DN100 Flanges' },
+        type: 'L2L', atd_C: 4, filtration_um: 50, redundancy: 'Triple Pump/Inverter', protocols: ['Modbus RTU', 'TCP/IP'],
+        footprint: 'Floor-Mount', dimensions: '35.4 in W, DN100 Flanges',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 11.5, connection: '4" DN100 Sanitary',
+        flow_density: 0.88, maintainability: 'Concurrent maintainability', use_case: 'Mission-Critical HPC',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '5-45' },
 
       // NautilusDT - Facility-scale and In-Row solutions
-      // RCD: 2.5 MW in-row/data hall, FCD: 2-4 MW per unit (10 MW+ scalable)
+      // RCD (Rack Coolant Distribution): 2.5 MW in-row/data hall - rapid retrofit, incremental cooling
+      // FCD (Facility Coolant Distribution): 2-4 MW per unit, scalable to 10 MW+
+      // Deployed outside critical data hall white space for maximum floor efficiency
       { model: 'RCD-1000', vendor: 'NautilusDT', capacity_kW: 1000, flow_LPM: 2200, head_Bar: 4.0, price_k: 165,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'SNMP'], footprint: 'In-Row', dimensions: 'Compact Form Factor' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'In-Row', dimensions: 'Compact Form Factor',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 8.5, connection: '3" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps', use_case: 'Incremental Retrofit',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
       { model: 'RCD-2500', vendor: 'NautilusDT', capacity_kW: 2500, flow_LPM: 5500, head_Bar: 4.5, price_k: 340,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'SNMP'], footprint: 'In-Row', dimensions: 'Compact Form Factor' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'In-Row', dimensions: 'Compact Form Factor',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 18.5, connection: '4" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps/filters', use_case: 'Data Hall Retrofit',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'FCD-2000', vendor: 'NautilusDT', capacity_kW: 2000, flow_LPM: 4400, head_Bar: 5.0, price_k: 290,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+2 Pump', protocols: ['Modbus', 'SNMP', 'BACnet'], footprint: 'Mechanical Gallery', dimensions: 'Facility-Scale' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+2 Pump', protocols: ['Modbus', 'SNMP', 'BACnet'],
+        footprint: 'Mechanical Gallery', dimensions: 'Facility-Scale',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W+', power_kW: 16, connection: '4" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps/filters/sensors', use_case: 'Hyperscale Facility',
+        phe_type: 'Gasketed Plate', max_tcs_temp_C: 60, fws_inlet_range_C: '7-45' },
       { model: 'FCD-4000', vendor: 'NautilusDT', capacity_kW: 4000, flow_LPM: 8800, head_Bar: 5.5, price_k: 520,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+2 Pump', protocols: ['Modbus', 'SNMP', 'BACnet'], footprint: 'Mechanical Gallery', dimensions: 'Facility-Scale' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+2 Pump', protocols: ['Modbus', 'SNMP', 'BACnet'],
+        footprint: 'Mechanical Gallery', dimensions: 'Facility-Scale',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W+', power_kW: 30, connection: '6" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps/filters/sensors', use_case: 'Hyperscale 10MW+ POD',
+        phe_type: 'Gasketed Plate', max_tcs_temp_C: 60, fws_inlet_range_C: '7-45' },
 
       // ============================================================================
       // MID-RANGE & ENTERPRISE IN-ROW UNITS (300 kW - 1 MW)
       // ============================================================================
 
       // Boyd - In-rack, Stand-alone (2.1 kW to 1.1 MW+)
+      // Wide capacity range from small edge to enterprise-scale
       { model: 'ATS-100', vendor: 'Boyd', capacity_kW: 100, flow_LPM: 230, head_Bar: 3.0, price_k: 30,
-        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'], footprint: 'In-Rack', dimensions: 'Standard' },
+        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'],
+        footprint: 'In-Rack', dimensions: 'Standard',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W3', power_kW: 1.5, connection: '1" NPT',
+        flow_density: 2.3, maintainability: 'Field-serviceable', use_case: 'Edge/Small Enterprise',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 45, fws_inlet_range_C: '7-35' },
       { model: 'ATS-300', vendor: 'Boyd', capacity_kW: 300, flow_LPM: 680, head_Bar: 4.0, price_k: 58,
-        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus'], footprint: 'Stand-alone', dimensions: 'Standard' },
+        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus'],
+        footprint: 'Stand-alone', dimensions: 'Standard',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 3.2, connection: '2" NPT',
+        flow_density: 2.27, maintainability: 'Field-serviceable', use_case: 'Enterprise AI',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
       { model: 'ATS-600', vendor: 'Boyd', capacity_kW: 600, flow_LPM: 1350, head_Bar: 5.5, price_k: 95,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'], footprint: 'Stand-alone', dimensions: 'Large' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'Stand-alone', dimensions: 'Large',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 5.8, connection: '3" Victaulic',
+        flow_density: 2.25, maintainability: 'Hot-swap pumps', use_case: 'High-Density HPC',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'ATS-1100', vendor: 'Boyd', capacity_kW: 1100, flow_LPM: 2400, head_Bar: 6.2, price_k: 160,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'], footprint: 'Stand-alone', dimensions: 'Large' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'Stand-alone', dimensions: 'Large',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 10.2, connection: '4" Victaulic',
+        flow_density: 2.18, maintainability: 'Hot-swap pumps/filters', use_case: 'Enterprise Hyperscale',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
 
       // ACT (Advanced Cooling Tech) - End-of-row, Two-Phase capable (15 kW to 1 MW)
-      // Supports N+1 pump redundancy, FWS inlet 7-45°C
+      // Supports N+1 pump redundancy, FWS inlet 7-45°C, two-phase dielectric refrigerant option
+      // In-Rack 8U uses variable-speed 24 VDC pump and dry-break manifold couplings
+      // Ideal for hyperscale, AI/ML clusters, HPC pods, edge, storage, telecom
       { model: 'LiquidCool LC-15', vendor: 'ACT', capacity_kW: 15, flow_LPM: 40, head_Bar: 2.0, price_k: 12,
-        type: 'L2L', atd_C: 7, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'], footprint: 'In-Rack 8U', dimensions: '8U High' },
+        type: 'L2L', atd_C: 7, filtration_um: 50, redundancy: 'Single Pump (24VDC VSD)', protocols: ['Modbus'],
+        footprint: 'In-Rack 8U', dimensions: '8U High',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W3', power_kW: 0.3, connection: 'Dry-Break QDC',
+        flow_density: 2.67, maintainability: 'Field-serviceable', use_case: 'Edge/Telecom/Storage',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 45, fws_inlet_range_C: '7-45' },
       { model: 'LiquidCool LC-50', vendor: 'ACT', capacity_kW: 50, flow_LPM: 120, head_Bar: 2.5, price_k: 20,
-        type: 'L2L', atd_C: 7, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'], footprint: 'In-Rack', dimensions: '12U High' },
+        type: 'L2L', atd_C: 7, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'],
+        footprint: 'In-Rack', dimensions: '12U High',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W3', power_kW: 0.8, connection: 'Dry-Break QDC',
+        flow_density: 2.4, maintainability: 'Field-serviceable', use_case: 'Single-Rack Deployments',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 45, fws_inlet_range_C: '7-45' },
       { model: 'LiquidCool LC-200', vendor: 'ACT', capacity_kW: 200, flow_LPM: 450, head_Bar: 3.8, price_k: 48,
-        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'N+1 Pump', protocols: ['Modbus', 'BACnet'], footprint: 'End-of-Row', dimensions: 'Standard' },
+        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'N+1 Pump', protocols: ['Modbus', 'BACnet'],
+        footprint: 'End-of-Row', dimensions: 'Standard',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 2.8, connection: '2" Victaulic',
+        flow_density: 2.25, maintainability: 'Field-serviceable pumps', use_case: 'Mid-Density AI Pods',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-45' },
       { model: 'LiquidCool LC-500', vendor: 'ACT', capacity_kW: 500, flow_LPM: 1100, head_Bar: 5.0, price_k: 88,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'BACnet'], footprint: 'End-of-Row', dimensions: 'Large' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'BACnet'],
+        footprint: 'End-of-Row', dimensions: 'Large',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 5.5, connection: '3" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps', use_case: 'High-Density AI/HPC Pods',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'LiquidCool LC-1000', vendor: 'ACT', capacity_kW: 1000, flow_LPM: 2200, head_Bar: 6.0, price_k: 155,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'BACnet'], footprint: 'End-of-Row', dimensions: 'Large' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'BACnet'],
+        footprint: 'End-of-Row', dimensions: 'Large',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 9.5, connection: '4" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps/filters', use_case: 'Hyperscale AI Clusters',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
 
-      // Coolcentric - Compact floor-mount, RDHx support
-      // CD6C: 305 kW, 600mm x 1000mm footprint, only 3.7 kW power consumption
+      // Coolcentric - Compact floor-mount, RDHx support, extreme energy efficiency
+      // CD6C: 305 kW capacity with only 3.7 kW power consumption (1.4% overhead!)
+      // Creates isolated secondary loop for RDHx deployments
       { model: 'CD4C', vendor: 'Coolcentric', capacity_kW: 180, flow_LPM: 420, head_Bar: 3.0, price_k: 38,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus'], footprint: 'Small Floor-Mount', dimensions: '600mm x 800mm' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus'],
+        footprint: 'Small Floor-Mount', dimensions: '600mm x 800mm',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 2.6, connection: '2" NPT',
+        flow_density: 2.33, maintainability: 'Field-serviceable', use_case: 'RDHx Support',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
       { model: 'CD6C', vendor: 'Coolcentric', capacity_kW: 305, flow_LPM: 700, head_Bar: 3.5, price_k: 52,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus'], footprint: 'Small Floor-Mount', dimensions: '600mm x 1000mm' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus'],
+        footprint: 'Small Floor-Mount', dimensions: '600mm x 1000mm',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 3.7, connection: '2" NPT',
+        flow_density: 2.3, maintainability: 'Field-serviceable', use_case: 'RDHx/Enterprise',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
       { model: 'CD8C', vendor: 'Coolcentric', capacity_kW: 450, flow_LPM: 1000, head_Bar: 4.0, price_k: 72,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'], footprint: 'Floor-Mount', dimensions: '600mm x 1200mm' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'Floor-Mount', dimensions: '600mm x 1200mm',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 5.2, connection: '3" Victaulic',
+        flow_density: 2.22, maintainability: 'Hot-swap pumps', use_case: 'High-Density Enterprise',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
 
       // JetCool SmartSense - High-performance rack-mounted modular CDUs
-      // 300 kW per rack, scalable to 1.8 MW across 6 units, quick disconnect manifolds
+      // 300 kW per rack, scalable to 1.8 MW across 6 units via modular, pay-as-you-grow
+      // Quick disconnect manifolds for rapid deployment, built-in redundancy
+      // Focus on aggregating capacity at rack level vs. centralized mega-CDUs
       { model: 'SmartSense 150', vendor: 'JetCool', capacity_kW: 150, flow_LPM: 340, head_Bar: 3.2, price_k: 42,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'], footprint: 'Rack-Mount', dimensions: '24U' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'],
+        footprint: 'Rack-Mount', dimensions: '24U',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 1.8, connection: 'Quick-Disconnect Manifold',
+        flow_density: 2.27, maintainability: 'Hot-swap pumps/filters/sensors', use_case: 'GPU-Dense Single Rack',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
       { model: 'SmartSense 300', vendor: 'JetCool', capacity_kW: 300, flow_LPM: 680, head_Bar: 3.8, price_k: 68,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'], footprint: 'Rack-Mount', dimensions: '42U' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'],
+        footprint: 'Rack-Mount', dimensions: '42U',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 3.2, connection: 'Quick-Disconnect Manifold',
+        flow_density: 2.27, maintainability: 'Hot-swap pumps/filters/sensors', use_case: 'High-Power GPU Rack',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'SmartSense 600', vendor: 'JetCool', capacity_kW: 600, flow_LPM: 1350, head_Bar: 4.2, price_k: 115,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'], footprint: 'Modular Cluster', dimensions: '2x Rack' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'],
+        footprint: 'Modular Cluster', dimensions: '2x Rack',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 5.8, connection: 'Quick-Disconnect Manifold',
+        flow_density: 2.25, maintainability: 'Hot-swap pumps/filters/sensors', use_case: 'AI Pod (2 Racks)',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'SmartSense 1200', vendor: 'JetCool', capacity_kW: 1200, flow_LPM: 2700, head_Bar: 4.8, price_k: 195,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'], footprint: 'Modular Cluster', dimensions: '4x Rack' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'],
+        footprint: 'Modular Cluster', dimensions: '4x Rack',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W+', power_kW: 10.5, connection: 'Quick-Disconnect Manifold',
+        flow_density: 2.25, maintainability: 'Hot-swap all components', use_case: 'AI Pod (4 Racks)',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 60, fws_inlet_range_C: '7-45' },
       { model: 'SmartSense 1800', vendor: 'JetCool', capacity_kW: 1800, flow_LPM: 4050, head_Bar: 5.2, price_k: 275,
-        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'], footprint: 'Modular Cluster', dimensions: '6x Rack' },
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'],
+        footprint: 'Modular Cluster', dimensions: '6x Rack',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W+', power_kW: 15.2, connection: 'Quick-Disconnect Manifold',
+        flow_density: 2.25, maintainability: 'Hot-swap all components', use_case: 'AI Pod (6 Racks)',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 60, fws_inlet_range_C: '7-45' },
 
       // ============================================================================
       // MODULAR & IN-RACK CDUs (<300 kW) - Edge, Telecom, Localized Deployments
       // ============================================================================
 
       // nVent HOFFMAN RackChiller series - In-rack and Row CDUs
+      // Compact form factors for localized deployments, edge, and telecom
       { model: 'RackChiller CDU40', vendor: 'nVent', capacity_kW: 40, flow_LPM: 95, head_Bar: 1.8, price_k: 15,
-        type: 'L2L', atd_C: 7, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'], footprint: 'In-Rack', dimensions: '6U' },
+        type: 'L2L', atd_C: 7, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'],
+        footprint: 'In-Rack', dimensions: '6U',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W2', power_kW: 0.5, connection: '1" NPT',
+        flow_density: 2.38, maintainability: 'Field-serviceable', use_case: 'Edge/Telecom',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 40, fws_inlet_range_C: '7-30' },
       { model: 'RackChiller CDU100', vendor: 'nVent', capacity_kW: 125, flow_LPM: 290, head_Bar: 2.8, price_k: 32,
-        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'], footprint: 'In-Rack', dimensions: '12U' },
+        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'In-Rack', dimensions: '12U',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W3', power_kW: 1.4, connection: '1.5" NPT',
+        flow_density: 2.32, maintainability: 'Field-serviceable', use_case: 'Single Rack/Edge',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 45, fws_inlet_range_C: '7-35' },
       { model: 'RackChiller CDU300', vendor: 'nVent', capacity_kW: 300, flow_LPM: 680, head_Bar: 3.4, price_k: 58,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'], footprint: 'In-Row', dimensions: 'Standard' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'In-Row', dimensions: 'Standard',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 3.5, connection: '2" Victaulic',
+        flow_density: 2.27, maintainability: 'Hot-swap pumps', use_case: 'Mid-Density Row',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
       { model: 'RackChiller CDU800', vendor: 'nVent', capacity_kW: 500, flow_LPM: 1100, head_Bar: 4.0, price_k: 85,
-        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP', 'BACnet'], footprint: 'In-Row', dimensions: 'Large' },
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP', 'BACnet'],
+        footprint: 'In-Row', dimensions: 'Large',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 5.5, connection: '3" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps', use_case: 'High-Density Row',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
 
       // Delta Electronics - Rack-mounted compact units (4U/8U)
+      // Cost-effective solutions for distributed cooling
       { model: 'InfraSuite LC-50R', vendor: 'Delta Electronics', capacity_kW: 50, flow_LPM: 120, head_Bar: 2.5, price_k: 18,
-        type: 'L2L', atd_C: 7, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'], footprint: 'Rack-Mount 4U', dimensions: '4U' },
+        type: 'L2L', atd_C: 7, filtration_um: 50, redundancy: 'Single Pump', protocols: ['Modbus'],
+        footprint: 'Rack-Mount 4U', dimensions: '4U',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W2', power_kW: 0.6, connection: '1" NPT',
+        flow_density: 2.4, maintainability: 'Field-serviceable', use_case: 'Small Edge/Branch',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 40, fws_inlet_range_C: '7-30' },
       { model: 'InfraSuite LC-100R', vendor: 'Delta Electronics', capacity_kW: 100, flow_LPM: 230, head_Bar: 3.0, price_k: 28,
-        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'], footprint: 'Rack-Mount 8U', dimensions: '8U' },
+        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'Rack-Mount 8U', dimensions: '8U',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W3', power_kW: 1.2, connection: '1.5" NPT',
+        flow_density: 2.3, maintainability: 'Field-serviceable', use_case: 'Edge Compute',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 45, fws_inlet_range_C: '7-35' },
       { model: 'InfraSuite LC-200R', vendor: 'Delta Electronics', capacity_kW: 200, flow_LPM: 460, head_Bar: 3.5, price_k: 45,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'], footprint: 'Floor-Mount', dimensions: 'Compact' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'Floor-Mount', dimensions: 'Compact',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 2.4, connection: '2" NPT',
+        flow_density: 2.3, maintainability: 'Field-serviceable pumps', use_case: 'SMB/Enterprise',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
 
       // Vertiv CoolChip series (L2A for retrofit environments)
-      // CoolChip CDU-70: 70 kW, 80 l/min, 50µ filtration, no facility water required
+      // CoolChip CDU-70: No facility water required - transfers heat to data hall air
+      // Ideal for introducing DTC liquid cooling to existing air-cooled environments
+      // Trade-off: Heat returned to hot aisle, requires existing CRAH capacity
       { model: 'CoolChip CDU-70', vendor: 'Vertiv', capacity_kW: 70, flow_LPM: 80, head_Bar: 2.8, price_k: 22,
-        type: 'L2A', atd_C: null, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Remote Monitoring'], footprint: 'In-Row/Perimeter', dimensions: '24 in W' },
+        type: 'L2A', atd_C: null, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Remote Monitoring'],
+        footprint: 'In-Row/Perimeter', dimensions: '24 in W',
+        wetted_material: 'Stainless Steel', ashrae_class: null, power_kW: 2.5, connection: '1.5" NPT',
+        flow_density: 1.14, maintainability: 'Field-serviceable', use_case: 'Air-Cooled DC Retrofit',
+        phe_type: 'Air-to-Liquid Coil', max_tcs_temp_C: 45, fws_inlet_range_C: null },
       { model: 'CoolChip CDU-150', vendor: 'Vertiv', capacity_kW: 150, flow_LPM: 340, head_Bar: 3.5, price_k: 38,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus RTU', 'TCP/IP'], footprint: 'In-Row', dimensions: '24 in W' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus RTU', 'TCP/IP'],
+        footprint: 'In-Row', dimensions: '24 in W',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 2.2, connection: '2" NPT',
+        flow_density: 2.27, maintainability: 'Field-serviceable', use_case: 'Mid-Density Retrofit',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
       { model: 'CoolChip CDU-350', vendor: 'Vertiv', capacity_kW: 350, flow_LPM: 780, head_Bar: 4.2, price_k: 65,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus RTU', 'TCP/IP'], footprint: 'Floor-Mount', dimensions: 'Standard' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus RTU', 'TCP/IP'],
+        footprint: 'Floor-Mount', dimensions: 'Standard',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 4.2, connection: '2.5" Victaulic',
+        flow_density: 2.23, maintainability: 'Hot-swap pumps', use_case: 'Enterprise AI',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'CoolChip CDU-500', vendor: 'Vertiv', capacity_kW: 500, flow_LPM: 1100, head_Bar: 5.0, price_k: 85,
-        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Triple Pump', protocols: ['Modbus RTU', 'TCP/IP'], footprint: 'Floor-Mount', dimensions: 'Standard' },
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Triple Pump', protocols: ['Modbus RTU', 'TCP/IP'],
+        footprint: 'Floor-Mount', dimensions: 'Standard',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 6.2, connection: '3" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps', use_case: 'High-Density HPC',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
       { model: 'CoolChip CDU-1000', vendor: 'Vertiv', capacity_kW: 1000, flow_LPM: 2200, head_Bar: 6.0, price_k: 145,
-        type: 'L2L', atd_C: 4, filtration_um: 50, redundancy: 'Triple Pump', protocols: ['Modbus RTU', 'TCP/IP'], footprint: 'Floor-Mount', dimensions: 'Large' }
+        type: 'L2L', atd_C: 4, filtration_um: 50, redundancy: 'Triple Pump', protocols: ['Modbus RTU', 'TCP/IP'],
+        footprint: 'Floor-Mount', dimensions: 'Large',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 11, connection: '4" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps/filters', use_case: 'Enterprise Hyperscale',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
+
+      // ============================================================================
+      // ADDITIONAL VENDORS (Schneider Electric, Asetek, Liquid Cool Solutions)
+      // ============================================================================
+
+      // Schneider Electric - Low ATD, high-efficiency PHE design
+      // Features stainless steel plate heat exchangers for low approach temperature
+      { model: 'InRow LC 300', vendor: 'Schneider Electric', capacity_kW: 300, flow_LPM: 680, head_Bar: 3.8, price_k: 62,
+        type: 'L2L', atd_C: 3, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP', 'BACnet'],
+        footprint: 'In-Row', dimensions: 'Standard (600mm W)',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 3.5, connection: '2" Victaulic',
+        flow_density: 2.27, maintainability: 'Hot-swap pumps', use_case: 'Enterprise/Colocation',
+        phe_type: 'Brazed Plate (Low ATD)', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
+      { model: 'InRow LC 600', vendor: 'Schneider Electric', capacity_kW: 600, flow_LPM: 1350, head_Bar: 4.5, price_k: 105,
+        type: 'L2L', atd_C: 3, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP', 'BACnet'],
+        footprint: 'In-Row', dimensions: 'Large (900mm W)',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 6.5, connection: '3" Victaulic',
+        flow_density: 2.25, maintainability: 'Hot-swap pumps/filters', use_case: 'High-Density Enterprise',
+        phe_type: 'Brazed Plate (Low ATD)', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
+
+      // Asetek - Direct-to-chip cooling specialists (OEM focus)
+      // Pioneer in server-level liquid cooling, now scaling to rack-level CDUs
+      { model: 'RackCDU D2C-200', vendor: 'Asetek', capacity_kW: 200, flow_LPM: 450, head_Bar: 3.5, price_k: 48,
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP'],
+        footprint: 'In-Rack', dimensions: '20U',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 2.4, connection: 'Quick-Connect',
+        flow_density: 2.25, maintainability: 'Hot-swap pumps', use_case: 'GPU Server Clusters',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
+      { model: 'RackCDU D2C-500', vendor: 'Asetek', capacity_kW: 500, flow_LPM: 1100, head_Bar: 4.5, price_k: 92,
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Redfish', 'SNMP', 'Modbus'],
+        footprint: 'In-Row', dimensions: 'Standard',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 5.5, connection: '3" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps/filters', use_case: 'AI/HPC Clusters',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' },
+
+      // Liquid Cool Solutions (LCS) - Immersion and hybrid cooling
+      // Offers both single-phase and two-phase cooling options
+      { model: 'DataCool 150', vendor: 'LCS', capacity_kW: 150, flow_LPM: 340, head_Bar: 3.2, price_k: 40,
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP'],
+        footprint: 'In-Rack', dimensions: '18U',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W4', power_kW: 1.8, connection: '2" NPT',
+        flow_density: 2.27, maintainability: 'Field-serviceable', use_case: 'Hybrid Cooling',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 50, fws_inlet_range_C: '7-40' },
+      { model: 'DataCool 400', vendor: 'LCS', capacity_kW: 400, flow_LPM: 900, head_Bar: 4.0, price_k: 78,
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'N+1 Pump', protocols: ['Modbus', 'SNMP', 'BACnet'],
+        footprint: 'Floor-Mount', dimensions: 'Standard',
+        wetted_material: 'Stainless Steel', ashrae_class: 'W1-W5', power_kW: 4.5, connection: '3" Victaulic',
+        flow_density: 2.25, maintainability: 'Hot-swap pumps', use_case: 'Mixed Cooling Environment',
+        phe_type: 'Brazed Plate', max_tcs_temp_C: 55, fws_inlet_range_C: '7-45' }
     ];
 
     // QDC Database (simulated vendor data)
@@ -10503,14 +10802,24 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       }
 
       cduMatches.forEach(cdu => {
-        // Build enhanced specification badges
+        // Build enhanced specification badges (Row 1 - Core specs)
         const typeBadge = cdu.type ? `<span class="fp-spec-badge ${cdu.type === 'L2A' ? 'orange' : 'blue'}">${cdu.type}</span>` : '';
         const atdBadge = cdu.atd_C ? `<span class="fp-spec-badge green">ATD: ${cdu.atd_C}°C</span>` : '';
         const filtBadge = cdu.filtration_um ? `<span class="fp-spec-badge ${cdu.filtration_um <= 25 ? 'green' : 'gray'}">${cdu.filtration_um}µ Filter</span>` : '';
         const redundBadge = cdu.redundancy ? `<span class="fp-spec-badge purple">${cdu.redundancy}</span>` : '';
 
+        // Build new engineering specification badges (Row 2 - Enhanced)
+        const ashraeBadge = cdu.ashrae_class ? `<span class="fp-spec-badge" style="background: rgba(34, 197, 94, 0.15); color: #16a34a; border-color: rgba(34, 197, 94, 0.3);">ASHRAE ${cdu.ashrae_class}</span>` : '';
+        const powerBadge = cdu.power_kW ? `<span class="fp-spec-badge" style="background: rgba(234, 179, 8, 0.15); color: #ca8a04; border-color: rgba(234, 179, 8, 0.3);">${cdu.power_kW} kW Draw</span>` : '';
+        const maintBadge = cdu.maintainability && cdu.maintainability.includes('Hot-swap') ? `<span class="fp-spec-badge" style="background: rgba(6, 182, 212, 0.15); color: #0891b2; border-color: rgba(6, 182, 212, 0.3);">Hot-Swap</span>` : '';
+        const flowDensityBadge = cdu.flow_density && cdu.flow_density >= 1.5 ? `<span class="fp-spec-badge" style="background: rgba(99, 102, 241, 0.15); color: #4f46e5; border-color: rgba(99, 102, 241, 0.3);">>${cdu.flow_density} LPM/kW</span>` : '';
+
         // Format protocols as comma-separated list
         const protocolsText = cdu.protocols ? cdu.protocols.join(', ') : 'N/A';
+
+        // Format use case and connection info
+        const useCaseText = cdu.use_case || 'General Purpose';
+        const connectionText = cdu.connection || 'N/A';
 
         cduHtml += `
           <div class="fp-match-card blue">
@@ -10520,10 +10829,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 <span style="color: #64748b; font-size: 13px;">(${cdu.vendor})</span>
               </div>
               <p style="margin: 4px 0;"><strong>Capacity:</strong> ${cdu.capacity_kW} kW | <strong>Flow:</strong> ${cdu.flow_LPM} LPM | <strong>Head:</strong> ${cdu.head_Bar} Bar</p>
-              <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0;">
+              <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0;">
                 ${typeBadge}${atdBadge}${filtBadge}${redundBadge}
               </div>
-              <p style="margin: 4px 0; font-size: 12px; color: #64748b;"><strong>Footprint:</strong> ${cdu.footprint || 'N/A'} | <strong>Protocols:</strong> ${protocolsText}</p>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0;">
+                ${ashraeBadge}${powerBadge}${maintBadge}${flowDensityBadge}
+              </div>
+              <p style="margin: 4px 0; font-size: 12px; color: #64748b;"><strong>Connection:</strong> ${connectionText} | <strong>Use Case:</strong> ${useCaseText}</p>
+              <p style="margin: 4px 0; font-size: 11px; color: #94a3b8;"><strong>Footprint:</strong> ${cdu.footprint || 'N/A'} | <strong>Protocols:</strong> ${protocolsText}</p>
             </div>
             <button class="fp-select-btn blue" onclick="fpSelectComponent('cdu', '${cdu.model}', ${cdu.flow_LPM}, ${cdu.head_Bar}, ${cdu.price_k}, ${cdu.capacity_kW})">
               Select
