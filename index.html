@@ -902,23 +902,37 @@
     /* Tool Navigation Tabs */
     .tool-tabs {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      flex-wrap: nowrap;
+      gap: 6px;
       margin-bottom: 24px;
       border-bottom: 2px solid rgba(255, 215, 0, 0.2);
       padding-bottom: 16px;
     }
 
     .tab-button {
-      padding: 12px 20px;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 10px 8px;
       border-radius: 8px 8px 0 0;
-      font-size: 0.9rem;
+      font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
       border: none;
       background: rgba(255,255,255,0.05);
       color: rgba(255,255,255,0.7);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .tool-tabs {
+        flex-wrap: wrap;
+      }
+      .tab-button {
+        flex: 1 1 45%;
+        font-size: 0.72rem;
+        padding: 8px 6px;
+      }
     }
 
     .tab-button:hover {
