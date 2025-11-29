@@ -303,40 +303,67 @@
       height: 15px;
     }
 
-    .dropdown-toggle::after {
-      content: ' ▼';
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.8);
-    }
-
     .dropdown-toggle {
       cursor: pointer;
       user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dropdown-toggle-icon {
+      font-size: 0.7rem;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .dropdown-menu:hover .dropdown-toggle-icon,
+    .dropdown-menu.active .dropdown-toggle-icon {
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--bee-gold);
+    }
+
+    .dropdown-menu.active .dropdown-toggle-icon {
+      transform: rotate(180deg);
     }
 
     .dropdown-content {
       display: none;
       position: absolute;
-      background: rgba(0, 0, 0, 0.98);
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       min-width: 280px;
-      box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 215, 0, 0.15);
       border: 1px solid rgba(255, 215, 0, 0.2);
       z-index: 1;
       top: 100%;
-      left: 0;
-      border-radius: 8px;
-      margin-top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 12px;
+      margin-top: 12px;
       max-width: calc(100vw - 24px);
+      overflow: hidden;
     }
 
     .dropdown-content a {
-      color: rgba(255,255,255,0.8);
-      padding: 12px 20px;
+      color: rgba(255,255,255,0.85);
+      padding: 16px 20px;
       text-decoration: none;
-      display: block;
-      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
       font-size: 0.9rem;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       text-transform: none;
     }
 
@@ -345,9 +372,21 @@
     }
 
     .dropdown-content a:hover {
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(255, 215, 0, 0.08);
       color: var(--bee-gold);
-      padding-left: 28px;
+    }
+
+    .dropdown-content a::before {
+      content: '→';
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.2s ease;
+      color: var(--bee-gold);
+    }
+
+    .dropdown-content a:hover::before {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .dropdown-menu:hover .dropdown-content,
@@ -767,16 +806,21 @@
 
       .dropdown-toggle {
         width: 100%;
-        display: block;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
-      .dropdown-toggle::after {
-        font-size: 0.85rem;
-        float: right;
-        transition: transform 0.3s;
+      .dropdown-toggle-icon {
+        font-size: 0.65rem;
+        width: 26px;
+        height: 26px;
+        background: rgba(255, 215, 0, 0.1);
       }
 
-      .dropdown-menu.active .dropdown-toggle::after {
+      .dropdown-menu.active .dropdown-toggle-icon {
+        background: rgba(255, 215, 0, 0.2);
+        color: var(--bee-gold);
         transform: rotate(180deg);
       }
 
@@ -789,13 +833,20 @@
         background: rgba(255, 215, 0, 0.05);
         margin: 0;
         border-radius: 0;
+        border-left: 3px solid rgba(255, 215, 0, 0.3);
+        transform: none;
+        left: 0;
       }
 
       .dropdown-menu.active .dropdown-content { display: flex; flex-direction: column; }
       .dropdown-content a {
         border: none;
-        padding: 12px 40px;
+        padding: 14px 24px;
         font-size: 0.9rem;
+      }
+
+      .dropdown-content a::before {
+        display: none;
       }
       
       .nav-right {
@@ -1503,7 +1554,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         <ul class="nav-menu" id="navMenu">
           <li><a onclick="showPage('home'); closeMenu();" class="nav-link active">Home</a></li>
           <li class="dropdown-menu" onclick="toggleDropdown(event)">
-            <a class="dropdown-toggle nav-link">Services</a>
+            <a class="dropdown-toggle nav-link">Services <span class="dropdown-toggle-icon">▼</span></a>
             <div class="dropdown-content">
               <a onclick="showPage('services-tech'); closeMenu();">Technology Consulting</a>
               <a onclick="showPage('services-cooling'); closeMenu();">Infrastructure Sourcing</a>
