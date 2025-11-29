@@ -844,8 +844,22 @@
       .dropdown-content {
         max-width: calc(100vw - 24px);
       }
+
+      /* Article Copy Link button - prevent oversizing */
+      #copyLinkBtn,
+      #copyLinkBtn2 {
+        min-height: auto !important;
+        padding: 8px 12px !important;
+        font-size: 0.8rem !important;
+      }
+
+      /* Article header flex wrap for mobile */
+      article header > div:first-child {
+        flex-direction: column;
+        align-items: flex-start !important;
+      }
     }
-    
+
     @media (max-width: 480px) {
       .hero h1 { font-size: 1.75rem !important; }
       .hero .subhead { font-size: 0.95rem; }
@@ -4225,14 +4239,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     </section>
   </div>
 
-  <!-- NEWS & INSIGHTS PAGE -->
+  <!-- NEWS & INSIGHTS HUB PAGE -->
   <div id="news-insights" class="page">
     <section class="hero">
       <div class="container">
         <div class="hero-badge">News & Insights</div>
         <h1>Industry <span class="highlight">Analysis</span></h1>
         <p class="subhead">
-          Expert perspectives on AI infrastructure trends, decentralized compute, and data center modernization strategies.
+          Expert perspectives on AI infrastructure, supply chain technology, and data center modernization strategies.
         </p>
       </div>
     </section>
@@ -4246,6 +4260,83 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           </a>
         </div>
 
+        <!-- Articles Grid -->
+        <div style="max-width: 1000px; margin: 0 auto;">
+          <h2 style="color: var(--bee-gold); font-size: 1.6rem; margin-bottom: 32px; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
+            Latest Articles
+          </h2>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+
+            <!-- Article Card 1: Supply Chain Visibility -->
+            <a href="#" onclick="showPage('article-supply-chain'); return false;" style="text-decoration: none; display: block;">
+              <div style="background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(16,185,129,0.02) 100%); padding: 28px; border-radius: 16px; border: 1px solid rgba(16,185,129,0.3); cursor: pointer; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;" onmouseover="this.style.borderColor='rgba(16,185,129,0.6)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(16,185,129,0.15)';" onmouseout="this.style.borderColor='rgba(16,185,129,0.3)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
+                  <span style="background: #10B981; color: #000; padding: 4px 12px; border-radius: 16px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">Expert Analysis</span>
+                  <span style="background: rgba(255,215,0,0.15); color: var(--bee-gold); padding: 4px 12px; border-radius: 16px; font-size: 0.7rem; font-weight: 600;">Supply Chain</span>
+                  <span style="background: rgba(249,115,22,0.15); color: #F97316; padding: 4px 12px; border-radius: 16px; font-size: 0.7rem; font-weight: 700;">NEW</span>
+                </div>
+                <h3 style="color: white; font-size: 1.2rem; line-height: 1.4; margin-bottom: 12px; flex-grow: 0;">
+                  The Visibility Deficit: An Expert Analysis of Multi-Entity Tracking in Construction Supply Chains
+                </h3>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">
+                  A comprehensive examination of supply chain visibility challenges, current tracking methodologies, and strategic recommendations for digital transformation using DLT and IoT technologies.
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                  <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">7 Chapters</span>
+                  <span style="color: #10B981; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">Read Article <span style="font-size: 1rem;">&rarr;</span></span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Article Card 2: DePIN White Paper -->
+            <a href="#" onclick="showPage('article-depin'); return false;" style="text-decoration: none; display: block;">
+              <div style="background: linear-gradient(135deg, rgba(249,115,22,0.08) 0%, rgba(249,115,22,0.02) 100%); padding: 28px; border-radius: 16px; border: 1px solid rgba(249,115,22,0.3); cursor: pointer; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;" onmouseover="this.style.borderColor='rgba(249,115,22,0.6)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(249,115,22,0.15)';" onmouseout="this.style.borderColor='rgba(249,115,22,0.3)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
+                  <span style="background: #F97316; color: #000; padding: 4px 12px; border-radius: 16px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">White Paper</span>
+                  <span style="background: rgba(255,215,0,0.15); color: var(--bee-gold); padding: 4px 12px; border-radius: 16px; font-size: 0.7rem; font-weight: 600;">Infrastructure Investment</span>
+                </div>
+                <h3 style="color: white; font-size: 1.2rem; line-height: 1.4; margin-bottom: 12px; flex-grow: 0;">
+                  Decentralized Compute and the Industrialization of AI: DePIN Infrastructure Investment and Colocation Modernization
+                </h3>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">
+                  A comprehensive analysis for hardware investors and Colocation facility operators on leveraging DePIN for AI compute infrastructure and monetizing stranded capacity.
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                  <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">7 Sections</span>
+                  <span style="color: #F97316; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">Read Article <span style="font-size: 1rem;">&rarr;</span></span>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- DePIN ARTICLE PAGE -->
+  <div id="article-depin" class="page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">News & Insights</div>
+        <h1>Industry <span class="highlight">Analysis</span></h1>
+        <p class="subhead">
+          Expert perspectives on AI infrastructure trends, decentralized compute, and data center modernization strategies.
+        </p>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <!-- Back to News & Insights Link -->
+        <div style="margin-bottom: 32px;">
+          <a href="#" onclick="showPage('news-insights'); return false;" style="color: var(--bee-gold); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.2rem;">&larr;</span> Back to News & Insights
+          </a>
+        </div>
+
         <!-- Article Header -->
         <article style="max-width: 900px; margin: 0 auto;">
           <header style="margin-bottom: 48px; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 32px;">
@@ -4255,7 +4346,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 <span style="background: rgba(255,215,0,0.15); color: var(--bee-gold); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">Infrastructure Investment</span>
               </div>
               <!-- Share Button -->
-              <button id="copyLinkBtn" onclick="copyArticleLink()" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 8px; color: rgba(255,255,255,0.8); font-size: 0.85rem; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.borderColor='rgba(255,215,0,0.4)';" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.2)';">
+              <button id="copyLinkBtn" onclick="copyArticleLink('copyLinkBtn', 'copyLinkText')" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 8px; color: rgba(255,255,255,0.8); font-size: 0.85rem; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.borderColor='rgba(255,215,0,0.4)';" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.2)';">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
                   <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
@@ -4662,10 +4753,484 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             </div>
           </section>
 
+          <!-- AI Disclaimer -->
+          <section style="margin-bottom: 32px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid rgba(255,215,0,0.3);">
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem; line-height: 1.7; font-style: italic; margin: 0;">
+              Generative AI and AI-assisted tools were used in the preparation of this manuscript for editing, formatting, and summarizing research materials. The human author(s) remain solely responsible for the research design, intellectual content, and final conclusions. All AI-generated content has been rigorously reviewed, edited, and validated for accuracy and compliance by the author(s), who accept full responsibility for the published work.
+            </p>
+          </section>
+
           <!-- CTA -->
           <div style="text-align: center; padding: 32px 0; border-top: 1px solid rgba(255,215,0,0.2);">
             <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">
               Need help with your data center infrastructure modernization strategy?
+            </p>
+            <button onclick="showPage('contact')" style="background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%); color: #000; border: none; padding: 14px 32px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(255,215,0,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+              Schedule a Consultation
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- SUPPLY CHAIN VISIBILITY ARTICLE PAGE -->
+  <div id="article-supply-chain" class="page">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">News & Insights</div>
+        <h1>Industry <span class="highlight">Analysis</span></h1>
+        <p class="subhead">
+          Expert perspectives on construction supply chain technology, logistics optimization, and operational efficiency.
+        </p>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <!-- Back to News & Insights Link -->
+        <div style="margin-bottom: 32px;">
+          <a href="#" onclick="showPage('news-insights'); return false;" style="color: var(--bee-gold); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.2rem;">&larr;</span> Back to News & Insights
+          </a>
+        </div>
+
+        <!-- Article Header -->
+        <article style="max-width: 900px; margin: 0 auto;">
+          <header style="margin-bottom: 48px; border-bottom: 1px solid rgba(255,215,0,0.2); padding-bottom: 32px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <span style="background: #10B981; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Expert Analysis</span>
+                <span style="background: rgba(255,215,0,0.15); color: var(--bee-gold); padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">Supply Chain</span>
+                <span style="background: rgba(96,165,250,0.15); color: #60A5FA; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">Construction</span>
+              </div>
+              <!-- Share Button -->
+              <button id="copyLinkBtn2" onclick="copyArticleLink('copyLinkBtn2', 'copyLinkText2')" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 8px; color: rgba(255,255,255,0.8); font-size: 0.85rem; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.12)'; this.style.borderColor='rgba(255,215,0,0.4)';" onmouseout="this.style.background='rgba(255,255,255,0.08)'; this.style.borderColor='rgba(255,255,255,0.2)';">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                </svg>
+                <span id="copyLinkText2">Copy Link</span>
+              </button>
+            </div>
+            <h1 style="color: white; font-size: 2.2rem; line-height: 1.3; margin-bottom: 20px;">
+              The Visibility Deficit: An Expert Analysis of Multi-Entity Tracking in Construction Supply Chains
+            </h1>
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">
+              A comprehensive examination of supply chain visibility challenges, current tracking methodologies, and strategic recommendations for digital transformation
+            </p>
+          </header>
+
+          <!-- Chapter 1: Executive Summary -->
+          <section style="margin-bottom: 48px;">
+            <h2 style="color: var(--bee-gold); font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid var(--bee-gold); padding-left: 16px;">
+              Chapter 1: Executive Summary and Strategic Context
+            </h2>
+
+            <h3 style="color: #60A5FA; font-size: 1.1rem; margin: 24px 0 12px 0;">1.1 Defining the Scope of Supply Chain Visibility (SCV) in Construction</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                The construction supply chain is inherently complex, characterized by numerous legal and operational hand-offs required to move high-value, often customized materials from raw processing through fabrication, specialized carriers, and finally to a general contractor's site and relevant subcontractors. Achieving Supply Chain Visibility (SCV) in this environment requires more than internal inventory tracking; it demands continuous, verifiable tracking across disparate organizational boundaries—a process often referred to as <strong style="color: white;">cross-entity logistics</strong>.
+              </p>
+              <p style="margin-bottom: 16px;">
+                The complexity stems from the fact that materials frequently pass through sequential stages: <strong style="color: var(--bee-gold);">Manufacturer → Fabricator → Carrier → General Contractor → Subcontractor</strong>. Each entity typically operates within its own proprietary IT framework. Therefore, the strategic challenge is not merely logging movement but maintaining data continuity and verification as ownership and custody shift across competitive and legal boundaries.
+              </p>
+              <p>
+                <strong style="color: var(--bee-gold);">Effective SCV is not an ancillary logistical tool; it functions as a critical mechanism for risk mitigation, financial control, and adherence to aggressive project schedules</strong>, where material delays often translate directly into significant capital losses.
+              </p>
+            </div>
+
+            <h3 style="color: #60A5FA; font-size: 1.1rem; margin: 24px 0 12px 0;">1.2 Key Findings: The Economic Cost of Fragmentation</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                Current methods for tracking materials across the construction ecosystem are characterized by heterogeneous, disconnected systems. These range from basic manual spreadsheets and paper records to complex, proprietary Enterprise Resource Planning (ERP) systems. This varied landscape results in a pervasive, fundamental <strong style="color: white;">Trust Deficit</strong> across trading partners. Entities cannot rely on the data provided by their counterparts without time-consuming manual reconciliation.
+              </p>
+              <p style="margin-bottom: 16px;">
+                This systemic fragmentation and lack of shared trust lead directly to significant, measurable economic costs. Operational data inconsistencies mandate higher administrative overhead for reconciliation and dispute resolution. Furthermore, payment cycles are routinely delayed because proof of delivery (PoD) cannot be instantly and mutually verified. Critically, uncertainty about material location and delivery certainty forces project managers to incorporate substantial inventory buffers (safety stock), resulting in substantial material waste and unnecessary carrying costs.
+              </p>
+              <p>
+                The operational inefficiency created by reliance on manual tracking and proprietary system fragmentation is directly translated into financial liability. When data cannot be confidently trusted across the supply chain, entities are compelled to compensate by implementing larger buffer inventories, hiring additional administrative personnel to manually reconcile records, and increasing spending on complex audits. <strong style="color: var(--bee-gold);">This mandatory inefficiency constitutes a substantial, yet often hidden, cost premium embedded within material costs and project financing, making SCV an urgent financial problem rather than a solely technical logistical challenge.</strong> The construction sector currently pays a considerable penalty—an "inefficiency tax"—due to fragmented, untrusted supply chain data.
+              </p>
+            </div>
+          </section>
+
+          <!-- Chapter 2 -->
+          <section style="margin-bottom: 48px;">
+            <h2 style="color: var(--bee-gold); font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid #10B981; padding-left: 16px;">
+              Chapter 2: Foundational Mechanics: How Tracking Occurs Today
+            </h2>
+
+            <h3 style="color: #10B981; font-size: 1.1rem; margin: 24px 0 12px 0;">2.1 The Multi-Party Environment and Tracking Hand-offs</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                A typical construction supply chain involves sequential hand-off points that delineate legal and custodial changes. Tracking mechanisms must bridge these gaps, but frequently fail to maintain continuity. For instance, a structural steel manufacturer utilizes internal quality assurance (QA) protocols linked to their ERP. When the steel is loaded onto a carrier, the tracking shifts to a carrier manifest, often tied to proprietary logistics software. Upon arrival at the construction site, the tracking mechanism changes again, relying on manual site check-in procedures and physical delivery notes.
+              </p>
+              <p>
+                <strong style="color: white;">The central issue is that tracking often stops or drastically changes protocols at each organizational boundary.</strong> Data entered into one system (e.g., the manufacturer's ERP) is typically unavailable to the next entity (the general contractor) without complex, manual, or highly customized data exports, thereby breaking the continuity of the data stream.
+              </p>
+            </div>
+
+            <h3 style="color: #10B981; font-size: 1.1rem; margin: 24px 0 12px 0;">2.2 Review of Traditional Tracking Systems: The Baseline of Inefficiency</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <h4 style="color: white; font-size: 1rem; margin: 20px 0 12px 0;">Manual Documentation and Paper-Based Auditing</h4>
+              <p style="margin-bottom: 16px;">
+                Despite the proliferation of digital tools, heavy reliance on manual processes remains the baseline, especially for Small to Mid-Size Builders (SMBs) and their smaller specialized partners. This includes the use of physical Delivery Notes (DNs), frequent email updates, and manually updated spreadsheets to track incoming materials. This practice introduces immediate, inherent latency into the logistics data stream and guarantees high susceptibility to human error. In a dynamic construction environment, relying on manual tracking fundamentally undermines the ability to make time-sensitive scheduling decisions.
+              </p>
+
+              <h4 style="color: white; font-size: 1rem; margin: 20px 0 12px 0;">Enterprise Resource Planning (ERP) Systems: Functionality vs. Interoperability</h4>
+              <p style="margin-bottom: 16px;">
+                Large manufacturers, suppliers, and enterprise builders utilize sophisticated Enterprise Resource Planning (ERP) systems to achieve strong internal efficiency—optimizing inventory management, production scheduling, and internal financial controls. These systems are powerful tools for single-entity control.
+              </p>
+              <p style="margin-bottom: 16px;">
+                However, <strong style="color: var(--bee-gold);">ERP systems exhibit a fundamental failure point regarding cross-entity visibility: they are proprietary platforms optimized exclusively for internal control, not secure external collaboration.</strong> They are symptoms of a competitive landscape where sharing critical operational data is restricted, leading to deliberate data hoarding among major supply entities. Attempting to link two different ERP systems often requires massive customization and maintenance, rendering true, seamless cross-chain tracking prohibitively complex and expensive for the transient, project-based relationships common in construction.
+              </p>
+
+              <h4 style="color: white; font-size: 1rem; margin: 20px 0 12px 0;">Vendor-Specific Portal Tracking and API Limitations</h4>
+              <p style="margin-bottom: 16px;">
+                In the absence of unified systems, individual entities often provide their own vendor-specific portal tracking. This forces builders to monitor potentially dozens of separate web interfaces and software applications simultaneously, which constitutes the very definition of fragmented visibility.
+              </p>
+              <p>
+                While Application Programming Interfaces (APIs) offer a technical means of integration, they require customized development and continuous maintenance between every unique pairing of partners. This <strong style="color: white;">high integration friction</strong> makes achieving seamless, high-volume cross-chain tracking prohibitively expensive, particularly when dealing with non-standardized or transient sub-tier suppliers.
+              </p>
+            </div>
+          </section>
+
+          <!-- Chapter 3 -->
+          <section style="margin-bottom: 48px;">
+            <h2 style="color: var(--bee-gold); font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid #06B6D4; padding-left: 16px;">
+              Chapter 3: The Role of Enabling Technologies in Real-Time Tracking
+            </h2>
+            <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem; margin-bottom: 16px;">
+              Advanced technologies are beginning to shift the tracking paradigm from static records to continuous event streams, although their adoption is inconsistent.
+            </p>
+
+            <h3 style="color: #06B6D4; font-size: 1.1rem; margin: 24px 0 12px 0;">3.1 IoT, RFID, and Automated Data Capture</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                The technical shift involves moving away from relying on human entry points for data capture toward automated mechanisms like Internet of Things (IoT) sensors and Radio-Frequency Identification (RFID) tags. <strong style="color: white;">IoT sensors and GPS devices provide continuous, real-time event streams</strong> that track the location and condition of assets. This is a critical prerequisite for advanced SCV.
+              </p>
+              <p style="margin-bottom: 16px;">
+                Low-power RFID tags allow for reliable asset serialization and automated identification, particularly useful for managing large yards, laydown areas, and high-volume, repetitive components. When a material asset is tagged, and that tag passes a scanner, the event is recorded instantly.
+              </p>
+              <p>
+                When automated data capture technologies like IoT and RFID are combined with secure, shared ledgers (discussed in Chapter 6), they provide automated, verifiable evidence—a <strong style="color: var(--bee-gold);">"Proof of Physical Event."</strong> This automation bypasses the inherent latency and error susceptibility associated with manual data input, directly eliminating the basis for disputes regarding Proof of Delivery (PoD). Because sensors automatically record the physical reality of movement, the foundation for the record is highly reliable. To achieve high-confidence tracking, the data input must be automated (IoT/RFID), but that automated data must also be trusted; Distributed Ledger Technology (DLT) provides the cryptographic trust layer, ensuring the sensor data is verified and immutable.
+              </p>
+            </div>
+
+            <h3 style="color: #06B6D4; font-size: 1.1rem; margin: 24px 0 12px 0;">3.2 Building Information Modeling (BIM) Integration</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                A key strategic goal for advanced SCV systems is the integration of physically tracked assets (using digital IDs and sensors) directly with their digital counterparts housed within the Building Information Modeling (BIM) environment.
+              </p>
+              <p>
+                Integrating real-time logistical tracking with the BIM model has profound implications for quality control and audit trails. By linking material receipt data to the BIM specifications, systems can <strong style="color: white;">automatically reconcile received materials against project requirements and necessary quality certifications</strong>. This significantly enhances project audit efficiency, dramatically reducing the risk of material misuse or error and streamlining quality compliance checks.
+              </p>
+            </div>
+          </section>
+
+          <!-- Chapter 4 -->
+          <section style="margin-bottom: 48px;">
+            <h2 style="color: var(--bee-gold); font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid #FF3B5C; padding-left: 16px;">
+              Chapter 4: Performance Assessment: Challenges, Inefficiencies, and Systemic Risk
+            </h2>
+            <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem; margin-bottom: 16px;">
+              The current tracking landscape is functional but highly inefficient, burdened by fundamental systemic failures centered on data quality and inter-organizational trust.
+            </p>
+
+            <h3 style="color: #FF3B5C; font-size: 1.1rem; margin: 24px 0 12px 0;">4.1 Systemic Failure Point 1: Data Silos and Non-Standardized Input</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                The dominant reality of the construction supply chain is the clash between localized, simplified systems (e.g., SMB spreadsheets) and proprietary, large-scale ERPs. Data transfer is non-standardized, inconsistent, and often non-existent.
+              </p>
+              <p>
+                The inability to seamlessly transfer trusted data across proprietary systems leads to <strong style="color: white;">administrative inflation</strong>. Builders are forced to maintain large administrative teams whose sole purpose is to manually bridge these data gaps—re-keying manifests, reconciling conflicting records, and comparing physical paperwork to digital entries. This non-value-add labor is a significant, ongoing operating cost borne by the general contractor, a direct result of technological fragmentation.
+              </p>
+            </div>
+
+            <h3 style="color: #FF3B5C; font-size: 1.1rem; margin: 24px 0 12px 0;">4.2 Systemic Failure Point 2: The Trust Deficit and Dispute Resolution</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                Tracking failures often originate not from technological inadequacy alone, but from a socio-economic barrier: <strong style="color: var(--bee-gold);">the inherent unwillingness of parties, particularly large incumbent suppliers, to share sensitive operational data with competitors or even customers.</strong> This intentional data hoarding is a major factor driving system fragmentation and prevents the creation of a unified, shared record.
+              </p>
+              <p>
+                The resulting absence of a mutual, immutable record of material transfer or ownership often escalates disagreements over inventory or delivery timelines into formal disputes that require expensive manual audits, legal discovery, or contractual arbitration. Because data hoarding actively prevents the existence of a shared, transparent record, verifying contract fulfillment becomes subjective and difficult. This subjectivity quickly translates into dispute risk, increasing legal overhead and operational exposure.
+              </p>
+            </div>
+
+            <h3 style="color: #FF3B5C; font-size: 1.1rem; margin: 24px 0 12px 0;">4.3 Operational and Financial Impacts of Inefficiency</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <h4 style="color: white; font-size: 1rem; margin: 20px 0 12px 0;">Cost of Material Waste and Inventory Buffers</h4>
+              <p style="margin-bottom: 16px;">
+                Low confidence in supply chain visibility translates directly into mandatory over-ordering, or safety stock. Project managers, uncertain about the exact arrival time or quantity of critical deliveries, hedge against risk by ordering more than necessary.
+              </p>
+              <p style="margin-bottom: 16px;">
+                This high buffer inventory ties up substantial working capital, imposes unnecessary storage and handling fees, and increases the risks of materials being damaged, becoming obsolete, or being stolen while awaiting use. <strong style="color: var(--bee-gold);">The material waste generated as a consequence of poor tracking is simultaneously a massive financial drain and a critical sustainability failure for the sector.</strong>
+              </p>
+
+              <h4 style="color: white; font-size: 1rem; margin: 20px 0 12px 0;">Financial Strain: Delayed Payment Cycles (A/P and A/R)</h4>
+              <p style="margin-bottom: 16px;">
+                The complex, untrusted verification process is a primary inhibitor of efficient finance workflows. When material receipt cannot be instantaneously and verifiably confirmed, the administrative confirmation necessary to release payments to suppliers is significantly delayed.
+              </p>
+              <p>
+                This strain on supplier cash flow forces them to manage greater working capital requirements, leading them to embed a higher risk premium into their pricing structures. Ultimately, this inefficiency raises the baseline cost of materials for the builder. Implementing systems that guarantee fast, accurate SCV—such as automated smart contracts—offers the strategic implication of accelerating payment cycles, potentially leading to reduced pricing and superior supplier relationships.
+              </p>
+            </div>
+
+            <!-- Table 4.1 -->
+            <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 24px; margin: 24px 0; overflow-x: auto;">
+              <h4 style="color: var(--bee-gold); font-size: 1rem; margin-bottom: 16px;">Analysis of Common Supply Chain Inefficiencies and Cost Drivers</h4>
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--bee-gold);">
+                    <th style="text-align: left; padding: 12px 8px; color: var(--bee-gold);">Supply Chain Challenge</th>
+                    <th style="text-align: left; padding: 12px 8px; color: #60A5FA;">Primary Cause(s)</th>
+                    <th style="text-align: left; padding: 12px 8px; color: #10B981;">Operational Impact</th>
+                    <th style="text-align: left; padding: 12px 8px; color: #FF3B5C;">Financial/Legal Risk</th>
+                  </tr>
+                </thead>
+                <tbody style="color: rgba(255,255,255,0.85);">
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <td style="padding: 12px 8px; font-weight: 600; color: white;">Data Fragmentation</td>
+                    <td style="padding: 12px 8px;">Disconnected proprietary ERPs, reliance on manual input</td>
+                    <td style="padding: 12px 8px;">Inaccurate forecasting, excessive administrative overhead</td>
+                    <td style="padding: 12px 8px;">Higher reconciliation costs, delayed invoicing</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <td style="padding: 12px 8px; font-weight: 600; color: white;">Low Data Trust/Disputes</td>
+                    <td style="padding: 12px 8px;">Lack of immutable PoD, competitive data hoarding</td>
+                    <td style="padding: 12px 8px;">Time consumed by manual audits, critical project delays</td>
+                    <td style="padding: 12px 8px;">Legal/arbitration fees, payment disputes</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <td style="padding: 12px 8px; font-weight: 600; color: white;">Material Waste/Buffers</td>
+                    <td style="padding: 12px 8px;">Inaccurate tracking, low confidence in delivery timing</td>
+                    <td style="padding: 12px 8px;">Increased carrying costs, unnecessary capital investment</td>
+                    <td style="padding: 12px 8px;">Lost productivity, reduced profit margins</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 8px; font-weight: 600; color: white;">High Integration Friction</td>
+                    <td style="padding: 12px 8px;">Need for bespoke APIs, imposing IT standards on SMBs</td>
+                    <td style="padding: 12px 8px;">Slow partner onboarding, constrained supplier choice</td>
+                    <td style="padding: 12px 8px;">Increased IT costs, vendor lock-in</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Chapter 5 -->
+          <section style="margin-bottom: 48px;">
+            <h2 style="color: var(--bee-gold); font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid #A855F7; padding-left: 16px;">
+              Chapter 5: Scale Dependency: Tracking Systems Across Builder Segments
+            </h2>
+            <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem; margin-bottom: 16px;">
+              The sophistication, reliability, and resultant issues of tracking mechanisms vary dramatically based on the operational scale of the end-user, the builder.
+            </p>
+
+            <h3 style="color: #A855F7; font-size: 1.1rem; margin: 24px 0 12px 0;">5.1 Segment A: Small to Mid-Size Builders (SMB)</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                SMBs are characterized by heavily decentralized tracking methodologies. They rely fundamentally on low-tech methods such as phone calls, emails, and physical delivery notes to manage logistics. Systems integration is minimal, largely constrained to internal accounting software.
+              </p>
+              <p style="margin-bottom: 16px;">
+                The primary barrier for SMBs is the <strong style="color: white;">perceived complexity and high capital expenditure</strong> required for advanced SCM systems, which are seen as beyond their constrained IT budgets and resource-lean operations. Consequently, they choose the cheapest, simplest tracking mechanism (manual or spreadsheet-based).
+              </p>
+              <p>
+                This choice, however, results in the highest long-term administrative burden, guaranteeing chronic operational risk, frequent inventory mismanagement, and an inability to prove material provenance in case of a dispute. <strong style="color: var(--bee-gold);">This apparent simplicity ultimately guarantees chronic margin erosion and severely limits the firm's capacity to scale its project portfolio.</strong>
+              </p>
+            </div>
+
+            <h3 style="color: #A855F7; font-size: 1.1rem; margin: 24px 0 12px 0;">5.2 Segment B: Mid-Market Regional Firms</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                Mid-market firms typically employ internal, foundational ERP systems, utilizing specialized construction management software to centralize internal accounting, scheduling, and procurement planning.
+              </p>
+              <p>
+                Their key challenge is the <strong style="color: white;">Integration Chasm</strong>. While they possess established internal tracking protocols, they struggle significantly when attempting to enforce external compliance or integrate data feeds from their supply chain partners. They frequently incur the high cost of integration attempts—custom APIs or Electronic Data Interchange (EDI)—without achieving true, comprehensive cross-chain visibility, primarily due to technical incompatibility or supplier non-compliance. They suffer the operational fallout of data silos that originate outside their organization.
+              </p>
+            </div>
+
+            <h3 style="color: #A855F7; font-size: 1.1rem; margin: 24px 0 12px 0;">5.3 Segment C: Enterprise-Level and Major Developers</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                Enterprise builders represent the highest level of sophistication, typically implementing fully integrated SCM suites, often leveraging logistics platforms and integrating tracking into their core BIM models. They achieve a high degree of internal visibility through significant capital and resource investment.
+              </p>
+              <p style="margin-bottom: 16px;">
+                However, their influence often results in the <strong style="color: white;">imposition of high-cost tracking and ERP standards onto their smaller supply chain partners.</strong>
+              </p>
+              <p>
+                While these large firms successfully solve their internal tracking problems, they often externalize the financial and technical compliance burden onto the SMB ecosystem. Suppliers are required to adopt specific software or integrate via complex APIs, raising their operational costs. This externalized burden can lead to two negative outcomes for the enterprise builder: increased material costs as suppliers incorporate compliance costs into their pricing, or the inability to utilize specialized small vendors who cannot afford the technical or administrative overhead required for compliance.
+              </p>
+            </div>
+
+            <!-- Table 5.1 -->
+            <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 24px; margin: 24px 0; overflow-x: auto;">
+              <h4 style="color: var(--bee-gold); font-size: 1rem; margin-bottom: 16px;">Comparative Matrix of Tracking Sophistication by Builder Scale</h4>
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--bee-gold);">
+                    <th style="text-align: left; padding: 12px 8px; color: var(--bee-gold);">Scale of Builder</th>
+                    <th style="text-align: left; padding: 12px 8px; color: #60A5FA;">Typical Tracking Approach</th>
+                    <th style="text-align: left; padding: 12px 8px; color: #10B981;">Primary Integration Point</th>
+                    <th style="text-align: left; padding: 12px 8px; color: #A855F7;">Dominant Issues</th>
+                    <th style="text-align: left; padding: 12px 8px; color: #FF3B5C;">Externalized Cost</th>
+                  </tr>
+                </thead>
+                <tbody style="color: rgba(255,255,255,0.85);">
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <td style="padding: 12px 8px; font-weight: 600; color: white;">Small/Mid-Size</td>
+                    <td style="padding: 12px 8px;">Spreadsheets, email, manual delivery notes</td>
+                    <td style="padding: 12px 8px;">Accounting Software (Low)</td>
+                    <td style="padding: 12px 8px;">Data reliability, inventory mismanagement</td>
+                    <td style="padding: 12px 8px;">Minimal (relies on suppliers)</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <td style="padding: 12px 8px; font-weight: 600; color: white;">Mid-Market Regional</td>
+                    <td style="padding: 12px 8px;">Internal ERP/SCM, basic EDI/APIs</td>
+                    <td style="padding: 12px 8px;">Financial/Accounting, custom integrations</td>
+                    <td style="padding: 12px 8px;">Supplier onboarding, integration friction</td>
+                    <td style="padding: 12px 8px;">Moderate (compliance, API investment)</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 8px; font-weight: 600; color: white;">Enterprise/Major</td>
+                    <td style="padding: 12px 8px;">Integrated SCM Suites, BIM, Advanced Logistics</td>
+                    <td style="padding: 12px 8px;">Centralized SCM/PM, specialized SaaS</td>
+                    <td style="padding: 12px 8px;">Cost of governance, standardization enforcement</td>
+                    <td style="padding: 12px 8px;">High (mandated software, complex data reqs)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Chapter 6 -->
+          <section style="margin-bottom: 48px;">
+            <h2 style="color: var(--bee-gold); font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid #8B5CF6; padding-left: 16px;">
+              Chapter 6: Strategic Future: Achieving Unified, Trustworthy Visibility
+            </h2>
+            <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem; margin-bottom: 16px;">
+              The existing systemic deficiencies—fragmentation, proprietary lock-in, and the trust deficit—cannot be overcome through incremental improvements to current ERP-based systems. The path to unified, trustworthy visibility requires a paradigm shift centered on Distributed Ledger Technology (DLT).
+            </p>
+
+            <h3 style="color: #8B5CF6; font-size: 1.1rem; margin: 24px 0 12px 0;">6.1 The Paradigm Shift to Distributed Ledger Technology (DLT)</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                <strong style="color: white;">Distributed Ledger Technology (Blockchain)</strong> provides the essential framework for multi-party tracking that transcends proprietary boundaries. DLT establishes a single, verifiable, immutable, and cryptographically secure shared record of transactions, directly solving the competitive data hoarding and proprietary system conflicts.
+              </p>
+              <p>
+                <strong style="color: var(--bee-gold);">The power of immutability is transformative:</strong> by guaranteeing the integrity of the transaction history and material provenance, DLT renders manual audits and contractual disputes stemming from subjective or uncertain records largely obsolete. Since proprietary systems fail due to inherent competitive concerns, the solution must be fundamentally neutral and decentralized. DLT offers this neutrality; trust is displaced from the individual entity (builder or supplier) and placed onto the cryptographic network, allowing all participants to collaborate on a unified, objective record without requiring them to surrender competitive operational secrets.
+              </p>
+            </div>
+
+            <h3 style="color: #8B5CF6; font-size: 1.1rem; margin: 24px 0 12px 0;">6.2 Implementation Framework: Sensor Integration and Smart Contracts</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                The successful application of DLT requires integrating it with the physical logistics layer. Physical status updates (e.g., a material asset passing a geo-fenced checkpoint) generated by IoT sensors are captured and written to the immutable ledger. This automation is crucial, ensuring that data is recorded instantaneously and without the possibility of human manipulation or error.
+              </p>
+              <p style="margin-bottom: 16px;">
+                Furthermore, digital agreements, known as <strong style="color: white;">Smart Contracts</strong>, can be encoded directly onto the DLT. These contracts are programmed to automatically execute actions, such as transferring material ownership or releasing payment, upon cryptographic confirmation of verifiable physical events.
+              </p>
+              <p>
+                This capability offers a profound financial advantage. It directly addresses the debilitating cash flow strain identified in current systems by linking logistics verification (e.g., authenticated Proof of Delivery) to the immediate, guaranteed release of funds. <strong style="color: var(--bee-gold);">This accelerated, automated payment mechanism can significantly reduce the financing and risk premiums built into material costs across the entire supply chain.</strong>
+              </p>
+            </div>
+
+            <h3 style="color: #8B5CF6; font-size: 1.1rem; margin: 24px 0 12px 0;">6.3 Overcoming Adoption Barriers: Standardization and Consortium Models</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                The primary challenge for DLT adoption is achieving critical mass, as the value of the network is realized only through widespread participation (the network effect). This mandates significant standardization across the industry.
+              </p>
+              <p style="margin-bottom: 16px;">
+                Enterprise builders must strategically shift their focus from imposing proprietary standards to <strong style="color: white;">leading industry consortiums</strong> tasked with establishing neutral, open DLT governance protocols. This requires a collaborative approach that addresses the inherent competitive fears currently preventing data sharing.
+              </p>
+              <p>
+                To ensure high supplier participation and overcome the high cost of traditional SCM adoption that deters SMBs, DLT protocols must prioritize <strong style="color: white;">accessible, low-cost entry points</strong>. This includes developing simple, mobile-first applications that allow smaller partners to efficiently log physical logistics data, such as signing or scanning materials upon hand-off, without requiring investment in complex ERP integrations.
+              </p>
+            </div>
+          </section>
+
+          <!-- Chapter 7 -->
+          <section style="margin-bottom: 48px;">
+            <h2 style="color: var(--bee-gold); font-size: 1.5rem; margin-bottom: 20px; border-left: 4px solid #F97316; padding-left: 16px;">
+              Chapter 7: Conclusion and Strategic Recommendations
+            </h2>
+            <p style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem; margin-bottom: 16px;">
+              The fragmented, trust-deficient nature of current tracking mechanisms in the construction supply chain imposes quantifiable, severe costs—manifesting as excessive administrative overhead, capital tied up in buffer inventory, high material waste, and prolonged financial dispute resolution cycles. Moving forward requires a bifurcated strategy focusing on immediate administrative improvements followed by foundational digital transformation leveraging DLT.
+            </p>
+
+            <h3 style="color: #F97316; font-size: 1.1rem; margin: 24px 0 12px 0;">7.1 Prioritized Recommendations for Immediate Operational Enhancement (0-12 Months)</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <ol style="margin-left: 24px; margin-bottom: 16px;">
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: white;">Mandate Data Standardization at Hand-off Points:</strong> Organizations must immediately focus on establishing non-negotiable standards for core material nomenclature (e.g., universal SKU IDs) and common logistics status codes across all major suppliers, irrespective of the backend systems used. This is the fastest way to improve data quality without disruptive IT overhauls.
+                </li>
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: white;">Pilot Hybrid Tracking Programs:</strong> Implement low-cost, readily available tracking technologies (disposable RFID or low-power IoT) specifically on the 10% of high-value, high-risk components. The focus of these pilots should be solely on automating the Proof of Delivery (PoD) verification that consistently delays payment cycles.
+                </li>
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: white;">Audit Administrative Overheads:</strong> Conduct a quantitative analysis of labor hours currently dedicated to non-value-add tasks, such as manual inventory reconciliation, data re-keying, and dispute resolution. Establishing this baseline provides a crucial, non-subjective ROI metric for justifying future technology investment.
+                </li>
+              </ol>
+            </div>
+
+            <h3 style="color: #F97316; font-size: 1.1rem; margin: 24px 0 12px 0;">7.2 Roadmap for Enterprise Digital Transformation (1-5 Years)</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <ol style="margin-left: 24px; margin-bottom: 16px;">
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: white;">DLT Feasibility and Partner Selection:</strong> Dedicate specialized resources to formally evaluate and select an industry-specific DLT platform. This selection must prioritize solutions built on an open consortium or decentralized model over proprietary vendor solutions to avoid replicating the vendor lock-in and trust issues inherent in current ERPs.
+                </li>
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: white;">Establish Governance Framework:</strong> Enterprise builders must convene key strategic partners (Tier 1 suppliers, specialized carriers, financial institutions) to collaboratively define neutral governance standards. These standards must clearly outline protocols for data access, privacy parameters, and smart contract execution rules, explicitly mitigating the competitive fears identified as a barrier to data sharing.
+                </li>
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: white;">Full SCV Integration:</strong> Execute a phased rollout of DLT/IoT integration across all major projects. This includes utilizing smart contracts to automate payment triggers and inventory acceptance workflows. This transformation fundamentally shifts the organization's relationship with its supply base from transactional and reactive to collaborative and trust-based.
+                </li>
+              </ol>
+            </div>
+
+            <h3 style="color: #F97316; font-size: 1.1rem; margin: 24px 0 12px 0;">7.3 Final Assessment of ROI for Trust-Based SCV Investment</h3>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p style="margin-bottom: 16px;">
+                The strategic return on investment (ROI) derived from implementing unified, trust-based SCV systems significantly outweighs the capital expenditure required. This ROI is quantified by three primary financial factors:
+              </p>
+              <ol style="margin-left: 24px; margin-bottom: 16px;">
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: var(--bee-gold);">Direct Material and Carrying Cost Savings:</strong> Investment reduces or eliminates the necessity for large safety stock buffers, yielding direct savings from reduced material waste and lower inventory carrying costs, conservatively estimated to be as high as <strong style="color: white;">3–5% of total annual material spend</strong>.
+                </li>
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: var(--bee-gold);">Reduced Administrative and Legal Overhead:</strong> Automation of PoD and shared, immutable records drastically reduces administrative labor spent on reconciliation and mitigates the need for expensive contractual arbitration and audits.
+                </li>
+                <li style="margin-bottom: 12px;">
+                  <strong style="color: var(--bee-gold);">Improved Working Capital Efficiency:</strong> Automated, guaranteed payment processes accelerate supplier payment cycles. This improved cash flow for the supply base can result in suppliers offering preferential pricing, mitigated risk premiums, and better service levels, ultimately lowering the builder's cost of goods.
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- Strategic Conclusion -->
+          <section style="margin-bottom: 48px; background: linear-gradient(135deg, rgba(16,185,129,0.08) 0%, rgba(16,185,129,0.02) 100%); border-radius: 16px; padding: 32px; border: 1px solid rgba(16,185,129,0.2);">
+            <h2 style="color: #10B981; font-size: 1.5rem; margin-bottom: 20px;">
+              Strategic Conclusion
+            </h2>
+            <div style="color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem;">
+              <p>
+                <strong style="color: var(--bee-gold);">Maintaining the current status quo of fragmented, distrustful tracking systems imposes a systemic cost and risk burden that is unsustainable.</strong> Investment in unified, trust-based tracking technology—specifically Distributed Ledger Technology integrated with automated IoT physical verification—is a critical infrastructural requirement necessary to stabilize project schedules, reduce waste, and capture latent financial efficiencies across the construction supply chain.
+              </p>
+            </div>
+          </section>
+
+          <!-- AI Disclaimer -->
+          <section style="margin-bottom: 32px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid rgba(16,185,129,0.3);">
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem; line-height: 1.7; font-style: italic; margin: 0;">
+              Generative AI and AI-assisted tools were used in the preparation of this manuscript for editing, formatting, and summarizing research materials. The human author(s) remain solely responsible for the research design, intellectual content, and final conclusions. All AI-generated content has been rigorously reviewed, edited, and validated for accuracy and compliance by the author(s), who accept full responsibility for the published work.
+            </p>
+          </section>
+
+          <!-- CTA -->
+          <div style="text-align: center; padding: 32px 0; border-top: 1px solid rgba(255,215,0,0.2);">
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">
+              Need help optimizing your supply chain visibility strategy?
             </p>
             <button onclick="showPage('contact')" style="background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%); color: #000; border: none; padding: 14px 32px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(255,215,0,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
               Schedule a Consultation
@@ -4732,10 +5297,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     window.addEventListener('popstate', handleHashNavigation);
 
     // Copy article link to clipboard
-    function copyArticleLink() {
+    function copyArticleLink(btnId, textId) {
+      // Support both old single-button calls and new parameterized calls
+      btnId = btnId || 'copyLinkBtn';
+      textId = textId || 'copyLinkText';
+
       const url = window.location.href;
-      const btn = document.getElementById('copyLinkBtn');
-      const text = document.getElementById('copyLinkText');
+      const btn = document.getElementById(btnId);
+      const text = document.getElementById(textId);
 
       navigator.clipboard.writeText(url).then(() => {
         // Show success feedback
