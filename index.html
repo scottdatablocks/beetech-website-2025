@@ -1992,6 +1992,399 @@
       display: block;
     }
 
+    /* ========================================
+       ADMIN PANEL STYLES
+       ======================================== */
+
+    /* Admin Section */
+    .admin-section {
+      border-color: rgba(255, 215, 0, 0.3);
+      background: rgba(255, 215, 0, 0.02);
+    }
+
+    .admin-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .admin-toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .admin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .admin-btn.primary {
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      color: #000;
+    }
+
+    .admin-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+    }
+
+    .admin-btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .admin-btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .admin-btn.danger {
+      background: rgba(255, 59, 92, 0.8);
+      color: #fff;
+    }
+
+    .admin-btn.danger:hover {
+      background: var(--bee-red);
+    }
+
+    /* Admin User List */
+    .admin-user-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .admin-user-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .admin-user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .admin-user-avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .admin-user-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-user-name {
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .admin-user-meta {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+    }
+
+    .admin-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      color: #000;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: 6px;
+    }
+
+    .admin-user-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .admin-action-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .admin-action-btn.edit {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+    }
+
+    .admin-action-btn.edit:hover {
+      background: rgba(59, 130, 246, 0.3);
+    }
+
+    .admin-action-btn.reset {
+      background: rgba(255, 215, 0, 0.2);
+      color: var(--bee-gold);
+    }
+
+    .admin-action-btn.reset:hover {
+      background: rgba(255, 215, 0, 0.3);
+    }
+
+    .admin-action-btn.delete {
+      background: rgba(255, 59, 92, 0.2);
+      color: var(--bee-red);
+    }
+
+    .admin-action-btn.delete:hover {
+      background: rgba(255, 59, 92, 0.3);
+    }
+
+    /* Admin Info Box */
+    .admin-info {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .admin-info h4 {
+      color: var(--bee-gold);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .admin-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .admin-info li {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+      font-family: monospace;
+    }
+
+    .admin-info li strong {
+      color: #fff;
+    }
+
+    .admin-note {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Admin Modal */
+    .admin-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .admin-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .admin-modal-content {
+      background: var(--dark-bg);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 16px;
+      max-width: 480px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .admin-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .admin-modal-header h3 {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .admin-modal-close {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .admin-modal-close:hover {
+      color: var(--bee-red);
+    }
+
+    .admin-modal-body {
+      padding: 24px;
+    }
+
+    .admin-form-group {
+      margin-bottom: 20px;
+    }
+
+    .admin-form-group label {
+      display: block;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .admin-form-group .form-input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .admin-form-group select.form-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FFD700' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+    }
+
+    .form-hint {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.75rem;
+      margin-top: 6px;
+      display: block;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--bee-gold);
+      cursor: pointer;
+    }
+
+    .checkbox-label span {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      text-transform: none;
+      letter-spacing: normal;
+      font-weight: normal;
+    }
+
+    .admin-modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .admin-modal-text {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .admin-modal-warning {
+      color: var(--bee-red);
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    /* Admin Notification */
+    .admin-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 10000;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s;
+    }
+
+    .admin-notification.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .admin-notification.success {
+      background: rgba(0, 255, 136, 0.15);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      color: var(--success);
+    }
+
+    .admin-notification.error {
+      background: rgba(255, 59, 92, 0.15);
+      border: 1px solid rgba(255, 59, 92, 0.3);
+      color: var(--bee-red);
+    }
+
     /* Responsive Portal Styles */
     @media (max-width: 768px) {
       .portal-container {
@@ -2018,6 +2411,47 @@
 
       .dashboard-user {
         flex-direction: column;
+      }
+
+      /* Admin Panel Responsive */
+      .admin-toolbar {
+        flex-direction: column;
+      }
+
+      .admin-toolbar .admin-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .admin-user-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .admin-user-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .admin-modal-content {
+        width: 95%;
+        margin: 16px;
+      }
+
+      .admin-modal-actions {
+        flex-direction: column-reverse;
+      }
+
+      .admin-modal-actions .admin-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .admin-notification {
+        left: 20px;
+        right: 20px;
+        top: auto;
+        bottom: 20px;
       }
     }
   </style>
@@ -6784,6 +7218,66 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             </div>
           </div>
 
+          <!-- Admin Panel Section (Only visible to admins) -->
+          <div id="adminPanelSection" class="dashboard-section admin-section" style="display: none;">
+            <h3><span class="icon">🔐</span> Admin Panel - User Management</h3>
+            <div class="admin-panel">
+              <div class="admin-toolbar">
+                <button class="admin-btn primary" onclick="openAddUserModal()">
+                  <span class="icon">➕</span> Add User
+                </button>
+                <button class="admin-btn secondary" onclick="confirmResetToDefaults()">
+                  <span class="icon">🔄</span> Reset to Defaults
+                </button>
+              </div>
+              <div class="admin-user-list" id="adminUserList">
+                <!-- User list will be populated dynamically -->
+              </div>
+              <div class="admin-info">
+                <h4>Default Credentials:</h4>
+                <ul>
+                  <li><strong>admin</strong> / BeeTech2025! (Administrator)</li>
+                  <li><strong>manager</strong> / Manager2025! (Manager)</li>
+                  <li><strong>employee</strong> / Employee2025! (Senior Engineer)</li>
+                  <li><strong>demo</strong> / demo (Guest Access)</li>
+                </ul>
+                <p class="admin-note">Note: User data is stored in browser localStorage. For production, integrate with a backend auth service.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Modal -->
+          <div id="adminModal" class="admin-modal">
+            <div class="admin-modal-content">
+              <div class="admin-modal-header">
+                <h3 id="adminModalTitle">Modal Title</h3>
+                <button class="admin-modal-close" onclick="hideAdminModal()">&times;</button>
+              </div>
+              <div id="adminModalBody" class="admin-modal-body">
+                <!-- Modal content will be populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Notification -->
+          <div id="adminNotification" class="admin-notification">
+            <span id="adminNotificationText"></span>
+          </div>
+
+          <!-- Auth Service Integration Info -->
+          <div id="authServiceInfo" class="dashboard-section" style="display: none;">
+            <h3><span class="icon">🔌</span> Auth Service Integration</h3>
+            <div class="auth-service-info">
+              <p>For production deployments, integrate with one of these auth services:</p>
+              <ul>
+                <li><strong>Auth0</strong> - Enterprise-grade authentication</li>
+                <li><strong>Firebase Auth</strong> - Google's authentication platform</li>
+                <li><strong>Supabase Auth</strong> - Open-source alternative</li>
+                <li><strong>Clerk</strong> - Developer-friendly auth service</li>
+              </ul>
+            </div>
+          </div>
+
           <!-- Session Info -->
           <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">
             <p>Session secured with <span id="authMethodUsed">password authentication</span></p>
@@ -8035,12 +8529,124 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       sessionStartTime: null
     };
 
-    // Demo credentials (in production, this would be server-side)
-    const demoUsers = {
-      'admin': { password: 'admin123', name: 'Admin User', role: 'Administrator', initials: 'AU' },
-      'employee': { password: 'employee123', name: 'John Doe', role: 'Senior Engineer', initials: 'JD' },
-      'demo': { password: 'demo', name: 'Demo User', role: 'Guest Access', initials: 'DU' }
+    // Default credentials (in production, use a backend auth service)
+    const defaultUsers = {
+      'admin': { password: 'BeeTech2025!', name: 'Admin User', role: 'Administrator', initials: 'AU', isAdmin: true },
+      'manager': { password: 'Manager2025!', name: 'Project Manager', role: 'Manager', initials: 'PM', isAdmin: false },
+      'employee': { password: 'Employee2025!', name: 'John Doe', role: 'Senior Engineer', initials: 'JD', isAdmin: false },
+      'demo': { password: 'demo', name: 'Demo User', role: 'Guest Access', initials: 'DU', isAdmin: false }
     };
+
+    // User management with localStorage persistence
+    const UserManager = {
+      STORAGE_KEY: 'beetech_portal_users',
+
+      // Initialize users from localStorage or defaults
+      init() {
+        const stored = localStorage.getItem(this.STORAGE_KEY);
+        if (!stored) {
+          this.saveUsers(defaultUsers);
+          return defaultUsers;
+        }
+        return JSON.parse(stored);
+      },
+
+      // Get all users
+      getUsers() {
+        const stored = localStorage.getItem(this.STORAGE_KEY);
+        return stored ? JSON.parse(stored) : this.init();
+      },
+
+      // Save users to localStorage
+      saveUsers(users) {
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(users));
+      },
+
+      // Add a new user
+      addUser(username, userData) {
+        const users = this.getUsers();
+        const key = username.toLowerCase().trim();
+        if (users[key]) {
+          return { success: false, message: 'Username already exists' };
+        }
+        users[key] = {
+          password: userData.password,
+          name: userData.name,
+          role: userData.role,
+          initials: this.getInitials(userData.name),
+          isAdmin: userData.isAdmin || false
+        };
+        this.saveUsers(users);
+        return { success: true, message: 'User created successfully' };
+      },
+
+      // Update user
+      updateUser(username, userData) {
+        const users = this.getUsers();
+        const key = username.toLowerCase().trim();
+        if (!users[key]) {
+          return { success: false, message: 'User not found' };
+        }
+        users[key] = {
+          ...users[key],
+          ...userData,
+          initials: userData.name ? this.getInitials(userData.name) : users[key].initials
+        };
+        this.saveUsers(users);
+        return { success: true, message: 'User updated successfully' };
+      },
+
+      // Delete user
+      deleteUser(username) {
+        const users = this.getUsers();
+        const key = username.toLowerCase().trim();
+        if (!users[key]) {
+          return { success: false, message: 'User not found' };
+        }
+        if (key === 'admin') {
+          return { success: false, message: 'Cannot delete the primary admin account' };
+        }
+        delete users[key];
+        this.saveUsers(users);
+        return { success: true, message: 'User deleted successfully' };
+      },
+
+      // Reset password
+      resetPassword(username, newPassword) {
+        const users = this.getUsers();
+        const key = username.toLowerCase().trim();
+        if (!users[key]) {
+          return { success: false, message: 'User not found' };
+        }
+        users[key].password = newPassword;
+        this.saveUsers(users);
+        return { success: true, message: 'Password updated successfully' };
+      },
+
+      // Authenticate user
+      authenticate(username, password) {
+        const users = this.getUsers();
+        const key = username.toLowerCase().trim();
+        if (users[key] && users[key].password === password) {
+          return { success: true, user: users[key] };
+        }
+        return { success: false, message: 'Invalid username or password' };
+      },
+
+      // Get initials from name
+      getInitials(name) {
+        return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+      },
+
+      // Reset to defaults
+      resetToDefaults() {
+        this.saveUsers(defaultUsers);
+        return { success: true, message: 'Users reset to defaults' };
+      }
+    };
+
+    // Initialize user manager
+    const demoUsers = UserManager.init();
 
     // Switch between auth tabs
     function switchAuthTab(tab) {
@@ -8117,10 +8723,11 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
 
       // Simulate authentication delay
       setTimeout(() => {
-        // Check credentials
-        if (demoUsers[username] && demoUsers[username].password === password) {
-          // Success
-          authenticateUser(demoUsers[username], 'password');
+        // Check credentials using UserManager
+        const authResult = UserManager.authenticate(username, password);
+        if (authResult.success) {
+          // Success - pass username for admin panel access
+          authenticateUser({ ...authResult.user, username: username }, 'password');
         } else {
           // Failed
           showPortalError('Invalid username or password. Try: demo/demo');
@@ -8321,6 +8928,17 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       document.getElementById('authMethodUsed').textContent = method;
       document.getElementById('lastLoginTime').textContent = portalState.sessionStartTime.toLocaleString();
 
+      // Show/hide admin panel based on user role
+      const adminSection = document.getElementById('adminPanelSection');
+      if (adminSection) {
+        if (user.isAdmin) {
+          adminSection.style.display = 'block';
+          refreshUserList();
+        } else {
+          adminSection.style.display = 'none';
+        }
+      }
+
       // Hide login, show dashboard
       document.getElementById('portalLoginView').style.display = 'none';
       document.getElementById('employeeDashboard').classList.add('active');
@@ -8329,6 +8947,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       console.log('User authenticated:', {
         user: user.name,
         method: method,
+        isAdmin: user.isAdmin,
         timestamp: portalState.sessionStartTime.toISOString()
       });
     }
@@ -8364,11 +8983,340 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       // Switch to password tab
       switchAuthTab('password');
 
+      // Hide admin panel
+      const adminSection = document.getElementById('adminPanelSection');
+      if (adminSection) {
+        adminSection.style.display = 'none';
+        hideAdminModal();
+      }
+
       // Show login, hide dashboard
       document.getElementById('portalLoginView').style.display = 'block';
       document.getElementById('employeeDashboard').classList.remove('active');
 
       console.log('User logged out');
+    }
+
+    // ========================================
+    // ADMIN PANEL FUNCTIONS
+    // ========================================
+
+    // Refresh user list in admin panel
+    function refreshUserList() {
+      const userListContainer = document.getElementById('adminUserList');
+      if (!userListContainer) return;
+
+      const users = UserManager.getUsers();
+      let html = '';
+
+      Object.keys(users).forEach(username => {
+        const user = users[username];
+        html += `
+          <div class="admin-user-row">
+            <div class="admin-user-info">
+              <div class="admin-user-avatar">${user.initials}</div>
+              <div class="admin-user-details">
+                <div class="admin-user-name">${user.name}</div>
+                <div class="admin-user-meta">@${username} &bull; ${user.role}${user.isAdmin ? ' <span class="admin-badge">Admin</span>' : ''}</div>
+              </div>
+            </div>
+            <div class="admin-user-actions">
+              <button class="admin-action-btn edit" onclick="openEditUserModal('${username}')" title="Edit User">
+                <span>Edit</span>
+              </button>
+              <button class="admin-action-btn reset" onclick="openResetPasswordModal('${username}')" title="Reset Password">
+                <span>Reset PW</span>
+              </button>
+              ${username !== 'admin' ? `<button class="admin-action-btn delete" onclick="confirmDeleteUser('${username}')" title="Delete User">
+                <span>Delete</span>
+              </button>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      userListContainer.innerHTML = html;
+    }
+
+    // Show admin modal
+    function showAdminModal(title, content) {
+      const modal = document.getElementById('adminModal');
+      const modalTitle = document.getElementById('adminModalTitle');
+      const modalBody = document.getElementById('adminModalBody');
+
+      modalTitle.textContent = title;
+      modalBody.innerHTML = content;
+      modal.classList.add('active');
+    }
+
+    // Hide admin modal
+    function hideAdminModal() {
+      const modal = document.getElementById('adminModal');
+      if (modal) {
+        modal.classList.remove('active');
+      }
+    }
+
+    // Show admin notification
+    function showAdminNotification(message, type = 'success') {
+      const notification = document.getElementById('adminNotification');
+      const notificationText = document.getElementById('adminNotificationText');
+
+      notificationText.textContent = message;
+      notification.className = `admin-notification ${type} active`;
+
+      setTimeout(() => {
+        notification.classList.remove('active');
+      }, 3000);
+    }
+
+    // Open Add User modal
+    function openAddUserModal() {
+      const content = `
+        <form id="addUserForm" onsubmit="handleAddUser(event)">
+          <div class="admin-form-group">
+            <label>Username</label>
+            <input type="text" id="newUsername" class="form-input" required pattern="[a-zA-Z0-9_]+" minlength="3" placeholder="e.g., jsmith">
+            <small class="form-hint">Letters, numbers, and underscores only</small>
+          </div>
+          <div class="admin-form-group">
+            <label>Full Name</label>
+            <input type="text" id="newUserName" class="form-input" required minlength="2" placeholder="e.g., John Smith">
+          </div>
+          <div class="admin-form-group">
+            <label>Role</label>
+            <select id="newUserRole" class="form-input" required>
+              <option value="Senior Engineer">Senior Engineer</option>
+              <option value="Engineer">Engineer</option>
+              <option value="Manager">Manager</option>
+              <option value="Administrator">Administrator</option>
+              <option value="Guest Access">Guest Access</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label>Password</label>
+            <input type="password" id="newUserPassword" class="form-input" required minlength="6" placeholder="Minimum 6 characters">
+          </div>
+          <div class="admin-form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="newUserIsAdmin">
+              <span>Grant admin privileges</span>
+            </label>
+          </div>
+          <div class="admin-modal-actions">
+            <button type="button" class="admin-btn secondary" onclick="hideAdminModal()">Cancel</button>
+            <button type="submit" class="admin-btn primary">Create User</button>
+          </div>
+        </form>
+      `;
+      showAdminModal('Add New User', content);
+    }
+
+    // Handle add user
+    function handleAddUser(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('newUsername').value.trim();
+      const name = document.getElementById('newUserName').value.trim();
+      const role = document.getElementById('newUserRole').value;
+      const password = document.getElementById('newUserPassword').value;
+      const isAdmin = document.getElementById('newUserIsAdmin').checked;
+
+      const result = UserManager.addUser(username, {
+        name,
+        role,
+        password,
+        isAdmin
+      });
+
+      if (result.success) {
+        hideAdminModal();
+        refreshUserList();
+        showAdminNotification(`User "${username}" created successfully`);
+      } else {
+        showAdminNotification(result.message, 'error');
+      }
+    }
+
+    // Open Edit User modal
+    function openEditUserModal(username) {
+      const users = UserManager.getUsers();
+      const user = users[username];
+
+      if (!user) {
+        showAdminNotification('User not found', 'error');
+        return;
+      }
+
+      const content = `
+        <form id="editUserForm" onsubmit="handleEditUser(event, '${username}')">
+          <div class="admin-form-group">
+            <label>Username</label>
+            <input type="text" class="form-input" value="${username}" disabled>
+            <small class="form-hint">Username cannot be changed</small>
+          </div>
+          <div class="admin-form-group">
+            <label>Full Name</label>
+            <input type="text" id="editUserName" class="form-input" required minlength="2" value="${user.name}">
+          </div>
+          <div class="admin-form-group">
+            <label>Role</label>
+            <select id="editUserRole" class="form-input" required>
+              <option value="Senior Engineer" ${user.role === 'Senior Engineer' ? 'selected' : ''}>Senior Engineer</option>
+              <option value="Engineer" ${user.role === 'Engineer' ? 'selected' : ''}>Engineer</option>
+              <option value="Manager" ${user.role === 'Manager' ? 'selected' : ''}>Manager</option>
+              <option value="Administrator" ${user.role === 'Administrator' ? 'selected' : ''}>Administrator</option>
+              <option value="Guest Access" ${user.role === 'Guest Access' ? 'selected' : ''}>Guest Access</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="editUserIsAdmin" ${user.isAdmin ? 'checked' : ''} ${username === 'admin' ? 'disabled' : ''}>
+              <span>Admin privileges ${username === 'admin' ? '(cannot change for primary admin)' : ''}</span>
+            </label>
+          </div>
+          <div class="admin-modal-actions">
+            <button type="button" class="admin-btn secondary" onclick="hideAdminModal()">Cancel</button>
+            <button type="submit" class="admin-btn primary">Save Changes</button>
+          </div>
+        </form>
+      `;
+      showAdminModal('Edit User: ' + user.name, content);
+    }
+
+    // Handle edit user
+    function handleEditUser(event, username) {
+      event.preventDefault();
+
+      const name = document.getElementById('editUserName').value.trim();
+      const role = document.getElementById('editUserRole').value;
+      const isAdmin = document.getElementById('editUserIsAdmin').checked;
+
+      const result = UserManager.updateUser(username, { name, role, isAdmin });
+
+      if (result.success) {
+        hideAdminModal();
+        refreshUserList();
+        showAdminNotification(`User "${username}" updated successfully`);
+      } else {
+        showAdminNotification(result.message, 'error');
+      }
+    }
+
+    // Open Reset Password modal
+    function openResetPasswordModal(username) {
+      const users = UserManager.getUsers();
+      const user = users[username];
+
+      if (!user) {
+        showAdminNotification('User not found', 'error');
+        return;
+      }
+
+      const content = `
+        <form id="resetPasswordForm" onsubmit="handleResetPassword(event, '${username}')">
+          <p class="admin-modal-text">Reset password for <strong>${user.name}</strong> (@${username})</p>
+          <div class="admin-form-group">
+            <label>New Password</label>
+            <input type="password" id="resetNewPassword" class="form-input" required minlength="6" placeholder="Minimum 6 characters">
+          </div>
+          <div class="admin-form-group">
+            <label>Confirm Password</label>
+            <input type="password" id="resetConfirmPassword" class="form-input" required minlength="6" placeholder="Re-enter password">
+          </div>
+          <div class="admin-modal-actions">
+            <button type="button" class="admin-btn secondary" onclick="hideAdminModal()">Cancel</button>
+            <button type="submit" class="admin-btn primary">Reset Password</button>
+          </div>
+        </form>
+      `;
+      showAdminModal('Reset Password', content);
+    }
+
+    // Handle reset password
+    function handleResetPassword(event, username) {
+      event.preventDefault();
+
+      const newPassword = document.getElementById('resetNewPassword').value;
+      const confirmPassword = document.getElementById('resetConfirmPassword').value;
+
+      if (newPassword !== confirmPassword) {
+        showAdminNotification('Passwords do not match', 'error');
+        return;
+      }
+
+      const result = UserManager.resetPassword(username, newPassword);
+
+      if (result.success) {
+        hideAdminModal();
+        showAdminNotification(`Password for "${username}" reset successfully`);
+      } else {
+        showAdminNotification(result.message, 'error');
+      }
+    }
+
+    // Confirm delete user
+    function confirmDeleteUser(username) {
+      const users = UserManager.getUsers();
+      const user = users[username];
+
+      if (!user) {
+        showAdminNotification('User not found', 'error');
+        return;
+      }
+
+      const content = `
+        <div class="admin-confirm-delete">
+          <p class="admin-modal-text">Are you sure you want to delete the user <strong>${user.name}</strong> (@${username})?</p>
+          <p class="admin-modal-warning">This action cannot be undone.</p>
+          <div class="admin-modal-actions">
+            <button type="button" class="admin-btn secondary" onclick="hideAdminModal()">Cancel</button>
+            <button type="button" class="admin-btn danger" onclick="handleDeleteUser('${username}')">Delete User</button>
+          </div>
+        </div>
+      `;
+      showAdminModal('Confirm Delete', content);
+    }
+
+    // Handle delete user
+    function handleDeleteUser(username) {
+      const result = UserManager.deleteUser(username);
+
+      if (result.success) {
+        hideAdminModal();
+        refreshUserList();
+        showAdminNotification(`User "${username}" deleted successfully`);
+      } else {
+        showAdminNotification(result.message, 'error');
+      }
+    }
+
+    // Reset all users to defaults
+    function confirmResetToDefaults() {
+      const content = `
+        <div class="admin-confirm-delete">
+          <p class="admin-modal-text">Are you sure you want to reset all users to default settings?</p>
+          <p class="admin-modal-warning">This will delete all custom users and reset passwords to defaults.</p>
+          <div class="admin-modal-actions">
+            <button type="button" class="admin-btn secondary" onclick="hideAdminModal()">Cancel</button>
+            <button type="button" class="admin-btn danger" onclick="handleResetToDefaults()">Reset All Users</button>
+          </div>
+        </div>
+      `;
+      showAdminModal('Reset to Defaults', content);
+    }
+
+    // Handle reset to defaults
+    function handleResetToDefaults() {
+      const result = UserManager.resetToDefaults();
+
+      if (result.success) {
+        hideAdminModal();
+        refreshUserList();
+        showAdminNotification('All users reset to defaults');
+      } else {
+        showAdminNotification(result.message, 'error');
+      }
     }
 
     // Check biometric availability on page load for employee portal
