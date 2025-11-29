@@ -883,7 +883,8 @@
 
     .tool-suite-header {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 16px;
+      padding-top: 8px;
     }
 
     .tool-suite-header h3 {
@@ -907,56 +908,65 @@
       border: 1px solid rgba(255, 193, 7, 0.25);
       border-radius: 6px;
       padding: 8px 16px;
-      margin: -16px auto 20px auto;
+      margin: 0 auto 20px auto;
       max-width: 90%;
       line-height: 1.4;
     }
 
     /* Tool Navigation Tabs */
     .tool-tabs {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 6px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
       margin-bottom: 24px;
-      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
-      padding-bottom: 16px;
+      padding: 8px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 12px;
     }
 
     .tab-button {
-      flex: 1 1 0;
-      min-width: 0;
-      padding: 10px 8px;
-      border-radius: 8px 8px 0 0;
-      font-size: 0.78rem;
+      padding: 12px 10px;
+      border-radius: 8px;
+      font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
-      border: none;
-      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      background: rgba(255,255,255,0.03);
       color: rgba(255,255,255,0.7);
       text-align: center;
+      aspect-ratio: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
     }
 
     @media (max-width: 768px) {
       .tool-tabs {
-        flex-wrap: wrap;
+        grid-template-columns: repeat(2, 1fr);
       }
       .tab-button {
-        flex: 1 1 45%;
         font-size: 0.72rem;
-        padding: 8px 6px;
+        padding: 10px 8px;
+      }
+      .tab-button:last-child {
+        grid-column: span 2;
       }
     }
 
     .tab-button:hover {
       background: rgba(255, 215, 0, 0.15);
       color: var(--bee-gold);
+      border-color: rgba(255, 215, 0, 0.4);
     }
 
     .tab-button.active {
       background: var(--bee-gold);
       color: #000;
       font-weight: 700;
+      border-color: var(--bee-gold);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
     }
 
     /* Tool Panels */
@@ -1736,17 +1746,27 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           </div>
 
           <div class="tool-suite-container">
-            <div class="tool-suite-header">
-              <h3>Mission Control Calculator Suite</h3>
-              <p>Rapid modeling for efficiency, cost, and critical infrastructure planning.</p>
+            <!-- Collapsible Calculator Header -->
+            <div id="calculator-header" class="calc-collapsible-header" onclick="toggleCalculatorPanel()">
+              <div class="calc-collapsible-title">
+                <span class="calc-collapsible-badge">5 Tools</span>
+                <h3>Mission Control Calculator Suite</h3>
+              </div>
+              <span id="calculator-toggle-icon" class="calc-toggle-icon">+</span>
             </div>
 
-            <p class="calculator-warning">
-              &#9888;&#65039; WARNING: These results are a preliminary estimate for educational purposes only. Do not use for final design. Always consult a licensed professional engineer. Use is at your own risk.
-            </p>
+            <!-- Collapsible Calculator Content -->
+            <div id="calculator-content" style="display: none;">
+              <div class="tool-suite-header">
+                <p>Rapid modeling for efficiency, cost, and critical infrastructure planning.</p>
+              </div>
 
-            <!-- Tool Navigation Tabs -->
-            <div class="tool-tabs">
+              <p class="calculator-warning">
+                &#9888;&#65039; WARNING: These results are a preliminary estimate for educational purposes only. Do not use for final design. Always consult a licensed professional engineer. Use is at your own risk.
+              </p>
+
+              <!-- Tool Navigation Tabs -->
+              <div class="tool-tabs">
               <button data-tool="sustainability" class="tab-button active">
                 1. PUE, WUE & Embodied Carbon
               </button>
@@ -2265,6 +2285,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 </p>
               </div>
             </div>
+            </div><!-- End calculator-content -->
           </div>
         </div>
 
@@ -2685,6 +2706,71 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               }
               .wp-collapsible-badge {
                 display: none;
+              }
+            }
+
+            /* Calculator Collapsible Styles */
+            .calc-collapsible-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 20px 24px;
+              cursor: pointer;
+              transition: background 0.2s ease;
+            }
+            .calc-collapsible-header:hover {
+              background: rgba(255,255,255,0.03);
+            }
+            .calc-collapsible-header.expanded {
+              border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            }
+            .calc-collapsible-title {
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              flex: 1;
+            }
+            .calc-collapsible-title h3 {
+              color: var(--bee-gold);
+              font-size: 1.4rem;
+              margin: 0;
+              line-height: 1.4;
+              font-weight: 700;
+              text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            }
+            .calc-toggle-icon {
+              font-size: 1.5rem;
+              font-weight: 300;
+              width: 36px;
+              height: 36px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              background: rgba(255, 215, 0, 0.1);
+              color: var(--bee-gold);
+              transition: all 0.2s ease;
+              flex-shrink: 0;
+            }
+            .calc-collapsible-header:hover .calc-toggle-icon {
+              background: rgba(255, 215, 0, 0.2);
+            }
+            .calc-collapsible-badge {
+              padding: 6px 14px;
+              border-radius: 20px;
+              font-size: 0.7rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              flex-shrink: 0;
+              background: var(--bee-gold);
+              color: #000;
+            }
+            @media (max-width: 768px) {
+              .calc-collapsible-header {
+                padding: 16px 20px;
+              }
+              .calc-collapsible-title h3 {
+                font-size: 1.1rem;
               }
             }
 
@@ -5889,6 +5975,23 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         content.style.display = 'none';
         icon.textContent = '+';
         icon.style.transform = 'rotate(0deg)';
+        header.classList.remove('expanded');
+      }
+    }
+
+    // Calculator Panel Toggle (Collapsible Calculator Suite)
+    function toggleCalculatorPanel() {
+      const content = document.getElementById('calculator-content');
+      const icon = document.getElementById('calculator-toggle-icon');
+      const header = document.getElementById('calculator-header');
+
+      if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        icon.textContent = '−';
+        header.classList.add('expanded');
+      } else {
+        content.style.display = 'none';
+        icon.textContent = '+';
         header.classList.remove('expanded');
       }
     }
