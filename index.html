@@ -2002,6 +2002,35 @@
       background: rgba(255, 215, 0, 0.02);
     }
 
+    /* Collapsible Header Styles */
+    .collapsible-header {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      transition: opacity 0.2s;
+    }
+
+    .collapsible-header:hover {
+      opacity: 0.8;
+    }
+
+    .collapse-icon {
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .collapse-icon.expanded {
+      transform: rotate(90deg);
+    }
+
+    .collapsible-content {
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
     .admin-panel {
       display: flex;
       flex-direction: column;
@@ -2549,6 +2578,36 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+    }
+
+    /* FlowPoint Collapsible Section Styles */
+    .fp-collapsible-section {
+      margin-bottom: 8px;
+    }
+
+    .fp-collapsible-header {
+      user-select: none;
+      transition: opacity 0.2s;
+    }
+
+    .fp-collapsible-header:hover {
+      opacity: 0.8;
+    }
+
+    .fp-collapse-icon {
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+      color: inherit;
+      opacity: 0.6;
+    }
+
+    .fp-collapse-icon.expanded {
+      transform: rotate(90deg);
+    }
+
+    .fp-collapsible-content {
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
     .fp-input-group {
@@ -7640,54 +7699,10 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           <div class="dashboard-section">
             <h3><span class="icon">⚡</span> Quick Actions</h3>
             <div class="quick-actions">
-              <button class="action-btn" onclick="alert('Time tracking feature coming soon!')">
-                <span class="icon">⏱️</span>
-                <span>Log Time</span>
-              </button>
-              <button class="action-btn" onclick="alert('Expense reports feature coming soon!')">
-                <span class="icon">💳</span>
-                <span>Submit Expense</span>
-              </button>
-              <button class="action-btn" onclick="alert('Leave request feature coming soon!')">
-                <span class="icon">🏖️</span>
-                <span>Request Leave</span>
-              </button>
-              <button class="action-btn" onclick="alert('IT support feature coming soon!')">
-                <span class="icon">🎫</span>
-                <span>IT Support</span>
-              </button>
               <button class="action-btn" onclick="openFlowPointCalculator()" style="background: rgba(37, 99, 235, 0.1); border-color: rgba(37, 99, 235, 0.3);">
                 <span class="icon">🧮</span>
                 <span>FlowPoint DTC Tool</span>
               </button>
-            </div>
-          </div>
-
-          <!-- Recent Activity -->
-          <div class="dashboard-section">
-            <h3><span class="icon">📋</span> Recent Activity</h3>
-            <div class="activity-list">
-              <div class="activity-item">
-                <div class="activity-icon green">✓</div>
-                <div class="activity-content">
-                  <div class="activity-title">Completed PUE optimization review</div>
-                  <div class="activity-time">2 hours ago</div>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-icon gold">📄</div>
-                <div class="activity-content">
-                  <div class="activity-title">Submitted cooling infrastructure proposal</div>
-                  <div class="activity-time">Yesterday at 4:30 PM</div>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-icon blue">💬</div>
-                <div class="activity-content">
-                  <div class="activity-title">Added comment on Project Alpha</div>
-                  <div class="activity-time">2 days ago</div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -7716,8 +7731,11 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
 
           <!-- Admin Panel Section (Only visible to admins) -->
           <div id="adminPanelSection" class="dashboard-section admin-section" style="display: none;">
-            <h3><span class="icon">🔐</span> Admin Panel - User Management</h3>
-            <div class="admin-panel">
+            <h3 class="collapsible-header" onclick="toggleAdminPanel()">
+              <span class="icon">🔐</span> Admin Panel - User Management
+              <span class="collapse-icon" id="adminCollapseIcon">&#9654;</span>
+            </h3>
+            <div class="admin-panel collapsible-content" id="adminPanelContent" style="display: none;">
               <div class="admin-toolbar">
                 <button class="admin-btn primary" onclick="openAddUserModal()">
                   <span class="icon">➕</span> Add User
@@ -7907,15 +7925,21 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             <p>Based on the calculated constraints, the system automatically filters the internal database for compatible CDU and QDC models. Components are matched against required flow, pressure head, and Cv value.</p>
 
             <div class="fp-grid" style="grid-template-columns: 1fr 1fr;">
-              <div>
-                <h3 style="color: #2563eb; margin-bottom: 16px;">CDU Match (Flow >= Required Flow and Head >= Required Head)</h3>
-                <div id="fpCduMatchResults">
+              <div class="fp-collapsible-section">
+                <h3 class="fp-collapsible-header" onclick="toggleFpSection('cdu')" style="color: #2563eb; margin-bottom: 16px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                  <span>CDU Match (Flow >= Required Flow and Head >= Required Head)</span>
+                  <span class="fp-collapse-icon" id="fpCduCollapseIcon">&#9654;</span>
+                </h3>
+                <div id="fpCduMatchResults" class="fp-collapsible-content" style="display: none;">
                   <div class="fp-card"><p style="color: #64748b; font-style: italic;">Run calculations first to see results.</p></div>
                 </div>
               </div>
-              <div>
-                <h3 style="color: #0d9488; margin-bottom: 16px;">QDC Match (Cv >= Target Cv and Material Verified)</h3>
-                <div id="fpQdcMatchResults">
+              <div class="fp-collapsible-section">
+                <h3 class="fp-collapsible-header" onclick="toggleFpSection('qdc')" style="color: #0d9488; margin-bottom: 16px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                  <span>QDC Match (Cv >= Target Cv and Material Verified)</span>
+                  <span class="fp-collapse-icon" id="fpQdcCollapseIcon">&#9654;</span>
+                </h3>
+                <div id="fpQdcMatchResults" class="fp-collapsible-content" style="display: none;">
                   <div class="fp-card"><p style="color: #64748b; font-style: italic;">Run calculations first to see results.</p></div>
                 </div>
               </div>
@@ -9831,6 +9855,20 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     // ADMIN PANEL FUNCTIONS
     // ========================================
 
+    // Toggle admin panel collapsed/expanded state
+    function toggleAdminPanel() {
+      const content = document.getElementById('adminPanelContent');
+      const icon = document.getElementById('adminCollapseIcon');
+
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        icon.classList.add('expanded');
+      } else {
+        content.style.display = 'none';
+        icon.classList.remove('expanded');
+      }
+    }
+
     // Refresh user list in admin panel
     function refreshUserList() {
       const userListContainer = document.getElementById('adminUserList');
@@ -11261,6 +11299,23 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       if (modal) {
         modal.classList.remove('active');
         document.body.style.overflow = '';
+      }
+    }
+
+    // Toggle FlowPoint CDU/QDC section collapsed/expanded state
+    function toggleFpSection(type) {
+      const contentId = type === 'cdu' ? 'fpCduMatchResults' : 'fpQdcMatchResults';
+      const iconId = type === 'cdu' ? 'fpCduCollapseIcon' : 'fpQdcCollapseIcon';
+
+      const content = document.getElementById(contentId);
+      const icon = document.getElementById(iconId);
+
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        icon.classList.add('expanded');
+      } else {
+        content.style.display = 'none';
+        icon.classList.remove('expanded');
       }
     }
 
