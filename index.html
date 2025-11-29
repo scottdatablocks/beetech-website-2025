@@ -1728,6 +1728,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               <button data-tool="rack-density" class="tab-button">
                 4. Rack Density Planner
               </button>
+              <button data-tool="capacity-planner" class="tab-button">
+                5. Capacity Planner
+              </button>
             </div>
 
             <div class="tool-content-wrapper">
@@ -1931,6 +1934,105 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     </div>
                   </div>
 
+                  <!-- Tool 5: Data Center Capacity Planner -->
+                  <div id="tool-capacity-planner" class="tool-content">
+                    <p class="tool-intro-text" style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 16px; line-height: 1.5;">
+                      Calculate physical, structural, cooling, and network capacity limits with compliance checks for U-Space, Floor Load (ANSI/TIA-942), Airflow (CFM), and Cable Fill (NEC).
+                    </p>
+
+                    <!-- A. Rack Space Utilization (U-Space) -->
+                    <div class="input-section">
+                      <h5 class="input-section-title" style="color: #60A5FA;">A. Rack Space Utilization (U-Space)</h5>
+                      <p class="input-help" style="margin-bottom: 12px;">U-Space defines vertical rack capacity. Accurate planning ensures new equipment can be deployed with proper airflow.</p>
+                      <div class="input-grid">
+                        <div class="input-group">
+                          <label for="cpTotalU">Total Available U</label>
+                          <input type="number" id="cpTotalU" value="42" min="1" class="dc-input">
+                          <p class="input-help">Standard: 42U or 48U racks.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="cpUsedU">Total U Used (Equip + Blanking)</label>
+                          <input type="number" id="cpUsedU" value="28" min="0" class="dc-input">
+                          <p class="input-help">All installed devices and blanking panels.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="cpReservedU">U Reserved (PDUs/Cabling)</label>
+                          <input type="number" id="cpReservedU" value="6" min="0" class="dc-input">
+                          <p class="input-help">Best practice: reserve 6U-10U.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- B. Floor Loading Capacity -->
+                    <div class="input-section">
+                      <h5 class="input-section-title" style="color: #EF4444;">B. Floor Loading Capacity (Structural)</h5>
+                      <p class="input-help" style="margin-bottom: 12px;">Ensures structural safety per building code and ANSI/TIA-942 guidelines.</p>
+                      <div class="input-grid">
+                        <div class="input-group">
+                          <label for="cpEmptyRackWeight">Empty Rack Weight (lb)</label>
+                          <input type="number" id="cpEmptyRackWeight" value="300" min="0" class="dc-input">
+                          <p class="input-help">Manufacturer specification.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="cpEquipmentWeight">IT Equipment Weight (lb)</label>
+                          <input type="number" id="cpEquipmentWeight" value="1200" min="0" class="dc-input">
+                          <p class="input-help">Sum of all installed devices.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="cpRackArea">Rack Footprint Area (ft²)</label>
+                          <input type="number" id="cpRackArea" value="7" min="0.1" step="0.1" class="dc-input">
+                          <p class="input-help">Width × Depth (e.g., 2' × 3.5' = 7 ft²).</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="cpAllowableLoad">Allowable Load (lb/ft²)</label>
+                          <input type="number" id="cpAllowableLoad" value="150" min="1" class="dc-input">
+                          <p class="input-help">Structural limit from engineer.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- C. Airflow (CFM) -->
+                    <div class="input-section">
+                      <h5 class="input-section-title green">C. Airflow Requirements (CFM)</h5>
+                      <p class="input-help" style="margin-bottom: 12px;">Minimum air volume (CFM) required to remove heat load based on temperature rise (ΔT).</p>
+                      <div class="input-grid">
+                        <div class="input-group">
+                          <label for="cpHeatLoadKW">Heat Load (kW)</label>
+                          <input type="number" id="cpHeatLoadKW" value="15" min="0" step="0.1" class="dc-input">
+                          <p class="input-help">Total device power draw.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="cpDeltaT">Delta T (ΔT, °F)</label>
+                          <input type="number" id="cpDeltaT" value="20" min="1" step="0.1" class="dc-input">
+                          <p class="input-help">Hot - Cold aisle temp. Target: 15-25°F.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- D. Cable Management Capacity -->
+                    <div class="input-section">
+                      <h5 class="input-section-title" style="color: #A855F7;">D. Cable Management Capacity (NEC)</h5>
+                      <p class="input-help" style="margin-bottom: 12px;">Cable Fill Ratio per NEC prevents overheating and maintains access. Typical max is 40%.</p>
+                      <div class="input-grid">
+                        <div class="input-group">
+                          <label for="cpCableArea">Total Cable Cross-Section (in²)</label>
+                          <input type="number" id="cpCableArea" value="10" min="0" step="0.1" class="dc-input">
+                          <p class="input-help">Sum of cable areas.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="cpPathwayArea">Pathway Internal Area (in²)</label>
+                          <input type="number" id="cpPathwayArea" value="25" min="0.1" step="0.1" class="dc-input">
+                          <p class="input-help">Internal width × depth.</p>
+                        </div>
+                        <div class="input-group">
+                          <label for="cpMaxFillRatio">Max Fill Ratio (%)</label>
+                          <input type="number" id="cpMaxFillRatio" value="40" min="1" max="100" class="dc-input">
+                          <p class="input-help">NEC standard: 40%.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <button type="submit" class="execute-btn">Execute Calculation</button>
                 </form>
 
@@ -2039,6 +2141,63 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                       <ul id="compatibleRacks" style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-left: 16px; list-style: disc;">
                         <li>Standard Perforated Rack (42U/48U)</li>
                       </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tool 5 Results: Capacity Planner -->
+                <div id="result-capacity-planner" class="result-content">
+                  <!-- A. U-Space Result -->
+                  <div class="result-section">
+                    <h5 class="result-section-title" style="color: #60A5FA;">A. U-Space Utilization</h5>
+                    <div class="result-box blue">
+                      <span class="label">UTILIZATION</span>
+                      <span id="cpResultUUtilization" class="value">66.7%</span>
+                    </div>
+                    <div class="result-box blue">
+                      <span class="label">NET AVAILABLE U</span>
+                      <span id="cpResultNetU" class="value">8 U</span>
+                    </div>
+                  </div>
+
+                  <!-- B. Floor Load Result -->
+                  <div class="result-section" style="margin-top: 16px;">
+                    <h5 class="result-section-title" style="color: #EF4444;">B. Floor Load Density</h5>
+                    <div class="result-box orange">
+                      <span class="label">TOTAL RACK WEIGHT</span>
+                      <span id="cpResultRackWeight" class="value">1,500 lb</span>
+                    </div>
+                    <div class="result-box orange">
+                      <span class="label">FLOOR DENSITY</span>
+                      <span id="cpResultFloorDensity" class="value">214.3 lb/ft²</span>
+                    </div>
+                    <div id="cpFloorCompliance" style="padding: 10px 14px; border-radius: 8px; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); margin-top: 8px;">
+                      <p id="cpFloorComplianceMsg" style="color: #00FF88; font-size: 0.85rem; margin: 0;">✅ COMPLIANT: Within allowable load limit.</p>
+                    </div>
+                  </div>
+
+                  <!-- C. Airflow Result -->
+                  <div class="result-section" style="margin-top: 16px;">
+                    <h5 class="result-section-title green">C. Required Airflow (CFM)</h5>
+                    <div class="result-box green">
+                      <span class="label">HEAT LOAD</span>
+                      <span id="cpResultHeatBTU" class="value">51,182 BTU/hr</span>
+                    </div>
+                    <div class="result-highlight">
+                      <span class="label">REQUIRED AIRFLOW</span>
+                      <span id="cpResultCFM" class="value">2,370 CFM</span>
+                    </div>
+                  </div>
+
+                  <!-- D. Cable Fill Result -->
+                  <div class="result-section" style="margin-top: 16px;">
+                    <h5 class="result-section-title" style="color: #A855F7;">D. Cable Fill Ratio</h5>
+                    <div class="result-box" style="border-left-color: #A855F7;">
+                      <span class="label">FILL RATIO</span>
+                      <span id="cpResultFillRatio" class="value">40.0%</span>
+                    </div>
+                    <div id="cpCableCompliance" style="padding: 10px 14px; border-radius: 8px; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); margin-top: 8px;">
+                      <p id="cpCableComplianceMsg" style="color: #00FF88; font-size: 0.85rem; margin: 0;">✅ COMPLIANT: Below NEC limit.</p>
                     </div>
                   </div>
                 </div>
@@ -5669,6 +5828,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           calculatePowerCAPEX();
         } else if (currentTool === 'rack-density') {
           calculateRackDensity();
+        } else if (currentTool === 'capacity-planner') {
+          calculateCapacityPlanner();
         }
       };
 
@@ -5915,6 +6076,85 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           constraintDiv.style.borderColor = 'rgba(0,255,136,0.3)';
           constraintMsg.style.color = '#00FF88';
           constraintMsg.textContent = '✅ Configuration Optimal: Balanced U-space and thermal load.';
+        }
+      };
+
+      // Tool 5: Data Center Capacity Planner
+      const calculateCapacityPlanner = () => {
+        // A. U-Space Utilization
+        const totalU = parseFloat(document.getElementById('cpTotalU').value) || 0;
+        const usedU = parseFloat(document.getElementById('cpUsedU').value) || 0;
+        const reservedU = parseFloat(document.getElementById('cpReservedU').value) || 0;
+
+        const uUtilization = totalU > 0 ? (usedU / totalU) * 100 : 0;
+        const netAvailableU = totalU - usedU - reservedU;
+
+        document.getElementById('cpResultUUtilization').textContent = `${uUtilization.toFixed(1)}%`;
+        document.getElementById('cpResultNetU').textContent = `${netAvailableU.toFixed(0)} U`;
+
+        // B. Floor Loading Capacity
+        const emptyRackWeight = parseFloat(document.getElementById('cpEmptyRackWeight').value) || 0;
+        const equipmentWeight = parseFloat(document.getElementById('cpEquipmentWeight').value) || 0;
+        const rackArea = parseFloat(document.getElementById('cpRackArea').value) || 0;
+        const allowableLoad = parseFloat(document.getElementById('cpAllowableLoad').value) || 0;
+
+        const totalRackWeight = emptyRackWeight + equipmentWeight;
+        const floorDensity = rackArea > 0 ? (totalRackWeight / rackArea) : 0;
+
+        document.getElementById('cpResultRackWeight').textContent = `${formatNumber(totalRackWeight, 'number', 0)} lb`;
+        document.getElementById('cpResultFloorDensity').textContent = `${floorDensity.toFixed(1)} lb/ft²`;
+
+        const floorComplianceDiv = document.getElementById('cpFloorCompliance');
+        const floorComplianceMsg = document.getElementById('cpFloorComplianceMsg');
+        if (floorDensity > allowableLoad) {
+          floorComplianceDiv.style.background = 'rgba(239,68,68,0.1)';
+          floorComplianceDiv.style.borderColor = 'rgba(239,68,68,0.3)';
+          floorComplianceMsg.style.color = '#EF4444';
+          floorComplianceMsg.textContent = `⚠️ CRITICAL: Exceeds ${allowableLoad.toFixed(0)} lb/ft² limit (Structural Code Violation)`;
+        } else {
+          floorComplianceDiv.style.background = 'rgba(0,255,136,0.1)';
+          floorComplianceDiv.style.borderColor = 'rgba(0,255,136,0.3)';
+          floorComplianceMsg.style.color = '#00FF88';
+          floorComplianceMsg.textContent = `✅ COMPLIANT: Within ${allowableLoad.toFixed(0)} lb/ft² limit`;
+        }
+
+        // C. Airflow (CFM)
+        const heatLoadKW = parseFloat(document.getElementById('cpHeatLoadKW').value) || 0;
+        const deltaT = parseFloat(document.getElementById('cpDeltaT').value) || 0;
+        const cfmConstant = 1.08; // Air density * specific heat * 60 min/hr
+
+        // Convert kW to BTU/hr (1 kW ≈ 3412.14 BTU/hr)
+        const heatLoadBTU = heatLoadKW * 3412.14;
+        let requiredCFM = 0;
+
+        if (deltaT > 0 && cfmConstant > 0) {
+          requiredCFM = heatLoadBTU / (cfmConstant * deltaT);
+        }
+
+        document.getElementById('cpResultHeatBTU').textContent = `${formatNumber(heatLoadBTU, 'number', 0)} BTU/hr`;
+        document.getElementById('cpResultCFM').textContent = `${formatNumber(requiredCFM, 'number', 0)} CFM`;
+
+        // D. Cable Management Capacity
+        const cableArea = parseFloat(document.getElementById('cpCableArea').value) || 0;
+        const pathwayArea = parseFloat(document.getElementById('cpPathwayArea').value) || 0;
+        const maxFillRatio = parseFloat(document.getElementById('cpMaxFillRatio').value) || 0;
+
+        const fillRatio = pathwayArea > 0 ? (cableArea / pathwayArea) * 100 : 0;
+
+        document.getElementById('cpResultFillRatio').textContent = `${fillRatio.toFixed(1)}%`;
+
+        const cableComplianceDiv = document.getElementById('cpCableCompliance');
+        const cableComplianceMsg = document.getElementById('cpCableComplianceMsg');
+        if (fillRatio > maxFillRatio) {
+          cableComplianceDiv.style.background = 'rgba(239,68,68,0.1)';
+          cableComplianceDiv.style.borderColor = 'rgba(239,68,68,0.3)';
+          cableComplianceMsg.style.color = '#EF4444';
+          cableComplianceMsg.textContent = `⚠️ CRITICAL: Exceeds ${maxFillRatio.toFixed(0)}% limit (NEC Violation)`;
+        } else {
+          cableComplianceDiv.style.background = 'rgba(0,255,136,0.1)';
+          cableComplianceDiv.style.borderColor = 'rgba(0,255,136,0.3)';
+          cableComplianceMsg.style.color = '#00FF88';
+          cableComplianceMsg.textContent = `✅ COMPLIANT: Below ${maxFillRatio.toFixed(0)}% limit (NEC Standard)`;
         }
       };
 
