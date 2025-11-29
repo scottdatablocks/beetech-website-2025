@@ -944,14 +944,15 @@
 
     @media (max-width: 768px) {
       .tool-tabs {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
       .tab-button {
-        font-size: 0.72rem;
-        padding: 10px 8px;
+        font-size: 0.85rem;
+        padding: 14px 16px;
+        text-align: left;
       }
       .tab-button:last-child {
-        grid-column: span 2;
+        grid-column: span 1;
       }
     }
 
@@ -2256,33 +2257,45 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             </div>
           </div>
 
-          <!-- Calculator FAQ Section for SEO -->
-          <div style="margin-top: 24px; background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); padding: 24px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.1);">
-            <h3 style="color: var(--bee-gold); margin-bottom: 16px; font-size: 1.3rem;">Calculator FAQs</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-              <div>
-                <h4 style="color: white; margin-bottom: 8px; font-size: 1rem;">What is PUE?</h4>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
-                  PUE (Power Usage Effectiveness) is the ratio of total facility energy to IT equipment energy. Industry average is 1.58; best-in-class facilities achieve 1.1-1.2.
-                </p>
+          <!-- Calculator FAQ Section for SEO - Collapsible -->
+          <div style="margin-top: 24px; background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.1); overflow: hidden;">
+
+            <!-- FAQ Collapsible Header -->
+            <div id="faq-header" class="faq-collapsible-header" onclick="toggleFaqPanel()">
+              <div class="faq-collapsible-title">
+                <span class="faq-collapsible-badge">4 FAQs</span>
+                <h3>Calculator FAQs</h3>
               </div>
-              <div>
-                <h4 style="color: white; margin-bottom: 8px; font-size: 1rem;">How much can PUE reduction save?</h4>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
-                  A 10MW facility reducing PUE from 1.5 to 1.2 can save $2.6M+ annually in energy costs and reduce CO2 by 10,000+ tonnes/year.
-                </p>
-              </div>
-              <div>
-                <h4 style="color: white; margin-bottom: 8px; font-size: 1rem;">What are free cooling hours?</h4>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
-                  Hours when ambient air can cool the facility without chillers. Varies by region: 6,500+ hours in Northern Europe to 500 hours in Singapore.
-                </p>
-              </div>
-              <div>
-                <h4 style="color: white; margin-bottom: 8px; font-size: 1rem;">Tier I vs II vs III CAPEX?</h4>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
-                  Tier I (N) = 1x capacity, Tier II (N+1) = 1.5x capacity, Tier III (2N) = 2x capacity for UPS and generators.
-                </p>
+              <span id="faq-toggle-icon" class="faq-toggle-icon">+</span>
+            </div>
+
+            <!-- FAQ Collapsible Content -->
+            <div id="faq-content" style="display: none; padding: 24px;">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                  <h4 style="color: white; margin-bottom: 8px; font-size: 1rem;">What is PUE?</h4>
+                  <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
+                    PUE (Power Usage Effectiveness) is the ratio of total facility energy to IT equipment energy. Industry average is 1.58; best-in-class facilities achieve 1.1-1.2.
+                  </p>
+                </div>
+                <div>
+                  <h4 style="color: white; margin-bottom: 8px; font-size: 1rem;">How much can PUE reduction save?</h4>
+                  <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
+                    A 10MW facility reducing PUE from 1.5 to 1.2 can save $2.6M+ annually in energy costs and reduce CO2 by 10,000+ tonnes/year.
+                  </p>
+                </div>
+                <div>
+                  <h4 style="color: white; margin-bottom: 8px; font-size: 1rem;">What are free cooling hours?</h4>
+                  <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
+                    Hours when ambient air can cool the facility without chillers. Varies by region: 6,500+ hours in Northern Europe to 500 hours in Singapore.
+                  </p>
+                </div>
+                <div>
+                  <h4 style="color: white; margin-bottom: 8px; font-size: 1rem;">Tier I vs II vs III CAPEX?</h4>
+                  <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
+                    Tier I (N) = 1x capacity, Tier II (N+1) = 1.5x capacity, Tier III (2N) = 2x capacity for UPS and generators.
+                  </p>
+                </div>
               </div>
             </div>
             </div><!-- End calculator-content -->
@@ -2771,6 +2784,75 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               }
               .calc-collapsible-title h3 {
                 font-size: 1.1rem;
+              }
+            }
+
+            /* FAQ Collapsible Styles */
+            .faq-collapsible-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 16px 24px;
+              cursor: pointer;
+              transition: background 0.2s ease;
+            }
+            .faq-collapsible-header:hover {
+              background: rgba(255,255,255,0.03);
+            }
+            .faq-collapsible-header.expanded {
+              border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+            }
+            .faq-collapsible-title {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              flex: 1;
+            }
+            .faq-collapsible-title h3 {
+              color: var(--bee-gold);
+              font-size: 1.2rem;
+              margin: 0;
+              line-height: 1.4;
+              font-weight: 600;
+            }
+            .faq-toggle-icon {
+              font-size: 1.3rem;
+              font-weight: 300;
+              width: 32px;
+              height: 32px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              background: rgba(255, 215, 0, 0.1);
+              color: var(--bee-gold);
+              transition: all 0.2s ease;
+              flex-shrink: 0;
+            }
+            .faq-collapsible-header:hover .faq-toggle-icon {
+              background: rgba(255, 215, 0, 0.2);
+            }
+            .faq-collapsible-badge {
+              padding: 4px 10px;
+              border-radius: 16px;
+              font-size: 0.65rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              flex-shrink: 0;
+              background: rgba(255, 215, 0, 0.15);
+              color: var(--bee-gold);
+              border: 1px solid rgba(255, 215, 0, 0.3);
+            }
+            @media (max-width: 768px) {
+              .faq-collapsible-header {
+                padding: 14px 18px;
+              }
+              .faq-collapsible-title h3 {
+                font-size: 1rem;
+              }
+              .faq-collapsible-badge {
+                font-size: 0.6rem;
+                padding: 3px 8px;
               }
             }
 
@@ -5984,6 +6066,23 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       const content = document.getElementById('calculator-content');
       const icon = document.getElementById('calculator-toggle-icon');
       const header = document.getElementById('calculator-header');
+
+      if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        icon.textContent = '−';
+        header.classList.add('expanded');
+      } else {
+        content.style.display = 'none';
+        icon.textContent = '+';
+        header.classList.remove('expanded');
+      }
+    }
+
+    // FAQ Panel Toggle (Collapsible FAQ Section)
+    function toggleFaqPanel() {
+      const content = document.getElementById('faq-content');
+      const icon = document.getElementById('faq-toggle-icon');
+      const header = document.getElementById('faq-header');
 
       if (content.style.display === 'none' || content.style.display === '') {
         content.style.display = 'block';
