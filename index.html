@@ -2217,6 +2217,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               #whitepaper-form-container,
               #whitepaper2-toc + div,
               #whitepaper2-form-container,
+              #whitepaper4-toc + div,
+              #whitepaper4-form-container {
               #whitepaper3-toc + div,
               #whitepaper3-form-container,
               #whitepaper4-toc + div,
@@ -2230,8 +2232,10 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               #whitepaper2-toc,
               #whitepaper3-toc,
               #whitepaper4-toc {
+              #whitepaper4-toc {
+              #whitepaper3-toc {
                 border-right: none !important;
-                border-bottom: 1px solid rgba(255,215,0,0.15);
+                border-bottom: 1px solid rgba(168,85,247,0.15);
               }
             }
             .wp-section-item:hover {
@@ -2894,6 +2898,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
 
             <!-- Content Grid -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
+            <!-- Dropdown TOC and Download Form -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;" id="whitepaper4-content">
 
               <!-- Left: Table of Contents -->
               <div style="padding: 28px 32px; border-right: 1px solid rgba(168,85,247,0.15);" id="whitepaper4-toc">
@@ -2909,6 +2915,20 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     <div id="wp4-sec-1" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
                       <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
                         Industry 4.0 mandates a fundamental shift in data processing. The <strong style="color: #A855F7;">Edge-to-Cloud Continuum</strong> distributes computing, storage, and control from centralized cloud to IoT devices, enabling <strong style="color: #A855F7;">real-time visibility</strong>, <strong style="color: #A855F7;">fine-grained control</strong>, and IT/OT convergence through Fog Computing architectures.
+                  <!-- Section I: Executive Overview -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-1')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #A855F7; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">I. Executive Overview: Industry 4.0</span>
+                      <span style="color: #A855F7; font-size: 0.8rem;" id="wp4-sec-1-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-1" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">IT/OT Convergence</strong><br>
+                        The strategic imperative for distributed computing architecture addressing real-time visibility, fine-grained control, and rapid analytical response.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Edge-to-Cloud Continuum</strong><br>
+                        System-level architecture distributing resources from centralized Cloud to IoT devices, meeting latency constraints at the network edge.
                       </p>
                     </div>
                   </div>
@@ -2928,6 +2948,24 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                       </p>
                       <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
                         <strong style="color: rgba(255,255,255,0.8);">Tier 3 - Cloud Layer:</strong> Centralized storage, global ML models, and NOC-based system management.
+                  <!-- Section II: Foundational Architecture -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-2')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--bee-gold); transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">II. Three-Tiered Continuum Model</span>
+                      <span style="color: var(--bee-gold); font-size: 0.8rem;" id="wp4-sec-2-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-2" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 1: Device Layer (Physical Edge)</strong><br>
+                        Sensors, actuators, PLCs with ruggedized fanless systems for harsh industrial environments.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 2: Fog/Gateway Layer (Compute Edge)</strong><br>
+                        Real-time analytics, protocol translation, and security proxy functionality.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 3: Cloud Layer (Global Intelligence)</strong><br>
+                        Massive data storage, container-based workloads, and centralized system management.
                       </p>
                     </div>
                   </div>
@@ -2947,6 +2985,24 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                       </p>
                       <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
                         <strong style="color: rgba(255,255,255,0.8);">DDS:</strong> Peer-to-peer, ultra-low latency for deterministic real-time robotics and autonomous systems.
+                  <!-- Section III: Data Movement and Protocol Selection -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-3')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #FFA500; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">III. Industrial Protocol Selection</span>
+                      <span style="color: #FFA500; font-size: 0.8rem;" id="wp4-sec-3-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-3" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">MQTT + Sparkplug</strong><br>
+                        Broker-centric Pub/Sub model for massive scalability supporting millions of devices.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">OPC UA for OT Interoperability</strong><br>
+                        Client-Server architecture with strong semantic data models for SCADA/MES integration.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">DDS for Real-Time Systems</strong><br>
+                        Peer-to-peer, broker-less architecture for ultra-low latency deterministic control.
                       </p>
                     </div>
                   </div>
@@ -2955,6 +3011,10 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                   <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-4')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #00FF88; transition: all 0.2s;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                       <span style="color: white; font-size: 0.9rem; font-weight: 500;">4. Scalability & Resilience Patterns</span>
+                  <!-- Section IV: Scalability and Resilience -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-4')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #00FF88; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">IV. Scalability and Resilience</span>
                       <span style="color: #00FF88; font-size: 0.8rem;" id="wp4-sec-4-icon">+</span>
                     </div>
                     <div id="wp4-sec-4" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -2966,6 +3026,12 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                       </p>
                       <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
                         <strong style="color: rgba(255,255,255,0.8);">Offline Continuity:</strong> Local storage and processing ensure operations continue during network outages.
+                        <strong style="color: rgba(255,255,255,0.8);">Microservices & Containerization</strong><br>
+                        Docker containers with Kubernetes orchestration for distributed edge deployment.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Resilience Patterns</strong><br>
+                        Circuit Breaker, Bulkhead patterns, offline processing, and eventual consistency.
                       </p>
                     </div>
                   </div>
@@ -2985,6 +3051,20 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                       </p>
                       <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
                         <strong style="color: rgba(255,255,255,0.8);">Privacy Plugins:</strong> Differential privacy conceals sensitive identities while preserving analytics value.
+                  <!-- Section V: Data Management -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-5')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #60A5FA; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">V. Data Management & Governance</span>
+                      <span style="color: #60A5FA; font-size: 0.8rem;" id="wp4-sec-5-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-5" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Edge Data Filtering</strong><br>
+                        Configurable traceability filters with include/exclude lists for bandwidth optimization.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Lakehouse Model</strong><br>
+                        Combines Data Warehouse reliability with Data Lake flexibility for AI and BI.
                       </p>
                     </div>
                   </div>
@@ -2993,6 +3073,10 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                   <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-6')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #FF3B5C; transition: all 0.2s;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                       <span style="color: white; font-size: 0.9rem; font-weight: 500;">6. Security & Threat Mitigation</span>
+                  <!-- Section VI: Security -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-6')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #FF3B5C; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">VI. Security & Threat Mitigation</span>
                       <span style="color: #FF3B5C; font-size: 0.8rem;" id="wp4-sec-6-icon">+</span>
                     </div>
                     <div id="wp4-sec-6" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -3004,6 +3088,12 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                       </p>
                       <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
                         <strong style="color: rgba(255,255,255,0.8);">Micro-Segmentation:</strong> Isolated zones prevent lateral threat movement; TLS/SSL for data in transit, TPM for data at rest.
+                        <strong style="color: rgba(255,255,255,0.8);">Zero Trust Model</strong><br>
+                        Strict verification for every access request with PKI and Multi-Factor Authentication.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">End-to-End Encryption</strong><br>
+                        TLS/SSL for data in transit, TPM for data at rest, network micro-segmentation.
                       </p>
                     </div>
                   </div>
@@ -3023,6 +3113,24 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                       </p>
                       <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
                         <strong style="color: rgba(255,255,255,0.8);">5G/6G Networks:</strong> Ultra-low latency wireless backbone enables complex AI models at the edge.
+                  <!-- Section VII: Edge Intelligence -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-7')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #A855F7; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">VII. Edge Intelligence & Future Trends</span>
+                      <span style="color: #A855F7; font-size: 0.8rem;" id="wp4-sec-7-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-7" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">AI/ML Inference at Edge</strong><br>
+                        Reduced latency, bandwidth savings, and improved privacy through local processing.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Predictive Maintenance</strong><br>
+                        ML models detecting anomalies in real-time to minimize unplanned downtime.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">5G/6G Integration</strong><br>
+                        Next-generation wireless backbone for ultra-low latency edge connectivity.
                       </p>
                     </div>
                   </div>
@@ -3036,6 +3144,20 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     <div id="wp4-sec-8" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
                       <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
                         Success requires integrated strategies: <strong style="color: #A855F7;">Layered Computing</strong> via Fog model, <strong style="color: var(--bee-gold);">Protocol Optimization</strong> with MQTT/OPC UA/DDS, <strong style="color: #00FF88;">Cloud-Native Adoption</strong> using K8s microservices, and <strong style="color: #FF3B5C;">Zero Trust Security</strong>. Ruggedized infrastructure and unified orchestration enable real-time data to drive operational efficiency and competitive advantage.
+                  <!-- Section VIII: Conclusion -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp4-sec-8')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--bee-gold); transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">VIII. Roadmap to Edge Maturity</span>
+                      <span style="color: var(--bee-gold); font-size: 0.8rem;" id="wp4-sec-8-icon">+</span>
+                    </div>
+                    <div id="wp4-sec-8" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Integrated Strategies</strong><br>
+                        Layered computing, protocol optimization, cloud-native adoption, and security integration.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Industry 4.0 Capabilities</strong><br>
+                        Flexible, resilient, and intelligent operational platform for competitive advantage.
                       </p>
                     </div>
                   </div>
@@ -3083,6 +3205,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                   </div>
 
                   <button type="submit" style="width: 100%; padding: 14px 24px; background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%); border: none; border-radius: 8px; color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(168,85,247,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                  <button type="submit" style="width: 100%; padding: 14px 24px; background: linear-gradient(135deg, #A855F7 0%, #9333EA 100%); border: none; border-radius: 8px; color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(168,85,247,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
                     Request Whitepaper Download
                   </button>
 
@@ -3095,6 +3218,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 <div id="whitepaper4Success" style="display: none; text-align: center; padding: 24px;">
                   <div style="width: 60px; height: 60px; background: rgba(168,85,247,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
                     <span style="color: #A855F7; font-size: 1.8rem;">&#10003;</span>
+                  <div style="width: 60px; height: 60px; background: rgba(0,255,136,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                    <span style="color: #00FF88; font-size: 1.8rem;">&#10003;</span>
                   </div>
                   <h4 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Request Received!</h4>
                   <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5; margin-bottom: 16px;">
@@ -3415,6 +3540,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       }, 8000);
     }
 
+    // Handle Whitepaper 4 Request (Edge-to-Cloud Data Ecosystem)
     function handleWhitepaper4Request(e) {
       e.preventDefault();
 
