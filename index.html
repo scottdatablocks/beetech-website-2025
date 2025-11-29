@@ -4315,17 +4315,45 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
   </footer>
 
   <script>
-    function showPage(pageId) {
+    function showPage(pageId, updateHash = true) {
       // Hide all pages
       const pages = document.querySelectorAll('.page');
       pages.forEach(page => page.classList.remove('active'));
-      
+
       // Show selected page
-      document.getElementById(pageId).classList.add('active');
-      
-      // Scroll to top
-      window.scrollTo(0, 0);
+      const targetPage = document.getElementById(pageId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+
+        // Update URL hash for shareable links (skip for home to keep URL clean)
+        if (updateHash) {
+          if (pageId === 'home') {
+            history.pushState(null, '', window.location.pathname);
+          } else {
+            history.pushState(null, '', '#' + pageId);
+          }
+        }
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
     }
+
+    // Handle direct links via URL hash (e.g., yoursite.com/#news-insights)
+    function handleHashNavigation() {
+      const hash = window.location.hash.slice(1); // Remove the # symbol
+      if (hash && document.getElementById(hash)) {
+        showPage(hash, false); // Don't update hash again since we're reading from it
+      } else {
+        showPage('home', false);
+      }
+    }
+
+    // Initialize page based on URL hash when page loads
+    document.addEventListener('DOMContentLoaded', handleHashNavigation);
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', handleHashNavigation);
 
     function handleContactForm(e) {
       e.preventDefault();
