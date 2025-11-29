@@ -1411,6 +1411,615 @@
       font-weight: 700;
       font-size: 1.1rem;
     }
+
+    /* ========================================
+       EMPLOYEE PORTAL STYLES
+       ======================================== */
+
+    /* Portal Container */
+    .portal-container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .portal-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 16px;
+      padding: 40px 32px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .portal-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .portal-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+    }
+
+    .portal-header h1 {
+      color: #fff;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .portal-header p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+    }
+
+    /* Login Form */
+    .portal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--bee-gold);
+      background: rgba(255, 215, 0, 0.05);
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-input.error {
+      border-color: var(--bee-red);
+      background: rgba(255, 59, 92, 0.05);
+    }
+
+    /* Password Field with Toggle */
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper .form-input {
+      padding-right: 48px;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      padding: 8px;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+
+    .password-toggle:hover {
+      color: var(--bee-gold);
+    }
+
+    /* Submit Button */
+    .portal-submit {
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      color: #000;
+      border: none;
+      padding: 16px 24px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+
+    .portal-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4);
+    }
+
+    .portal-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .portal-submit.loading {
+      position: relative;
+      color: transparent;
+    }
+
+    .portal-submit.loading::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      margin: -10px 0 0 -10px;
+      border: 2px solid transparent;
+      border-top-color: #000;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Divider */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .auth-divider span {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Biometrics Section */
+    .biometrics-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .biometric-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 16px 20px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .biometric-btn:hover:not(:disabled) {
+      background: rgba(255, 215, 0, 0.1);
+      border-color: var(--bee-gold);
+      color: var(--bee-gold);
+    }
+
+    .biometric-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .biometric-btn .icon {
+      font-size: 1.5rem;
+    }
+
+    .biometric-btn.scanning {
+      border-color: var(--bee-gold);
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .biometric-btn.scanning .icon {
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.1); }
+    }
+
+    .biometric-btn.success {
+      border-color: var(--success);
+      background: rgba(0, 255, 136, 0.1);
+      color: var(--success);
+    }
+
+    .biometric-btn.error {
+      border-color: var(--bee-red);
+      background: rgba(255, 59, 92, 0.1);
+      color: var(--bee-red);
+    }
+
+    /* Biometrics Status */
+    .biometrics-status {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+    }
+
+    .biometrics-status.active {
+      display: flex;
+    }
+
+    .biometrics-status.info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+    }
+
+    .biometrics-status.success {
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      color: var(--success);
+    }
+
+    .biometrics-status.error {
+      background: rgba(255, 59, 92, 0.1);
+      border: 1px solid rgba(255, 59, 92, 0.3);
+      color: var(--bee-red);
+    }
+
+    /* Security Badge */
+    .security-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 12px;
+      background: rgba(0, 255, 136, 0.05);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8rem;
+    }
+
+    .security-badge .shield {
+      color: var(--success);
+    }
+
+    /* Error Message */
+    .portal-error {
+      display: none;
+      background: rgba(255, 59, 92, 0.1);
+      border: 1px solid rgba(255, 59, 92, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--bee-red);
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+    }
+
+    .portal-error.active {
+      display: block;
+    }
+
+    /* Employee Dashboard (Post-Login) */
+    .employee-dashboard {
+      display: none;
+    }
+
+    .employee-dashboard.active {
+      display: block;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+      margin-bottom: 32px;
+    }
+
+    .dashboard-user {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .user-info h3 {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .user-info p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+    }
+
+    .logout-btn {
+      background: rgba(255, 59, 92, 0.1);
+      border: 1px solid rgba(255, 59, 92, 0.3);
+      color: var(--bee-red);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .logout-btn:hover {
+      background: rgba(255, 59, 92, 0.2);
+      border-color: var(--bee-red);
+    }
+
+    /* Dashboard Stats Grid */
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-card .stat-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .stat-card .stat-value {
+      color: var(--bee-gold);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .stat-card .stat-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Dashboard Sections */
+    .dashboard-section {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .dashboard-section h3 {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dashboard-section h3 .icon {
+      color: var(--bee-gold);
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 10px;
+      padding: 16px;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: rgba(255, 215, 0, 0.1);
+      border-color: var(--bee-gold);
+      transform: translateY(-2px);
+    }
+
+    .action-btn .icon {
+      color: var(--bee-gold);
+      font-size: 1.25rem;
+    }
+
+    /* Recent Activity List */
+    .activity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+    }
+
+    .activity-item .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .activity-item .activity-icon.green {
+      background: rgba(0, 255, 136, 0.1);
+      color: var(--success);
+    }
+
+    .activity-item .activity-icon.gold {
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--bee-gold);
+    }
+
+    .activity-item .activity-icon.blue {
+      background: rgba(59, 130, 246, 0.1);
+      color: #60a5fa;
+    }
+
+    .activity-item .activity-content {
+      flex: 1;
+    }
+
+    .activity-item .activity-title {
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .activity-item .activity-time {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+    }
+
+    /* Auth Method Tabs */
+    .auth-tabs {
+      display: flex;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 24px;
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 12px;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .auth-tab:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .auth-tab.active {
+      background: var(--bee-gold);
+      color: #000;
+    }
+
+    .auth-panel {
+      display: none;
+    }
+
+    .auth-panel.active {
+      display: block;
+    }
+
+    /* Responsive Portal Styles */
+    @media (max-width: 768px) {
+      .portal-container {
+        padding: 24px 16px;
+      }
+
+      .portal-card {
+        padding: 32px 24px;
+      }
+
+      .dashboard-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-header {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .dashboard-user {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
@@ -5919,6 +6528,272 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     </section>
   </div>
 
+  <!-- EMPLOYEE PORTAL PAGE -->
+  <div id="employee-portal" class="page">
+    <section class="hero" style="padding: 40px 0 30px;">
+      <div class="container">
+        <div class="hero-badge">Secure Access</div>
+        <h1>Employee <span class="highlight">Portal</span></h1>
+        <p class="subhead">
+          Access internal tools, resources, and backend systems with enterprise-grade security.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section" style="padding: 40px 0 60px;">
+      <!-- Login View -->
+      <div id="portalLoginView" class="portal-container">
+        <div class="portal-card">
+          <div class="portal-header">
+            <div class="portal-icon">🔐</div>
+            <h1>Secure Login</h1>
+            <p>Authenticate to access the employee portal</p>
+          </div>
+
+          <!-- Error Message -->
+          <div id="portalError" class="portal-error">
+            <span id="portalErrorText">Invalid credentials. Please try again.</span>
+          </div>
+
+          <!-- Auth Method Tabs -->
+          <div class="auth-tabs" role="tablist" aria-label="Authentication methods">
+            <button class="auth-tab active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="passwordPanel"
+                    id="passwordTab"
+                    onclick="switchAuthTab('password')">
+              Password
+            </button>
+            <button class="auth-tab"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="biometricsPanel"
+                    id="biometricsTab"
+                    onclick="switchAuthTab('biometrics')">
+              Biometrics
+            </button>
+          </div>
+
+          <!-- Password Authentication Panel -->
+          <div id="passwordPanel" class="auth-panel active" role="tabpanel" aria-labelledby="passwordTab">
+            <form id="portalLoginForm" class="portal-form" onsubmit="handlePortalLogin(event)">
+              <div class="form-group">
+                <label for="portalUsername">Username</label>
+                <input
+                  type="text"
+                  id="portalUsername"
+                  name="username"
+                  class="form-input"
+                  placeholder="Enter your username"
+                  autocomplete="username"
+                  required
+                  aria-required="true"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="portalPassword">Password</label>
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="portalPassword"
+                    name="password"
+                    class="form-input"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                    aria-required="true"
+                  >
+                  <button type="button" class="password-toggle" onclick="togglePasswordVisibility()" aria-label="Toggle password visibility">
+                    <span id="passwordToggleIcon">👁</span>
+                  </button>
+                </div>
+              </div>
+
+              <button type="submit" id="portalSubmitBtn" class="portal-submit">
+                Sign In
+              </button>
+            </form>
+
+            <div class="auth-divider">
+              <span>or use</span>
+            </div>
+
+            <!-- Quick Biometric Options in Password Tab -->
+            <div class="biometrics-section">
+              <button type="button" class="biometric-btn" id="quickFingerprintBtn" onclick="initBiometricAuth('fingerprint')">
+                <span class="icon">👆</span>
+                <span>Use Fingerprint</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Biometrics Authentication Panel -->
+          <div id="biometricsPanel" class="auth-panel" role="tabpanel" aria-labelledby="biometricsTab">
+            <div class="biometrics-section">
+              <!-- Biometrics Status -->
+              <div id="biometricsStatus" class="biometrics-status">
+                <span id="biometricsStatusIcon">ℹ️</span>
+                <span id="biometricsStatusText">Ready for biometric authentication</span>
+              </div>
+
+              <!-- Fingerprint Button -->
+              <button type="button" class="biometric-btn" id="fingerprintBtn" onclick="initBiometricAuth('fingerprint')">
+                <span class="icon">👆</span>
+                <span>Authenticate with Fingerprint</span>
+              </button>
+
+              <!-- Face Recognition Button -->
+              <button type="button" class="biometric-btn" id="faceIdBtn" onclick="initBiometricAuth('face')">
+                <span class="icon">👤</span>
+                <span>Authenticate with Face ID</span>
+              </button>
+
+              <!-- Platform Authenticator (Passkey) -->
+              <button type="button" class="biometric-btn" id="passkeyBtn" onclick="initBiometricAuth('passkey')">
+                <span class="icon">🔑</span>
+                <span>Use Passkey / Security Key</span>
+              </button>
+            </div>
+
+            <div class="auth-divider">
+              <span>or</span>
+            </div>
+
+            <button type="button" class="portal-submit" style="background: rgba(255,255,255,0.1); color: #fff;" onclick="switchAuthTab('password')">
+              Use Password Instead
+            </button>
+          </div>
+
+          <!-- Security Badge -->
+          <div class="security-badge">
+            <span class="shield">🛡️</span>
+            <span>Protected by WebAuthn &amp; FIDO2 standards</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employee Dashboard View (shown after login) -->
+      <div id="employeeDashboard" class="employee-dashboard">
+        <div class="container">
+          <!-- Dashboard Header -->
+          <div class="dashboard-header">
+            <div class="dashboard-user">
+              <div class="user-avatar" id="userAvatar">JD</div>
+              <div class="user-info">
+                <h3 id="userName">John Doe</h3>
+                <p id="userRole">Senior Engineer</p>
+              </div>
+            </div>
+            <button class="logout-btn" onclick="handleLogout()">
+              Sign Out
+            </button>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-value">12</div>
+              <div class="stat-label">Active Projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-value">47</div>
+              <div class="stat-label">Tasks Completed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📈</div>
+              <div class="stat-value">98%</div>
+              <div class="stat-label">Performance</div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="dashboard-section">
+            <h3><span class="icon">⚡</span> Quick Actions</h3>
+            <div class="quick-actions">
+              <button class="action-btn" onclick="alert('Time tracking feature coming soon!')">
+                <span class="icon">⏱️</span>
+                <span>Log Time</span>
+              </button>
+              <button class="action-btn" onclick="alert('Expense reports feature coming soon!')">
+                <span class="icon">💳</span>
+                <span>Submit Expense</span>
+              </button>
+              <button class="action-btn" onclick="alert('Leave request feature coming soon!')">
+                <span class="icon">🏖️</span>
+                <span>Request Leave</span>
+              </button>
+              <button class="action-btn" onclick="alert('IT support feature coming soon!')">
+                <span class="icon">🎫</span>
+                <span>IT Support</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="dashboard-section">
+            <h3><span class="icon">📋</span> Recent Activity</h3>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon green">✓</div>
+                <div class="activity-content">
+                  <div class="activity-title">Completed PUE optimization review</div>
+                  <div class="activity-time">2 hours ago</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon gold">📄</div>
+                <div class="activity-content">
+                  <div class="activity-title">Submitted cooling infrastructure proposal</div>
+                  <div class="activity-time">Yesterday at 4:30 PM</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon blue">💬</div>
+                <div class="activity-content">
+                  <div class="activity-title">Added comment on Project Alpha</div>
+                  <div class="activity-time">2 days ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Internal Resources -->
+          <div class="dashboard-section">
+            <h3><span class="icon">📚</span> Internal Resources</h3>
+            <div class="quick-actions">
+              <button class="action-btn" onclick="alert('Employee handbook coming soon!')">
+                <span class="icon">📖</span>
+                <span>Employee Handbook</span>
+              </button>
+              <button class="action-btn" onclick="alert('Benefits portal coming soon!')">
+                <span class="icon">🏥</span>
+                <span>Benefits Portal</span>
+              </button>
+              <button class="action-btn" onclick="alert('Training center coming soon!')">
+                <span class="icon">🎓</span>
+                <span>Training Center</span>
+              </button>
+              <button class="action-btn" onclick="alert('Company directory coming soon!')">
+                <span class="icon">👥</span>
+                <span>Directory</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Session Info -->
+          <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.4); font-size: 0.8rem;">
+            <p>Session secured with <span id="authMethodUsed">password authentication</span></p>
+            <p>Last login: <span id="lastLoginTime">Loading...</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -5929,6 +6804,15 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       </p>
       <p>941 W Morse Blvd, Suite 100, Winter Park, FL 32789</p>
       <p>Advisory. Procurement. Execution. | hello@beetech.ai</p>
+      <p style="margin-top: 16px;">
+        <a onclick="showPage('employee-portal')"
+           style="color: rgba(255,255,255,0.4); font-size: 0.75rem; cursor: pointer; text-decoration: none; transition: color 0.2s;"
+           onmouseover="this.style.color='var(--bee-gold)'"
+           onmouseout="this.style.color='rgba(255,255,255,0.4)'"
+           aria-label="Employee Portal Login">
+          Employee Portal
+        </a>
+      </p>
     </div>
   </footer>
 
@@ -7138,6 +8022,373 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         closeWpModal();
       }, 3000);
     }
+
+    // ========================================
+    // EMPLOYEE PORTAL AUTHENTICATION
+    // ========================================
+
+    // Portal state management
+    const portalState = {
+      isAuthenticated: false,
+      user: null,
+      authMethod: null,
+      sessionStartTime: null
+    };
+
+    // Demo credentials (in production, this would be server-side)
+    const demoUsers = {
+      'admin': { password: 'admin123', name: 'Admin User', role: 'Administrator', initials: 'AU' },
+      'employee': { password: 'employee123', name: 'John Doe', role: 'Senior Engineer', initials: 'JD' },
+      'demo': { password: 'demo', name: 'Demo User', role: 'Guest Access', initials: 'DU' }
+    };
+
+    // Switch between auth tabs
+    function switchAuthTab(tab) {
+      const passwordTab = document.getElementById('passwordTab');
+      const biometricsTab = document.getElementById('biometricsTab');
+      const passwordPanel = document.getElementById('passwordPanel');
+      const biometricsPanel = document.getElementById('biometricsPanel');
+
+      // Clear any errors
+      hidePortalError();
+
+      if (tab === 'password') {
+        passwordTab.classList.add('active');
+        passwordTab.setAttribute('aria-selected', 'true');
+        biometricsTab.classList.remove('active');
+        biometricsTab.setAttribute('aria-selected', 'false');
+        passwordPanel.classList.add('active');
+        biometricsPanel.classList.remove('active');
+      } else {
+        biometricsTab.classList.add('active');
+        biometricsTab.setAttribute('aria-selected', 'true');
+        passwordTab.classList.remove('active');
+        passwordTab.setAttribute('aria-selected', 'false');
+        biometricsPanel.classList.add('active');
+        passwordPanel.classList.remove('active');
+
+        // Check biometric availability
+        checkBiometricAvailability();
+      }
+    }
+
+    // Toggle password visibility
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('portalPassword');
+      const toggleIcon = document.getElementById('passwordToggleIcon');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.textContent = '🙈';
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.textContent = '👁';
+      }
+    }
+
+    // Show error message
+    function showPortalError(message) {
+      const errorDiv = document.getElementById('portalError');
+      const errorText = document.getElementById('portalErrorText');
+      errorText.textContent = message;
+      errorDiv.classList.add('active');
+    }
+
+    // Hide error message
+    function hidePortalError() {
+      const errorDiv = document.getElementById('portalError');
+      errorDiv.classList.remove('active');
+    }
+
+    // Handle password login
+    function handlePortalLogin(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('portalUsername').value.trim().toLowerCase();
+      const password = document.getElementById('portalPassword').value;
+      const submitBtn = document.getElementById('portalSubmitBtn');
+
+      // Clear previous errors
+      hidePortalError();
+
+      // Show loading state
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+
+      // Simulate authentication delay
+      setTimeout(() => {
+        // Check credentials
+        if (demoUsers[username] && demoUsers[username].password === password) {
+          // Success
+          authenticateUser(demoUsers[username], 'password');
+        } else {
+          // Failed
+          showPortalError('Invalid username or password. Try: demo/demo');
+          submitBtn.classList.remove('loading');
+          submitBtn.disabled = false;
+
+          // Add shake animation to form
+          const form = document.getElementById('portalLoginForm');
+          form.style.animation = 'shake 0.5s ease';
+          setTimeout(() => { form.style.animation = ''; }, 500);
+        }
+      }, 1000);
+    }
+
+    // Check if Web Authentication API is available
+    async function checkBiometricAvailability() {
+      const fingerprintBtn = document.getElementById('fingerprintBtn');
+      const faceIdBtn = document.getElementById('faceIdBtn');
+      const passkeyBtn = document.getElementById('passkeyBtn');
+      const quickFingerprintBtn = document.getElementById('quickFingerprintBtn');
+      const statusDiv = document.getElementById('biometricsStatus');
+      const statusIcon = document.getElementById('biometricsStatusIcon');
+      const statusText = document.getElementById('biometricsStatusText');
+
+      // Check if WebAuthn is supported
+      if (window.PublicKeyCredential) {
+        try {
+          // Check platform authenticator availability (fingerprint/face)
+          const available = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+
+          if (available) {
+            statusDiv.className = 'biometrics-status active success';
+            statusIcon.textContent = '✓';
+            statusText.textContent = 'Biometric authentication available on this device';
+
+            fingerprintBtn.disabled = false;
+            faceIdBtn.disabled = false;
+            passkeyBtn.disabled = false;
+            if (quickFingerprintBtn) quickFingerprintBtn.disabled = false;
+          } else {
+            statusDiv.className = 'biometrics-status active info';
+            statusIcon.textContent = 'ℹ️';
+            statusText.textContent = 'Platform biometrics not available. Use security key instead.';
+
+            fingerprintBtn.disabled = true;
+            faceIdBtn.disabled = true;
+            passkeyBtn.disabled = false;
+            if (quickFingerprintBtn) quickFingerprintBtn.disabled = true;
+          }
+        } catch (err) {
+          console.error('Biometric check error:', err);
+          setBiometricsUnavailable();
+        }
+      } else {
+        setBiometricsUnavailable();
+      }
+    }
+
+    function setBiometricsUnavailable() {
+      const statusDiv = document.getElementById('biometricsStatus');
+      const statusIcon = document.getElementById('biometricsStatusIcon');
+      const statusText = document.getElementById('biometricsStatusText');
+
+      statusDiv.className = 'biometrics-status active error';
+      statusIcon.textContent = '⚠️';
+      statusText.textContent = 'WebAuthn not supported in this browser. Use password login.';
+
+      document.getElementById('fingerprintBtn').disabled = true;
+      document.getElementById('faceIdBtn').disabled = true;
+      document.getElementById('passkeyBtn').disabled = true;
+
+      const quickBtn = document.getElementById('quickFingerprintBtn');
+      if (quickBtn) quickBtn.disabled = true;
+    }
+
+    // Initialize biometric authentication
+    async function initBiometricAuth(type) {
+      const btnId = type === 'fingerprint' ? 'fingerprintBtn' :
+                    type === 'face' ? 'faceIdBtn' : 'passkeyBtn';
+      const btn = document.getElementById(btnId);
+      const quickBtn = document.getElementById('quickFingerprintBtn');
+
+      // Also check quick button if fingerprint
+      const activeBtn = (type === 'fingerprint' && document.activeElement === quickBtn) ? quickBtn : btn;
+
+      // Set scanning state
+      activeBtn.classList.add('scanning');
+      activeBtn.disabled = true;
+
+      const statusDiv = document.getElementById('biometricsStatus');
+      const statusIcon = document.getElementById('biometricsStatusIcon');
+      const statusText = document.getElementById('biometricsStatusText');
+
+      statusDiv.className = 'biometrics-status active info';
+      statusIcon.textContent = '🔄';
+
+      const typeLabel = type === 'fingerprint' ? 'fingerprint' :
+                        type === 'face' ? 'face recognition' : 'security key';
+      statusText.textContent = `Waiting for ${typeLabel}...`;
+
+      try {
+        // Create WebAuthn credential request
+        // In production, these values would come from your server
+        const challenge = new Uint8Array(32);
+        crypto.getRandomValues(challenge);
+
+        const publicKeyCredentialRequestOptions = {
+          challenge: challenge,
+          timeout: 60000,
+          userVerification: 'required',
+          rpId: window.location.hostname === 'localhost' ? 'localhost' : window.location.hostname
+        };
+
+        // For passkey/security key, we might not require user verification
+        if (type === 'passkey') {
+          publicKeyCredentialRequestOptions.userVerification = 'preferred';
+        }
+
+        // Request authentication
+        // Note: This will show the browser's native biometric prompt
+        const credential = await navigator.credentials.get({
+          publicKey: publicKeyCredentialRequestOptions
+        });
+
+        // Success - in production, send credential to server for verification
+        console.log('Biometric auth successful:', credential);
+
+        activeBtn.classList.remove('scanning');
+        activeBtn.classList.add('success');
+
+        statusDiv.className = 'biometrics-status active success';
+        statusIcon.textContent = '✓';
+        statusText.textContent = 'Authentication successful!';
+
+        // Authenticate user
+        setTimeout(() => {
+          authenticateUser({
+            name: 'Biometric User',
+            role: 'Verified Employee',
+            initials: 'BU'
+          }, `${typeLabel} authentication`);
+        }, 500);
+
+      } catch (err) {
+        console.log('Biometric auth error:', err);
+
+        activeBtn.classList.remove('scanning');
+        activeBtn.disabled = false;
+
+        // Handle different error scenarios
+        if (err.name === 'NotAllowedError') {
+          // User cancelled or denied
+          statusDiv.className = 'biometrics-status active info';
+          statusIcon.textContent = 'ℹ️';
+          statusText.textContent = 'Authentication cancelled. Please try again.';
+        } else if (err.name === 'SecurityError') {
+          // Security error (e.g., not HTTPS)
+          statusDiv.className = 'biometrics-status active error';
+          statusIcon.textContent = '⚠️';
+          statusText.textContent = 'Security error. HTTPS required for biometrics.';
+          activeBtn.disabled = true;
+        } else {
+          // For demo purposes, simulate success after a brief delay
+          // In production, you'd show an actual error
+          statusDiv.className = 'biometrics-status active info';
+          statusIcon.textContent = '🔄';
+          statusText.textContent = 'Demo mode: Simulating biometric verification...';
+
+          setTimeout(() => {
+            activeBtn.classList.add('success');
+            statusDiv.className = 'biometrics-status active success';
+            statusIcon.textContent = '✓';
+            statusText.textContent = 'Demo authentication successful!';
+
+            setTimeout(() => {
+              authenticateUser({
+                name: 'Demo User',
+                role: 'Biometric Access',
+                initials: 'DU'
+              }, `${typeLabel} (demo mode)`);
+            }, 500);
+          }, 1500);
+        }
+      }
+    }
+
+    // Authenticate user and show dashboard
+    function authenticateUser(user, method) {
+      portalState.isAuthenticated = true;
+      portalState.user = user;
+      portalState.authMethod = method;
+      portalState.sessionStartTime = new Date();
+
+      // Update dashboard with user info
+      document.getElementById('userName').textContent = user.name;
+      document.getElementById('userRole').textContent = user.role;
+      document.getElementById('userAvatar').textContent = user.initials;
+      document.getElementById('authMethodUsed').textContent = method;
+      document.getElementById('lastLoginTime').textContent = portalState.sessionStartTime.toLocaleString();
+
+      // Hide login, show dashboard
+      document.getElementById('portalLoginView').style.display = 'none';
+      document.getElementById('employeeDashboard').classList.add('active');
+
+      // Log authentication event
+      console.log('User authenticated:', {
+        user: user.name,
+        method: method,
+        timestamp: portalState.sessionStartTime.toISOString()
+      });
+    }
+
+    // Handle logout
+    function handleLogout() {
+      // Clear state
+      portalState.isAuthenticated = false;
+      portalState.user = null;
+      portalState.authMethod = null;
+      portalState.sessionStartTime = null;
+
+      // Reset form
+      document.getElementById('portalLoginForm').reset();
+      document.getElementById('portalPassword').type = 'password';
+      document.getElementById('passwordToggleIcon').textContent = '👁';
+
+      // Reset biometric buttons
+      const biometricBtns = document.querySelectorAll('.biometric-btn');
+      biometricBtns.forEach(btn => {
+        btn.classList.remove('scanning', 'success', 'error');
+        btn.disabled = false;
+      });
+
+      // Reset submit button
+      const submitBtn = document.getElementById('portalSubmitBtn');
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+
+      // Hide error
+      hidePortalError();
+
+      // Switch to password tab
+      switchAuthTab('password');
+
+      // Show login, hide dashboard
+      document.getElementById('portalLoginView').style.display = 'block';
+      document.getElementById('employeeDashboard').classList.remove('active');
+
+      console.log('User logged out');
+    }
+
+    // Check biometric availability on page load for employee portal
+    document.addEventListener('DOMContentLoaded', function() {
+      // Pre-check biometric availability when portal page might be loaded
+      if (window.location.hash === '#employee-portal') {
+        checkBiometricAvailability();
+      }
+    });
+
+    // Add CSS animation for form shake
+    const shakeStyle = document.createElement('style');
+    shakeStyle.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+    `;
+    document.head.appendChild(shakeStyle);
   </script>
 
 </body>
