@@ -865,6 +865,7 @@
       padding: 32px;
       border: 2px solid rgba(255, 215, 0, 0.3);
       box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+      position: relative;
     }
 
     .tool-suite-header {
@@ -883,6 +884,49 @@
     .tool-suite-header p {
       color: rgba(255,255,255,0.7);
       font-size: 1rem;
+    }
+
+    /* FlowPoint Logo Styles */
+    .flowpoint-logo {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: white;
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+
+    .flowpoint-logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .flowpoint-logo-mobile {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .flowpoint-logo-mobile {
+        display: flex;
+        background: white;
+        border-radius: 8px;
+        padding: 8px 12px;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        margin-top: 16px;
+        width: fit-content;
+      }
+
+      .flowpoint-logo-mobile img {
+        height: 28px;
+        width: auto;
+      }
     }
 
     /* Tool Navigation Tabs */
@@ -1695,6 +1739,11 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           </div>
 
           <div class="tool-suite-container">
+            <!-- FlowPoint Logo - Top Left -->
+            <div class="flowpoint-logo">
+              <img src="data:image/png;base64,FLOWPOINT_LOGO_BASE64_HERE" alt="FlowPoint by BeeTech">
+            </div>
+
             <div class="tool-suite-header">
               <h3>Mission Control Calculator Suite</h3>
               <p>Rapid modeling for efficiency, cost, and critical infrastructure planning.</p>
@@ -1957,6 +2006,11 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                       <span id="capexTotal" class="value">$0</span>
                     </div>
                   </div>
+                </div>
+
+                <!-- FlowPoint Logo - Mobile Only (appears near lowest calculator) -->
+                <div class="flowpoint-logo-mobile">
+                  <img src="data:image/png;base64,FLOWPOINT_LOGO_BASE64_HERE" alt="FlowPoint by BeeTech">
                 </div>
               </div>
             </div>
