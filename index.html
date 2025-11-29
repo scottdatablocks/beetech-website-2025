@@ -2276,37 +2276,48 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
 
           <div style="background: linear-gradient(135deg, rgba(255,215,0,0.08) 0%, rgba(255,215,0,0.02) 100%); border-radius: 16px; border: 1px solid rgba(255, 215, 0, 0.25); overflow: hidden;">
 
-            <!-- Whitepaper Header -->
-            <div style="padding: 32px; border-bottom: 1px solid rgba(255,215,0,0.15);">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span style="background: var(--bee-gold); color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
-                <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Framework Document</span>
+            <!-- Collapsible Header -->
+            <div id="whitepaper1-header" class="wp-collapsible-header" onclick="toggleWhitepaperPanel('whitepaper1')">
+              <div class="wp-collapsible-title">
+                <span class="wp-collapsible-badge" style="background: var(--bee-gold); color: #000;">New</span>
+                <h3>The Mandate for Unified OT/IT Integration: BeeTech Framework for Hyperscale SCADA/BMS/EPMS Control</h3>
               </div>
-              <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
-                The Mandate for Unified OT/IT Integration: BeeTech Framework for Hyperscale SCADA/BMS/EPMS Control
-              </h3>
-              <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
-                A comprehensive engineering framework defining the gold standard for deploying, integrating, and commissioning critical infrastructure monitoring and control systems across global hyperscale data center portfolios.
-              </p>
-
-              <!-- Key Stats -->
-              <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: var(--bee-gold); font-size: 1.2rem;">10</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: var(--bee-gold); font-size: 1.2rem;">Tier IV</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Compliance</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: var(--bee-gold); font-size: 1.2rem;">6-Level</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Commissioning Framework</span>
-                </div>
-              </div>
+              <span id="whitepaper1-toggle-icon" class="wp-toggle-icon" style="color: var(--bee-gold);">+</span>
             </div>
 
-            <!-- Content Grid -->
+            <!-- Collapsible Content -->
+            <div id="whitepaper1-content" style="display: none;">
+              <!-- Whitepaper Header -->
+              <div style="padding: 32px; border-bottom: 1px solid rgba(255,215,0,0.15);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <span style="background: var(--bee-gold); color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Framework Document</span>
+                </div>
+                <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
+                  The Mandate for Unified OT/IT Integration: BeeTech Framework for Hyperscale SCADA/BMS/EPMS Control
+                </h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+                  A comprehensive engineering framework defining the gold standard for deploying, integrating, and commissioning critical infrastructure monitoring and control systems across global hyperscale data center portfolios.
+                </p>
+
+                <!-- Key Stats -->
+                <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: var(--bee-gold); font-size: 1.2rem;">10</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: var(--bee-gold); font-size: 1.2rem;">Tier IV</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Compliance</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: var(--bee-gold); font-size: 1.2rem;">6-Level</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Commissioning Framework</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content Grid -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
 
               <!-- Left: Table of Contents -->
@@ -2613,6 +2624,70 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               background: rgba(255,255,255,0.06) !important;
             }
 
+            /* Collapsible Whitepaper Panel Styles */
+            .wp-collapsible-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 20px 24px;
+              cursor: pointer;
+              transition: background 0.2s ease;
+            }
+            .wp-collapsible-header:hover {
+              background: rgba(255,255,255,0.03);
+            }
+            .wp-collapsible-header.expanded {
+              border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .wp-collapsible-title {
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              flex: 1;
+            }
+            .wp-collapsible-title h3 {
+              color: white;
+              font-size: 1.1rem;
+              margin: 0;
+              line-height: 1.4;
+              font-weight: 600;
+            }
+            .wp-toggle-icon {
+              font-size: 1.5rem;
+              font-weight: 300;
+              width: 32px;
+              height: 32px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              background: rgba(255,255,255,0.05);
+              transition: all 0.2s ease;
+              flex-shrink: 0;
+            }
+            .wp-collapsible-header:hover .wp-toggle-icon {
+              background: rgba(255,255,255,0.1);
+            }
+            .wp-collapsible-badge {
+              padding: 4px 12px;
+              border-radius: 16px;
+              font-size: 0.7rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              flex-shrink: 0;
+            }
+            @media (max-width: 768px) {
+              .wp-collapsible-header {
+                padding: 16px 20px;
+              }
+              .wp-collapsible-title h3 {
+                font-size: 0.95rem;
+              }
+              .wp-collapsible-badge {
+                display: none;
+              }
+            }
+
             /* Prevent text hyphenation on mobile */
             @media (max-width: 768px) {
               p, span, h1, h2, h3, h4, h5, h6, li, td, th, label, a {
@@ -2911,42 +2986,54 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               margin: 0;
             }
           </style>
+            </div><!-- End whitepaper1-content -->
         </div>
 
           <!-- SECOND WHITEPAPER: Multi-Phase Commissioning -->
           <div style="background: linear-gradient(135deg, rgba(96,165,250,0.08) 0%, rgba(96,165,250,0.02) 100%); border-radius: 16px; border: 1px solid rgba(96, 165, 250, 0.25); overflow: hidden; margin-top: 32px;">
 
-            <!-- Whitepaper 2 Header -->
-            <div style="padding: 32px; border-bottom: 1px solid rgba(96,165,250,0.15);">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span style="background: #60A5FA; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
-                <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Commissioning Guide</span>
+            <!-- Collapsible Header -->
+            <div id="whitepaper2-header" class="wp-collapsible-header" onclick="toggleWhitepaperPanel('whitepaper2')">
+              <div class="wp-collapsible-title">
+                <span class="wp-collapsible-badge" style="background: #60A5FA; color: #000;">New</span>
+                <h3>The Gold Standard of Go-Live: Multi-Phase Commissioning for Hyperscale Data Center Controls (BMS/EPMS)</h3>
               </div>
-              <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
-                The Gold Standard of Go-Live: Multi-Phase Commissioning for Hyperscale Data Center Controls (BMS/EPMS)
-              </h3>
-              <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
-                A comprehensive methodology for the rigorous, multi-stage commissioning process that ensures BMS and EPMS controls perform flawlessly under all operating scenarios, from factory acceptance through integrated systems testing.
-              </p>
-
-              <!-- Key Stats -->
-              <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #60A5FA; font-size: 1.2rem;">5</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #60A5FA; font-size: 1.2rem;">L0-L5</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Commissioning Levels</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #60A5FA; font-size: 1.2rem;">IST</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Integrated Systems Testing</span>
-                </div>
-              </div>
+              <span id="whitepaper2-toggle-icon" class="wp-toggle-icon" style="color: #60A5FA;">+</span>
             </div>
 
-            <!-- Content Grid -->
+            <!-- Collapsible Content -->
+            <div id="whitepaper2-content" style="display: none;">
+              <!-- Whitepaper 2 Header -->
+              <div style="padding: 32px; border-bottom: 1px solid rgba(96,165,250,0.15);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <span style="background: #60A5FA; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Commissioning Guide</span>
+                </div>
+                <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
+                  The Gold Standard of Go-Live: Multi-Phase Commissioning for Hyperscale Data Center Controls (BMS/EPMS)
+                </h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+                  A comprehensive methodology for the rigorous, multi-stage commissioning process that ensures BMS and EPMS controls perform flawlessly under all operating scenarios, from factory acceptance through integrated systems testing.
+                </p>
+
+                <!-- Key Stats -->
+                <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #60A5FA; font-size: 1.2rem;">5</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #60A5FA; font-size: 1.2rem;">L0-L5</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Commissioning Levels</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #60A5FA; font-size: 1.2rem;">IST</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Integrated Systems Testing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content Grid -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
 
               <!-- Left: Table of Contents -->
@@ -3149,42 +3236,54 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 <span style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Tier IV Compliance</span>
               </div>
             </div>
+            </div><!-- End whitepaper2-content -->
           </div>
 
           <!-- THIRD WHITEPAPER: Engineering Definitive Excellence - WITH ACCORDION NAVIGATION -->
           <div style="background: linear-gradient(135deg, rgba(0,255,136,0.08) 0%, rgba(0,255,136,0.02) 100%); border-radius: 16px; border: 1px solid rgba(0, 255, 136, 0.25); overflow: hidden; margin-top: 32px;">
 
-            <!-- Whitepaper 3 Header -->
-            <div style="padding: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span style="background: #00FF88; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
-                <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Strategic Engineering Framework</span>
+            <!-- Collapsible Header -->
+            <div id="whitepaper3-header" class="wp-collapsible-header" onclick="toggleWhitepaperPanel('whitepaper3')">
+              <div class="wp-collapsible-title">
+                <span class="wp-collapsible-badge" style="background: #00FF88; color: #000;">New</span>
+                <h3>Engineering Definitive Excellence: A Blueprint for Achieving and Sustaining the Highest Standards in Global Data Center BMS and Control Automation</h3>
               </div>
-              <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
-                Engineering Definitive Excellence: A Blueprint for Achieving and Sustaining the Highest Standards in Global Data Center BMS and Control Automation (15-Year Horizon)
-              </h3>
-              <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
-                A comprehensive engineering framework for managing global data center portfolios over extended life cycles, addressing the exponential rise of AI workloads through a tripartite commitment: Tier IV Topology, Level 5 Performance, and IEC 62443 Governance.
-              </p>
-
-              <!-- Key Stats -->
-              <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #00FF88; font-size: 1.2rem;">7</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #00FF88; font-size: 1.2rem;">15-Year</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Strategic Horizon</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #00FF88; font-size: 1.2rem;">3 Tables</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Reference Frameworks</span>
-                </div>
-              </div>
+              <span id="whitepaper3-toggle-icon" class="wp-toggle-icon" style="color: #00FF88;">+</span>
             </div>
 
-            <!-- Content Grid -->
+            <!-- Collapsible Content -->
+            <div id="whitepaper3-content" style="display: none;">
+              <!-- Whitepaper 3 Header -->
+              <div style="padding: 32px; border-bottom: 1px solid rgba(0,255,136,0.15);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <span style="background: #00FF88; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Strategic Engineering Framework</span>
+                </div>
+                <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
+                  Engineering Definitive Excellence: A Blueprint for Achieving and Sustaining the Highest Standards in Global Data Center BMS and Control Automation (15-Year Horizon)
+                </h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+                  A comprehensive engineering framework for managing global data center portfolios over extended life cycles, addressing the exponential rise of AI workloads through a tripartite commitment: Tier IV Topology, Level 5 Performance, and IEC 62443 Governance.
+                </p>
+
+                <!-- Key Stats -->
+                <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #00FF88; font-size: 1.2rem;">7</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #00FF88; font-size: 1.2rem;">15-Year</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Strategic Horizon</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #00FF88; font-size: 1.2rem;">3 Tables</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Reference Frameworks</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content Grid -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
 
               <!-- Left: Table of Contents -->
@@ -3418,43 +3517,55 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 <span style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">AI Workload Ready</span>
               </div>
             </div>
+            </div><!-- End whitepaper3-content -->
           </div>
 
           <!-- FOURTH WHITEPAPER: Edge-to-Cloud Data Ecosystem - WITH ACCORDION NAVIGATION -->
           <div style="background: linear-gradient(135deg, rgba(168,85,247,0.08) 0%, rgba(168,85,247,0.02) 100%); border-radius: 16px; border: 1px solid rgba(168, 85, 247, 0.25); overflow: hidden; margin-top: 32px;">
 
-            <!-- Whitepaper 4 Header -->
-            <div style="padding: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span style="background: #A855F7; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
-                <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Architecture Document</span>
+            <!-- Collapsible Header -->
+            <div id="whitepaper4-header" class="wp-collapsible-header" onclick="toggleWhitepaperPanel('whitepaper4')">
+              <div class="wp-collapsible-title">
+                <span class="wp-collapsible-badge" style="background: #A855F7; color: #000;">New</span>
+                <h3>The Edge-to-Cloud Data Ecosystem: Technical Architecture for Industrial Scalability</h3>
               </div>
-              <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
-                The Edge-to-Cloud Data Ecosystem: Technical Architecture for Industrial Scalability
-              </h3>
-              <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
-                A comprehensive technical framework for architecting distributed computing systems that span from IoT devices through fog computing to centralized cloud infrastructure, enabling real-time industrial automation and Industry 4.0 capabilities.
-              </p>
-
-              <!-- Key Stats -->
-              <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #A855F7; font-size: 1.2rem;">8</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #A855F7; font-size: 1.2rem;">3-Tier</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Continuum Model</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #A855F7; font-size: 1.2rem;">2 Tables</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Protocol & Storage Comparison</span>
-                </div>
-              </div>
+              <span id="whitepaper4-toggle-icon" class="wp-toggle-icon" style="color: #A855F7;">+</span>
             </div>
 
-            <!-- Dropdown TOC and Download Form -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;" id="whitepaper4-content">
+            <!-- Collapsible Content -->
+            <div id="whitepaper4-content" style="display: none;">
+              <!-- Whitepaper 4 Header -->
+              <div style="padding: 32px; border-bottom: 1px solid rgba(168,85,247,0.15);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <span style="background: #A855F7; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">New Release</span>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Architecture Document</span>
+                </div>
+                <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
+                  The Edge-to-Cloud Data Ecosystem: Technical Architecture for Industrial Scalability
+                </h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+                  A comprehensive technical framework for architecting distributed computing systems that span from IoT devices through fog computing to centralized cloud infrastructure, enabling real-time industrial automation and Industry 4.0 capabilities.
+                </p>
+
+                <!-- Key Stats -->
+                <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #A855F7; font-size: 1.2rem;">8</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #A855F7; font-size: 1.2rem;">3-Tier</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Continuum Model</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #A855F7; font-size: 1.2rem;">2 Tables</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Protocol & Storage Comparison</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dropdown TOC and Download Form -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
 
               <!-- Left: Table of Contents -->
               <div style="padding: 28px 32px; border-right: 1px solid rgba(168,85,247,0.15);" id="whitepaper4-toc">
@@ -3703,43 +3814,55 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 <span style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Industry 4.0</span>
               </div>
             </div>
+            </div><!-- End whitepaper4-content -->
           </div>
 
           <!-- FIFTH WHITEPAPER: Achieving Exascale Density - Data Center Rack Density & Thermal Strategy -->
           <div style="background: linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.02) 100%); border-radius: 16px; border: 1px solid rgba(6, 182, 212, 0.25); overflow: hidden; margin-top: 32px;">
 
-            <!-- Whitepaper 5 Header -->
-            <div style="padding: 32px; border-bottom: 1px solid rgba(6,182,212,0.15);">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span style="background: #06B6D4; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Expert Report</span>
-                <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Analysis Document</span>
+            <!-- Collapsible Header -->
+            <div id="whitepaper5-header" class="wp-collapsible-header" onclick="toggleWhitepaperPanel('whitepaper5')">
+              <div class="wp-collapsible-title">
+                <span class="wp-collapsible-badge" style="background: #06B6D4; color: #000;">Report</span>
+                <h3>Achieving Exascale Density: Data Center Rack Density Quantification and High-Performance Thermal Strategy</h3>
               </div>
-              <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
-                Achieving Exascale Density: An Expert Report on Data Center Rack Density Quantification and High-Performance Thermal Strategy
-              </h3>
-              <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
-                A comprehensive engineering analysis of modern data center thermal challenges, quantifying rack density thresholds and providing strategic guidance for transitioning from air cooling to advanced liquid-based thermal management solutions.
-              </p>
-
-              <!-- Key Stats -->
-              <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #06B6D4; font-size: 1.2rem;">5</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #06B6D4; font-size: 1.2rem;">3 Tables</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Technical Analysis</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #06B6D4; font-size: 1.2rem;">300kW+</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Rack Density Coverage</span>
-                </div>
-              </div>
+              <span id="whitepaper5-toggle-icon" class="wp-toggle-icon" style="color: #06B6D4;">+</span>
             </div>
 
-            <!-- Dropdown TOC and Download Form -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;" id="whitepaper5-content">
+            <!-- Collapsible Content -->
+            <div id="whitepaper5-content" style="display: none;">
+              <!-- Whitepaper 5 Header -->
+              <div style="padding: 32px; border-bottom: 1px solid rgba(6,182,212,0.15);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <span style="background: #06B6D4; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Expert Report</span>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Analysis Document</span>
+                </div>
+                <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
+                  Achieving Exascale Density: An Expert Report on Data Center Rack Density Quantification and High-Performance Thermal Strategy
+                </h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+                  A comprehensive engineering analysis of modern data center thermal challenges, quantifying rack density thresholds and providing strategic guidance for transitioning from air cooling to advanced liquid-based thermal management solutions.
+                </p>
+
+                <!-- Key Stats -->
+                <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #06B6D4; font-size: 1.2rem;">5</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #06B6D4; font-size: 1.2rem;">3 Tables</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Technical Analysis</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #06B6D4; font-size: 1.2rem;">300kW+</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Rack Density Coverage</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dropdown TOC and Download Form -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
 
               <!-- Left: Table of Contents -->
               <div style="padding: 28px 32px; border-right: 1px solid rgba(6,182,212,0.15);" id="whitepaper5-toc">
@@ -3972,47 +4095,59 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 <span style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">TCO Analysis</span>
               </div>
             </div>
+            </div><!-- End whitepaper5-content -->
           </div>
 
           <!-- SIXTH WHITEPAPER: Decentralized Compute and the Industrialization of AI - DePIN Infrastructure Investment -->
           <div style="background: linear-gradient(135deg, rgba(249,115,22,0.08) 0%, rgba(249,115,22,0.02) 100%); border-radius: 16px; border: 1px solid rgba(249, 115, 22, 0.25); overflow: hidden; margin-top: 32px;">
 
-            <!-- Whitepaper 6 Header -->
-            <div style="padding: 32px; border-bottom: 1px solid rgba(249,115,22,0.15);">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <span style="background: #F97316; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">White Paper</span>
-                <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Infrastructure Investment Analysis</span>
+            <!-- Collapsible Header -->
+            <div id="whitepaper6-header" class="wp-collapsible-header" onclick="toggleWhitepaperPanel('whitepaper6')">
+              <div class="wp-collapsible-title">
+                <span class="wp-collapsible-badge" style="background: #F97316; color: #000;">Paper</span>
+                <h3>Decentralized Compute and the Industrialization of AI: DePIN Infrastructure Investment and Colocation Modernization</h3>
               </div>
-              <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
-                Decentralized Compute and the Industrialization of AI: A White Paper on DePIN Infrastructure Investment and Colocation Modernization
-              </h3>
-              <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
-                A comprehensive analysis of how Decentralized Physical Infrastructure Networks (DePIN) are transforming the AI compute supply chain, with strategic guidance for hardware investors and Colocation facility operators navigating the convergence of blockchain-orchestrated compute and high-density infrastructure requirements.
-              </p>
-
-              <!-- Key Stats -->
-              <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #F97316; font-size: 1.2rem;">7</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #F97316; font-size: 1.2rem;">1 Table</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Hardware Specifications</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #F97316; font-size: 1.2rem;">50kW+</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Rack Density Focus</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="color: #F97316; font-size: 1.2rem;">H100 SXM5</span>
-                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">GPU Investment Strategy</span>
-                </div>
-              </div>
+              <span id="whitepaper6-toggle-icon" class="wp-toggle-icon" style="color: #F97316;">+</span>
             </div>
 
-            <!-- Dropdown TOC and Download Form -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;" id="whitepaper6-content">
+            <!-- Collapsible Content -->
+            <div id="whitepaper6-content" style="display: none;">
+              <!-- Whitepaper 6 Header -->
+              <div style="padding: 32px; border-bottom: 1px solid rgba(249,115,22,0.15);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                  <span style="background: #F97316; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">White Paper</span>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Infrastructure Investment Analysis</span>
+                </div>
+                <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
+                  Decentralized Compute and the Industrialization of AI: A White Paper on DePIN Infrastructure Investment and Colocation Modernization
+                </h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+                  A comprehensive analysis of how Decentralized Physical Infrastructure Networks (DePIN) are transforming the AI compute supply chain, with strategic guidance for hardware investors and Colocation facility operators navigating the convergence of blockchain-orchestrated compute and high-density infrastructure requirements.
+                </p>
+
+                <!-- Key Stats -->
+                <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #F97316; font-size: 1.2rem;">7</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #F97316; font-size: 1.2rem;">1 Table</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Hardware Specifications</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #F97316; font-size: 1.2rem;">50kW+</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Rack Density Focus</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #F97316; font-size: 1.2rem;">H100 SXM5</span>
+                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">GPU Investment Strategy</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dropdown TOC and Download Form -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
 
               <!-- Left: Table of Contents -->
               <div style="padding: 28px 32px; border-right: 1px solid rgba(249,115,22,0.15);" id="whitepaper6-toc">
@@ -4268,6 +4403,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 <span style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">TEE/Verifiable Compute</span>
               </div>
             </div>
+            </div><!-- End whitepaper6-content -->
           </div>
 
         <!-- COMING SOON RESOURCES - Consolidated Section -->
@@ -5735,6 +5871,25 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       } else {
         section.style.display = 'none';
         icon.textContent = '+';
+      }
+    }
+
+    // Whitepaper Panel Toggle (Collapsible Whitepapers)
+    function toggleWhitepaperPanel(panelId) {
+      const content = document.getElementById(panelId + '-content');
+      const icon = document.getElementById(panelId + '-toggle-icon');
+      const header = document.getElementById(panelId + '-header');
+
+      if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        icon.textContent = '−';
+        icon.style.transform = 'rotate(0deg)';
+        header.classList.add('expanded');
+      } else {
+        content.style.display = 'none';
+        icon.textContent = '+';
+        icon.style.transform = 'rotate(0deg)';
+        header.classList.remove('expanded');
       }
     }
 
