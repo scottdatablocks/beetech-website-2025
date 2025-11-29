@@ -7790,6 +7790,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                   <p>Estimated System Delta P (Total Head)</p>
                   <p><span id="fpTotalDP" class="fp-value">3.2</span><span class="fp-unit">Bar</span></p>
                 </div>
+                <button onclick="fpResetToDefaults()" style="margin-top: 16px; width: 100%; padding: 12px 20px; background: linear-gradient(135deg, #64748b 0%, #475569 100%); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                  ↺ Reset to Defaults
+                </button>
               </div>
             </div>
           </div>
@@ -10221,6 +10224,58 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       fpUpdateChart();
     }
 
+    // Reset all inputs to default values
+    function fpResetToDefaults() {
+      // Default values
+      const defaults = {
+        fpRackLoad: 80,
+        fpRackCount: 4,
+        fpDeltaT: 7,
+        fpCoolantSelect: 'water',
+        fpCpDP: 0.7,
+        fpHoseID: '0.25',
+        fpKFactor: 8,
+        fpCvTarget: 2.5
+      };
+
+      // Reset all form inputs
+      Object.keys(defaults).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = defaults[id];
+      });
+
+      // Clear selected components
+      fpSelectedComponents = { cdu: null, qdc: null };
+
+      // Reset state
+      fpState = {
+        rackLoad: 80,
+        deltaT: 7,
+        rackCount: 4,
+        cpDP: 0.7,
+        cvTarget: 2.5,
+        kFactor: 8,
+        coolantType: 'water',
+        hoseID: 0.25,
+        totalPower: 0,
+        totalFlowLPM: 0,
+        totalDPBar: 0
+      };
+
+      // Recalculate
+      fpCalculateMetrics();
+
+      // Show confirmation
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = '✓ Reset Complete';
+      btn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = 'linear-gradient(135deg, #64748b 0%, #475569 100%)';
+      }, 1500);
+    }
+
     // Component matching logic
     function fpRunComponentMatch() {
       const flowReq = fpState.totalFlowLPM;
@@ -10234,7 +10289,35 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         cdu.head_Bar >= dpReq
       ).sort((a, b) => a.capacity_kW - b.capacity_kW);
 
-      let cduHtml = cduMatches.length > 0 ? '' : '<div class="fp-no-match">No compatible CDU found. Increase rack count or reduce rack load.</div>';
+      // Find max CDU specs for helpful feedback
+      const maxCduCapacity = Math.max(...FP_CDU_DATABASE.map(c => c.capacity_kW * 0.9));
+      const maxCduFlow = Math.max(...FP_CDU_DATABASE.map(c => c.flow_LPM));
+      const maxCduHead = Math.max(...FP_CDU_DATABASE.map(c => c.head_Bar));
+
+      let cduHtml = '';
+      if (cduMatches.length === 0) {
+        let reasons = [];
+        if (fpState.totalPower > maxCduCapacity) reasons.push(`Power: ${fpState.totalPower} kW required, max available is ${maxCduCapacity.toFixed(0)} kW`);
+        if (flowReq > maxCduFlow) reasons.push(`Flow: ${flowReq} LPM required, max available is ${maxCduFlow} LPM`);
+        if (dpReq > maxCduHead) reasons.push(`Head: ${dpReq} Bar required, max available is ${maxCduHead} Bar`);
+
+        cduHtml = `
+          <div class="fp-no-match" style="padding: 16px;">
+            <p style="margin-bottom: 10px; font-weight: 600;">⚠ No compatible CDU found for current requirements:</p>
+            <ul style="margin: 0 0 12px 20px; text-align: left;">
+              ${reasons.map(r => `<li style="margin-bottom: 4px;">${r}</li>`).join('')}
+            </ul>
+            <p style="margin-bottom: 8px; font-size: 13px;">To see CDU options, try:</p>
+            <ul style="margin: 0 0 0 20px; text-align: left; font-size: 13px;">
+              <li>Reduce rack load (kW per rack)</li>
+              <li>Reduce number of racks</li>
+              <li>Increase Delta T (allows less flow)</li>
+            </ul>
+            <button onclick="fpResetToDefaults()" style="margin-top: 12px; padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">
+              Reset to Defaults
+            </button>
+          </div>`;
+      }
 
       cduMatches.forEach(cdu => {
         cduHtml += `
@@ -10259,7 +10342,25 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         qdc.size_in >= fpState.hoseID
       ).sort((a, b) => b.Cv - a.Cv);
 
-      let qdcHtml = qdcMatches.length > 0 ? '' : '<div class="fp-no-match">No QDC meets the Cv target. Increase target or check compatibility.</div>';
+      // Find max QDC specs for helpful feedback
+      const maxQdcCv = Math.max(...FP_QDC_DATABASE.map(q => q.Cv));
+      const maxQdcSize = Math.max(...FP_QDC_DATABASE.map(q => q.size_in));
+
+      let qdcHtml = '';
+      if (qdcMatches.length === 0) {
+        let reasons = [];
+        if (cvReq > maxQdcCv) reasons.push(`Cv: ${cvReq.toFixed(1)} required, max available is ${maxQdcCv.toFixed(1)}`);
+        if (fpState.hoseID > maxQdcSize) reasons.push(`Size: ${fpState.hoseID} in required, max available is ${maxQdcSize} in`);
+
+        qdcHtml = `
+          <div class="fp-no-match" style="padding: 16px;">
+            <p style="margin-bottom: 10px; font-weight: 600;">⚠ No compatible QDC found:</p>
+            <ul style="margin: 0 0 12px 20px; text-align: left;">
+              ${reasons.map(r => `<li style="margin-bottom: 4px;">${r}</li>`).join('')}
+            </ul>
+            <p style="font-size: 13px;">Try reducing the Cv target or selecting a smaller hose ID.</p>
+          </div>`;
+      }
 
       qdcMatches.forEach(qdc => {
         qdcHtml += `
