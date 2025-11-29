@@ -7683,6 +7683,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           <button onclick="fpNavigate('bom')" id="fp-nav-bom">
             3. Final BOM & Summary
           </button>
+          <button onclick="fpNavigate('guide')" id="fp-nav-guide">
+            4. Engineer's Guide
+          </button>
         </aside>
 
         <main class="flowpoint-main">
@@ -7816,6 +7819,162 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
 
             <div class="fp-info-box">
               <p><strong>US Standards Compliance Note:</strong> CDU kW capacity and LPM flow rate are derived from the ASHRAE / US Dept. of Energy required Delta T and Cp (Specific Heat). The system Delta P is calculated in Bar but validated against component Cv values which rely on GPM/PSI per US fluid dynamics standards.</p>
+            </div>
+          </div>
+
+          <!-- Section 4: Engineer's Guide -->
+          <div id="fp-section-guide" class="fp-section">
+            <h2>DTC Cooling System Sizing: Role-Play Scenarios</h2>
+            <p>This guide outlines the required dialogue flow for engineers to gather inputs for the FlowPoint Automated Sizing and Sourcing AI Tool, ensuring all critical thermal and hydraulic data points are acquired.</p>
+
+            <!-- Scenario 1 -->
+            <div class="fp-card" style="margin-bottom: 24px;">
+              <h3 style="color: #2563eb; margin-bottom: 8px;">Scenario 1: Engineer (FlowPoint) to Customer (Data Center Ops)</h3>
+              <p style="color: #64748b; margin-bottom: 16px;"><strong>Goal:</strong> Define Q<sub>Total</sub>, ΔT, Rack Count, and initial Fluid Type for the FlowPoint tool's Phase 1 Inputs.</p>
+
+              <div style="overflow-x: auto;">
+                <table class="fp-bom-table" style="font-size: 0.85rem;">
+                  <thead>
+                    <tr>
+                      <th style="width: 100px;">Speaker</th>
+                      <th>Dialogue</th>
+                      <th style="width: 200px;">Data Points Captured</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"Good morning. To start sizing the CDU and pump, let's nail down your total heat rejection needs. What is the Max IT Load (kW) we need to support per standard rack, including safety buffers?"</td>
+                      <td><span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Rack Load (kW)</span> (e.g., 95 kW)</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #059669;">Customer</strong></td>
+                      <td>"Each of our target racks houses 40 nodes, peaking at 2.3 kW each. We plan for 15 racks initially, with an N+1 strategy for the infrastructure."</td>
+                      <td><span style="background: #d1fae5; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Rack Count (15)</span>, <span style="background: #d1fae5; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Redundancy (N+1)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"Understood, so we're looking at a 15 × 95 kW system requiring 16 CDUs for redundancy. Now, for the fluid loop: What is the specified Coolant Supply Temperature to the chips, and what is the absolute maximum Return Temperature you can accept?"</td>
+                      <td><span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Target T<sub>in</sub></span> (30°C), <span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Max T<sub>out</sub></span> (37°C)</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #059669;">Customer</strong></td>
+                      <td>"Supply will be 30°C. We need to keep the return under 37°C to maintain warranty compliance."</td>
+                      <td><span style="background: #fef3c7; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">ΔT (7°C)</span> → FlowPoint Input: Delta T</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"That 7°C delta will set our minimum flow. Finally, what fluid are you specifying for the closed loop? Are we using treated water or a glycol mix?"</td>
+                      <td><span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Fluid Type</span> (e.g., 30% PG Mix)</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #059669;">Customer</strong></td>
+                      <td>"We must use 30% Propylene Glycol mix (PG30) for freeze protection outside the hall."</td>
+                      <td><span style="background: #fef3c7; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">FlowPoint Input: Coolant Type (PG30)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"Excellent. With those inputs, the FlowPoint tool calculates a system flow of XX LPM and an estimated pressure drop, which brings us to the components."</td>
+                      <td style="color: #64748b; font-style: italic;">Transition to Phase 2</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Scenario 2 -->
+            <div class="fp-card" style="margin-bottom: 24px;">
+              <h3 style="color: #0d9488; margin-bottom: 8px;">Scenario 2: Engineer to Cold Plate Vendor (Hydraulic Performance)</h3>
+              <p style="color: #64748b; margin-bottom: 16px;"><strong>Goal:</strong> Obtain the single most critical hydraulic input: the ΔP required across the cold plates at the calculated nodal flow rate.</p>
+
+              <div style="overflow-x: auto;">
+                <table class="fp-bom-table" style="font-size: 0.85rem;">
+                  <thead>
+                    <tr>
+                      <th style="width: 100px;">Speaker</th>
+                      <th>Dialogue</th>
+                      <th style="width: 200px;">Data Points Captured</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"We are designing a new cluster using your dual-socket cold plate model [CP-9000]. Based on a 7°C delta and PG30 coolant, our nominal required flow is 2.5 LPM per node."</td>
+                      <td><span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Nodal Flow Rate (2.5 LPM)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #8b5cf6;">Vendor Rep</strong></td>
+                      <td>"For the CP-9000 at 2.5 LPM using PG30 at 30°C, our standard spec sheet shows a pressure drop of 10.5 PSI."</td>
+                      <td><span style="background: #ede9fe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Raw ΔP Data (10.5 PSI)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"Perfect. Could you confirm that value in Bar? We need to verify the design against a max Cold Plate ΔP of 0.72 Bar to ensure it's within the pump's capability."</td>
+                      <td><span style="background: #fef3c7; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Cold Plate ΔP (Bar)</span> (e.g., 0.72 Bar)</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"One final check: what is the K-factor or Equivalent Length for the manifold connector and local tubing bundle leading to the cold plate?"</td>
+                      <td><span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Hose/Fitting K-Factor</span> (e.g., K=8 or L<sub>eq</sub>=15 m)</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #8b5cf6;">Vendor Rep</strong></td>
+                      <td>"The quick-connect harness adds an equivalent length of 2 meters of 3/8-inch pipe, and the cold plate fitting itself is K=3."</td>
+                      <td><span style="background: #fef3c7; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">FlowPoint Input: K-Factor (K=8)</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Scenario 3 -->
+            <div class="fp-card" style="margin-bottom: 24px;">
+              <h3 style="color: #dc2626; margin-bottom: 8px;">Scenario 3: Engineer to QDC/Manifold Supplier (Sourcing Metrics)</h3>
+              <p style="color: #64748b; margin-bottom: 16px;"><strong>Goal:</strong> Define the C<sub>v</sub> minimum, check material compatibility, and finalize the BOM quantities for accessories.</p>
+
+              <div style="overflow-x: auto;">
+                <table class="fp-bom-table" style="font-size: 0.85rem;">
+                  <thead>
+                    <tr>
+                      <th style="width: 100px;">Speaker</th>
+                      <th>Dialogue</th>
+                      <th style="width: 200px;">Data Points Captured</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"We are specifying QDCs for 3/8 inch hose assemblies in our PG30 loop. We require a C<sub>v</sub> minimum of 3.5 GPM to meet our total system pressure budget."</td>
+                      <td><span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Hose ID (3/8 in)</span>, <span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">C<sub>v</sub> Target (3.5 GPM)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #f59e0b;">Supplier</strong></td>
+                      <td>"We have two candidates: the QDC-06-EPDM (Cv=3.8) and the QDC-06-HNBR (Cv=3.1). The EPDM seals offer higher compatibility with Glycol and meet your C<sub>v</sub> target."</td>
+                      <td><span style="background: #fef3c7; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Best Fit QDC Model (QDC-06-EPDM)</span>, <span style="background: #d1fae5; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Material Verification (EPDM confirmed safe with PG30)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"Excellent, the QDC-06-EPDM is the match. We need to order for a cluster supporting 15 racks with 40 nodes per rack. Can you confirm the total QDC quantity for procurement, including our 10% spare mandate?"</td>
+                      <td><span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Total QDC Qty</span> (Total Nodes × 2 × 1.1)</td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #f59e0b;">Supplier</strong></td>
+                      <td>"That's 15 × 40 = 600 nodes, requiring 1200 QDCs. Plus 10% spares, you need 1320 total QDCs."</td>
+                      <td><span style="background: #fef3c7; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">BOM Quantity (1320 units)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong style="color: #2563eb;">Engineer</strong></td>
+                      <td>"Thank you. And for the manifolds, we will use your standard reverse-return rack manifolds, which have a bore ID sufficient for the 680 LPM total flow calculated by our FlowPoint tool. Please provide the SKU for 30 units (supply and return for 15 racks)."</td>
+                      <td><span style="background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Manifold Qty (30 units)</span>, <span style="background: #d1fae5; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;">Velocity Verification (LPM input used for pipe sizing)</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Summary Note -->
+            <div class="fp-info-box" style="background: #f0fdf4; border-color: #22c55e;">
+              <p style="color: #166534;"><strong>Process Summary:</strong> By following this precise flow, the engineer ensures every field in the FlowPoint tool is populated with validated data, transitioning directly from calculation to a fully quantified Bill of Materials (BOM).</p>
             </div>
           </div>
         </main>
