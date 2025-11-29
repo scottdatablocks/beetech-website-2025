@@ -1711,6 +1711,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               <button data-tool="power-capex" class="tab-button">
                 3. Power Redundancy CAPEX
               </button>
+              <button data-tool="rack-density" class="tab-button">
+                4. Rack Density Planner
+              </button>
             </div>
 
             <div class="tool-content-wrapper">
@@ -1879,6 +1882,41 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     </div>
                   </div>
 
+                  <!-- Tool 4: Rack Density Planner -->
+                  <div id="tool-rack-density" class="tool-content">
+                    <div class="input-grid">
+                      <div class="input-group">
+                        <label for="serverProfile">Server Profile / Tier</label>
+                        <select id="serverProfile" class="dc-input">
+                          <option value="enterprise_standard">Standard Enterprise Compute (1U)</option>
+                          <option value="high_end_compute">High-End Compute (2U)</option>
+                          <option value="dense_storage">Dense Storage / HCI (4U)</option>
+                          <option value="gpu_entry">Entry-Level GPU (2x L4/A10)</option>
+                          <option value="gpu_standard">Standard GPU (4x H100)</option>
+                          <option value="gpu_dense">Dense GPU Cluster (8x H100/B200)</option>
+                          <option value="network_appliance">Network Appliance / Edge (1U)</option>
+                        </select>
+                        <p class="input-help">Select server type to model power and thermal constraints.</p>
+                      </div>
+                    </div>
+
+                    <div class="input-section">
+                      <h5 class="input-section-title gold">Rack Configuration</h5>
+                      <div class="input-group">
+                        <label for="serverCount">Number of Servers in Rack: <span id="serverCountValue" style="color: var(--bee-gold); font-weight: 700;">1</span></label>
+                        <input type="range" id="serverCount" min="1" max="42" value="1" class="dc-input" style="cursor: pointer;">
+                        <p class="input-help">Each server is <span id="serverUSize">1</span>U high. Max physical: <span id="maxServersPhysical">42</span> servers.</p>
+                      </div>
+                    </div>
+
+                    <div class="input-section">
+                      <h5 class="input-section-title orange">Constraint Status</h5>
+                      <div id="constraintStatus" style="padding: 12px; border-radius: 8px; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3);">
+                        <p id="constraintMessage" style="color: #00FF88; font-size: 0.9rem; margin: 0;">✅ Configuration Optimal: Balanced U-space and thermal load.</p>
+                      </div>
+                    </div>
+                  </div>
+
                   <button type="submit" class="execute-btn">Execute Calculation</button>
                 </form>
 
@@ -1955,6 +1993,38 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     <div class="result-highlight">
                       <span class="label">TOTAL ESTIMATED CAPEX</span>
                       <span id="capexTotal" class="value">$0</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tool 4 Results: Rack Density -->
+                <div id="result-rack-density" class="result-content">
+                  <div class="result-section">
+                    <h5 class="result-section-title gold">Power & Thermal Analysis</h5>
+                    <p class="energy-display">Rack density metrics based on server profile selection.</p>
+                    <div class="result-box gold">
+                      <span class="label">TOTAL POWER DRAW</span>
+                      <span id="rackTotalPowerKW" class="value">0.40 kW</span>
+                    </div>
+                    <div class="result-box gold">
+                      <span class="label">THERMAL LOAD</span>
+                      <span id="rackThermalLoadBTU" class="value">1,365 BTU/hr</span>
+                    </div>
+                  </div>
+
+                  <div class="result-section" style="margin-top: 16px;">
+                    <h5 class="result-section-title green">Cooling Requirements</h5>
+                    <div id="coolingTierBar" style="padding: 12px; border-radius: 8px; background: rgba(0,255,136,0.2); border: 1px solid rgba(0,255,136,0.4); text-align: center; margin-bottom: 12px;">
+                      <span id="coolingTierLabel" style="color: #00FF88; font-weight: 700; font-size: 1.1rem;">LOW TIER COOLING</span>
+                      <span id="coolingTierRange" style="color: rgba(255,255,255,0.7); font-size: 0.85rem; display: block; margin-top: 4px;">0 - 8 kW</span>
+                    </div>
+                    <p id="coolingDescription" style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">Standard Perimeter Air Cooling (CRAC/CRAH) is sufficient.</p>
+
+                    <div style="margin-top: 16px;">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-bottom: 8px;">Compatible Rack Systems:</p>
+                      <ul id="compatibleRacks" style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-left: 16px; list-style: disc;">
+                        <li>Standard Perforated Rack (42U/48U)</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -4186,6 +4256,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           calculateCoolingROI();
         } else if (currentTool === 'power-capex') {
           calculatePowerCAPEX();
+        } else if (currentTool === 'rack-density') {
+          calculateRackDensity();
         }
       };
 
@@ -4325,6 +4397,129 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         document.getElementById('baseCostTotal').textContent = formatNumber(baseCostTotal, 'currency', 0);
         document.getElementById('capexTotal').textContent = formatNumber(capexTotal, 'currency', 0);
       };
+
+      // Tool 4: Rack Density Planner
+      const serverProfiles = {
+        "enterprise_standard": { power: 400, u: 1, name: "Standard Enterprise Compute (1U)" },
+        "high_end_compute": { power: 1100, u: 2, name: "High-End Compute (2U)" },
+        "dense_storage": { power: 1500, u: 4, name: "Dense Storage / HCI (4U)" },
+        "gpu_entry": { power: 1800, u: 2, name: "Entry-Level GPU (2x L4/A10)" },
+        "gpu_standard": { power: 3500, u: 4, name: "Standard GPU (4x H100)" },
+        "gpu_dense": { power: 8500, u: 8, name: "Dense GPU Cluster (8x H100/B200)" },
+        "network_appliance": { power: 300, u: 1, name: "Network Appliance / Edge (1U)" }
+      };
+
+      const RACK_CAPACITY = 42;
+
+      const calculateRackDensity = () => {
+        const profileSelect = document.getElementById('serverProfile');
+        const serverCountSlider = document.getElementById('serverCount');
+
+        if (!profileSelect || !serverCountSlider) return;
+
+        const profileId = profileSelect.value;
+        const profile = serverProfiles[profileId];
+        const serverU = profile.u;
+        const serverPower = profile.power;
+
+        // Calculate physical limits
+        const maxServersPhysical = Math.floor(RACK_CAPACITY / serverU);
+        serverCountSlider.max = maxServersPhysical;
+
+        const serverCount = Math.min(parseInt(serverCountSlider.value, 10), maxServersPhysical);
+        serverCountSlider.value = serverCount;
+
+        // Update UI displays
+        document.getElementById('serverCountValue').textContent = serverCount;
+        document.getElementById('maxServersPhysical').textContent = maxServersPhysical;
+        document.getElementById('serverUSize').textContent = serverU;
+
+        // Calculate power and thermal
+        const totalPowerW = serverCount * serverPower;
+        const totalPowerKW = totalPowerW / 1000;
+        const thermalLoadBTU = totalPowerKW * 3412.14;
+
+        document.getElementById('rackTotalPowerKW').textContent = totalPowerKW.toFixed(2) + ' kW';
+        document.getElementById('rackThermalLoadBTU').textContent = thermalLoadBTU.toLocaleString('en-US', { maximumFractionDigits: 0 }) + ' BTU/hr';
+
+        // Determine cooling tier
+        let coolingTier, coolingDesc, rackTypes, tierColor, tierRange;
+
+        if (totalPowerKW > 40) {
+          coolingTier = 'EXTREME TIER COOLING';
+          coolingDesc = 'Single-Phase or Two-Phase Immersion Cooling required.';
+          rackTypes = ['Immersion Tank (Up to 100+ kW)', 'Specialized Liquid-to-Air Heat Exchangers (CDUs)'];
+          tierColor = { bg: 'rgba(239,68,68,0.2)', border: 'rgba(239,68,68,0.4)', text: '#EF4444' };
+          tierRange = '40+ kW';
+        } else if (totalPowerKW > 15) {
+          coolingTier = 'HIGH TIER COOLING';
+          coolingDesc = 'Direct-to-Chip (D2C) Liquid Cooling required. Captures heat at CPU/GPU level.';
+          rackTypes = ['Liquid-Ready Rack (Integrated Manifolds)', 'Cooling Distribution Unit (CDU) connection'];
+          tierColor = { bg: 'rgba(249,115,22,0.2)', border: 'rgba(249,115,22,0.4)', text: '#F97316' };
+          tierRange = '15 - 40 kW';
+        } else if (totalPowerKW > 8) {
+          coolingTier = 'MEDIUM TIER COOLING';
+          coolingDesc = 'Hot Aisle Containment (HAC) or Rear-Door Heat Exchanger (RDHX) recommended.';
+          rackTypes = ['Contained/RDHX Rack (Fully sealed or heat exchange door)', 'Standard Perforated Rack (42U/48U)'];
+          tierColor = { bg: 'rgba(234,179,8,0.2)', border: 'rgba(234,179,8,0.4)', text: '#EAB308' };
+          tierRange = '8 - 15 kW';
+        } else {
+          coolingTier = 'LOW TIER COOLING';
+          coolingDesc = 'Standard Perimeter Air Cooling (CRAC/CRAH) is sufficient.';
+          rackTypes = ['Standard Perforated Rack (42U/48U)'];
+          tierColor = { bg: 'rgba(0,255,136,0.2)', border: 'rgba(0,255,136,0.4)', text: '#00FF88' };
+          tierRange = '0 - 8 kW';
+        }
+
+        // Update cooling tier display
+        const coolingBar = document.getElementById('coolingTierBar');
+        coolingBar.style.background = tierColor.bg;
+        coolingBar.style.borderColor = tierColor.border;
+        document.getElementById('coolingTierLabel').textContent = coolingTier;
+        document.getElementById('coolingTierLabel').style.color = tierColor.text;
+        document.getElementById('coolingTierRange').textContent = tierRange;
+        document.getElementById('coolingDescription').textContent = coolingDesc;
+
+        // Update compatible racks
+        const racksList = document.getElementById('compatibleRacks');
+        racksList.innerHTML = rackTypes.map(r => `<li>${r}</li>`).join('');
+
+        // Update constraint status
+        const constraintDiv = document.getElementById('constraintStatus');
+        const constraintMsg = document.getElementById('constraintMessage');
+        const thermalLimit = 40000; // 40 kW in watts
+
+        if (serverCount === maxServersPhysical) {
+          constraintDiv.style.background = 'rgba(239,68,68,0.1)';
+          constraintDiv.style.borderColor = 'rgba(239,68,68,0.3)';
+          constraintMsg.style.color = '#EF4444';
+          constraintMsg.textContent = '⚠️ Physical Limit Reached: The rack is full due to U-space limitation.';
+        } else if (totalPowerW > thermalLimit) {
+          constraintDiv.style.background = 'rgba(249,115,22,0.1)';
+          constraintDiv.style.borderColor = 'rgba(249,115,22,0.3)';
+          constraintMsg.style.color = '#F97316';
+          constraintMsg.textContent = '🔥 Thermal Limit Exceeded: Power density over 40 kW requires extreme cooling.';
+        } else {
+          constraintDiv.style.background = 'rgba(0,255,136,0.1)';
+          constraintDiv.style.borderColor = 'rgba(0,255,136,0.3)';
+          constraintMsg.style.color = '#00FF88';
+          constraintMsg.textContent = '✅ Configuration Optimal: Balanced U-space and thermal load.';
+        }
+      };
+
+      // Rack density event listeners
+      const serverProfileSelect = document.getElementById('serverProfile');
+      const serverCountSlider = document.getElementById('serverCount');
+
+      if (serverProfileSelect) {
+        serverProfileSelect.addEventListener('change', calculateRackDensity);
+      }
+      if (serverCountSlider) {
+        serverCountSlider.addEventListener('input', () => {
+          document.getElementById('serverCountValue').textContent = serverCountSlider.value;
+          calculateRackDensity();
+        });
+      }
 
       // Event Listeners
       toolForm.addEventListener('input', calculateImpact);
