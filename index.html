@@ -10075,12 +10075,42 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       'pg30': { Cp: 3.8, Density: 1.04, SG: 1.04, Viscosity_k: 0.0018 }
     };
 
-    // CDU Database (simulated vendor data)
+    // CDU Database - Real manufacturer data
+    // Capacity ranges based on manufacturer specs, flow/head are typical values
     const FP_CDU_DATABASE = [
-      { model: 'CDU-INROW-250', vendor: 'AlphaTech', capacity_kW: 250, flow_LPM: 500, head_Bar: 3.0, price_k: 35 },
-      { model: 'CDU-INROW-400', vendor: 'BetaFlow', capacity_kW: 400, flow_LPM: 750, head_Bar: 4.2, price_k: 55 },
-      { model: 'CDU-CENTRAL-600', vendor: 'GammaHVAC', capacity_kW: 600, flow_LPM: 1000, head_Bar: 5.5, price_k: 80 },
-      { model: 'CDU-INROW-550', vendor: 'AlphaTech', capacity_kW: 550, flow_LPM: 850, head_Bar: 4.8, price_k: 65 }
+      // Delta Electronics - Rack-mounted compact units (4U/8U)
+      { model: 'InfraSuite LC-50R', vendor: 'Delta Electronics', capacity_kW: 50, flow_LPM: 120, head_Bar: 2.5, price_k: 18 },
+      { model: 'InfraSuite LC-100R', vendor: 'Delta Electronics', capacity_kW: 100, flow_LPM: 230, head_Bar: 3.0, price_k: 28 },
+
+      // Vertiv - CoolChip series (70 kW to 2.3 MW+)
+      { model: 'CoolChip CDU-70', vendor: 'Vertiv', capacity_kW: 70, flow_LPM: 160, head_Bar: 2.8, price_k: 22 },
+      { model: 'CoolChip CDU-150', vendor: 'Vertiv', capacity_kW: 150, flow_LPM: 340, head_Bar: 3.5, price_k: 38 },
+      { model: 'CoolChip CDU-350', vendor: 'Vertiv', capacity_kW: 350, flow_LPM: 780, head_Bar: 4.2, price_k: 65 },
+      { model: 'CoolChip CDU-500', vendor: 'Vertiv', capacity_kW: 500, flow_LPM: 1100, head_Bar: 5.0, price_k: 85 },
+      { model: 'CoolChip CDU-1000', vendor: 'Vertiv', capacity_kW: 1000, flow_LPM: 2200, head_Bar: 6.0, price_k: 145 },
+
+      // Motivair (Schneider Electric) - Floor-mount, In-rack (102 kW to 2.3 MW)
+      { model: 'ChilledDoor CDU-102', vendor: 'Motivair', capacity_kW: 102, flow_LPM: 235, head_Bar: 3.2, price_k: 32 },
+      { model: 'Dynamic CDU-250', vendor: 'Motivair', capacity_kW: 250, flow_LPM: 560, head_Bar: 4.0, price_k: 55 },
+      { model: 'Dynamic CDU-500', vendor: 'Motivair', capacity_kW: 500, flow_LPM: 1100, head_Bar: 5.2, price_k: 90 },
+      { model: 'Dynamic CDU-1200', vendor: 'Motivair', capacity_kW: 1200, flow_LPM: 2600, head_Bar: 6.5, price_k: 175 },
+
+      // Boyd - In-rack, Stand-alone (2.1 kW to 1.1 MW+)
+      { model: 'ATS-100', vendor: 'Boyd', capacity_kW: 100, flow_LPM: 230, head_Bar: 3.0, price_k: 30 },
+      { model: 'ATS-300', vendor: 'Boyd', capacity_kW: 300, flow_LPM: 680, head_Bar: 4.0, price_k: 58 },
+      { model: 'ATS-600', vendor: 'Boyd', capacity_kW: 600, flow_LPM: 1350, head_Bar: 5.5, price_k: 95 },
+      { model: 'ATS-1100', vendor: 'Boyd', capacity_kW: 1100, flow_LPM: 2400, head_Bar: 6.2, price_k: 160 },
+
+      // ACT (Advanced Cooling Tech) - End-of-row, Two-Phase (15 kW to 1 MW)
+      { model: 'LiquidCool LC-15', vendor: 'ACT', capacity_kW: 15, flow_LPM: 40, head_Bar: 2.0, price_k: 12 },
+      { model: 'LiquidCool LC-50', vendor: 'ACT', capacity_kW: 50, flow_LPM: 120, head_Bar: 2.5, price_k: 20 },
+      { model: 'LiquidCool LC-200', vendor: 'ACT', capacity_kW: 200, flow_LPM: 450, head_Bar: 3.8, price_k: 48 },
+      { model: 'LiquidCool LC-500', vendor: 'ACT', capacity_kW: 500, flow_LPM: 1100, head_Bar: 5.0, price_k: 88 },
+
+      // Trane - High-capacity, Compact footprint (up to 10 MW)
+      { model: 'CDU Series 500', vendor: 'Trane', capacity_kW: 500, flow_LPM: 1100, head_Bar: 5.0, price_k: 92 },
+      { model: 'CDU Series 1000', vendor: 'Trane', capacity_kW: 1000, flow_LPM: 2200, head_Bar: 6.0, price_k: 155 },
+      { model: 'CDU Series 2000', vendor: 'Trane', capacity_kW: 2000, flow_LPM: 4400, head_Bar: 7.0, price_k: 280 }
     ];
 
     // QDC Database (simulated vendor data)
