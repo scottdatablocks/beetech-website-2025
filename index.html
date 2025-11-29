@@ -2217,11 +2217,12 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               #whitepaper-form-container,
               #whitepaper2-toc + div,
               #whitepaper2-form-container,
-              #whitepaper4-toc + div,
-              #whitepaper4-form-container {
               #whitepaper3-toc + div,
               #whitepaper3-form-container,
               #whitepaper4-toc + div,
+              #whitepaper4-form-container,
+              #whitepaper5-toc + div,
+              #whitepaper5-form-container {
               #whitepaper4-form-container {
                 border-right: none !important;
               }
@@ -2231,6 +2232,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               #whitepaper-toc,
               #whitepaper2-toc,
               #whitepaper3-toc,
+              #whitepaper4-toc,
+              #whitepaper5-toc {
               #whitepaper4-toc {
               #whitepaper4-toc {
               #whitepaper3-toc {
@@ -3245,6 +3248,267 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             </div>
           </div>
 
+          <!-- FIFTH WHITEPAPER: Achieving Exascale Density - Data Center Rack Density & Thermal Strategy -->
+          <div style="background: linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.02) 100%); border-radius: 16px; border: 1px solid rgba(6, 182, 212, 0.25); overflow: hidden; margin-top: 32px;">
+
+            <!-- Whitepaper 5 Header -->
+            <div style="padding: 32px; border-bottom: 1px solid rgba(6,182,212,0.15);">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                <span style="background: #06B6D4; color: #000; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Expert Report</span>
+                <span style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Technical Analysis Document</span>
+              </div>
+              <h3 style="color: white; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3;">
+                Achieving Exascale Density: An Expert Report on Data Center Rack Density Quantification and High-Performance Thermal Strategy
+              </h3>
+              <p style="color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+                A comprehensive engineering analysis of modern data center thermal challenges, quantifying rack density thresholds and providing strategic guidance for transitioning from air cooling to advanced liquid-based thermal management solutions.
+              </p>
+
+              <!-- Key Stats -->
+              <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #06B6D4; font-size: 1.2rem;">5</span>
+                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Sections</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #06B6D4; font-size: 1.2rem;">3 Tables</span>
+                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Technical Analysis</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #06B6D4; font-size: 1.2rem;">300kW+</span>
+                  <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Rack Density Coverage</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dropdown TOC and Download Form -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;" id="whitepaper5-content">
+
+              <!-- Left: Table of Contents -->
+              <div style="padding: 28px 32px; border-right: 1px solid rgba(6,182,212,0.15);" id="whitepaper5-toc">
+                <h4 style="color: #06B6D4; font-size: 0.9rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">What's Inside</h4>
+
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <!-- Executive Summary -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp5-sec-1')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #06B6D4; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">Executive Summary: The Density Imperative</span>
+                      <span style="color: #06B6D4; font-size: 0.8rem;" id="wp5-sec-1-icon">+</span>
+                    </div>
+                    <div id="wp5-sec-1" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        AI, HPC, and LLM workloads drive unprecedented thermal loads. NVIDIA H100 GPUs (700W TDP) push rack densities beyond air cooling limits (40kW max). Liquid cooling delivers up to 40% power savings and 14% CapEx reduction through optimized space utilization.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Section 1: Fundamentals -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp5-sec-2')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid var(--bee-gold); transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">1. Fundamentals of Rack Density Quantification</span>
+                      <span style="color: var(--bee-gold); font-size: 0.8rem;" id="wp5-sec-2-icon">+</span>
+                    </div>
+                    <div id="wp5-sec-2" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Power per Cabinet (kW/rack)</strong><br>
+                        The definitive standard for engineering planning—directly correlates to thermal energy requiring removal.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">BTU/hr Calculation</strong><br>
+                        Total BTU/hr = Total Load (kW) × 3,412. A 28kW rack generates heat equivalent to four large barbecue grills.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">PUE Efficiency</strong><br>
+                        DLC systems capture up to 98% of heat at source, enabling operation at 45°C and dramatically lowering PUE.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Section 2: Thermal Load Profiling -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp5-sec-3')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #FFA500; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">2. Thermal Load Profiling of Modern IT Equipment</span>
+                      <span style="color: #FFA500; font-size: 0.8rem;" id="wp5-sec-3-icon">+</span>
+                    </div>
+                    <div id="wp5-sec-3" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Table 1: Server Classification by Thermal Density</strong><br>
+                        From low density (&lt;0.3 kW/U) to ultra density (1.5-2.5+ kW/U for 8x H100 GPU systems).
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">AI/HPC Extreme Density</strong><br>
+                        NVIDIA HGX H100 systems: 6,000W-10,000W+ per node, driving 48kW-80kW+ per rack loads.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Hybrid Thermal Reality</strong><br>
+                        Even 98% DLC heat capture leaves residual load requiring continued air management.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Section 3: Cooling Technology Tiers -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp5-sec-4')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #00FF88; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">3. Cooling Technology Tiers & Density Thresholds</span>
+                      <span style="color: #00FF88; font-size: 0.8rem;" id="wp5-sec-4-icon">+</span>
+                    </div>
+                    <div id="wp5-sec-4" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 1: Air Cooling (up to 40kW)</strong><br>
+                        CRAC/CRAH systems with contained aisles—the hard ceiling before instability.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 2: RDHX Liquid-to-Rack (40-100kW)</strong><br>
+                        Rear-door heat exchangers bridging air and full liquid infrastructure.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 3: Direct-to-Chip DLC (100-200kW+)</strong><br>
+                        CDU/CDM systems with cold plates—98% heat capture, 40% power savings.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Tier 4: Immersion Cooling (100-300kW+)</strong><br>
+                        Full submersion in dielectric fluid—60%+ cooling energy reduction.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Section 4: Advanced Rack Architectures -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp5-sec-5')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #60A5FA; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">4. Advanced Rack Architectures & Infrastructure</span>
+                      <span style="color: #60A5FA; font-size: 0.8rem;" id="wp5-sec-5-icon">+</span>
+                    </div>
+                    <div id="wp5-sec-5" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">DLC-Ready Cabinets</strong><br>
+                        In-Rack CDUs (up to 250kW capacity) and In-Row CDUs (up to 1.8MW scalable).
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Power Distribution</strong><br>
+                        High-capacity 3-phase PDUs required for 40kW-100kW+ rack configurations.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Noise Reduction</strong><br>
+                        Liquid cooling achieves ~50dB operation—library-quiet for edge/research deployments.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Section 5: Economic Implications -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp5-sec-6')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #FF3B5C; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">5. Economic & Strategic Implications</span>
+                      <span style="color: #FF3B5C; font-size: 0.8rem;" id="wp5-sec-6-icon">+</span>
+                    </div>
+                    <div id="wp5-sec-6" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">TCO Analysis</strong><br>
+                        10% CapEx savings at 20kW/rack, 14% at 40kW/rack through infrastructure compaction.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0 0 8px 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Space Optimization</strong><br>
+                        2.5x compute density increase yields up to 60% space savings.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        <strong style="color: rgba(255,255,255,0.8);">Waste Heat Reuse</strong><br>
+                        98% thermal capture enables district heating integration and sustainability targets.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Conclusion -->
+                  <div class="wp-section-item" onclick="toggleWpSection('wp5-sec-7')" style="cursor: pointer; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #06B6D4; transition: all 0.2s;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <span style="color: white; font-size: 0.9rem; font-weight: 500;">Conclusion & Strategic Roadmap</span>
+                      <span style="color: #06B6D4; font-size: 0.8rem;" id="wp5-sec-7-icon">+</span>
+                    </div>
+                    <div id="wp5-sec-7" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+                        Strategic recommendations for high-density deployment: mandatory liquid cooling investment above 35kW, integrated rack-scale DLC solutions, hybrid thermal management design, and immersion cooling for 200kW+ exascale workloads.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Download Request Form -->
+              <div style="padding: 28px 32px; background: rgba(0,0,0,0.2);" id="whitepaper5-form-container">
+                <h4 style="color: #06B6D4; font-size: 0.9rem; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Request Your Copy</h4>
+
+                <form id="whitepaper5Form" onsubmit="handleWhitepaper5Request(event)">
+                  <div style="margin-bottom: 16px;">
+                    <label style="color: rgba(255,255,255,0.8); font-size: 0.85rem; display: block; margin-bottom: 6px;">Full Name *</label>
+                    <input type="text" name="wp5_name" required style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 8px; color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#06B6D4'" onblur="this.style.borderColor='rgba(6,182,212,0.2)'" placeholder="John Smith">
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <label style="color: rgba(255,255,255,0.8); font-size: 0.85rem; display: block; margin-bottom: 6px;">Work Email *</label>
+                    <input type="email" name="wp5_email" required style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 8px; color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#06B6D4'" onblur="this.style.borderColor='rgba(6,182,212,0.2)'" placeholder="john@company.com">
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <label style="color: rgba(255,255,255,0.8); font-size: 0.85rem; display: block; margin-bottom: 6px;">Company *</label>
+                    <input type="text" name="wp5_company" required style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 8px; color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#06B6D4'" onblur="this.style.borderColor='rgba(6,182,212,0.2)'" placeholder="Your Company">
+                  </div>
+
+                  <div style="margin-bottom: 16px;">
+                    <label style="color: rgba(255,255,255,0.8); font-size: 0.85rem; display: block; margin-bottom: 6px;">Role / Title</label>
+                    <select name="wp5_role" style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 8px; color: white; font-size: 0.95rem; outline: none; cursor: pointer;">
+                      <option value="" style="background: #1a1a2e;">Select your role</option>
+                      <option value="executive" style="background: #1a1a2e;">Executive / C-Level</option>
+                      <option value="director" style="background: #1a1a2e;">Director / VP</option>
+                      <option value="manager" style="background: #1a1a2e;">Manager</option>
+                      <option value="engineer" style="background: #1a1a2e;">Engineer / Technical</option>
+                      <option value="consultant" style="background: #1a1a2e;">Consultant</option>
+                      <option value="other" style="background: #1a1a2e;">Other</option>
+                    </select>
+                  </div>
+
+                  <div style="margin-bottom: 20px;">
+                    <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                      <input type="checkbox" name="wp5_subscribe" checked style="margin-top: 3px; accent-color: #06B6D4;">
+                      <span style="color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.4;">Keep me updated on BeeTech insights, industry news, and upcoming resources</span>
+                    </label>
+                  </div>
+
+                  <button type="submit" style="width: 100%; padding: 14px 24px; background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); border: none; border-radius: 8px; color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(6,182,212,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    Request Whitepaper Download
+                  </button>
+
+                  <p style="color: rgba(255,255,255,0.4); font-size: 0.75rem; margin-top: 12px; text-align: center;">
+                    By submitting, you agree to receive communications from BeeTech. We respect your privacy.
+                  </p>
+                </form>
+
+                <!-- Success Message -->
+                <div id="whitepaper5Success" style="display: none; text-align: center; padding: 24px;">
+                  <div style="width: 60px; height: 60px; background: rgba(0,255,136,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                    <span style="color: #00FF88; font-size: 1.8rem;">&#10003;</span>
+                  </div>
+                  <h4 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Request Received!</h4>
+                  <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5; margin-bottom: 16px;">
+                    Thank you for your interest. We'll send the complete whitepaper to your email shortly.
+                  </p>
+                  <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">
+                    In the meantime, explore our <a href="#" onclick="showPage('services-cooling'); return false;" style="color: #06B6D4;">Infrastructure Sourcing</a> services.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Highlights Footer -->
+            <div style="padding: 24px 32px; background: rgba(0,0,0,0.15); border-top: 1px solid rgba(6,182,212,0.1);">
+              <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+                <span style="background: rgba(6,182,212,0.1); color: #06B6D4; padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Exascale Density</span>
+                <span style="background: rgba(255,215,0,0.1); color: var(--bee-gold); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Direct-to-Chip Cooling</span>
+                <span style="background: rgba(0,255,136,0.1); color: #00FF88; padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">Immersion Cooling</span>
+                <span style="background: rgba(96,165,250,0.1); color: #60A5FA; padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">PUE Optimization</span>
+                <span style="background: rgba(255,165,0,0.1); color: #FFA500; padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">AI/HPC Thermal Strategy</span>
+                <span style="background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); padding: 8px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">TCO Analysis</span>
+              </div>
+            </div>
+          </div>
+
         <!-- COMING SOON RESOURCES - Consolidated Section -->
         <div style="margin-bottom: 48px;">
           <h2 style="color: var(--bee-gold); margin-bottom: 20px; font-size: 1.6rem; border-bottom: 2px solid rgba(255,215,0,0.3); padding-bottom: 12px;">
@@ -3566,6 +3830,35 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         form.reset();
         form.style.display = 'block';
         document.getElementById('whitepaper4Success').style.display = 'none';
+      }, 8000);
+    }
+
+    // Handle Whitepaper 5 Request (Achieving Exascale Density)
+    function handleWhitepaper5Request(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = {
+        name: form.querySelector('input[name="wp5_name"]').value,
+        email: form.querySelector('input[name="wp5_email"]').value,
+        company: form.querySelector('input[name="wp5_company"]').value,
+        role: form.querySelector('select[name="wp5_role"]').value,
+        subscribe: form.querySelector('input[name="wp5_subscribe"]').checked,
+        whitepaper: 'Achieving Exascale Density: An Expert Report on Data Center Rack Density Quantification and High-Performance Thermal Strategy',
+        requested_at: new Date().toISOString()
+      };
+
+      console.log('Whitepaper download requested:', data);
+
+      // Show success message
+      document.getElementById('whitepaper5Success').style.display = 'block';
+      form.style.display = 'none';
+
+      // Reset after 8 seconds (longer to give user time to read)
+      setTimeout(() => {
+        form.reset();
+        form.style.display = 'block';
+        document.getElementById('whitepaper5Success').style.display = 'none';
       }, 8000);
     }
 
