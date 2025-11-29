@@ -179,23 +179,72 @@
       --text: #2D3748;
       --success: #00FF88;
     }
-    
-    * { 
-      margin: 0; 
-      padding: 0; 
+
+    * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       word-wrap: break-word;
       hyphens: auto;
     }
-    
-    body { 
-      font-family: 'Inter', sans-serif; 
-      color: var(--text); 
+
+    html {
+      scrollbar-gutter: stable;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
       background: #000;
       line-height: 1.6;
       overflow-x: hidden;
     }
-    
+
+    /* Skip to Content Link - WCAG 2.4.1 */
+    .skip-to-content {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bee-gold);
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 0 0 8px 8px;
+      font-weight: 700;
+      text-decoration: none;
+      z-index: 10001;
+      transition: top 0.3s ease;
+    }
+
+    .skip-to-content:focus {
+      top: 0;
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* Global Focus-Visible Styles - WCAG 2.4.7 */
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--bee-gold);
+      outline-offset: 2px;
+    }
+
+    .nav-menu a:focus-visible,
+    .dropdown-content a:focus-visible {
+      outline: 2px solid var(--bee-gold);
+      outline-offset: -2px;
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .nav-cta:focus-visible,
+    .cta-btn:focus-visible,
+    .execute-btn:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+    }
+
     .container { 
       max-width: 1200px; 
       margin: 0 auto; 
@@ -415,13 +464,16 @@
       box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
     }
 
-    /* PAGE CONTAINER */
+    /* PAGE CONTAINER - content-visibility for LCP optimization */
     .page {
       display: none;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 500px;
     }
 
     .page.active {
       display: block;
+      content-visibility: visible;
     }
 
     /* HERO */
@@ -1064,9 +1116,14 @@
     }
 
     .dc-input:focus {
-      outline: none;
       border-color: var(--bee-gold);
       box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+      outline: 2px solid transparent;
+    }
+
+    .dc-input:focus-visible {
+      outline: 2px solid var(--bee-gold);
+      outline-offset: 2px;
     }
 
     .dc-input::placeholder {
@@ -1298,6 +1355,8 @@
   </style>
 </head>
 <body>
+  <!-- Skip to Content Link - WCAG 2.4.1 Bypass Blocks -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <!-- NAV -->
   <nav>
@@ -1551,23 +1610,32 @@ aiHSWGarrEk8VM0RlIFhriVaxzU8V6xwbjW3l9BAYjyZCtxV3+jGqD6UeYRoXbG2f8TaedXVD3ik
 Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Center Infrastructure Consulting and Cooling Solutions Provider" style="height: 75px; width: auto;">
       </a>
       <div class="nav-right">
-        <ul class="nav-menu" id="navMenu">
-          <li><a onclick="showPage('home'); closeMenu();" class="nav-link active">Home</a></li>
-          <li class="dropdown-menu" onclick="toggleDropdown(event)">
-            <a class="dropdown-toggle nav-link">Services <span class="dropdown-toggle-icon">▼</span></a>
-            <div class="dropdown-content">
-              <a onclick="showPage('services-tech'); closeMenu();">Technology Consulting</a>
-              <a onclick="showPage('services-cooling'); closeMenu();">Infrastructure Sourcing</a>
+        <ul class="nav-menu" id="navMenu" role="menubar">
+          <li role="none"><a onclick="showPage('home'); closeMenu();" class="nav-link active" role="menuitem" tabindex="0">Home</a></li>
+          <li class="dropdown-menu" id="servicesDropdown" role="none">
+            <a class="dropdown-toggle nav-link"
+               role="menuitem"
+               aria-haspopup="true"
+               aria-expanded="false"
+               tabindex="0"
+               onclick="toggleDropdown(event)"
+               onkeydown="handleDropdownKeydown(event)">Services <span class="dropdown-toggle-icon" aria-hidden="true">▼</span></a>
+            <div class="dropdown-content" role="menu" aria-label="Services submenu">
+              <a onclick="showPage('services-tech'); closeMenu();" role="menuitem" tabindex="-1">Technology Consulting</a>
+              <a onclick="showPage('services-cooling'); closeMenu();" role="menuitem" tabindex="-1">Infrastructure Sourcing</a>
             </div>
           </li>
-          <li><a onclick="showPage('resources'); closeMenu();" class="nav-link">Resources</a></li>
-          <li><a onclick="showPage('contact'); closeMenu();" class="nav-link">Contact</a></li>
+          <li role="none"><a onclick="showPage('resources'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">Resources</a></li>
+          <li role="none"><a onclick="showPage('contact'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">Contact</a></li>
         </ul>
         <button onclick="showPage('contact')" class="nav-cta">Schedule Advisory</button>
-        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
       </div>
     </div>
   </nav>
+
+  <!-- Main Content Area - Skip link target -->
+  <main id="main-content">
 
   <!-- HOME PAGE -->
   <div id="home" class="page active">
@@ -3132,13 +3200,18 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               border-radius: 8px;
               color: white;
               font-size: 0.95rem;
-              outline: none;
               transition: border-color 0.2s;
               box-sizing: border-box;
             }
             .wp-modal-form-group input:focus,
             .wp-modal-form-group select:focus {
               border-color: var(--bee-gold);
+              outline: 2px solid transparent;
+            }
+            .wp-modal-form-group input:focus-visible,
+            .wp-modal-form-group select:focus-visible {
+              outline: 2px solid var(--bee-gold);
+              outline-offset: 2px;
             }
             .wp-modal-form-group select option {
               background: #1a1a2e;
@@ -5800,6 +5873,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     </div>
   </footer>
 
+  </main><!-- End main-content -->
+
   <script>
     function showPage(pageId, updateHash = true) {
       // Hide all pages
@@ -6153,23 +6228,127 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     // Mobile Menu Toggle
     function toggleMenu() {
       const navMenu = document.getElementById('navMenu');
-      navMenu.classList.toggle('active');
+      const menuToggle = document.getElementById('menuToggle');
+      const isActive = navMenu.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isActive);
     }
 
     function closeMenu() {
       const navMenu = document.getElementById('navMenu');
+      const menuToggle = document.getElementById('menuToggle');
       navMenu.classList.remove('active');
-      
-      // Close any open dropdowns
+      menuToggle.setAttribute('aria-expanded', 'false');
+
+      // Close any open dropdowns and update aria-expanded
       const dropdowns = document.querySelectorAll('.dropdown-menu.active');
-      dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('active');
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      });
     }
 
     function toggleDropdown(e) {
       e.stopPropagation();
-      const dropdown = e.currentTarget;
-      dropdown.classList.toggle('active');
+      const dropdown = e.currentTarget.closest('.dropdown-menu') || e.currentTarget;
+      const toggle = dropdown.querySelector('.dropdown-toggle');
+      const isActive = dropdown.classList.toggle('active');
+
+      // Update ARIA expanded state
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', isActive);
+      }
+
+      // If opening, focus the first menu item
+      if (isActive) {
+        const firstItem = dropdown.querySelector('.dropdown-content a');
+        if (firstItem) {
+          setTimeout(() => firstItem.focus(), 100);
+        }
+      }
     }
+
+    // Keyboard navigation for dropdown - WCAG 2.1
+    function handleDropdownKeydown(e) {
+      const dropdown = e.currentTarget.closest('.dropdown-menu');
+      const toggle = e.currentTarget;
+      const isOpen = dropdown.classList.contains('active');
+      const menuItems = dropdown.querySelectorAll('.dropdown-content a');
+
+      switch (e.key) {
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          toggleDropdown(e);
+          break;
+
+        case 'ArrowDown':
+          e.preventDefault();
+          if (!isOpen) {
+            toggleDropdown(e);
+          } else if (menuItems.length > 0) {
+            menuItems[0].focus();
+          }
+          break;
+
+        case 'ArrowUp':
+          e.preventDefault();
+          if (isOpen && menuItems.length > 0) {
+            menuItems[menuItems.length - 1].focus();
+          }
+          break;
+
+        case 'Escape':
+          e.preventDefault();
+          if (isOpen) {
+            dropdown.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.focus();
+          }
+          break;
+      }
+    }
+
+    // Keyboard navigation within dropdown menu items
+    document.addEventListener('keydown', (e) => {
+      const activeDropdown = document.querySelector('.dropdown-menu.active');
+      if (!activeDropdown) return;
+
+      const menuItems = Array.from(activeDropdown.querySelectorAll('.dropdown-content a'));
+      const currentIndex = menuItems.indexOf(document.activeElement);
+
+      if (currentIndex === -1) return;
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          const nextIndex = (currentIndex + 1) % menuItems.length;
+          menuItems[nextIndex].focus();
+          break;
+
+        case 'ArrowUp':
+          e.preventDefault();
+          const prevIndex = (currentIndex - 1 + menuItems.length) % menuItems.length;
+          menuItems[prevIndex].focus();
+          break;
+
+        case 'Escape':
+          e.preventDefault();
+          const toggle = activeDropdown.querySelector('.dropdown-toggle');
+          activeDropdown.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.focus();
+          break;
+
+        case 'Tab':
+          // Close dropdown when tabbing out
+          if (!e.shiftKey && currentIndex === menuItems.length - 1) {
+            activeDropdown.classList.remove('active');
+            activeDropdown.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
+          }
+          break;
+      }
+    });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
@@ -6708,11 +6887,11 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
   </script>
 
   <!-- Mobile Whitepaper Request Modal -->
-  <div id="wpMobileModal" class="wp-modal-overlay" onclick="if(event.target === this) closeWpModal()">
+  <div id="wpMobileModal" class="wp-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="wpModalTitle" onclick="if(event.target === this) closeWpModal()">
     <div class="wp-modal">
       <div class="wp-modal-header">
         <h4 id="wpModalTitle" style="color: white; font-size: 1rem; margin: 0;">Request Your Copy</h4>
-        <button class="wp-modal-close" onclick="closeWpModal()">&times;</button>
+        <button class="wp-modal-close" onclick="closeWpModal()" aria-label="Close dialog">&times;</button>
       </div>
       <div class="wp-modal-body">
         <form id="wpMobileForm" onsubmit="handleMobileWpSubmit(event)">
@@ -6783,6 +6962,16 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       5: 'Rack Density & Thermal Strategy'
     };
 
+    // Store the element that triggered the modal for focus restoration
+    let modalTriggerElement = null;
+
+    // Get all focusable elements within an element
+    function getFocusableElements(container) {
+      return container.querySelectorAll(
+        'button, [href], input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+    }
+
     // Open modal for specific whitepaper
     function openWpModal(wpNumber) {
       const modal = document.getElementById('wpMobileModal');
@@ -6790,6 +6979,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       const wpInput = document.getElementById('wpModalNumber');
       const form = document.getElementById('wpMobileForm');
       const success = document.getElementById('wpMobileSuccess');
+
+      // Store the trigger element for focus restoration
+      modalTriggerElement = document.activeElement;
 
       // Reset form and show it
       form.style.display = 'block';
@@ -6803,6 +6995,12 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       // Show modal
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
+
+      // Focus first focusable element in modal (close button)
+      setTimeout(() => {
+        const closeBtn = modal.querySelector('.wp-modal-close');
+        if (closeBtn) closeBtn.focus();
+      }, 100);
     }
 
     // Close modal
@@ -6810,7 +7008,46 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       const modal = document.getElementById('wpMobileModal');
       modal.classList.remove('active');
       document.body.style.overflow = '';
+
+      // Restore focus to the element that triggered the modal
+      if (modalTriggerElement) {
+        modalTriggerElement.focus();
+        modalTriggerElement = null;
+      }
     }
+
+    // Focus trap for modal - WCAG 2.4.3
+    function handleModalKeydown(e) {
+      const modal = document.getElementById('wpMobileModal');
+      if (!modal.classList.contains('active')) return;
+
+      if (e.key === 'Tab') {
+        const focusableElements = getFocusableElements(modal.querySelector('.wp-modal'));
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) {
+          // Shift + Tab: moving backwards
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          // Tab: moving forwards
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
+
+      if (e.key === 'Escape') {
+        closeWpModal();
+      }
+    }
+
+    // Add focus trap listener
+    document.addEventListener('keydown', handleModalKeydown);
 
     // Handle mobile form submission
     function handleMobileWpSubmit(event) {
@@ -6842,13 +7079,6 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         closeWpModal();
       }, 3000);
     }
-
-    // Close modal on escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeWpModal();
-      }
-    });
   </script>
 
 </body>
