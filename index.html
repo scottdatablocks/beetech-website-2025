@@ -2198,6 +2198,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
             </div>
 
+            <!-- Mobile CTA Bar (visible only on mobile) -->
+            <div class="wp-mobile-cta">
+              <button class="wp-mobile-cta-btn" onclick="openWpModal(1)" style="background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%); color: #000;">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                Request Your Copy
+              </button>
+            </div>
+
             <!-- Key Highlights Footer -->
             <div style="padding: 24px 32px; background: rgba(0,0,0,0.15); border-top: 1px solid rgba(255,215,0,0.1);">
               <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
@@ -2231,13 +2239,18 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                 padding-bottom: 24px !important;
               }
 
-              /* Adjust form container padding */
+              /* Hide form containers on mobile - replaced with compact CTA */
               #whitepaper-form-container,
               #whitepaper2-form-container,
               #whitepaper3-form-container,
               #whitepaper4-form-container,
               #whitepaper5-form-container {
-                padding-top: 24px !important;
+                display: none !important;
+              }
+
+              /* Show mobile CTA bars */
+              .wp-mobile-cta {
+                display: flex !important;
               }
 
               /* Better mobile padding */
@@ -2245,12 +2258,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               #whitepaper2-toc,
               #whitepaper3-toc,
               #whitepaper4-toc,
-              #whitepaper5-toc,
-              #whitepaper-form-container,
-              #whitepaper2-form-container,
-              #whitepaper3-form-container,
-              #whitepaper4-form-container,
-              #whitepaper5-form-container {
+              #whitepaper5-toc {
                 padding-left: 20px !important;
                 padding-right: 20px !important;
               }
@@ -2457,6 +2465,176 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             /* Smooth scroll behavior */
             html {
               scroll-behavior: smooth;
+            }
+
+            /* Mobile CTA bar - hidden on desktop */
+            .wp-mobile-cta {
+              display: none;
+              align-items: center;
+              justify-content: center;
+              padding: 16px 20px;
+              background: rgba(0,0,0,0.3);
+              border-top: 1px solid rgba(255,255,255,0.1);
+              gap: 12px;
+            }
+            .wp-mobile-cta-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              padding: 12px 24px;
+              border-radius: 8px;
+              font-size: 0.9rem;
+              font-weight: 600;
+              cursor: pointer;
+              transition: all 0.2s;
+              border: none;
+              width: 100%;
+              max-width: 300px;
+            }
+            .wp-mobile-cta-btn:hover {
+              transform: translateY(-1px);
+            }
+
+            /* Whitepaper Request Modal */
+            .wp-modal-overlay {
+              display: none;
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: rgba(0,0,0,0.85);
+              z-index: 10000;
+              align-items: center;
+              justify-content: center;
+              padding: 20px;
+              backdrop-filter: blur(4px);
+            }
+            .wp-modal-overlay.active {
+              display: flex;
+            }
+            .wp-modal {
+              background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+              border-radius: 16px;
+              width: 100%;
+              max-width: 400px;
+              max-height: 90vh;
+              overflow-y: auto;
+              position: relative;
+              border: 1px solid rgba(255,255,255,0.1);
+            }
+            .wp-modal-header {
+              padding: 20px 24px;
+              border-bottom: 1px solid rgba(255,255,255,0.1);
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            .wp-modal-close {
+              background: none;
+              border: none;
+              color: rgba(255,255,255,0.6);
+              font-size: 1.5rem;
+              cursor: pointer;
+              padding: 4px;
+              line-height: 1;
+            }
+            .wp-modal-close:hover {
+              color: white;
+            }
+            .wp-modal-body {
+              padding: 24px;
+            }
+            .wp-modal-form-group {
+              margin-bottom: 16px;
+            }
+            .wp-modal-form-group label {
+              color: rgba(255,255,255,0.8);
+              font-size: 0.85rem;
+              display: block;
+              margin-bottom: 6px;
+            }
+            .wp-modal-form-group input,
+            .wp-modal-form-group select {
+              width: 100%;
+              padding: 12px 14px;
+              background: rgba(255,255,255,0.08);
+              border: 1px solid rgba(255,255,255,0.2);
+              border-radius: 8px;
+              color: white;
+              font-size: 0.95rem;
+              outline: none;
+              transition: border-color 0.2s;
+              box-sizing: border-box;
+            }
+            .wp-modal-form-group input:focus,
+            .wp-modal-form-group select:focus {
+              border-color: var(--bee-gold);
+            }
+            .wp-modal-form-group select option {
+              background: #1a1a2e;
+            }
+            .wp-modal-submit {
+              width: 100%;
+              padding: 14px 24px;
+              background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
+              border: none;
+              border-radius: 8px;
+              color: #000;
+              font-size: 1rem;
+              font-weight: 700;
+              cursor: pointer;
+              transition: transform 0.2s, box-shadow 0.2s;
+              margin-top: 8px;
+            }
+            .wp-modal-submit:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 8px 24px rgba(255,215,0,0.3);
+            }
+            .wp-modal-checkbox {
+              display: flex;
+              align-items: flex-start;
+              gap: 10px;
+              cursor: pointer;
+              margin-bottom: 16px;
+            }
+            .wp-modal-checkbox input {
+              margin-top: 3px;
+              accent-color: var(--bee-gold);
+              width: auto;
+            }
+            .wp-modal-checkbox span {
+              color: rgba(255,255,255,0.6);
+              font-size: 0.8rem;
+              line-height: 1.4;
+            }
+            .wp-modal-success {
+              text-align: center;
+              padding: 24px;
+            }
+            .wp-modal-success-icon {
+              width: 60px;
+              height: 60px;
+              background: rgba(0,255,136,0.15);
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0 auto 16px;
+            }
+            .wp-modal-success-icon span {
+              color: #00FF88;
+              font-size: 1.8rem;
+            }
+            .wp-modal-footer {
+              padding: 0 24px 20px;
+              text-align: center;
+            }
+            .wp-modal-footer p {
+              color: rgba(255,255,255,0.4);
+              font-size: 0.75rem;
+              margin: 0;
             }
           </style>
         </div>
@@ -2677,6 +2855,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                   </p>
                 </div>
               </div>
+            </div>
+
+            <!-- Mobile CTA Bar (visible only on mobile) -->
+            <div class="wp-mobile-cta">
+              <button class="wp-mobile-cta-btn" onclick="openWpModal(2)" style="background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%); color: #fff;">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                Request Your Copy
+              </button>
             </div>
 
             <!-- Key Highlights Footer -->
@@ -2937,6 +3123,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                   </p>
                 </div>
               </div>
+            </div>
+
+            <!-- Mobile CTA Bar (visible only on mobile) -->
+            <div class="wp-mobile-cta">
+              <button class="wp-mobile-cta-btn" onclick="openWpModal(3)" style="background: linear-gradient(135deg, #00FF88 0%, #00CC6A 100%); color: #000;">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                Request Your Copy
+              </button>
             </div>
 
             <!-- Key Highlights Footer -->
@@ -3216,6 +3410,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
               </div>
             </div>
 
+            <!-- Mobile CTA Bar (visible only on mobile) -->
+            <div class="wp-mobile-cta">
+              <button class="wp-mobile-cta-btn" onclick="openWpModal(4)" style="background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%); color: #fff;">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                Request Your Copy
+              </button>
+            </div>
+
             <!-- Key Highlights Footer -->
             <div style="padding: 24px 32px; background: rgba(0,0,0,0.15); border-top: 1px solid rgba(168,85,247,0.1);">
               <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
@@ -3475,6 +3677,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                   </p>
                 </div>
               </div>
+            </div>
+
+            <!-- Mobile CTA Bar (visible only on mobile) -->
+            <div class="wp-mobile-cta">
+              <button class="wp-mobile-cta-btn" onclick="openWpModal(5)" style="background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); color: #fff;">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                Request Your Copy
+              </button>
             </div>
 
             <!-- Key Highlights Footer -->
@@ -4210,6 +4420,150 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       // Initial check
       updateActiveLink();
     })();
+  </script>
+
+  <!-- Mobile Whitepaper Request Modal -->
+  <div id="wpMobileModal" class="wp-modal-overlay" onclick="if(event.target === this) closeWpModal()">
+    <div class="wp-modal">
+      <div class="wp-modal-header">
+        <h4 id="wpModalTitle" style="color: white; font-size: 1rem; margin: 0;">Request Your Copy</h4>
+        <button class="wp-modal-close" onclick="closeWpModal()">&times;</button>
+      </div>
+      <div class="wp-modal-body">
+        <form id="wpMobileForm" onsubmit="handleMobileWpSubmit(event)">
+          <input type="hidden" id="wpModalNumber" name="wp_number" value="1">
+
+          <div class="wp-modal-form-group">
+            <label>Full Name *</label>
+            <input type="text" name="wp_name" required placeholder="John Smith">
+          </div>
+
+          <div class="wp-modal-form-group">
+            <label>Work Email *</label>
+            <input type="email" name="wp_email" required placeholder="john@company.com">
+          </div>
+
+          <div class="wp-modal-form-group">
+            <label>Company *</label>
+            <input type="text" name="wp_company" required placeholder="Your Company">
+          </div>
+
+          <div class="wp-modal-form-group">
+            <label>Role / Title</label>
+            <select name="wp_role">
+              <option value="">Select your role</option>
+              <option value="executive">Executive / C-Level</option>
+              <option value="director">Director / VP</option>
+              <option value="manager">Manager</option>
+              <option value="engineer">Engineer / Technical</option>
+              <option value="consultant">Consultant</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <label class="wp-modal-checkbox">
+            <input type="checkbox" name="wp_subscribe" checked>
+            <span>Keep me updated on BeeTech insights and resources</span>
+          </label>
+
+          <button type="submit" class="wp-modal-submit">
+            Request Download
+          </button>
+        </form>
+
+        <!-- Success State -->
+        <div id="wpMobileSuccess" class="wp-modal-success" style="display: none;">
+          <div class="wp-modal-success-icon">
+            <span>&#10003;</span>
+          </div>
+          <h4 style="color: white; font-size: 1.1rem; margin-bottom: 8px;">Request Received!</h4>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.5;">
+            Thank you for your interest. We'll send the whitepaper to your email shortly.
+          </p>
+        </div>
+      </div>
+      <div class="wp-modal-footer">
+        <p>By submitting, you agree to receive communications from BeeTech.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Whitepaper titles for the modal
+    const wpTitles = {
+      1: 'SCADA Framework Whitepaper',
+      2: 'Multi-Phase Commissioning Guide',
+      3: 'Engineering Excellence Guide',
+      4: 'Edge-to-Cloud Architecture',
+      5: 'Rack Density & Thermal Strategy'
+    };
+
+    // Open modal for specific whitepaper
+    function openWpModal(wpNumber) {
+      const modal = document.getElementById('wpMobileModal');
+      const title = document.getElementById('wpModalTitle');
+      const wpInput = document.getElementById('wpModalNumber');
+      const form = document.getElementById('wpMobileForm');
+      const success = document.getElementById('wpMobileSuccess');
+
+      // Reset form and show it
+      form.style.display = 'block';
+      success.style.display = 'none';
+      form.reset();
+
+      // Set whitepaper number and title
+      wpInput.value = wpNumber;
+      title.textContent = wpTitles[wpNumber] || 'Request Your Copy';
+
+      // Show modal
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal
+    function closeWpModal() {
+      const modal = document.getElementById('wpMobileModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Handle mobile form submission
+    function handleMobileWpSubmit(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const formData = new FormData(form);
+      const wpNumber = formData.get('wp_number');
+
+      // Collect form data
+      const data = {
+        whitepaper: wpNumber,
+        name: formData.get('wp_name'),
+        email: formData.get('wp_email'),
+        company: formData.get('wp_company'),
+        role: formData.get('wp_role'),
+        subscribe: formData.get('wp_subscribe') ? true : false
+      };
+
+      // Log the submission (replace with actual API call)
+      console.log('Mobile Whitepaper Request:', data);
+
+      // Show success state
+      form.style.display = 'none';
+      document.getElementById('wpMobileSuccess').style.display = 'block';
+
+      // Auto-close after 3 seconds
+      setTimeout(() => {
+        closeWpModal();
+      }, 3000);
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeWpModal();
+      }
+    });
   </script>
 
 </body>
