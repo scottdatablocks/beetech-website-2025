@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FlowPoint | Cooling Distribution Program - BeeTech</title>
+  <meta name="description" content="FlowPoint provides a unified framework for managing cooling-connection assemblies across data center projects. DTC AI Sizing Tool for CDU and QDC selection."/>
+  <meta name="keywords" content="FlowPoint, cooling distribution, CDU sizing, QDC selection, data center cooling, thermal management, liquid cooling"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://beetech.ai/flowpoint"/>
+  <meta name="author" content="BeeTech"/>
+
+  <!-- Chart.js for FlowPoint DTC pump curve visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --bee-gold: #FFD700;
+      --bee-dark: #0A1D37;
+      --bee-red: #FF3B5C;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #0A1D37 0%, #000 100%);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(10, 29, 55, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--bee-gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--bee-gold);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--bee-gold);
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .hero h1 .highlight {
+      color: var(--bee-gold);
+    }
+
+    .hero .subhead {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .service-tag {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--bee-gold);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .card p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    .spec-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .spec-list li {
+      color: rgba(255, 255, 255, 0.8);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .spec-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px 0;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--bee-gold);
+      text-decoration: none;
+    }
+
+    /* FlowPoint DTC Calculator Modal */
+    .flowpoint-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      overflow-y: auto;
+    }
+
+    .flowpoint-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .flowpoint-modal-content {
+      min-height: 100vh;
+      background: #f8fafc;
+    }
+
+    .flowpoint-header {
+      background: #0f172a;
+      color: white;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .flowpoint-header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0;
+      color: white;
+    }
+
+    .flowpoint-header p {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      margin: 0;
+    }
+
+    .flowpoint-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .flowpoint-close:hover {
+      background: rgba(255, 59, 92, 0.3);
+      border-color: rgba(255, 59, 92, 0.5);
+    }
+
+    .flowpoint-container {
+      display: flex;
+      min-height: calc(100vh - 60px);
+    }
+
+    .flowpoint-sidebar {
+      width: 256px;
+      background: white;
+      border-right: 1px solid #e2e8f0;
+      flex-shrink: 0;
+      padding: 16px;
+    }
+
+    .flowpoint-sidebar button {
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: #475569;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 8px;
+    }
+
+    .flowpoint-sidebar button:hover {
+      background: #f1f5f9;
+    }
+
+    .flowpoint-sidebar button.fp-active {
+      background: #eff6ff;
+      color: #2563eb;
+      border-right: 3px solid #2563eb;
+    }
+
+    .flowpoint-main {
+      flex: 1;
+      padding: 24px 40px;
+      overflow-y: auto;
+    }
+
+    .fp-section {
+      display: none;
+    }
+
+    .fp-section.fp-visible {
+      display: block;
+    }
+
+    .fp-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .fp-section > p {
+      color: #64748b;
+      margin-bottom: 32px;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    .fp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .fp-card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid #e2e8f0;
+    }
+
+    .fp-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 20px;
+    }
+
+    .fp-card.dark {
+      background: #0f172a;
+      border-color: #1e293b;
+    }
+
+    .fp-card.dark h3 {
+      color: #94a3b8;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* FlowPoint Collapsible Section Styles */
+    .fp-collapsible-section {
+      margin-bottom: 8px;
+    }
+
+    .fp-collapsible-header {
+      user-select: none;
+      transition: opacity 0.2s;
+    }
+
+    .fp-collapsible-header:hover {
+      opacity: 0.8;
+    }
+
+    .fp-collapse-icon {
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+      color: inherit;
+      opacity: 0.6;
+    }
+
+    .fp-collapse-icon.expanded {
+      transform: rotate(90deg);
+    }
+
+    .fp-collapsible-content {
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .fp-input-group {
+      margin-bottom: 16px;
+    }
+
+    .fp-input-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+
+    .fp-input-group p {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .fp-input-group input,
+    .fp-input-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: #1e293b;
+      background: white;
+      box-sizing: border-box;
+    }
+
+    .fp-input-group input:focus,
+    .fp-input-group select:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .fp-result-box {
+      background: #1e293b;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .fp-result-box p:first-child {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+
+    .fp-result-box .fp-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .fp-result-box .fp-unit {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: #94a3b8;
+      margin-left: 4px;
+    }
+
+    .fp-result-box.blue {
+      background: #1e3a5f;
+    }
+
+    .fp-result-box.blue .fp-value {
+      color: #93c5fd;
+    }
+
+    .fp-result-box.red {
+      background: #5f1e1e;
+    }
+
+    .fp-result-box.red .fp-value {
+      color: #fca5a5;
+    }
+
+    .fp-match-card {
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fp-match-card.blue {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+
+    .fp-match-card.teal {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+    }
+
+    .fp-match-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .fp-match-card.blue h4 {
+      color: #1e40af;
+    }
+
+    .fp-match-card.teal h4 {
+      color: #115e59;
+    }
+
+    .fp-match-card p {
+      font-size: 0.8rem;
+      color: #475569;
+      margin: 0;
+    }
+
+    .fp-select-btn {
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .fp-select-btn.blue {
+      background: #2563eb;
+      color: white;
+    }
+
+    .fp-select-btn.blue:hover {
+      background: #1d4ed8;
+    }
+
+    .fp-select-btn.teal {
+      background: #0d9488;
+      color: white;
+    }
+
+    .fp-select-btn.teal:hover {
+      background: #0f766e;
+    }
+
+    .fp-select-btn.selected {
+      background: #22c55e !important;
+      color: white;
+    }
+
+    .fp-match-card.selected {
+      border: 2px solid #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+    }
+
+    /* CDU Specification Badges */
+    .fp-spec-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .fp-spec-badge.blue {
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #93c5fd;
+    }
+
+    .fp-spec-badge.orange {
+      background: #ffedd5;
+      color: #c2410c;
+      border: 1px solid #fdba74;
+    }
+
+    .fp-spec-badge.green {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+
+    .fp-spec-badge.gray {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+
+    .fp-spec-badge.purple {
+      background: #f3e8ff;
+      color: #7c3aed;
+      border: 1px solid #c4b5fd;
+    }
+
+    .fp-selection-status {
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      color: #92400e;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    .fp-selection-status.complete {
+      background: #d1fae5;
+      border-color: #22c55e;
+      color: #065f46;
+    }
+
+    .fp-chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 24px auto;
+      height: 350px;
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .fp-bom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .fp-bom-table thead {
+      background: #e2e8f0;
+    }
+
+    .fp-bom-table th {
+      padding: 12px 24px;
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #475569;
+    }
+
+    .fp-bom-table td {
+      padding: 16px 24px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .fp-bom-table td:first-child {
+      font-weight: 700;
+    }
+
+    .fp-info-box {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 24px;
+    }
+
+    .fp-info-box p {
+      font-size: 0.875rem;
+      color: #1e40af;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .fp-no-match {
+      padding: 16px;
+      background: #fef2f2;
+      color: #991b1b;
+      border-radius: 8px;
+    }
+
+    /* FlowPoint Mobile Navigation */
+    .fp-mobile-nav {
+      display: none;
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .fp-mobile-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .fp-mobile-nav-inner {
+      display: flex;
+      gap: 8px;
+      min-width: max-content;
+    }
+
+    .fp-mobile-nav button {
+      flex-shrink: 0;
+      padding: 10px 16px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      color: #475569;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .fp-mobile-nav button:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .fp-mobile-nav button.fp-active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+    @media (max-width: 1024px) {
+      .fp-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flowpoint-sidebar {
+        display: none;
+      }
+
+      .fp-mobile-nav {
+        display: block;
+        position: sticky;
+        top: 52px;
+        z-index: 99;
+      }
+
+      .flowpoint-main {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">BeeTech</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#services-cooling">FlowPoint</a>
+        <a href="index.html#resources">Resources</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Thermal Distribution Program</div>
+      <h1>FlowPoint: <span class="highlight">Cooling Alignment</span></h1>
+      <p class="subhead">
+        FlowPoint provides a unified framework for managing cooling-connection assemblies across projects and phases. It improves consistency, communication, and visibility without forcing changes to your existing engineering or construction workflows.
+      </p>
+      <div class="hero-actions">
+        <button onclick="openFlowPointCalculator()" class="btn btn-primary">
+          Launch DTC AI Sizing Tool
+        </button>
+        <a href="index.html#contact" class="btn btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">What FlowPoint Solves</h2>
+      <p class="section-subtitle">Overcoming recurring challenges in cooling-distribution efforts</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="service-tag">Problem 01</div>
+          <h3>Inconsistent Deliveries</h3>
+          <p>Different teams and suppliers often produce different interpretations of the same spec. FlowPoint aligns expectations to ensure uniform delivery.</p>
+        </div>
+        <div class="card">
+          <div class="service-tag">Problem 02</div>
+          <h3>Limited Visibility</h3>
+          <p>Owners often lack a clear picture of what's needed versus what's arriving. We provide a consistent view of requirements and logistics.</p>
+        </div>
+        <div class="card">
+          <div class="service-tag">Problem 03</div>
+          <h3>Commissioning Friction</h3>
+          <p>Small variances upstream create delay and confusion downstream. We smooth the transition from sourcing to installation.</p>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top: 24px; grid-template-columns: 1fr;">
+        <div class="card" style="border-color: var(--bee-gold); max-width: 600px; margin: 0 auto;">
+          <div class="service-tag">The Solution</div>
+          <h3>The 3 Pillars</h3>
+          <ul class="spec-list">
+            <li><strong>Standards:</strong> Shared expectations for planning.</li>
+            <li><strong>Coordination:</strong> Clear comms across teams.</li>
+            <li><strong>Visibility:</strong> Unified view of arrival times.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 BeeTech | Data Center Infrastructure Solutions</p>
+      <p style="margin-top: 8px;"><a href="index.html">Back to Main Site</a></p>
+    </div>
+  </footer>
+
+  <!-- FlowPoint DTC Calculator Modal -->
+  <div id="flowpointModal" class="flowpoint-modal">
+    <div class="flowpoint-modal-content">
+      <div class="flowpoint-header">
+        <div>
+          <h1>FlowPoint DTC AI Tool</h1>
+          <p>Automated Sizing & Sourcing</p>
+        </div>
+        <button class="flowpoint-close" onclick="closeFlowPointCalculator()">Close</button>
+      </div>
+
+      <!-- Mobile Navigation (visible on screens <= 1024px) -->
+      <nav class="fp-mobile-nav">
+        <div class="fp-mobile-nav-inner">
+          <button onclick="fpNavigate('requirements')" id="fp-mobile-nav-requirements" class="fp-active">1. Requirements</button>
+          <button onclick="fpNavigate('match')" id="fp-mobile-nav-match">2. Component Match</button>
+          <button onclick="fpNavigate('bom')" id="fp-mobile-nav-bom">3. Final BOM</button>
+          <button onclick="fpNavigate('guide')" id="fp-mobile-nav-guide">4. Engineer's Guide</button>
+        </div>
+      </nav>
+
+      <div class="flowpoint-container">
+        <aside class="flowpoint-sidebar">
+          <button onclick="fpNavigate('requirements')" id="fp-nav-requirements" class="fp-active">
+            1. Requirements & Hydraulics
+          </button>
+          <button onclick="fpNavigate('match')" id="fp-nav-match">
+            2. AI Component Match
+          </button>
+          <button onclick="fpNavigate('bom')" id="fp-nav-bom">
+            3. Final BOM & Summary
+          </button>
+          <button onclick="fpNavigate('guide')" id="fp-nav-guide">
+            4. Engineer's Guide
+          </button>
+        </aside>
+
+        <main class="flowpoint-main">
+          <!-- Section 1: Requirements -->
+          <div id="fp-section-requirements" class="fp-section fp-visible">
+            <h2>Phase 1: Hydraulic & Thermal Inputs</h2>
+            <p>Input cluster parameters and key hydraulic geometry. The tool will calculate the precise system flow (LPM) and the total pressure drop (Bar) based on US engineering standards (Cv to PSI).</p>
+
+            <div class="fp-grid">
+              <div class="fp-card">
+                <h3>Thermal & System Load</h3>
+                <div class="fp-input-group">
+                  <label>Total IT Load per Rack (kW)</label>
+                  <input type="number" id="fpRackLoad" min="20" max="200" value="80" oninput="fpCalculateMetrics()">
+                </div>
+                <div class="fp-input-group">
+                  <label>Number of Racks (N+1 Included)</label>
+                  <input type="number" id="fpRackCount" min="1" value="4" oninput="fpCalculateMetrics()">
+                </div>
+                <div class="fp-input-group">
+                  <label>Allowable Delta T (T_out - T_in) (C)</label>
+                  <input type="number" id="fpDeltaT" min="5" max="15" value="7" oninput="fpCalculateMetrics()">
+                </div>
+                <div class="fp-input-group">
+                  <label>Coolant Type</label>
+                  <select id="fpCoolantSelect" onchange="fpCalculateMetrics()">
+                    <option value="water">Treated Water</option>
+                    <option value="pg25">PG25 (25% Propylene Glycol)</option>
+                    <option value="pg30">PG30 (30% Propylene Glycol)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="fp-card">
+                <h3>Hydraulic Geometry</h3>
+                <div class="fp-input-group">
+                  <label>Cold Plate Pressure Drop (DP_CP) (Bar)</label>
+                  <p>Input the Delta P required for one cold plate/node at nominal flow.</p>
+                  <input type="number" id="fpCpDP" min="0.1" max="2" step="0.1" value="0.7" oninput="fpCalculateMetrics()">
+                </div>
+                <div class="fp-input-group">
+                  <label>Hose Inner Diameter (ID) (in)</label>
+                  <p>Typically 1/4'' or 3/8'' for server connections.</p>
+                  <select id="fpHoseID" onchange="fpCalculateMetrics()">
+                    <option value="0.25">1/4 in</option>
+                    <option value="0.375">3/8 in</option>
+                    <option value="0.5">1/2 in</option>
+                  </select>
+                </div>
+                <div class="fp-input-group">
+                  <label>Avg. Hose/Fitting K-Factor per Node</label>
+                  <p>Aggregated resistance for all bends, valves, and manifold entry/exit.</p>
+                  <input type="number" id="fpKFactor" min="2" max="20" step="1" value="8" oninput="fpCalculateMetrics()">
+                </div>
+                <div class="fp-input-group">
+                  <label>QDC Cv Value Target (GPM/PSI)</label>
+                  <p>Input target minimum Cv (higher is better).</p>
+                  <input type="number" id="fpCvTarget" min="1" max="5" step="0.1" value="2.5" oninput="fpCalculateMetrics()">
+                </div>
+              </div>
+
+              <div class="fp-card dark">
+                <h3>Calculated Requirements</h3>
+                <div class="fp-result-box">
+                  <p>Total System Power (Q_Total)</p>
+                  <p><span id="fpTotalPower" class="fp-value">320</span><span class="fp-unit">kW</span></p>
+                </div>
+                <div class="fp-result-box blue">
+                  <p>Required Total Flow (LPM)</p>
+                  <p><span id="fpTotalFlow" class="fp-value">658</span><span class="fp-unit">LPM</span></p>
+                </div>
+                <div class="fp-result-box red">
+                  <p>Estimated System Delta P (Total Head)</p>
+                  <p><span id="fpTotalDP" class="fp-value">3.2</span><span class="fp-unit">Bar</span></p>
+                </div>
+                <button onclick="fpResetToDefaults()" style="margin-top: 16px; width: 100%; padding: 12px 20px; background: linear-gradient(135deg, #64748b 0%, #475569 100%); color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                  ↺ Reset to Defaults
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: AI Component Match -->
+          <div id="fp-section-match" class="fp-section">
+            <h2>Phase 2: Automated Component Selection</h2>
+            <p>Based on the calculated constraints, the system automatically filters the internal database for compatible CDU and QDC models. Components are matched against required flow, pressure head, and Cv value.</p>
+
+            <div class="fp-grid" style="grid-template-columns: 1fr 1fr;">
+              <div class="fp-collapsible-section">
+                <h3 class="fp-collapsible-header" onclick="toggleFpSection('cdu')" style="color: #2563eb; margin-bottom: 16px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                  <span>CDU Match (Flow >= Required Flow and Head >= Required Head)</span>
+                  <span class="fp-collapse-icon" id="fpCduCollapseIcon">&#9654;</span>
+                </h3>
+                <div id="fpCduMatchResults" class="fp-collapsible-content" style="display: none;">
+                  <div class="fp-card"><p style="color: #64748b; font-style: italic;">Run calculations first to see results.</p></div>
+                </div>
+              </div>
+              <div class="fp-collapsible-section">
+                <h3 class="fp-collapsible-header" onclick="toggleFpSection('qdc')" style="color: #0d9488; margin-bottom: 16px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                  <span>QDC Match (Cv >= Target Cv and Material Verified)</span>
+                  <span class="fp-collapse-icon" id="fpQdcCollapseIcon">&#9654;</span>
+                </h3>
+                <div id="fpQdcMatchResults" class="fp-collapsible-content" style="display: none;">
+                  <div class="fp-card"><p style="color: #64748b; font-style: italic;">Run calculations first to see results.</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+              <h3 style="color: #1e293b; margin-bottom: 16px;">System Resistance Curve</h3>
+              <p style="color: #64748b; margin-bottom: 16px;">The CDU's pump curve must intersect the System Resistance Curve (blue line) at or above the Required Total Flow Rate (LPM) and Pressure (Bar).</p>
+              <div class="fp-chart-container">
+                <canvas id="fpImpedanceChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Final BOM -->
+          <div id="fp-section-bom" class="fp-section">
+            <h2>Phase 3: Final Bill of Materials (BOM)</h2>
+            <p>Select a single CDU and QDC from the matched list in Phase 2 to finalize the Bill of Materials quantities required for procurement. All quantities include a recommended 10% spare for QDCs and Hoses.</p>
+
+            <div class="fp-card">
+              <h3>Procurement Summary</h3>
+              <div style="overflow-x: auto;">
+                <table class="fp-bom-table">
+                  <thead>
+                    <tr>
+                      <th>Component</th>
+                      <th>Required Quantity</th>
+                      <th>Selection Basis</th>
+                    </tr>
+                  </thead>
+                  <tbody id="fpBomTableBody">
+                    <tr><td colspan="3" style="text-align: center; color: #64748b;">Select components in Phase 2 to generate BOM.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="fp-info-box">
+              <p><strong>US Standards Compliance Note:</strong> CDU kW capacity and LPM flow rate are derived from the ASHRAE / US Dept. of Energy required Delta T and Cp (Specific Heat). The system Delta P is calculated in Bar but validated against component Cv values which rely on GPM/PSI per US fluid dynamics standards.</p>
+            </div>
+          </div>
+
+          <!-- Section 4: Engineer's Guide -->
+          <div id="fp-section-guide" class="fp-section">
+            <h2>DTC Cooling System Sizing: Role-Play Scenarios</h2>
+            <p>This guide outlines the required dialogue flow for engineers to gather inputs for the FlowPoint Automated Sizing and Sourcing AI Tool, ensuring all critical thermal and hydraulic data points are acquired.</p>
+
+            <div class="fp-card" style="margin-bottom: 24px;">
+              <h3 style="color: #2563eb; margin-bottom: 8px;">Scenario 1: Engineer (FlowPoint) to Customer (Data Center Ops)</h3>
+              <p style="color: #64748b; margin-bottom: 16px;"><strong>Goal:</strong> Define Q<sub>Total</sub>, ΔT, Rack Count, and initial Fluid Type for the FlowPoint tool's Phase 1 Inputs.</p>
+              <p style="color: #475569; font-size: 0.9rem; line-height: 1.6;">
+                The engineer should gather: Max IT Load per rack, Number of racks, Target supply/return temperatures (to calculate Delta T), and Coolant type (water or glycol mix).
+              </p>
+            </div>
+
+            <div class="fp-card" style="margin-bottom: 24px;">
+              <h3 style="color: #0d9488; margin-bottom: 8px;">Scenario 2: Engineer to Cold Plate Vendor (Hydraulic Performance)</h3>
+              <p style="color: #64748b; margin-bottom: 16px;"><strong>Goal:</strong> Obtain the single most critical hydraulic input: the ΔP required across the cold plates at the calculated nodal flow rate.</p>
+              <p style="color: #475569; font-size: 0.9rem; line-height: 1.6;">
+                Request the cold plate pressure drop specification at nominal flow, and gather K-factor data for manifold connectors and tubing bundles.
+              </p>
+            </div>
+
+            <div class="fp-card" style="margin-bottom: 24px;">
+              <h3 style="color: #dc2626; margin-bottom: 8px;">Scenario 3: Engineer to QDC/Manifold Supplier (Sourcing Metrics)</h3>
+              <p style="color: #64748b; margin-bottom: 16px;"><strong>Goal:</strong> Define the C<sub>v</sub> minimum, check material compatibility, and finalize the BOM quantities for accessories.</p>
+              <p style="color: #475569; font-size: 0.9rem; line-height: 1.6;">
+                Specify QDC requirements including Cv target, hose size, and material compatibility. Calculate total QDC quantity including 10% spares.
+              </p>
+            </div>
+
+            <div class="fp-info-box" style="background: #f0fdf4; border-color: #22c55e;">
+              <p style="color: #166534;"><strong>Process Summary:</strong> By following this precise flow, the engineer ensures every field in the FlowPoint tool is populated with validated data, transitioning directly from calculation to a fully quantified Bill of Materials (BOM).</p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Coolant Properties
+    const FP_COOLANT_PROPERTIES = {
+      'water': { Cp: 4.18, Density: 1.0, SG: 1.0, Viscosity_k: 0.00089 },
+      'pg25': { Cp: 3.9, Density: 1.03, SG: 1.03, Viscosity_k: 0.0016 },
+      'pg30': { Cp: 3.8, Density: 1.04, SG: 1.04, Viscosity_k: 0.0018 }
+    };
+
+    // CDU Database
+    const FP_CDU_DATABASE = [
+      { model: 'CDU Series 500', vendor: 'Trane', capacity_kW: 500, flow_LPM: 750, head_Bar: 3.5, price_k: 92,
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web', 'Modbus'],
+        footprint: 'Floor-Mount Compact', ashrae_class: 'W1-W4', power_kW: 4.5, connection: '2" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters', use_case: 'Enterprise HPC' },
+      { model: 'CDU Series 1000', vendor: 'Trane', capacity_kW: 1004, flow_LPM: 1500, head_Bar: 3.5, price_k: 155,
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web', 'Modbus'],
+        footprint: 'Floor-Mount Compact', ashrae_class: 'W1-W4', power_kW: 8.2, connection: '3" Victaulic',
+        flow_density: 1.49, maintainability: 'Hot-swap pumps/filters', use_case: 'HPC/AI Clusters' },
+      { model: 'CDU Series 2000', vendor: 'Trane', capacity_kW: 2000, flow_LPM: 3000, head_Bar: 3.5, price_k: 280,
+        type: 'L2L', atd_C: 4, filtration_um: 25, redundancy: 'Dual VSD', protocols: ['SNMP', 'Web', 'Modbus', 'BACnet'],
+        footprint: 'Floor-Mount Compact', ashrae_class: 'W1-W5', power_kW: 15.5, connection: '4" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters', use_case: 'Hyperscale AI' },
+      { model: 'CHx500', vendor: 'CoolIT Systems', capacity_kW: 500, flow_LPM: 750, head_Bar: 2.75, price_k: 95,
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'],
+        footprint: 'Single Rack', ashrae_class: 'W1-W4', power_kW: 4.2, connection: '2" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters', use_case: 'Enterprise AI/HPC' },
+      { model: 'CHx1000', vendor: 'CoolIT Systems', capacity_kW: 1000, flow_LPM: 1500, head_Bar: 2.75, price_k: 165,
+        type: 'L2L', atd_C: 5, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Redfish', 'SNMP', 'Modbus', 'BACnet'],
+        footprint: 'Single Rack', ashrae_class: 'W1-W5', power_kW: 7.8, connection: '3" Victaulic',
+        flow_density: 1.5, maintainability: 'Hot-swap pumps/filters', use_case: 'High-Density AI Clusters' },
+      { model: 'Dynamic CDU-250', vendor: 'Motivair', capacity_kW: 250, flow_LPM: 560, head_Bar: 4.0, price_k: 55,
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet'],
+        footprint: 'Floor-Mount', ashrae_class: 'W1-W4', power_kW: 3.2, connection: '2" Victaulic',
+        flow_density: 2.24, maintainability: 'Field-serviceable pumps', use_case: 'Mid-Density AI' },
+      { model: 'Dynamic CDU-500', vendor: 'Motivair', capacity_kW: 500, flow_LPM: 1100, head_Bar: 5.2, price_k: 90,
+        type: 'L2L', atd_C: 5, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus', 'BACnet', 'SNMP'],
+        footprint: 'Floor-Mount', ashrae_class: 'W1-W5', power_kW: 5.5, connection: '3" Victaulic',
+        flow_density: 2.2, maintainability: 'Hot-swap pumps', use_case: 'High-Density AI/HPC' },
+      { model: 'ATS-300', vendor: 'Boyd', capacity_kW: 300, flow_LPM: 680, head_Bar: 4.0, price_k: 58,
+        type: 'L2L', atd_C: 6, filtration_um: 50, redundancy: 'Dual Pump', protocols: ['Modbus'],
+        footprint: 'Stand-alone', ashrae_class: 'W1-W4', power_kW: 3.2, connection: '2" NPT',
+        flow_density: 2.27, maintainability: 'Field-serviceable', use_case: 'Enterprise AI' },
+      { model: 'InRow LC 300', vendor: 'Schneider Electric', capacity_kW: 300, flow_LPM: 680, head_Bar: 3.8, price_k: 62,
+        type: 'L2L', atd_C: 3, filtration_um: 25, redundancy: 'Dual Pump', protocols: ['Modbus', 'SNMP', 'BACnet'],
+        footprint: 'In-Row', ashrae_class: 'W1-W4', power_kW: 3.5, connection: '2" Victaulic',
+        flow_density: 2.27, maintainability: 'Hot-swap pumps', use_case: 'Enterprise/Colocation' }
+    ];
+
+    // QDC Database
+    const FP_QDC_DATABASE = [
+      { model: 'Everis UQD02', vendor: 'CPC (Colder Products)', size_in: 0.25, size_mm: 6.4, Cv: 2.8,
+        body_material: '303 Stainless Steel', seal_material: 'EPDM', max_pressure_psi: 120, max_pressure_bar: 8.3,
+        spillage_cc: 0.015, standard: 'OCP Universal', notes: 'Zero-spill design; OCP DC-MHS compliant', price: 95 },
+      { model: 'Everis UQD04', vendor: 'CPC (Colder Products)', size_in: 0.375, size_mm: 9.5, Cv: 3.8,
+        body_material: '303 Stainless Steel', seal_material: 'EPDM', max_pressure_psi: 120, max_pressure_bar: 8.3,
+        spillage_cc: 0.025, standard: 'OCP Universal', notes: 'Zero-spill design; Most common server size', price: 110 },
+      { model: 'Universal QD (Size 1)', vendor: 'Danfoss Hansen', size_in: 0.25, size_mm: 6.4, Cv: 2.5,
+        body_material: 'Stainless Steel', seal_material: 'EPDM', max_pressure_psi: 150, max_pressure_bar: 10.3,
+        spillage_cc: 0.02, standard: 'OCP Universal', notes: 'Full flow design', price: 88 },
+      { model: 'Universal QD (Size 2)', vendor: 'Danfoss Hansen', size_in: 0.375, size_mm: 9.5, Cv: 3.6,
+        body_material: 'Stainless Steel', seal_material: 'EPDM', max_pressure_psi: 150, max_pressure_bar: 10.3,
+        spillage_cc: 0.03, standard: 'OCP Universal', notes: 'Full flow design', price: 105 },
+      { model: 'Universal QD (Size 3)', vendor: 'Danfoss Hansen', size_in: 0.5, size_mm: 12.7, Cv: 5.2,
+        body_material: 'Stainless Steel', seal_material: 'EPDM', max_pressure_psi: 150, max_pressure_bar: 10.3,
+        spillage_cc: 0.04, standard: 'OCP Universal', notes: 'High capacity applications', price: 125 },
+      { model: 'RMI09', vendor: 'Stäubli', size_in: 0.375, size_mm: 9.5, Cv: 4.5,
+        body_material: 'Stainless Steel', seal_material: 'FKM', max_pressure_psi: 145, max_pressure_bar: 10.0,
+        spillage_cc: 0.02, standard: 'SAE 6AN/8AN', notes: '4.5 GPM @ 5 psi ΔP', price: 135 },
+      { model: 'NSP-06', vendor: 'Parker', size_in: 0.375, size_mm: 9.5, Cv: 3.5,
+        body_material: 'Stainless Steel', seal_material: 'EPDM', max_pressure_psi: 150, max_pressure_bar: 10.3,
+        spillage_cc: 0.0, standard: 'Flat Face Valve', notes: 'True non-spill', price: 140 }
+    ];
+
+    // State
+    let fpState = {
+      rackLoad: 80,
+      deltaT: 7,
+      rackCount: 4,
+      cpDP: 0.7,
+      cvTarget: 2.5,
+      kFactor: 8,
+      coolantType: 'water',
+      hoseID: 0.25,
+      totalPower: 0,
+      totalFlowLPM: 0,
+      totalDPBar: 0
+    };
+
+    let fpSelectedComponents = { cdu: null, qdc: null };
+    let fpImpedanceChart = null;
+
+    // Open FlowPoint Calculator Modal
+    function openFlowPointCalculator() {
+      const modal = document.getElementById('flowpointModal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (!fpImpedanceChart) {
+          fpInitChart();
+        }
+        fpCalculateMetrics();
+      }
+    }
+
+    // Close FlowPoint Calculator Modal
+    function closeFlowPointCalculator() {
+      const modal = document.getElementById('flowpointModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Toggle FlowPoint CDU/QDC section collapsed/expanded state
+    function toggleFpSection(type) {
+      const contentId = type === 'cdu' ? 'fpCduMatchResults' : 'fpQdcMatchResults';
+      const iconId = type === 'cdu' ? 'fpCduCollapseIcon' : 'fpQdcCollapseIcon';
+      const content = document.getElementById(contentId);
+      const icon = document.getElementById(iconId);
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        icon.classList.add('expanded');
+      } else {
+        content.style.display = 'none';
+        icon.classList.remove('expanded');
+      }
+    }
+
+    // Navigate between sections
+    function fpNavigate(sectionId) {
+      document.querySelectorAll('.fp-section').forEach(el => el.classList.remove('fp-visible'));
+      document.querySelectorAll('.flowpoint-sidebar button').forEach(btn => btn.classList.remove('fp-active'));
+      document.querySelectorAll('.fp-mobile-nav button').forEach(btn => btn.classList.remove('fp-active'));
+      const section = document.getElementById(`fp-section-${sectionId}`);
+      if (section) section.classList.add('fp-visible');
+      const navBtn = document.getElementById(`fp-nav-${sectionId}`);
+      if (navBtn) navBtn.classList.add('fp-active');
+      const mobileNavBtn = document.getElementById(`fp-mobile-nav-${sectionId}`);
+      if (mobileNavBtn) {
+        mobileNavBtn.classList.add('fp-active');
+        mobileNavBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+      if (sectionId === 'match' || sectionId === 'bom') {
+        fpCalculateMetrics();
+        setTimeout(() => { if (fpImpedanceChart) fpImpedanceChart.resize(); }, 100);
+      }
+    }
+
+    // Core calculation function
+    function fpCalculateMetrics() {
+      fpState.rackLoad = parseFloat(document.getElementById('fpRackLoad')?.value) || 80;
+      fpState.deltaT = parseFloat(document.getElementById('fpDeltaT')?.value) || 7;
+      fpState.rackCount = parseInt(document.getElementById('fpRackCount')?.value) || 4;
+      fpState.cpDP = parseFloat(document.getElementById('fpCpDP')?.value) || 0.7;
+      fpState.cvTarget = parseFloat(document.getElementById('fpCvTarget')?.value) || 2.5;
+      fpState.kFactor = parseFloat(document.getElementById('fpKFactor')?.value) || 8;
+      fpState.coolantType = document.getElementById('fpCoolantSelect')?.value || 'water';
+      fpState.hoseID = parseFloat(document.getElementById('fpHoseID')?.value) || 0.25;
+
+      const fluid = FP_COOLANT_PROPERTIES[fpState.coolantType];
+      const totalPower = fpState.rackLoad * fpState.rackCount;
+      fpState.totalPower = totalPower;
+
+      const flowPerSec = totalPower / (fluid.Cp * fpState.deltaT);
+      const totalFlowLPM = (flowPerSec * 60 / fluid.Density).toFixed(0);
+      fpState.totalFlowLPM = parseInt(totalFlowLPM);
+
+      const nodesPerRack = 40;
+      const flowPerNodeLPM = fpState.totalFlowLPM / (fpState.rackCount * nodesPerRack);
+      const flowPerNodeGPM = flowPerNodeLPM * 0.264172;
+
+      const dp_qdc_psi = fluid.SG * Math.pow(flowPerNodeGPM / fpState.cvTarget, 2) * 2;
+      const dp_qdc_bar = dp_qdc_psi * 0.0689476;
+      const dp_cp_bar = fpState.cpDP * 2;
+      const hose_k_dp_bar = (fpState.kFactor * Math.pow(flowPerNodeLPM / 100, 2)) * 0.1;
+      const totalDPBar = (dp_qdc_bar + dp_cp_bar + hose_k_dp_bar) * fpState.rackCount * 0.8;
+      fpState.totalDPBar = totalDPBar.toFixed(1);
+
+      const powerEl = document.getElementById('fpTotalPower');
+      const flowEl = document.getElementById('fpTotalFlow');
+      const dpEl = document.getElementById('fpTotalDP');
+      if (powerEl) powerEl.textContent = fpState.totalPower;
+      if (flowEl) flowEl.textContent = fpState.totalFlowLPM;
+      if (dpEl) dpEl.textContent = fpState.totalDPBar;
+
+      fpRunComponentMatch();
+      fpUpdateChart();
+    }
+
+    // Reset to defaults
+    function fpResetToDefaults() {
+      const defaults = { fpRackLoad: 80, fpRackCount: 4, fpDeltaT: 7, fpCoolantSelect: 'water', fpCpDP: 0.7, fpHoseID: '0.25', fpKFactor: 8, fpCvTarget: 2.5 };
+      Object.keys(defaults).forEach(id => { const el = document.getElementById(id); if (el) el.value = defaults[id]; });
+      fpSelectedComponents = { cdu: null, qdc: null };
+      fpState = { rackLoad: 80, deltaT: 7, rackCount: 4, cpDP: 0.7, cvTarget: 2.5, kFactor: 8, coolantType: 'water', hoseID: 0.25, totalPower: 0, totalFlowLPM: 0, totalDPBar: 0 };
+      fpCalculateMetrics();
+    }
+
+    // Component matching
+    function fpRunComponentMatch() {
+      const flowReq = fpState.totalFlowLPM;
+      const dpReq = parseFloat(fpState.totalDPBar);
+      const cvReq = fpState.cvTarget;
+
+      const cduMatches = FP_CDU_DATABASE.filter(cdu =>
+        cdu.capacity_kW * 0.9 >= fpState.totalPower && cdu.flow_LPM >= flowReq && cdu.head_Bar >= dpReq
+      ).sort((a, b) => a.capacity_kW - b.capacity_kW);
+
+      let cduHtml = '';
+      if (cduMatches.length === 0) {
+        cduHtml = `<div class="fp-no-match"><p>No compatible CDU found. Try reducing rack load or count.</p></div>`;
+      }
+      cduMatches.forEach(cdu => {
+        const typeBadge = cdu.type ? `<span class="fp-spec-badge blue">${cdu.type}</span>` : '';
+        const atdBadge = cdu.atd_C ? `<span class="fp-spec-badge green">ATD: ${cdu.atd_C}°C</span>` : '';
+        cduHtml += `
+          <div class="fp-match-card blue">
+            <div style="flex: 1;">
+              <h4>${cdu.model} <span style="color: #64748b; font-size: 13px;">(${cdu.vendor})</span></h4>
+              <p><strong>Capacity:</strong> ${cdu.capacity_kW} kW | <strong>Flow:</strong> ${cdu.flow_LPM} LPM | <strong>Head:</strong> ${cdu.head_Bar} Bar</p>
+              <div style="display: flex; gap: 6px; margin-top: 6px;">${typeBadge}${atdBadge}</div>
+            </div>
+            <button class="fp-select-btn blue" onclick="fpSelectComponent('cdu', '${cdu.model}', ${cdu.flow_LPM}, ${cdu.head_Bar}, ${cdu.price_k}, ${cdu.capacity_kW})">Select</button>
+          </div>`;
+      });
+      const cduContainer = document.getElementById('fpCduMatchResults');
+      if (cduContainer) cduContainer.innerHTML = cduHtml;
+
+      const qdcMatches = FP_QDC_DATABASE.filter(qdc => qdc.Cv >= cvReq && qdc.size_in >= fpState.hoseID).sort((a, b) => b.Cv - a.Cv);
+      let qdcHtml = '';
+      if (qdcMatches.length === 0) {
+        qdcHtml = `<div class="fp-no-match"><p>No compatible QDC found. Try reducing Cv target.</p></div>`;
+      }
+      qdcMatches.forEach(qdc => {
+        qdcHtml += `
+          <div class="fp-match-card teal">
+            <div style="flex: 1;">
+              <h4>${qdc.model}</h4>
+              <p style="color: #0d9488;">${qdc.vendor}</p>
+              <p><strong>Cv:</strong> ${qdc.Cv.toFixed(1)} | <strong>Size:</strong> ${qdc.size_in}" | <strong>Max:</strong> ${qdc.max_pressure_psi} psi</p>
+            </div>
+            <button class="fp-select-btn teal" onclick="fpSelectComponent('qdc', '${qdc.model}', ${qdc.Cv}, ${qdc.size_in}, ${qdc.price})">Select</button>
+          </div>`;
+      });
+      const qdcContainer = document.getElementById('fpQdcMatchResults');
+      if (qdcContainer) qdcContainer.innerHTML = qdcHtml;
+
+      if (fpSelectedComponents.cdu && fpSelectedComponents.qdc) {
+        fpGenerateBOM();
+      } else {
+        fpUpdateBOMStatus();
+      }
+    }
+
+    // Component selection
+    function fpSelectComponent(type, model, flowOrCv, headOrSize, price, capacity_kW) {
+      if (type === 'cdu') {
+        fpSelectedComponents.cdu = { model, flow: flowOrCv, head: headOrSize, price_k: price, capacity_kW };
+        document.querySelectorAll('#fpCduMatchResults .fp-match-card').forEach(card => {
+          card.classList.remove('selected');
+          const btn = card.querySelector('.fp-select-btn');
+          if (btn) { btn.classList.remove('selected'); btn.textContent = 'Select'; }
+        });
+        document.querySelectorAll('#fpCduMatchResults .fp-match-card').forEach(card => {
+          if (card.querySelector('h4')?.textContent.includes(model)) {
+            card.classList.add('selected');
+            const btn = card.querySelector('.fp-select-btn');
+            if (btn) { btn.classList.add('selected'); btn.textContent = '✓ Selected'; }
+          }
+        });
+      } else if (type === 'qdc') {
+        fpSelectedComponents.qdc = { model, Cv: flowOrCv, size: headOrSize, price };
+        document.querySelectorAll('#fpQdcMatchResults .fp-match-card').forEach(card => {
+          card.classList.remove('selected');
+          const btn = card.querySelector('.fp-select-btn');
+          if (btn) { btn.classList.remove('selected'); btn.textContent = 'Select'; }
+        });
+        document.querySelectorAll('#fpQdcMatchResults .fp-match-card').forEach(card => {
+          if (card.querySelector('h4')?.textContent.includes(model)) {
+            card.classList.add('selected');
+            const btn = card.querySelector('.fp-select-btn');
+            if (btn) { btn.classList.add('selected'); btn.textContent = '✓ Selected'; }
+          }
+        });
+      }
+      fpUpdateBOMStatus();
+      fpGenerateBOM();
+    }
+
+    function fpUpdateBOMStatus() {
+      const bomBody = document.getElementById('fpBomTableBody');
+      if (!bomBody) return;
+      const cduSelected = fpSelectedComponents.cdu;
+      const qdcSelected = fpSelectedComponents.qdc;
+      if (!cduSelected && !qdcSelected) {
+        bomBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b;">Select components in Phase 2 to generate BOM.</td></tr>';
+      } else if (cduSelected && !qdcSelected) {
+        bomBody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #f59e0b;">✓ CDU Selected: <strong>${cduSelected.model}</strong> — Now select a QDC.</td></tr>`;
+      } else if (!cduSelected && qdcSelected) {
+        bomBody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #f59e0b;">✓ QDC Selected: <strong>${qdcSelected.model}</strong> — Now select a CDU.</td></tr>`;
+      }
+    }
+
+    function fpGenerateBOM() {
+      if (!fpSelectedComponents.cdu || !fpSelectedComponents.qdc) return;
+      const tbody = document.getElementById('fpBomTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      const nodesPerRack = 40;
+      const totalNodes = fpState.rackCount * nodesPerRack;
+      const totalQDCs = totalNodes * 2;
+      const cduQty = Math.ceil(fpState.totalPower / fpSelectedComponents.cdu.capacity_kW) + 1;
+      tbody.innerHTML += `<tr><td style="color: #1e40af;">${fpSelectedComponents.cdu.model} (CDU)</td><td>${cduQty} units</td><td>Required: ${fpState.totalPower.toFixed(0)} kW / ${fpState.totalDPBar} Bar</td></tr>`;
+      const qdcSpares = Math.ceil(totalQDCs * 0.1);
+      tbody.innerHTML += `<tr><td style="color: #115e59;">${fpSelectedComponents.qdc.model} (QDC)</td><td>${totalQDCs + qdcSpares} units</td><td>Cv >= ${fpState.cvTarget.toFixed(1)} (Includes 10% Spares)</td></tr>`;
+      tbody.innerHTML += `<tr><td>Manifold Assembly</td><td>${fpState.rackCount * 2} units</td><td>Based on ${fpState.rackCount} Racks</td></tr>`;
+      tbody.innerHTML += `<tr><td>Hose Kit Assembly</td><td>${totalQDCs + qdcSpares} units</td><td>Includes 10% Spares</td></tr>`;
+    }
+
+    // Chart initialization
+    function fpInitChart() {
+      const canvas = document.getElementById('fpImpedanceChart');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      fpImpedanceChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+          datasets: [{
+            label: 'System Resistance Curve',
+            data: [],
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+            pointRadius: 0
+          }, {
+            label: 'Design Point',
+            data: [],
+            backgroundColor: '#ef4444',
+            borderColor: '#ef4444',
+            pointRadius: 6,
+            type: 'scatter'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { title: { display: true, text: 'Pressure Head (Bar)' }, min: 0, max: 7 },
+            x: { title: { display: true, text: 'Flow Rate (LPM)' } }
+          },
+          plugins: { tooltip: { mode: 'index', intersect: false } }
+        }
+      });
+    }
+
+    function fpUpdateChart() {
+      if (!fpImpedanceChart) return;
+      const dpReq = parseFloat(fpState.totalDPBar);
+      const flowReq = fpState.totalFlowLPM;
+      const k = dpReq / Math.pow(flowReq, 2);
+      const newSystemData = fpImpedanceChart.data.labels.map(flow => flow === 0 ? 0 : (k * Math.pow(flow, 2)).toFixed(2));
+      fpImpedanceChart.data.datasets[0].data = newSystemData;
+      fpImpedanceChart.data.datasets[1].data = [{ x: flowReq, y: dpReq }];
+      fpImpedanceChart.data.datasets[1].label = `Design Point (${flowReq} LPM, ${dpReq} Bar)`;
+      fpImpedanceChart.update();
+    }
+
+    // Keyboard and click handlers
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeFlowPointCalculator();
+    });
+    document.getElementById('flowpointModal')?.addEventListener('click', function(e) {
+      if (e.target === this) closeFlowPointCalculator();
+    });
+  </script>
+</body>
+</html>
