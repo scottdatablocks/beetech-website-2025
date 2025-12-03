@@ -819,6 +819,12 @@
     .home-section {
       padding: 60px 0;
       background: linear-gradient(180deg, #000 0%, #0A1D37 100%);
+      scroll-margin-top: 80px;
+    }
+
+    /* Ensure sections have scroll offset for sticky header */
+    section[id] {
+      scroll-margin-top: 80px;
     }
 
     .home-section h2 {
@@ -8305,11 +8311,13 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     function scrollToSection(sectionId) {
       // First ensure we're on the home page
       showPage('home', false);
-      // Then scroll to the section
+      // Then scroll to the section with offset for sticky header
       setTimeout(() => {
         const section = document.getElementById(sectionId);
         if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const headerHeight = document.querySelector('nav').offsetHeight;
+          const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+          window.scrollTo({ top: sectionTop, behavior: 'smooth' });
         }
       }, 100);
     }
