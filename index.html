@@ -265,7 +265,7 @@
 
     nav .container {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
     }
 
@@ -277,6 +277,7 @@
       text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
       cursor: pointer;
       flex-shrink: 0;
+      margin-right: auto;
     }
 
     .logo span {
@@ -284,21 +285,21 @@
       text-shadow: 0 0 30px var(--bee-gold);
     }
 
-    /* Logo image sizing */
+    /* Logo image sizing - increased by 150% for better visibility */
     .logo img.logo-beetech {
-      height: 40px;
+      height: 60px;
       width: auto;
     }
 
     .logo img.logo-flowpoint {
-      height: 57px;
+      height: 86px;
       width: auto;
-      margin: -8px 0;
+      margin: -12px 0;
       border-radius: 4px;
     }
 
     .logo .logo-divider {
-      height: 32px;
+      height: 48px;
       width: 1px;
       background-color: rgba(255, 255, 255, 0.3);
       flex-shrink: 0;
@@ -1022,9 +1023,9 @@
       
       .nav-cta { padding: 12px 20px; font-size: 0.8rem; min-height: 44px; }
       .logo { font-size: 1.5rem; gap: 8px !important; }
-      .logo img.logo-beetech { height: 28px; }
-      .logo img.logo-flowpoint { height: 40px; margin: -6px 0; }
-      .logo .logo-divider { height: 22px; }
+      .logo img.logo-beetech { height: 42px; }
+      .logo img.logo-flowpoint { height: 60px; margin: -9px 0; }
+      .logo .logo-divider { height: 33px; }
 
       /* Grid & Cards */
       .grid { grid-template-columns: 1fr; gap: 20px; }
