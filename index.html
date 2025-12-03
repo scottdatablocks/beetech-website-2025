@@ -533,7 +533,32 @@
       0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
       50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
     }
-    
+
+    /* Program label pulse animation */
+    .program-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      color: var(--bee-gold);
+      margin-bottom: 14px;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255,215,0,0.5);
+      padding-bottom: 6px;
+      text-shadow: 0 0 8px rgba(255,215,0,0.4);
+      animation: labelPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes labelPulse {
+      0%, 100% {
+        text-shadow: 0 0 8px rgba(255,215,0,0.3);
+        opacity: 0.95;
+      }
+      50% {
+        text-shadow: 0 0 12px rgba(255,215,0,0.6);
+        opacity: 1;
+      }
+    }
+
     .hero h1 {
       font-size: clamp(2rem, 8vw, 2.75rem); 
       font-weight: 900; 
@@ -3382,7 +3407,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px;">
           <!-- OT Consulting Card -->
           <div class="program-card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 32px; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 24px rgba(255,215,0,0.06);" onclick="showPage('ot-consulting')" onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(255,215,0,0.5)'; this.style.boxShadow='0 8px 32px rgba(255,215,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,215,0,0.3)'; this.style.boxShadow='0 0 24px rgba(255,215,0,0.06)';">
-            <div style="display: inline-block; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--bee-gold); margin-bottom: 14px; font-weight: 600; border-bottom: 1px solid rgba(255,215,0,0.4); padding-bottom: 6px;">PROGRAM 01</div>
+            <div class="program-label">PROGRAM 01</div>
             <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 12px;">Operational Technology Consulting</h3>
             <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
               Independent support for owners evaluating and deploying OT platforms such as DCIM, monitoring, and BMS systems. Our focus is clarity, alignment, and continuity throughout design, deployment, and early operations.
@@ -3392,7 +3417,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
 
           <!-- FlowPoint Card -->
           <div class="program-card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.3); border-radius: 20px; padding: 32px; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 24px rgba(255,215,0,0.06);" onclick="showPage('flowpoint')" onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(255,215,0,0.5)'; this.style.boxShadow='0 8px 32px rgba(255,215,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,215,0,0.3)'; this.style.boxShadow='0 0 24px rgba(255,215,0,0.06)';">
-            <div style="display: inline-block; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--bee-gold); margin-bottom: 14px; font-weight: 600; border-bottom: 1px solid rgba(255,215,0,0.4); padding-bottom: 6px;">PROGRAM 02</div>
+            <div class="program-label">PROGRAM 02</div>
             <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 12px;">FlowPoint Program</h3>
             <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
               FlowPoint brings structure, visibility, and portfolio-wide consistency to cooling-connection assemblies across data-center projects. It helps align expectations, suppliers, and delivery sequencing without requiring workflow changes.
