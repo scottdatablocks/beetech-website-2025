@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FlowPoint | BeeTech Program</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #05060a;
+      color: #f5f5f5;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(5, 6, 10, 0.94);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .logo-dot {
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 999px;
+      background: #f2c94c;
+    }
+
+    .logo-sub {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: none;
+      opacity: 0.8;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a {
+      opacity: 0.85;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f2c94c, #f2994a);
+      color: #111;
+      box-shadow: 0 0.5rem 1.4rem rgba(242, 201, 76, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0.8rem 1.6rem rgba(242, 201, 76, 0.3);
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: transparent;
+      color: #f5f5f5;
+    }
+
+    .btn-outline:hover {
+      border-color: #f2c94c;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    main {
+      padding-bottom: 4rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      color: #f2c94c;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero {
+      padding-top: 3.2rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 3vw + 1rem, 3.2rem);
+      font-weight: 650;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      color: #f2c94c;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      max-width: 40rem;
+      color: rgba(245, 245, 245, 0.9);
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: radial-gradient(circle at top left, rgba(242, 201, 76, 0.1), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(0, 153, 255, 0.18), transparent 60%);
+      padding: 1.6rem 1.7rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-card h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(242, 201, 76, 0.9);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card p {
+      color: rgba(245, 245, 245, 0.88);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      font-size: 0.95rem;
+      color: rgba(245, 245, 245, 0.8);
+      max-width: 40rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      border-radius: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(7, 10, 16, 0.96);
+      padding: 1.6rem 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: rgba(245, 245, 245, 0.85);
+      margin-bottom: 1rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .tagline {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(242, 201, 76, 0.85);
+      margin-bottom: 0.6rem;
+    }
+
+    .list-check {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: rgba(245, 245, 245, 0.82);
+    }
+
+    .list-check li {
+      margin-bottom: 0.45rem;
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-start;
+    }
+
+    .list-check li::before {
+      content: "✓";
+      color: #f2c94c;
+      font-weight: 600;
+      margin-top: 0.08rem;
+    }
+
+    .subtle {
+      font-size: 0.88rem;
+      color: rgba(245, 245, 245, 0.74);
+      margin-top: 0.8rem;
+    }
+
+    .contact-section {
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      padding-top: 3rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+      display: inline-block;
+    }
+
+    input, textarea {
+      width: 100%;
+      border-radius: 0.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(3, 4, 6, 0.9);
+      color: #f5f5f5;
+      padding: 0.6rem 0.75rem;
+      font-family: inherit;
+      font-size: 0.92rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-meta {
+      font-size: 0.9rem;
+      color: rgba(245, 245, 245, 0.78);
+      margin-bottom: 0.7rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 1.6rem 0 2rem;
+      font-size: 0.8rem;
+      color: rgba(245, 245, 245, 0.65);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        position: static;
+      }
+      .hero-grid,
+      .split,
+      .grid-3,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <span>FlowPoint</span>
+      <span class="logo-sub">by BeeTech</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">BeeTech Home</a>
+      <a href="#gaps">What It Solves</a>
+      <a href="#how">How It Works</a>
+      <a href="#contact" class="btn btn-outline">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Thermal Distribution Program</div>
+        <h1 class="hero-title">
+          FlowPoint: Program-level alignment<br />
+          <span>for cooling distribution.</span>
+        </h1>
+        <p class="hero-sub">
+          FlowPoint provides a unified framework for managing cooling-connection assemblies 
+          across projects and phases. It improves consistency, communication, and visibility 
+          without forcing changes to your existing engineering or construction workflows.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Discuss FlowPoint</a>
+          <a href="#how" class="btn btn-outline">How FlowPoint Works</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>High-Level Program</h3>
+        <p>
+          A consistent way to align expectations, suppliers, and delivery sequencing for 
+          cooling-connection assemblies.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- WHAT IT SOLVES -->
+  <section id="gaps">
+    <div class="container">
+      <div class="section-header">
+        <h2>What FlowPoint Helps Solve</h2>
+        <p>
+          FlowPoint was created after supporting multiple owner programs and observing 
+          recurring challenges with cooling-distribution efforts.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Inconsistent Deliveries</h3>
+          <p>Different teams and suppliers often produce different interpretations.</p>
+        </article>
+
+        <article class="card">
+          <h3>Limited Visibility</h3>
+          <p>Owners often lack a clear picture of what’s needed, what’s underway, and what’s arriving.</p>
+        </article>
+
+        <article class="card">
+          <h3>Commissioning Friction</h3>
+          <p>Small variances upstream can create delay and confusion downstream.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container split">
+      <div>
+        <div class="tagline">Program Structure</div>
+        <h2>How FlowPoint Works</h2>
+        <p>
+          FlowPoint improves consistency across projects by aligning three simple pillars:
+        </p>
+
+        <ul class="list-check">
+          <li><strong>Standards</strong> — Shared expectations for planning and delivery.</li>
+          <li><strong>Coordination</strong> — Clear communication across teams and suppliers.</li>
+          <li><strong>Visibility</strong> — A consistent view of what’s required and when it’s arriving.</li>
+        </ul>
+
+        <p class="subtle">
+          FlowPoint provides structure and clarity — without changing your engineering approach or contractor workflows.
+        </p>
+      </div>
+
+      <aside class="card">
+        <h3>Portfolio Support</h3>
+        <p>Applicable to new builds, expansions, and high-density deployments.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container contact-grid">
+      <div>
+        <div class="tagline">Get in Touch</div>
+        <h2>Is FlowPoint a fit for your portfolio?</h2>
+        <p class="contact-meta">
+          If you're exploring ways to improve consistency or reduce friction across cooling-distribution efforts, 
+          we’d be happy to discuss whether FlowPoint is a good match.
+        </p>
+        <form>
+          <div class="field-group">
+            <label>Name *</label>
+            <input type="text" required />
+          </div>
+          <div class="field-group">
+            <label>Email *</label>
+            <input type="email" required />
+          </div>
+          <div class="field-group">
+            <label>Message *</label>
+            <textarea required></textarea>
+          </div>
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+      <aside>
+        <p class="contact-meta">
+          Prefer email? Reach us at <strong>[email protected]</strong>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2025 BeeTech · FlowPoint Program</div>
+  </div>
+</footer>
+
+</body>
+</html>
