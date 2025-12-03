@@ -278,6 +278,9 @@
       cursor: pointer;
       flex-shrink: 0;
       margin-right: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .logo span {
@@ -322,7 +325,7 @@
       color: rgba(255,255,255,0.85);
       text-decoration: none;
       font-weight: 550;
-      font-size: 0.95rem;
+      font-size: 1rem;
       transition: all 0.3s;
       cursor: pointer;
       letter-spacing: 0.2px;
@@ -546,14 +549,14 @@
       letter-spacing: 2px;
       margin-bottom: 20px;
       border: 2px solid var(--bee-gold);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
       text-transform: uppercase;
       animation: glow 2s ease-in-out infinite;
     }
-    
+
     @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
-      50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+      0%, 100% { box-shadow: 0 0 12px rgba(255, 215, 0, 0.2); }
+      50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.35); }
     }
 
     /* Program label pulse animation */
@@ -566,17 +569,17 @@
       font-weight: 700;
       border-bottom: 1px solid rgba(255,215,0,0.5);
       padding-bottom: 6px;
-      text-shadow: 0 0 8px rgba(255,215,0,0.4);
+      text-shadow: 0 0 4px rgba(255,215,0,0.2);
       animation: labelPulse 3s ease-in-out infinite;
     }
 
     @keyframes labelPulse {
       0%, 100% {
-        text-shadow: 0 0 8px rgba(255,215,0,0.3);
+        text-shadow: 0 0 4px rgba(255,215,0,0.15);
         opacity: 0.95;
       }
       50% {
-        text-shadow: 0 0 12px rgba(255,215,0,0.6);
+        text-shadow: 0 0 6px rgba(255,215,0,0.3);
         opacity: 1;
       }
     }
