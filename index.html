@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BeeTech | Data Center Infrastructure Consulting & Cooling Solutions</title>
-  <meta name="description" content="BeeTech provides data center consulting, cooling infrastructure solutions, and free engineering calculators. Use our PUE calculator, WUE calculator, cooling ROI benchmarker, and power redundancy CAPEX tools. Advisory, procurement, and execution services for critical infrastructure."/>
+  <title>BeeTech | Data Center Infrastructure Programs - OT Consulting & FlowPoint</title>
+  <meta name="description" content="BeeTech provides integrated programs for reliable data-center infrastructure. OT Consulting for platform decisions and FlowPoint for cooling distribution alignment. A program partner, not a vendor. Free engineering calculators included."/>
   <meta name="keywords" content="PUE calculator, WUE calculator, data center efficiency calculator, cooling ROI calculator, power redundancy calculator, CAPEX estimator, data center consulting, cooling infrastructure, liquid cooling systems, thermal management, embodied carbon calculator, data center sustainability tools, free cooling hours calculator"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://beetech.ai"/>
   <meta name="author" content="BeeTech"/>
   
   <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="BeeTech - Data Center Infrastructure Solutions & Engineering Calculators"/>
-  <meta property="og:description" content="Free PUE, WUE, cooling ROI, and power CAPEX calculators. Expert data center consulting and cooling infrastructure solutions."/>
+  <meta property="og:title" content="BeeTech - Integrated Programs for Data Center Infrastructure"/>
+  <meta property="og:description" content="A program partner for data-center infrastructure. OT Consulting and FlowPoint programs help owners align planning, execution, and operations."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://beetech.ai"/>
 
@@ -606,9 +606,30 @@
       left: 100%;
     }
     
-    .cta-btn:hover { 
-      transform: translateY(-4px) scale(1.05); 
-      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.7); 
+    .cta-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 40px rgba(255, 215, 0, 0.7);
+    }
+
+    .cta-btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .cta-btn-outline:hover {
+      border-color: var(--bee-gold);
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--bee-gold);
+      transform: translateY(-2px);
     }
 
     /* SECTIONS */
@@ -826,6 +847,12 @@
       .services, .cooling, .cta-section, .home-section { padding: 40px 0; }
       .section-title { font-size: 1.75rem; }
       .section-subtitle { max-width: 90vw; }
+
+      /* Split grids to single column on mobile */
+      [style*="grid-template-columns: 1.4fr 1fr"],
+      [style*="grid-template-columns: repeat(auto-fit"] {
+        grid-template-columns: 1fr !important;
+      }
       
       /* Navigation Mobile Menu */
       .menu-toggle { display: flex; }
@@ -3284,23 +3311,14 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       <div class="nav-right">
         <ul class="nav-menu" id="navMenu" role="menubar">
           <li role="none"><a onclick="showPage('home'); closeMenu();" class="nav-link active" role="menuitem" tabindex="0">Home</a></li>
-          <li class="dropdown-menu" id="servicesDropdown" role="none">
-            <a class="dropdown-toggle nav-link"
-               role="menuitem"
-               aria-haspopup="true"
-               aria-expanded="false"
-               tabindex="0"
-               onclick="toggleDropdown(event)"
-               onkeydown="handleDropdownKeydown(event)">Services <span class="dropdown-toggle-icon" aria-hidden="true">▼</span></a>
-            <div class="dropdown-content" role="menu" aria-label="Services submenu">
-              <a onclick="showPage('services-tech'); closeMenu();" role="menuitem" tabindex="-1">Technology Consulting</a>
-              <a onclick="showPage('services-cooling'); closeMenu();" role="menuitem" tabindex="-1">Infrastructure Sourcing</a>
-            </div>
-          </li>
+          <li role="none"><a onclick="scrollToSection('about'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">About</a></li>
+          <li role="none"><a onclick="scrollToSection('programs'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">Programs</a></li>
+          <li role="none"><a onclick="showPage('ot-consulting'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">OT Consulting</a></li>
+          <li role="none"><a onclick="showPage('flowpoint'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">FlowPoint</a></li>
           <li role="none"><a onclick="showPage('resources'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">Resources</a></li>
           <li role="none"><a onclick="showPage('contact'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">Contact</a></li>
         </ul>
-        <button onclick="showPage('contact')" class="nav-cta">Schedule Advisory</button>
+        <button onclick="showPage('contact')" class="nav-cta">Talk with BeeTech</button>
         <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
       </div>
     </div>
@@ -3311,65 +3329,147 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
 
   <!-- HOME PAGE -->
   <div id="home" class="page active">
+    <!-- HERO SECTION -->
     <section class="hero">
       <div class="container">
-        <div class="hero-badge">Data Center Procurement</div>
-        <h1><span class="highlight">Control Costs.</span> Ensure Uptime.</h1>
+        <div class="hero-badge">Data Center Infrastructure</div>
+        <h1>Integrated programs for <span class="highlight">reliable data-center infrastructure.</span></h1>
         <p class="subhead">
-          Managing 1,000+ SKUs across expanding AI and power demands is complex. Achieving 10–20% year-over-year savings requires precision—without compromising performance. BeeTech delivers independent, on-site oversight: mapping components, optimizing sourcing, and securing multi-year efficiencies. Your targets. Zero surprises.
+          BeeTech combines decades of experience across mechanical controls, software integration, and program delivery to help owners standardize decisions, streamline execution, and reduce project risk across their portfolios.
         </p>
-        <button class="cta-btn" onclick="showPage('contact')">OPTIMIZE →</button>
+        <div class="hero-actions" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+          <button class="cta-btn" onclick="showPage('contact')">Talk with BeeTech</button>
+          <button class="cta-btn-outline" onclick="showPage('flowpoint')">Explore FlowPoint</button>
+        </div>
+        <p class="hero-meta" style="font-size: 0.95rem; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto;">
+          <strong style="color: var(--bee-gold);">A program partner, not a vendor.</strong> We help align planning, execution, and operations for clearer and more predictable outcomes.
+        </p>
       </div>
     </section>
-    <section class="home-section">
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="home-section" style="padding: 80px 0;">
       <div class="container">
-        <h2>Our Services</h2>
-        <p>BeeTech offers two specialized service lines to support your critical infrastructure needs:</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; min-height: 300px;">
-          <div style="background: rgba(255,215,0,0.1); padding: 24px; border-radius: 12px; border-left: 4px solid var(--bee-gold); cursor: pointer; transition: all 0.3s;" onclick="showPage('services-tech')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-            <h3 style="color: var(--bee-gold); margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Technology Consulting</h3>
-            <p style="color: rgba(255,255,255,0.8);">Advisory, Procurement & Execution for Operational Technology Platforms. End-to-end OT platform selection and vendor management for critical infrastructure.</p>
-            <div style="margin-top: 16px; color: var(--bee-gold); font-weight: 600;">Learn More →</div>
+        <h2 style="font-size: 2rem; margin-bottom: 20px; color: #fff;">Built on Real-World Data-Center Experience</h2>
+        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 900px; line-height: 1.8;">
+          BeeTech is a specialized data-center infrastructure firm led by engineers and program leaders who have guided projects from design through operations. Our background gives us a practical understanding of how early decisions, supplier coordination, and consistent delivery practices influence project outcomes and long-term reliability.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROGRAMS SECTION -->
+    <section id="programs" class="home-section" style="padding: 80px 0; background: rgba(10,29,55,0.4);">
+      <div class="container">
+        <h2 style="font-size: 2rem; margin-bottom: 12px; color: #fff;">Two complementary programs. One integrated approach.</h2>
+        <p style="font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 700px; margin-bottom: 48px;">
+          BeeTech supports owners with strategic clarity and program-level alignment across OT systems and cooling infrastructure.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px;">
+          <!-- OT Consulting Card -->
+          <div class="program-card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px; padding: 32px; cursor: pointer; transition: all 0.3s;" onclick="showPage('ot-consulting')" onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(255,215,0,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,215,0,0.15)';">
+            <div style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.14em; color: rgba(255,215,0,0.8); margin-bottom: 12px;">Program 01</div>
+            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 12px;">Operational Technology Consulting</h3>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+              Independent support for owners evaluating and deploying OT platforms such as DCIM, monitoring, and BMS systems. Our focus is clarity, alignment, and continuity throughout design, deployment, and early operations.
+            </p>
+            <span style="color: var(--bee-gold); font-weight: 600; font-size: 0.9rem;">Learn More →</span>
           </div>
-          <div style="background: rgba(255,215,0,0.1); padding: 24px; border-radius: 12px; border-left: 4px solid var(--bee-gold); cursor: pointer; transition: all 0.3s;" onclick="showPage('services-cooling')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-            <h3 style="color: var(--bee-gold); margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Infrastructure Sourcing</h3>
-            <p style="color: rgba(255,255,255,0.8);">Purpose-built cooling infrastructure products and peripherals for next-generation data centers. Specialized thermal solutions for high-density deployments.</p>
-            <div style="margin-top: 16px; color: var(--bee-gold); font-weight: 600;">Learn More →</div>
+
+          <!-- FlowPoint Card -->
+          <div class="program-card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px; padding: 32px; cursor: pointer; transition: all 0.3s;" onclick="showPage('flowpoint')" onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(255,215,0,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,215,0,0.15)';">
+            <div style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.14em; color: rgba(255,215,0,0.8); margin-bottom: 12px;">Program 02</div>
+            <h3 style="font-size: 1.3rem; color: #fff; margin-bottom: 12px;">FlowPoint Program</h3>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+              FlowPoint brings structure, visibility, and portfolio-wide consistency to cooling-connection assemblies across data-center projects. It helps align expectations, suppliers, and delivery sequencing without requiring workflow changes.
+            </p>
+            <span style="color: var(--bee-gold); font-weight: 600; font-size: 0.9rem;">Learn More →</span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- WHY BEETECH SECTION -->
+    <section id="why-beetech" class="home-section" style="padding: 80px 0;">
+      <div class="container">
+        <h2 style="font-size: 2rem; margin-bottom: 48px; color: #fff;">Why BeeTech</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px;">
+          <div>
+            <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 8px;">Independent</h3>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">We represent owner interests and support objective decision-making.</p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 8px;">Experience-Driven</h3>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">Our approach comes from years of guiding real data-center programs.</p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 8px;">Program-Oriented</h3>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; line-height: 1.7;">We help owners work across phases, teams, and suppliers with a consistent framework.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
     <section class="cta-section">
       <div class="container">
         <div class="cta-content">
           <h2>Ready to Get Started?</h2>
-          <p>Whether you need technology advisory guidance, infrastructure sourcing, or end-to-end infrastructure support—BeeTech brings independent expertise and hands-on execution to make your project successful.</p>
+          <p>Whether you need OT platform advisory or cooling infrastructure coordination—BeeTech brings independent expertise and program-level alignment to your critical infrastructure.</p>
           <button class="cta-btn" onclick="showPage('contact')">Schedule Your Consultation →</button>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- TECHNOLOGY CONSULTING PAGE -->
-  <div id="services-tech" class="page">
+  <!-- OT CONSULTING PAGE -->
+  <div id="ot-consulting" class="page">
     <section class="hero">
       <div class="container">
-        <div class="hero-badge">OT Platform Advisory</div>
+        <div class="hero-badge">OT Advisory</div>
         <h1>Operational Technology <span class="highlight">Consulting</span></h1>
         <p class="subhead">
-          Advisory, Procurement & Execution for Operational Technology Platforms. We align OT platform decisions, vendor performance, and site execution so your critical infrastructure moves from design intent to reliable operations—<strong>without surprises.</strong>
+          We help owners make confident platform decisions and maintain alignment across engineering, construction, and operations. BeeTech stays involved beyond the selection phase to help support integration considerations, test readiness, and early operational clarity.
         </p>
-        <button class="cta-btn" onclick="document.querySelector('.services').scrollIntoView({behavior: 'smooth'})">View Services ↓</button>
+        <button class="cta-btn" onclick="showPage('contact')">Discuss Your OT Needs →</button>
       </div>
     </section>
 
-    <section class="services">
+    <!-- OT Consulting Detail Section -->
+    <section class="services" style="padding: 80px 0;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start;">
+          <div>
+            <h2 style="font-size: 1.8rem; margin-bottom: 16px; color: #fff;">Independent OT Support for Owners</h2>
+            <p style="font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 24px;">
+              Independent support for owners evaluating and deploying OT platforms such as DCIM, monitoring, and BMS systems. Our focus is clarity, alignment, and continuity throughout design, deployment, and early operations.
+            </p>
+
+            <ul class="spec-list" style="margin-top: 24px;">
+              <li>Platform assessment & vendor comparisons</li>
+              <li>Alignment across engineering, construction, and operations</li>
+              <li>Integration & monitoring considerations</li>
+              <li>Test readiness and commissioning support</li>
+            </ul>
+          </div>
+
+          <div class="card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px; padding: 32px;">
+            <h3 style="font-size: 1.1rem; color: var(--bee-gold); margin-bottom: 12px;">Owner-Focused Support</h3>
+            <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.7;">
+              From initial evaluation through transition to operations, we help ensure decisions remain consistent and actionable across stakeholders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Services Grid -->
+    <section class="services" style="padding: 60px 0; background: rgba(10,29,55,0.4);">
       <div class="container">
         <h2 class="section-title">Core Consulting Services</h2>
         <p class="section-subtitle">Full-lifecycle support for OT platforms and critical infrastructure</p>
-        
+
         <div class="grid">
           <div class="card">
             <div class="service-tag">01 Advisory</div>
@@ -3433,59 +3533,86 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     </section>
   </div>
 
-  <!-- COOLING INFRASTRUCTURE PAGE -->
-  <div id="services-cooling" class="page">
+  <!-- FLOWPOINT PAGE -->
+  <div id="flowpoint" class="page">
     <section class="hero">
       <div class="container">
-        <div class="hero-badge">High-Density Cooling</div>
-        <h1>Infrastructure <span class="highlight">Sourcing</span></h1>
+        <div class="hero-badge">Thermal Distribution Program</div>
+        <h1>FlowPoint: Program-level alignment for <span class="highlight">cooling distribution.</span></h1>
         <p class="subhead">
-          Purpose-built cooling infrastructure products and peripherals for next-generation data centers. Access to specialized thermal solutions through our vetted supplier network—sourced, tracked, and delivered with full program coordination from factory to installation.
+          FlowPoint provides a unified framework for managing cooling-connection assemblies across projects and phases. It improves consistency, communication, and visibility without forcing changes to your existing engineering or construction workflows.
         </p>
-        <button class="cta-btn" onclick="document.querySelector('.cooling').scrollIntoView({behavior: 'smooth'})">How We Deliver ↓</button>
+        <div class="hero-actions" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <button class="cta-btn" onclick="showPage('contact')">Discuss FlowPoint</button>
+          <button class="cta-btn-outline" onclick="document.getElementById('flowpoint-how').scrollIntoView({behavior: 'smooth'})">How FlowPoint Works</button>
+        </div>
       </div>
     </section>
 
-    <section class="cooling">
+    <!-- What FlowPoint Solves -->
+    <section class="services" style="padding: 80px 0;">
       <div class="container">
-        <h2 class="section-title">How We Deliver</h2>
-        <p class="section-subtitle">Sourcing + Tracking + Coordination = Complete Thermal Solutions</p>
-        
-        <div class="grid">
-          <div class="card">
-            <div class="service-tag">Supplier Network</div>
-            <h3>Vetted Sourcing</h3>
-            <p>Access to specialized cooling infrastructure products and peripherals through our established network of enterprise-grade suppliers worldwide.</p>
+        <h2 class="section-title">What FlowPoint Helps Solve</h2>
+        <p class="section-subtitle">FlowPoint was created after supporting multiple owner programs and observing recurring challenges with cooling-distribution efforts.</p>
+
+        <div class="grid" style="margin-top: 40px;">
+          <div class="card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px;">
+            <h3 style="color: #fff; margin-bottom: 8px;">Inconsistent Deliveries</h3>
+            <p style="color: rgba(255,255,255,0.8);">Different teams and suppliers often produce different interpretations.</p>
           </div>
 
-          <div class="card">
-            <div class="service-tag">Real-Time Visibility</div>
-            <h3>Automated Tracking</h3>
-            <p>Enterprise-grade supply chain software provides complete visibility from procurement through factory delivery—status updates, milestones, and delivery confirmation.</p>
+          <div class="card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px;">
+            <h3 style="color: #fff; margin-bottom: 8px;">Limited Visibility</h3>
+            <p style="color: rgba(255,255,255,0.8);">Owners often lack a clear picture of what's needed, what's underway, and what's arriving.</p>
           </div>
 
-          <div class="card">
-            <div class="service-tag">Expert Coordination</div>
-            <h3>Program Management</h3>
-            <p>Dedicated technical coordination ensures components meet your specifications, arrive on schedule, and integrate seamlessly into your infrastructure project.</p>
-          </div>
-
-          <div class="card">
-            <div class="service-tag">Installation Support</div>
-            <h3>Factory to Data Hall</h3>
-            <p>From supplier quality verification through installation oversight and testing—we manage every step to ensure successful deployment with zero surprises.</p>
+          <div class="card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px;">
+            <h3 style="color: #fff; margin-bottom: 8px;">Commissioning Friction</h3>
+            <p style="color: rgba(255,255,255,0.8);">Small variances upstream can create delay and confusion downstream.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="services" style="padding: 40px 0; background: rgba(10,29,55,0.3);">
+    <!-- How FlowPoint Works -->
+    <section id="flowpoint-how" class="services" style="padding: 80px 0; background: rgba(10,29,55,0.4);">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start;">
+          <div>
+            <div style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.18em; color: rgba(255,215,0,0.85); margin-bottom: 12px;">Program Structure</div>
+            <h2 style="font-size: 1.8rem; margin-bottom: 16px; color: #fff;">How FlowPoint Works</h2>
+            <p style="font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 24px;">
+              FlowPoint improves consistency across projects by aligning three simple pillars:
+            </p>
+
+            <ul class="spec-list" style="margin-top: 24px;">
+              <li><strong>Standards</strong> — Shared expectations for planning and delivery.</li>
+              <li><strong>Coordination</strong> — Clear communication across teams and suppliers.</li>
+              <li><strong>Visibility</strong> — A consistent view of what's required and when it's arriving.</li>
+            </ul>
+
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7); margin-top: 24px;">
+              FlowPoint provides structure and clarity — without changing your engineering approach or contractor workflows.
+            </p>
+          </div>
+
+          <div class="card" style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px; padding: 32px;">
+            <h3 style="font-size: 1.1rem; color: var(--bee-gold); margin-bottom: 12px;">Portfolio Support</h3>
+            <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.7;">
+              Applicable to new builds, expansions, and high-density deployments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="services" style="padding: 60px 0;">
       <div class="container">
         <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 20px;">Technical Specifications</h2>
-        <p style="text-align: center; color: rgba(255,255,255,0.7); max-width: 900px; margin: 0 auto 32px; font-size: 0.9rem;">
-          Our cooling infrastructure portfolio encompasses enterprise-grade components engineered for mission-critical deployments. 
-          Solutions include custom thermal systems, integrated cooling components, and specialized infrastructure accessories. All components meet stringent data center specifications for pressure ratings, 
-          flow rates, and material compatibility with various cooling media including glycol blends and dielectric fluids.
+        <p style="text-align: center; color: rgba(255,255,255,0.7); max-width: 900px; margin: 0 auto 32px; font-size: 0.95rem;">
+          Our cooling infrastructure portfolio encompasses enterprise-grade components engineered for mission-critical deployments.
+          Solutions include custom thermal systems, integrated cooling components, and specialized infrastructure accessories.
         </p>
         <div style="text-align: center; margin-top: 24px;">
           <p style="color: rgba(255,215,0,0.8); font-size: 0.85rem; font-weight: 600;">
@@ -3498,9 +3625,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     <section class="cta-section">
       <div class="container">
         <div class="cta-content">
-          <h2>Complete Thermal Solution Management</h2>
-          <p>Whether you need standard components or fully custom thermal solutions—BeeTech sources, tracks, and coordinates delivery with expert program management from procurement to installation.</p>
-          <button class="cta-btn" onclick="showPage('contact')">Discuss Your Project →</button>
+          <h2>Is FlowPoint a fit for your portfolio?</h2>
+          <p>If you're exploring ways to improve consistency or reduce friction across cooling-distribution efforts, we'd be happy to discuss whether FlowPoint is a good match.</p>
+          <button class="cta-btn" onclick="showPage('contact')">Discuss FlowPoint →</button>
         </div>
       </div>
     </section>
@@ -4302,7 +4429,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     Thank you for your interest. We'll send the complete whitepaper to your email shortly.
                   </p>
                   <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-                    In the meantime, explore our <a href="#" onclick="showPage('services-tech'); return false;" style="color: var(--bee-gold);">Technology Consulting</a> services.
+                    In the meantime, explore our <a href="#" onclick="showPage('ot-consulting'); return false;" style="color: var(--bee-gold);">OT Consulting</a> services.
                   </p>
                 </div>
               </div>
@@ -5176,7 +5303,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     Thank you for your interest. We'll send the complete whitepaper to your email shortly.
                   </p>
                   <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-                    In the meantime, explore our <a href="#" onclick="showPage('services-tech'); return false;" style="color: #60A5FA;">Technology Consulting</a> services.
+                    In the meantime, explore our <a href="#" onclick="showPage('ot-consulting'); return false;" style="color: #60A5FA;">OT Consulting</a> services.
                   </p>
                 </div>
               </div>
@@ -5456,7 +5583,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     Thank you for your interest. We'll send the complete whitepaper to your email shortly.
                   </p>
                   <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-                    In the meantime, explore our <a href="#" onclick="showPage('services-tech'); return false;" style="color: #00FF88;">Technology Consulting</a> services.
+                    In the meantime, explore our <a href="#" onclick="showPage('ot-consulting'); return false;" style="color: #00FF88;">OT Consulting</a> services.
                   </p>
                 </div>
               </div>
@@ -5753,7 +5880,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     Thank you for your interest. We'll send the complete whitepaper to your email shortly.
                   </p>
                   <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-                    In the meantime, explore our <a href="#" onclick="showPage('services-tech'); return false;" style="color: #A855F7;">Technology Consulting</a> services.
+                    In the meantime, explore our <a href="#" onclick="showPage('ot-consulting'); return false;" style="color: #A855F7;">OT Consulting</a> services.
                   </p>
                 </div>
               </div>
@@ -6034,7 +6161,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     Thank you for your interest. We'll send the complete whitepaper to your email shortly.
                   </p>
                   <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-                    In the meantime, explore our <a href="#" onclick="showPage('services-cooling'); return false;" style="color: #06B6D4;">Infrastructure Sourcing</a> services.
+                    In the meantime, explore our <a href="#" onclick="showPage('flowpoint'); return false;" style="color: #06B6D4;">FlowPoint</a> program.
                   </p>
                 </div>
               </div>
@@ -6341,7 +6468,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
                     Thank you for your interest. We'll send the complete whitepaper to your email shortly.
                   </p>
                   <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem;">
-                    In the meantime, explore our <a href="#" onclick="showPage('services-cooling'); return false;" style="color: #F97316;">Infrastructure Sourcing</a> services.
+                    In the meantime, explore our <a href="#" onclick="showPage('flowpoint'); return false;" style="color: #F97316;">FlowPoint</a> program.
                   </p>
                 </div>
               </div>
@@ -6498,8 +6625,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
             <div style="margin-bottom: 20px;">
               <label style="display: block; margin-bottom: 8px; font-weight: 600; color: white;">Inquiry Type</label>
               <select name="inquiry_type" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.3); background: rgba(0,0,0,0.5); color: white; font-family: Inter; font-size: 1rem;">
-                <option style="background: #000; color: white;">Technology Consulting</option>
-                <option style="background: #000; color: white;">Infrastructure Sourcing</option>
+                <option style="background: #000; color: white;">OT Consulting</option>
+                <option style="background: #000; color: white;">FlowPoint Program</option>
                 <option style="background: #000; color: white;">General Inquiry</option>
               </select>
             </div>
@@ -8146,9 +8273,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
   <footer>
     <div class="container">
       <p>&copy; 2025 BeeTech | Data Center Infrastructure Solutions</p>
-      <p>Operational Technology Consulting • Cooling Infrastructure Products • Thermal Management Solutions</p>
+      <p>OT Consulting • FlowPoint Program • Thermal Management Solutions</p>
       <p style="font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 8px;">
-        Specializing in liquid cooling components, thermal infrastructure, and OT platform deployment for mission-critical data centers
+        A program partner for data-center infrastructure — helping owners align planning, execution, and operations.
       </p>
       <p>941 W Morse Blvd, Suite 100, Winter Park, FL 32789</p>
       <p>Advisory. Procurement. Execution. | hello@beetech.ai</p>
@@ -8167,6 +8294,18 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
   </main><!-- End main-content -->
 
   <script>
+    function scrollToSection(sectionId) {
+      // First ensure we're on the home page
+      showPage('home', false);
+      // Then scroll to the section
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+
     function showPage(pageId, updateHash = true) {
       // Hide all pages
       const pages = document.querySelectorAll('.page');
