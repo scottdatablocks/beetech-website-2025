@@ -299,12 +299,11 @@
     .nav-menu a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 0.9rem;
       transition: all 0.3s;
       cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.3px;
       padding: 8px 0;
       border-bottom: 2px solid transparent;
       display: inline-block;
@@ -575,16 +574,15 @@
     .cta-btn {
       background: linear-gradient(135deg, var(--bee-gold) 0%, #FFA500 100%);
       color: black;
-      font-weight: 900;
-      padding: 18px 40px; 
-      border-radius: 50px; 
-      font-size: 1.1rem; 
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 1rem;
       text-decoration: none;
-      display: inline-block; 
+      display: inline-block;
       transition: all 0.3s;
-      box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      box-shadow: 0 6px 24px rgba(255, 215, 0, 0.4);
+      letter-spacing: 0.3px;
       position: relative;
       overflow: hidden;
       border: none;
@@ -850,6 +848,7 @@
 
       /* Split grids to single column on mobile */
       [style*="grid-template-columns: 1.4fr 1fr"],
+      [style*="grid-template-columns: 1.5fr 1fr"],
       [style*="grid-template-columns: repeat(auto-fit"] {
         grid-template-columns: 1fr !important;
       }
@@ -3318,7 +3317,6 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           <li role="none"><a onclick="showPage('resources'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">Resources</a></li>
           <li role="none"><a onclick="showPage('contact'); closeMenu();" class="nav-link" role="menuitem" tabindex="0">Contact</a></li>
         </ul>
-        <button onclick="showPage('contact')" class="nav-cta">Talk with BeeTech</button>
         <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
       </div>
     </div>
@@ -3348,17 +3346,27 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="home-section" style="padding: 80px 0;">
+    <section id="about" class="home-section" style="padding: 60px 0;">
       <div class="container">
-        <h2 style="font-size: 2rem; margin-bottom: 20px; color: #fff;">Built on Real-World Data-Center Experience</h2>
-        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 900px; line-height: 1.8;">
-          BeeTech is a specialized data-center infrastructure firm led by engineers and program leaders who have guided projects from design through operations. Our background gives us a practical understanding of how early decisions, supplier coordination, and consistent delivery practices influence project outcomes and long-term reliability.
-        </p>
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center;">
+          <div>
+            <h2 style="font-size: 1.75rem; margin-bottom: 16px; color: #fff;">Built on Real-World Data-Center Experience</h2>
+            <p style="font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.8;">
+              BeeTech is a specialized data-center infrastructure firm led by engineers and program leaders who have guided projects from design through operations. Our background gives us a practical understanding of how early decisions, supplier coordination, and consistent delivery practices influence project outcomes and long-term reliability.
+            </p>
+          </div>
+          <div style="background: rgba(7,10,16,0.96); border: 1px solid rgba(255,215,0,0.15); border-radius: 20px; padding: 28px;">
+            <h3 style="font-size: 1rem; color: var(--bee-gold); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.12em;">Program-Level Perspective</h3>
+            <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.7;">
+              Connecting design intent with delivery expectations across engineering, construction, operations, and supplier teams.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- PROGRAMS SECTION -->
-    <section id="programs" class="home-section" style="padding: 80px 0; background: rgba(10,29,55,0.4);">
+    <section id="programs" class="home-section" style="padding: 60px 0; background: rgba(10,29,55,0.4);">
       <div class="container">
         <h2 style="font-size: 2rem; margin-bottom: 12px; color: #fff;">Two complementary programs. One integrated approach.</h2>
         <p style="font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 700px; margin-bottom: 48px;">
@@ -3390,7 +3398,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
     </section>
 
     <!-- WHY BEETECH SECTION -->
-    <section id="why-beetech" class="home-section" style="padding: 80px 0;">
+    <section id="why-beetech" class="home-section" style="padding: 60px 0;">
       <div class="container">
         <h2 style="font-size: 2rem; margin-bottom: 48px; color: #fff;">Why BeeTech</h2>
 
