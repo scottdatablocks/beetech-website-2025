@@ -903,14 +903,22 @@
       }
       
       /* Navigation Mobile Menu */
+      body.menu-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+      }
       .menu-toggle { display: flex; }
       .nav-menu {
         position: fixed;
         top: 56px;
         left: 0;
         right: 0;
+        bottom: 0;
         width: 100vw;
-        background: rgba(0, 0, 0, 0.98);
+        height: calc(100dvh - 56px);
+        background: #000000;
         flex-direction: column;
         gap: 0;
         padding: 16px 0;
@@ -918,9 +926,8 @@
         border-bottom: 2px solid rgba(255, 215, 0, 0.3);
         border-radius: 0;
         margin: 0;
-        max-height: calc(100vh - 56px);
         overflow-y: auto;
-        z-index: 999;
+        z-index: 9999;
       }
       
       .nav-menu.active { display: flex; }
@@ -1018,10 +1025,10 @@
       }
       
       .nav-cta { padding: 12px 20px; font-size: 0.8rem; min-height: 44px; }
-      .logo { font-size: 1.5rem; gap: 8px !important; }
+      .logo { font-size: 1.5rem; gap: 12px !important; }
       .logo img.logo-beetech { height: 42px; }
       .logo img.logo-flowpoint { height: 63px; }
-      .logo .logo-divider { height: 33px; }
+      .logo .logo-divider { height: 33px; margin: 0 4px; }
 
       /* Grid & Cards */
       .grid { grid-template-columns: 1fr; gap: 20px; }
@@ -8726,6 +8733,12 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       const menuToggle = document.getElementById('menuToggle');
       const isActive = navMenu.classList.toggle('active');
       menuToggle.setAttribute('aria-expanded', isActive);
+      // Toggle body scroll lock
+      if (isActive) {
+        document.body.classList.add('menu-open');
+      } else {
+        document.body.classList.remove('menu-open');
+      }
     }
 
     function closeMenu() {
@@ -8733,6 +8746,8 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       const menuToggle = document.getElementById('menuToggle');
       navMenu.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
+      // Remove body scroll lock
+      document.body.classList.remove('menu-open');
 
       // Close any open dropdowns and update aria-expanded
       const dropdowns = document.querySelectorAll('.dropdown-menu.active');
