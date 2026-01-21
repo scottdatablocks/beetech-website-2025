@@ -6712,6 +6712,9 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
           <div id="contactSuccess" style="display: none; margin-top: 24px; background: rgba(0,255,136,0.15); padding: 20px; border-radius: 12px; border-left: 4px solid var(--success); color: var(--success); text-align: center; font-weight: 600;">
             ✓ Thank you! We'll be in touch soon to schedule your consultation.
           </div>
+          <div id="contactError" style="display: none; margin-top: 24px; background: rgba(255,107,107,0.15); padding: 20px; border-radius: 12px; border-left: 4px solid #ff6b6b; color: #ff6b6b; text-align: center; font-weight: 600;">
+            <span id="contactErrorMessage">Sorry, something went wrong. Please try again.</span>
+          </div>
 
           <div style="margin-top: 40px; text-align: center;">
             <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px;">Or reach us directly:</p>
@@ -8456,7 +8459,7 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
       });
     }
 
-    function handleContactForm(e) {
+    async function handleContactForm(e) {
       e.preventDefault();
       
       const form = e.target;
@@ -8464,22 +8467,44 @@ Lv/MLHbNS7XQKSnRKNwnoVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" alt="BeeTech - Data Ce
         name: form.querySelector('input[name="name"]').value,
         email: form.querySelector('input[name="email"]').value,
         company: form.querySelector('input[name="company"]').value,
-        inquiry_type: form.querySelector('select[name="inquiry_type"]').value,
+        inquiryType: form.querySelector('select[name="inquiry_type"]').value,
         message: form.querySelector('textarea[name="message"]').value
       };
-      
-      console.log('Contact form submitted:', data);
-      
-      // Show success message
-      document.getElementById('contactSuccess').style.display = 'block';
-      form.style.display = 'none';
-      
-      // Reset after 4 seconds
-      setTimeout(() => {
+
+      const successMessage = document.getElementById('contactSuccess');
+      const errorMessage = document.getElementById('contactError');
+      const errorText = document.getElementById('contactErrorMessage');
+      const submitButton = form.querySelector('button[type=\"submit\"]');
+
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || !result.ok) {
+          errorText.textContent = result.error || 'Sorry, something went wrong. Please try again.';
+          errorMessage.style.display = 'block';
+          return;
+        }
+
+        successMessage.style.display = 'block';
         form.reset();
-        form.style.display = 'block';
-        document.getElementById('contactSuccess').style.display = 'none';
-      }, 4000);
+      } catch (error) {
+        errorText.textContent = 'Unable to send your message right now. Please try again later.';
+        errorMessage.style.display = 'block';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message →';
+      }
     }
 
     // Whitepaper Download Request Handler
