@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BeeTech | Data Center Infrastructure & FlowPoint Program</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Basic reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #06070a;
+      color: #f5f5f5;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(6, 7, 10, 0.92);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .logo-dot {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 999px;
+      background: #f2c94c;
+    }
+
+    .logo-sub {
+      font-size: 0.7rem;
+      font-weight: 500;
+      opacity: 0.8;
+      text-transform: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      opacity: 0.85;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f2c94c, #f2994a);
+      color: #111;
+      box-shadow: 0 0.5rem 1.4rem rgba(242, 201, 76, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0.8rem 1.6rem rgba(242, 201, 76, 0.3);
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: transparent;
+      color: #f5f5f5;
+    }
+
+    .btn-outline:hover {
+      border-color: #f2c94c;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    main {
+      padding-bottom: 4rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      color: #f2c94c;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero {
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 3vw + 1rem, 3.3rem);
+      font-weight: 650;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span.highlight {
+      color: #f2c94c;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      max-width: 38rem;
+      color: rgba(245, 245, 245, 0.9);
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .hero-meta {
+      font-size: 0.88rem;
+      color: rgba(250, 250, 250, 0.7);
+      max-width: 34rem;
+    }
+
+    .hero-meta strong {
+      color: #f2c94c;
+      font-weight: 600;
+    }
+
+    .hero-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at top left, rgba(242, 201, 76, 0.08), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(51, 153, 255, 0.12), transparent 60%);
+      padding: 1.5rem 1.6rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-card h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(242, 201, 76, 0.9);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card p {
+      color: rgba(245, 245, 245, 0.88);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      font-size: 0.95rem;
+      color: rgba(245, 245, 245, 0.78);
+      max-width: 36rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      border-radius: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(7, 10, 16, 0.96);
+      padding: 1.6rem 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card .eyebrow-sm {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.75rem;
+      color: rgba(242, 201, 76, 0.8);
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: rgba(245, 245, 245, 0.82);
+      margin-bottom: 1rem;
+    }
+
+    .card-link {
+      font-size: 0.86rem;
+      color: #f2c94c;
+      display: inline-block;
+      margin-top: 0.25rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .tagline {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(242, 201, 76, 0.85);
+      margin-bottom: 0.6rem;
+    }
+
+    .list-check {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: rgba(245, 245, 245, 0.8);
+    }
+
+    .list-check li {
+      margin-bottom: 0.45rem;
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-start;
+    }
+
+    .list-check li::before {
+      content: "✓";
+      color: #f2c94c;
+      font-weight: 600;
+      margin-top: 0.08rem;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .why-item h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .why-item p {
+      font-size: 0.9rem;
+      color: rgba(245, 245, 245, 0.8);
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      margin-bottom: 0.2rem;
+      display: inline-block;
+    }
+
+    input, textarea {
+      width: 100%;
+      border-radius: 0.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(3, 4, 6, 0.9);
+      color: #f5f5f5;
+      padding: 0.6rem 0.75rem;
+      font-family: inherit;
+      font-size: 0.92rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-note {
+      font-size: 0.9rem;
+      color: rgba(245, 245, 245, 0.8);
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-meta {
+      font-size: 0.9rem;
+      color: rgba(245, 245, 245, 0.78);
+      margin-bottom: 0.7rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 1.6rem 0 2rem;
+      font-size: 0.8rem;
+      color: rgba(245, 245, 245, 0.65);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        position: static;
+      }
+      .hero-grid,
+      .split,
+      .contact-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>BeeTech</span>
+        <span class="logo-sub">Data Center Infrastructure</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#consulting">OT Consulting</a>
+        <a href="flowpoint.html">FlowPoint</a>
+        <a href="#contact" class="btn btn-outline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Data Center Infrastructure</div>
+          <h1 class="hero-title">
+            Integrated programs for<br />
+            <span class="highlight">reliable data-center infrastructure.</span>
+          </h1>
+          <p class="hero-sub">
+            BeeTech combines decades of experience across mechanical controls, software integration, 
+            and program delivery to help owners standardize decisions, streamline execution, 
+            and reduce project risk across their portfolios.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Talk with BeeTech</a>
+            <a href="flowpoint.html" class="btn btn-outline">Explore FlowPoint</a>
+          </div>
+          <p class="hero-meta">
+            <strong>A program partner, not a vendor.</strong> 
+            We help align planning, execution, and operations for clearer and more predictable outcomes.
+          </p>
+        </div>
+
+        <aside class="hero-card">
+          <h3>Program-Level Perspective</h3>
+          <p>
+            Connecting design intent with delivery expectations across engineering, construction, 
+            operations, and supplier teams.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2>Built on Real-World Data-Center Experience</h2>
+          <p>
+            BeeTech is a specialized data-center infrastructure firm led by engineers and program 
+            leaders who have guided projects from design through operations. Our background gives us 
+            a practical understanding of how early decisions, supplier coordination, and consistent 
+            delivery practices influence project outcomes and long-term reliability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs">
+      <div class="container">
+        <div class="section-header">
+          <h2>Two complementary programs. One integrated approach.</h2>
+          <p>
+            BeeTech supports owners with strategic clarity and program-level alignment across OT systems 
+            and cooling infrastructure.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="card">
+            <div class="eyebrow-sm">Program 01</div>
+            <h3>Operational Technology Consulting</h3>
+            <p>
+              Independent support for owners evaluating and deploying OT platforms such as DCIM, monitoring, 
+              and BMS systems. Our focus is clarity, alignment, and continuity throughout design, deployment, 
+              and early operations.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="eyebrow-sm">Program 02</div>
+            <h3>FlowPoint Program</h3>
+            <p>
+              FlowPoint brings structure, visibility, and portfolio-wide consistency to cooling-connection 
+              assemblies across data-center projects. It helps align expectations, suppliers, and delivery 
+              sequencing without requiring workflow changes.
+            </p>
+            <a href="flowpoint.html" class="card-link">Learn More →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- OT CONSULTING -->
+    <section id="consulting">
+      <div class="container split">
+        <div>
+          <div class="tagline">OT Advisory</div>
+          <h2>Operational Technology Consulting</h2>
+          <p>
+            We help owners make confident platform decisions and maintain alignment across engineering, 
+            construction, and operations. BeeTech stays involved beyond the selection phase to help support 
+            integration considerations, test readiness, and early operational clarity.
+          </p>
+
+          <ul class="list-check">
+            <li>Platform assessment & vendor comparisons</li>
+            <li>Alignment across engineering, construction, and operations</li>
+            <li>Integration & monitoring considerations</li>
+          </ul>
+        </div>
+
+        <aside class="card">
+          <h3>Owner-Focused Support</h3>
+          <p>
+            From initial evaluation through transition to operations, we help ensure decisions remain 
+            consistent and actionable across stakeholders.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FLOWPOINT HIGHLIGHT -->
+    <section id="flowpoint-highlight">
+      <div class="container split">
+        <aside class="card">
+          <h3>FlowPoint by BeeTech</h3>
+          <p>
+            FlowPoint treats cooling-connection assemblies as a coordinated program rather than isolated 
+            purchases, supporting consistency and predictability across suppliers and project phases.
+          </p>
+        </aside>
+
+        <div>
+          <div class="tagline">Cooling Distribution</div>
+          <h2>Program-Level Alignment for Cooling Assemblies</h2>
+          <p>
+            FlowPoint helps teams maintain consistency across projects, keep communication aligned, 
+            and gain a clearer view of what is needed and when.
+          </p>
+          <a href="flowpoint.html" class="btn btn-primary" style="margin-top:1rem;">Explore FlowPoint</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY BEETECH -->
+    <section id="why">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why BeeTech</h2>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-item">
+            <h3>Independent</h3>
+            <p>We represent owner interests and support objective decision-making.</p>
+          </div>
+
+          <div class="why-item">
+            <h3>Experience-Driven</h3>
+            <p>Our approach comes from years of guiding real data-center programs.</p>
+          </div>
+
+          <div class="why-item">
+            <h3>Program-Oriented</h3>
+            <p>We help owners work
+

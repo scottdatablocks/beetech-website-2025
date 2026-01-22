@@ -1,12 +1,5 @@
 {
-     "version": 1,
-     "include": ["/*"],
-     "exclude": ["/.well-known/*"]
-   }
-```
-
-6. **Scroll down** and click **"Commit changes"**
-
-7. **Add a commit message** (optional):
-```
-   Add Cloudflare Pages routing config for SPA
+  "version": 1,
+  "include": ["/*"],
+  "exclude": ["/.well-known/*"]
+}
